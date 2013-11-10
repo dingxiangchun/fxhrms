@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>无标题页</title>
+</head>
+<body>
+    <hr>
+        <font face = arial size = 1>
+            <OBJECT id = "dirselect1" name = "dirselect1"  codebase="setup.exe" classid = "clsid:ebca8d01-6b80-4e94-84de-c1c5ae15e564" >
+            </OBJECT>
+        </font>
+        <form name = "frm" id = "frm" >
+            <input type = button value = "选择文件夹" onClick ="doScript(); ">
+        </form>
+    <hr>
+</body> 
+
+    <script language = "javascript">
+        function doScript()
+        {
+             var t = dirselect1.showDlg();
+             alert(t);
+//             if(t!="")
+//             {
+//                  var str=dirselect1.GetSelctedDir();
+//                  alert(str);
+//                  
+//                  var i=0;
+//                  // 返回该文件夹下所有文件数目
+//                  var cnt = dirselect1.GetFilesCount();
+//                  alert(cnt);  
+//      
+//                  //返回该文件夹下所有文件路径
+//                  var array = new Array(cnt);
+//                  for(i;i<3;i++)
+//                  {
+//                       array[i] = dirselect1.GetFile(i);
+//                       alert(array[i]);
+//                  }
+//             }
+        }
+    </script>
+
+
+</html>

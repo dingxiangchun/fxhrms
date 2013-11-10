@@ -1,0 +1,5 @@
+D:\asp.netProject\HRMS\Models\bin\Debug\Models.dll
+D:\asp.netProject\HRMS\Models\bin\Debug\Models.pdb
+D:\asp.netProject\HRMS\Models\obj\Debug\ResolveAssemblyReference.cache
+D:\asp.netProject\HRMS\Models\obj\Debug\Models.dll
+D:\asp.netProject\HRMS\Models\obj\Debug\Models.pdb

@@ -1,0 +1,44 @@
+personnel:职员 transfer:调任 reward:奖赏 punishment:处罚 information:资料
+UPower:用户权限 UPosition:职位 Kultur:文化 marriage:婚姻 visage:面貌 folk:民族
+IDCard:身份证 origo:籍贯 employee:职工类型 laborageType:工资类别 branch:部门
+headship:职务 Speciality:专业 GraduateDate:毕业时间 M_Pay:月工资 Blotter:记事簿
+noteSort:记录类别 Content:内容 Inc:公司 resume:简历 RPKind:奖惩种类 confirm:批准
+Quash：撤销 LeaguerName:成员名称 Nexus:与本人关系 BirthDate:出生日期 tra:调任缩写
+former：以前 after:之后
+
+select * from dbo.tb_Users
+select * from dbo.tb_perInfo
+select * from dbo.tb_addressBook
+select * from dbo.tb_blotter
+select * from dbo.tb_branch
+select * from dbo.tb_family
+select * from dbo.tb_folk
+select * from dbo.tb_headship
+select * from dbo.tb_RandP
+select * from dbo.tb_transfer
+select * from dbo.tb_workresume
+select * from dbo.tb_zhichen
+
+select * from dbo.tb_Users
+select * from dbo.tb_perInfo
+select folk as '民族类别',count(folk) as '人数' from tb_perInfo group by folk
+select * from dbo.tb_addressBook
+select * from dbo.tb_blotter
+select * from dbo.tb_branch
+insert into tb_branch (branchname) values ('服务部')
+update tb_branch set branchname='请选择' where id=1
+select * from dbo.tb_family
+select * from dbo.tb_folk
+update tb_folk set folkname='请选择' where id=1
+select * from dbo.tb_headship
+insert into tb_headship(hname) values ('软件开发')
+update tb_headship set hname='请选择' where hid=1
+select * from dbo.tb_RandP
+select * from dbo.tb_transfer
+select * from dbo.tb_workresume
+select * from dbo.tb_zhichen
+update tb_zhichen set zcname='请选择' where zcid=1
+insert into tb_zhichen(zcname) values ('软件工程师')
+delete  tb_zhichen where zcid=5
+
+

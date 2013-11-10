@@ -1,0 +1,8 @@
+D:\asp.netProject\HRMS\ActiveX5\obj\Debug\ResolveAssemblyReference.cache
+D:\asp.netProject\HRMS\ActiveX5\bin\Debug\ActiveX5.dll
+D:\asp.netProject\HRMS\ActiveX5\bin\Debug\ActiveX5.pdb
+D:\asp.netProject\HRMS\ActiveX5\bin\Debug\ActiveX5.tlb
+D:\asp.netProject\HRMS\ActiveX5\obj\Debug\ActiveX5.dirselect.resources
+D:\asp.netProject\HRMS\ActiveX5\obj\Debug\ActiveX5.csproj.GenerateResource.Cache
+D:\asp.netProject\HRMS\ActiveX5\obj\Debug\ActiveX5.dll
+D:\asp.netProject\HRMS\ActiveX5\obj\Debug\ActiveX5.pdb
