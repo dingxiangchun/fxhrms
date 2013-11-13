@@ -17,6 +17,15 @@ public partial class addBranch : System.Web.UI.Page
     tb_branch model = new tb_branch();
     protected void Page_Load(object sender, EventArgs e)
     {
+        //VelocityHelper vh = new VelocityHelper();
+        //vh.Init();//指定模板文件的相对路径
+        //vh.Put("title", "员工信息");
+        //vh.Put("comName", "贵州公司");
+        //vh.Put("property", "哈哈");
+        //vh.Put("comAddress", "贵州");
+        //使用tp1.htm模板显示
+        //vh.Display("addBranch.vm");
+
         if (!IsPostBack)
         {
             lb_url.Text = "部门类别设置";
