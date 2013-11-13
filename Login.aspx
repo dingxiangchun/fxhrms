@@ -62,12 +62,6 @@
 				            </TD>
 				            </TR>
                           <TR>
-                            <TD style="HEIGHT: 28px">验证码：</TD>
-                            <TD style="HEIGHT: 28px">
-				                <asp:TextBox ID="tb_txtcode" runat="server" Width="130px"></asp:TextBox>
-				            </TD>
-                            <TD style="HEIGHT: 28px"><img src="CheckCode.aspx" style="" /></TD></TR>
-                          <TR>
                             <TD style="HEIGHT: 18px"></TD>
                             <TD style="HEIGHT: 18px"></TD>
                             <TD style="HEIGHT: 18px"></TD></TR>

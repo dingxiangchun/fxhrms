@@ -24,17 +24,6 @@ public partial class Login : System.Web.UI.Page
         string uid = tb_txtName.Text;
         string pwd = tb_txtPwd.Text;
         bool pass = dal.Exists(uid, pwd);
-        string code = tb_txtcode.Text.Trim().ToLower().ToString();
-        if (code != Request.Cookies["CheckCode"].Value.ToLower().ToString())//5_1^a_s_p~x
-        {
-            //UpdatePanel里面的控件不要使用Response.Write()使用即出错 
-            Response.Write("<script language='javascript'>alert('验证码错误!');</script>");
-
-            //使用微软的Ajax框架后不要用response.write()弹出提示框,用下面这个:
-            //ScriptManager.RegisterStartupScript(tUpdatePanel1, this.GetType(), "codeerror", "alert('验证码错误.');", true);
-        }
-        else
-        {
             if (pass)
             {
                 Session["uid"] = tb_txtName.Text;
@@ -54,6 +43,5 @@ public partial class Login : System.Web.UI.Page
             {
                 Response.Write("<script language='javascript'>alert('用户名或密码错误!');</script>");//5^1^a~s_p~x
             }
-        }
     }
 }
