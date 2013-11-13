@@ -130,7 +130,7 @@
                                     <TD align=right style="height: 25px">
                                         部门名称:
                                         <asp:TextBox ID="tb_branch" runat="server"></asp:TextBox>&nbsp;
-                                        网点名:
+                                        网点号:
                                         <asp:TextBox ID="tb_branch_num" runat="server"></asp:TextBox>
                                         部门信息:
                                         <asp:TextBox ID="tb_branch_info" runat="server"></asp:TextBox>
