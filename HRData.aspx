@@ -68,7 +68,7 @@
                                                     <TD>
                                                         <asp:TextBox ID="tb_pername" runat="server" CssClass="textbox" MaxLength="50" Width="90px"></asp:TextBox>
                                                     </TD>
-                                                    <TD>员工编号:</TD>
+                                                    <TD>员工号:</TD>
                                                     <TD>
                                                         <asp:TextBox ID="tb_pernum" CssClass="textbox" runat="server" Width="90px"></asp:TextBox>
                                                     </TD>
@@ -94,7 +94,7 @@
                                     
                                         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" Width="100%"  OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="id,perNum" PageSize="5">
                                             <Columns>
-                                                <asp:TemplateField HeaderText="员工编号">
+                                                <asp:TemplateField HeaderText="员工号">
                                                     <ItemTemplate>
                                                         <table border="0" cellpadding="0" cellspacing="0">
                                                             <tr>

@@ -6,3 +6,10 @@ C:\HRManage\DAL\bin\Debug\MySql.Data.dll
 C:\HRManage\DAL\bin\Debug\Models.pdb
 C:\HRManage\DAL\obj\Debug\DAL.dll
 C:\HRManage\DAL\obj\Debug\DAL.pdb
+D:\wamp\www\fxhrms\DAL\bin\Debug\DAL.dll
+D:\wamp\www\fxhrms\DAL\bin\Debug\DAL.pdb
+D:\wamp\www\fxhrms\DAL\bin\Debug\Models.dll
+D:\wamp\www\fxhrms\DAL\bin\Debug\Models.pdb
+D:\wamp\www\fxhrms\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\wamp\www\fxhrms\DAL\obj\Debug\DAL.dll
+D:\wamp\www\fxhrms\DAL\obj\Debug\DAL.pdb

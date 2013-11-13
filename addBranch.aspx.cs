@@ -35,8 +35,12 @@ public partial class addBranch : System.Web.UI.Page
         if (tb_branch.Text != "")
         {
             model.branchName = tb_branch.Text.Trim();
+            model.branchNum = tb_branch_num.Text.Trim();
+            model.branchInfo = tb_branch_info.Text.Trim();
             dal.Add(model);
             tb_branch.Text = "";
+            tb_branch_info.Text = "";
+            tb_branch_num.Text = "";
             dataBind();
         }
     }

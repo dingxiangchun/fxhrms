@@ -85,6 +85,28 @@
                                                                         </table>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="网点号">
+                                                                    <ItemTemplate>
+                                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <asp:Label runat="server" ID="Label2" Text='<%# Eval("branchNum") %>'></asp:Label>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="信息">
+                                                                    <ItemTemplate>
+                                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <asp:Label runat="server" ID="Label3" Text='<%# Eval("branchInfo") %>'></asp:Label>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="操作">
                                                     <ItemTemplate>
                                                         <table border="0" cellpadding="0" cellspacing="0">
@@ -106,8 +128,12 @@
                                                     </tr>
                                                     <TR>
                                     <TD align=right style="height: 25px">
-                                        请输入部门名称:
+                                        部门名称:
                                         <asp:TextBox ID="tb_branch" runat="server"></asp:TextBox>&nbsp;
+                                        网点名:
+                                        <asp:TextBox ID="tb_branch_num" runat="server"></asp:TextBox>
+                                        部门信息:
+                                        <asp:TextBox ID="tb_branch_info" runat="server"></asp:TextBox>
                                         <asp:Button ID="bt_add" CssClass="button" runat="server" Text="添加" Width="60px" OnClick="bt_add_Click" />&nbsp;
           
                                         <asp:Button ID="bt_del" CssClass="button" runat="server" Text="删除" Width="60px" OnClick="bt_del_Click" />&nbsp;

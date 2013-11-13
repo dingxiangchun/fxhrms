@@ -62,7 +62,7 @@
                                     <TBODY>
                                     <tr>
                                         <TD class=tdclass>
-                                            编号:</TD>
+                                            员工号:</TD>
                                         <TD  height=25>
                                             <asp:TextBox ID="tb_pernum" CssClass="textbox" runat="server" Width="80px"></asp:TextBox>
                                         </TD>

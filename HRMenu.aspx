@@ -44,7 +44,7 @@
         <SCRIPT language=javascript>
 		function MenuDisplay(obj)
 		{
-		    for(var i=1;i<=7;i++)
+		    for(var i=1;i<=5;i++)
 		    {
 		        document.getElementById('table_'+i).style.display='none';
 				document.getElementById('table_'+i+'Span').innerText='＋';
@@ -154,9 +154,9 @@
                                   <TD>
                                     <TABLE id=table_2 style="DISPLAY: none" cellSpacing=0 cellPadding=2 width=155 align=center border=0>
                                       <TBODY>
-                                      <TR>
+                                      <%--<TR>
                                             <TD class=menuSmall><A class=style2 href="addFolk.aspx" target=dmMain>－  民族档案设置</A></TD>
-                                      </TR>
+                                      </TR>--%>
                                       <TR>
                                         <TD class=menuSmall><A class=style2 href="addBranch.aspx" target=dmMain>－ 部门类别设置</A></TD>
                                       </TR>
@@ -218,31 +218,10 @@
                                   <TD background=Images/index/YHMenu.files/new_027.jpg height=1></TD></TR>
                                 <TR>
                                   <TD class=mainMenu onClick="MenuDisplay('table_5');"><SPAN 
-                                    class=span id=table_5Span>＋</SPAN> 工具管理</TD></TR>
+                                    class=span id=table_5Span>＋</SPAN> 系统管理</TD></TR>
                                 <TR>
                                   <TD>
                                     <TABLE id=table_5 style="DISPLAY: none" cellSpacing=0 cellPadding=2 
-                                    width=155 align=center border=0>
-                                      <TBODY>
-                                      <TR>
-                                        <TD class=menuSmall><A class=style2 
-                                          href="#" onClick="exec('calc.exe')"
-                                          >－ 计算器</A>
-                                          
-                                          </TD></TR>
-                                      <TR>
-                                        <TD class=menuSmall><A class=style2 
-                                          href="#" onclick= "exec('notepad.exe ')"
-                                          >－ 记事本</A></TD></TR>
-                                    </TBODY></TABLE></TD></TR>
-                                <TR>
-                                  <TD background=Images/index/YHMenu.files/new_027.jpg height=1></TD></TR>
-                                <TR>
-                                  <TD class=mainMenu onClick="MenuDisplay('table_6');"><SPAN 
-                                    class=span id=table_6Span>＋</SPAN> 系统管理</TD></TR>
-                                <TR>
-                                  <TD>
-                                    <TABLE id=table_6 style="DISPLAY: none" cellSpacing=0 cellPadding=2 
                                     width=155 align=center border=0>
                                       <TBODY>
                                       <TR>
@@ -260,23 +239,6 @@
                                       </TBODY></TABLE></TD></TR>
                                 <TR>
                                   <TD background=Images/index/YHMenu.files/new_027.jpg height=1></TD></TR>
-                                <TR>
-                                  <TD class=mainMenu onClick="MenuDisplay('table_7');"><SPAN 
-                                    class=span id=table_7Span>＋</SPAN> 帮助中心</TD></TR>
-                                <TR>
-                                  <TD>
-                                    <TABLE id=table_7 style="DISPLAY: none" cellSpacing=0 cellPadding=2 width=155 align=center border=0>
-                                      <TBODY>
-                                      <TR>
-                                        <TD class=menuSmall><A class=style2 href="#"  onclick="help();">－ 帮助</A></TD>
-                                      </TR>
-                                      </TBODY>
-                                    </TABLE>
-                                  </TD>
-                                </TR>
-                                <TR>
-                                  <TD background=Images/index/YHMenu.files/new_027.jpg height=1></TD>
-                                </TR>
                         </TBODY>
                 </TABLE>
             </TD>
