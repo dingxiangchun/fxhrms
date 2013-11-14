@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 工作简历数据访问类
     /// </summary>
-    public class workResume
+    public class workResume : POJO<tb_workresume>
     {
         public workResume()
         { }
@@ -94,7 +94,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_workresume ");

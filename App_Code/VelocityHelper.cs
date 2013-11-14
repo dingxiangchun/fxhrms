@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Web;
 using System.IO;
 using NVelocity;
@@ -41,8 +40,8 @@ public class VelocityHelper
         ExtendedProperties props = new ExtendedProperties();
         props.AddProperty(RuntimeConstants.RESOURCE_LOADER, "file");
         props.AddProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, HttpContext.Current.Server.MapPath(templatDir));
-        props.AddProperty(RuntimeConstants.INPUT_ENCODING, "gb2312");
-        props.AddProperty(RuntimeConstants.OUTPUT_ENCODING, "gb2312");
+        props.AddProperty(RuntimeConstants.INPUT_ENCODING, "utf-8");
+        props.AddProperty(RuntimeConstants.OUTPUT_ENCODING, "utf-8");
         velocity.Init(props);
         //为模板变量赋值
         context = new VelocityContext();

@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 记事本数据访问类
     /// </summary>
-    public class blotter
+    public class blotter : POJO<tb_blotter>
     {
         public blotter()
         { }
@@ -71,7 +71,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_blotter ");
@@ -82,7 +82,7 @@ namespace DAL
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
         }
-        public DataSet GetList(string strWhere,int i)
+         public DataSet GetList(string strWhere, int i)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_blotter ");
@@ -101,6 +101,7 @@ namespace DAL
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
         }
+
         #endregion
     }
 }

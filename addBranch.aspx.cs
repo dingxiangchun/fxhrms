@@ -2,6 +2,7 @@
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -17,14 +18,11 @@ public partial class addBranch : System.Web.UI.Page
     tb_branch model = new tb_branch();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //VelocityHelper vh = new VelocityHelper();
-        //vh.Init();//指定模板文件的相对路径
-        //vh.Put("title", "员工信息");
-        //vh.Put("comName", "贵州公司");
-        //vh.Put("property", "哈哈");
-        //vh.Put("comAddress", "贵州");
-        //使用tp1.htm模板显示
-        //vh.Display("addBranch.vm");
+        VelocityHelper vh = new VelocityHelper();
+        vh.Init();
+        IList<tb_branch> list = dal.GetListAll("");
+        vh.Put("list", list);
+        vh.Display("addBranch.vm");
 
         if (!IsPostBack)
         {

@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 职务数据访问类
     /// </summary>
-    public class headship
+    public class headship : POJO<tb_headship>
     {
         public headship()
         { }
@@ -57,7 +57,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_headship ");
@@ -68,6 +68,7 @@ namespace DAL
             strSql.Append(" order by hid ");
             return DbHelperSQL.Query(strSql.ToString());
         }
+
         #endregion
     }
 }

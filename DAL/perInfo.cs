@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 员工数据访问类
     /// </summary>
-    public class perInfo
+    public class perInfo : POJO<tb_perInfo>
     {
         public perInfo()
         { }
@@ -166,7 +166,7 @@ namespace DAL
 
         }
 
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_perInfo ");
@@ -179,7 +179,7 @@ namespace DAL
             ds = DbHelperSQL.Query(strSql.ToString());
             return ds;
         }
-        public DataSet GetList(string strWhere,int i)
+         public DataSet GetList(string strWhere,int i)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_perInfo ");
@@ -263,6 +263,7 @@ namespace DAL
             ds = DbHelperSQL.Query(strSql.ToString());
             return ds;
         }
+
         #endregion
     }
 }

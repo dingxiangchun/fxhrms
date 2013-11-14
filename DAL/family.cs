@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 家庭数据访问类
     /// </summary>
-    public class family
+    public class family : POJO<tb_family>
     {
         public family()
         { }
@@ -99,7 +99,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_family ");

@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 人事调动数据访问类
     /// </summary>
-    public class transfer
+    public class transfer : POJO<tb_transfer>
     {
         public transfer()
         { }
@@ -94,7 +94,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_transfer ");
@@ -105,7 +105,6 @@ namespace DAL
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
         }
-
         #endregion
     }
 }

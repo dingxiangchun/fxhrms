@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 赏罚数据访问类
     /// </summary>
-    public class RandP
+    public class RandP : POJO<tb_RandP>
     {
         public RandP()
         { }
@@ -94,7 +94,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_RandP ");

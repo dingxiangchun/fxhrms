@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 部门数据访问类
     /// </summary>
-    public class branch
+    public class branch : POJO<tb_branch>
     {
         public branch()
         { }
@@ -59,7 +59,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_branch ");
@@ -70,6 +70,7 @@ namespace DAL
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
         }
+
         #endregion
     }
 }

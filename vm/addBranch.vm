@@ -1,10 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-</head>
-<body>
-	test nv
-</body>
-</html>
+#include("layout/header.vm")
+#include("layout/nav.vm")
+
+<div id="content">
+	<table class="table table-bordered table-hover">
+  		<thead>
+  			<tr>
+  				<th>部门</th>
+  				<th>网点号</th>
+  				<th>信息</th>
+  				<th></th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			#foreach( $one in $list )
+  			<tr>
+  				<td>$one.branchNum</td>
+  				<td>$one.branchName</td>
+  				<td>$one.branchInfo</td>
+  				<td></td>
+  			</tr>
+  			#end
+  		</tbody>
+	</table>
+</div>
+
+#include("layout/footer.vm")

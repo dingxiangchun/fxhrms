@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 职称数据访问类
     /// </summary>
-    public class zhichen
+    public class zhichen : POJO<tb_zhichen>
     {
         public zhichen()
         { }
@@ -56,7 +56,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_zhichen ");

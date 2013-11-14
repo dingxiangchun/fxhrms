@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 用户数据访问类
     /// </summary>
-    public class users
+    public class users : POJO<tb_Users>
     {
         public users()
         { }
@@ -83,7 +83,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_Users ");

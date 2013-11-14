@@ -10,7 +10,7 @@ namespace DAL
     /// <summary>
     /// 民族数据访问类
     /// </summary>
-    public class folk
+    public class folk : POJO<tb_folk>
     {
         public folk()
         { }
@@ -55,7 +55,7 @@ namespace DAL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public DataSet GetList(string strWhere)
+        override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * from tb_folk ");
@@ -66,6 +66,7 @@ namespace DAL
             strSql.Append(" order by fid ");
             return DbHelperSQL.Query(strSql.ToString());
         }
+
         #endregion
     }
 }

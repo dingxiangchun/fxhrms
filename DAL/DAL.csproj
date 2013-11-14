@@ -50,6 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\Models.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -60,6 +64,7 @@
     <Compile Include="addressBook.cs" />
     <Compile Include="blotter.cs" />
     <Compile Include="branch.cs" />
+    <Compile Include="POJO.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="family.cs" />
     <Compile Include="folk.cs" />
@@ -71,12 +76,6 @@
     <Compile Include="users.cs" />
     <Compile Include="workResume.cs" />
     <Compile Include="zhichen.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{D53183B6-42D9-40F4-8150-34855EAE2895}</Project>
-      <Name>Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
