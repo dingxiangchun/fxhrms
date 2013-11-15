@@ -13,3 +13,5 @@ D:\wamp\www\fxhrms\DAL\bin\Debug\Models.pdb
 D:\wamp\www\fxhrms\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\wamp\www\fxhrms\DAL\obj\Debug\DAL.dll
 D:\wamp\www\fxhrms\DAL\obj\Debug\DAL.pdb
+D:\wamp\www\fxhrms\Bin\DAL.dll
+D:\wamp\www\fxhrms\Bin\DAL.pdb

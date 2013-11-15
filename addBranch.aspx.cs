@@ -18,18 +18,38 @@ public partial class addBranch : System.Web.UI.Page
     tb_branch model = new tb_branch();
     protected void Page_Load(object sender, EventArgs e)
     {
-        VelocityHelper vh = new VelocityHelper();
-        vh.Init();
-        IList<tb_branch> list = dal.GetListAll("");
-        vh.Put("list", list);
-        vh.Display("addBranch.vm");
-
-        if (!IsPostBack)
+        if (!string.IsNullOrEmpty(Request["action"]))
         {
-            lb_url.Text = "部门类别设置";
-            dataBind();
+            if (Request["action"] == "del") {
+                Del();
+            }
+        }else{
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_branch> list = dal.GetListAll("");
+            vh.Put("list", list);
+            vh.Display("addBranch.vm");
         }
-        bt_del.Attributes.Add("onclick", "javascript:return window.confirm('您确定删除吗?')");
+        //if (!IsPostBack)
+       // {
+        //    lb_url.Text = "部门类别设置";
+        //    dataBind();
+        //}
+        //bt_del.Attributes.Add("onclick", "javascript:return window.confirm('您确定删除吗?')");
+    }
+    
+    //删除
+    private void Del() {
+        try
+        {
+            int id = int.Parse(Request["id"].ToString());
+            dal.Delete(id);
+            Response.Write("{\"status\":true}");
+            Response.End();
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        } 
     }
     public void dataBind()
     {
@@ -50,19 +70,6 @@ public partial class addBranch : System.Web.UI.Page
             tb_branch_num.Text = "";
             dataBind();
         }
-    }
-    protected void bt_del_Click(object sender, EventArgs e)
-    {
-        for (int i = 0; i < GridView1.Rows.Count; i++)
-        {
-            CheckBox cb = (CheckBox)GridView1.Rows[i].FindControl("CheckBox1");
-            if (cb.Checked)
-            {
-                int id = int.Parse(GridView1.DataKeys[i].Value.ToString());
-                dal.Delete(id);
-            }
-        }
-        dataBind();
     }
     protected void cb_all_CheckedChanged(object sender, EventArgs e)
     {
