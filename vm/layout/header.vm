@@ -37,13 +37,13 @@
         		</button>
         		<ul class="dropdown-menu" role="menu">
         			<li>
-        				<a href="#">人事档案浏览</a>
+        				<a href="HRData.aspx">人事档案浏览</a>
         			</li>
         			<li>
-        				<a href="#">人事资料查询</a>
+        				<a href="perInfoQuery.aspx">人事资料查询</a>
         			</li>
         			<li>
-        				<a href="#">人事资料统计</a>
+        				<a href="perInfoCount.aspx">人事资料统计</a>
         			</li>
         		</ul>
         	</div>
@@ -59,10 +59,10 @@
         				<a href="addbranch.aspx">部门</a>
         			</li>
         			<li>
-        				<a href="#">工作岗位</a>
+        				<a href="addHeadShip.aspx">工作岗位</a>
         			</li>
         			<li>
-        				<a href="#">后备人才类型</a>
+        				<a href="addZhiCheng.aspx">后备人才类型</a>
         			</li>
         			<li>
         				<a href="#">员工类型</a>
@@ -78,7 +78,7 @@
         		</button>
         		<ul class="dropdown-menu" role="menu">
         			<li>
-        				<a href="#">用户管理</a>
+        				<a href="userset.aspx">用户管理</a>
         			</li>
         		</ul>
         	</div>
