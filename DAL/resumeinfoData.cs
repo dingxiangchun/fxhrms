@@ -7,31 +7,28 @@ using Models;
 
 namespace DAL
 {
-    /// <summary>
-    /// 家庭数据访问类
-    /// </summary>
-    public class family : POJO<tb_family>
+    public class resumeinfoData : POJO<tb_resumeinfo>
     {
-        public family()
+        public resumeinfoData()
         { }
         #region 成员方法
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public void Add(tb_family model)
+        public void Add(tb_resumeinfo model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into tb_family(");
-            strSql.Append("employeeid,relation,birth,unit,status,situation,remark");
+            strSql.Append("insert into tb_resumeinfo(");
+            strSql.Append("employeeid,attacktime,quittime,position,unit,reason,content");
             strSql.Append(")");
             strSql.Append(" values (");
             strSql.Append("'" + model.employeeid + "',");
-            strSql.Append("'" + model.relation + "',");
-            strSql.Append("'" + model.birth + "',");
+            strSql.Append("'" + model.attacktime + "',");
+            strSql.Append("'" + model.quittime + "',");
+            strSql.Append("'" + model.position + "',");
             strSql.Append("'" + model.unit + "',");
-            strSql.Append("'" + model.status + "',");
-            strSql.Append("'" + model.situation + "',");
-            strSql.Append("'" + model.remark + "'");
+            strSql.Append("'" + model.reason + "',");
+            strSql.Append("'" + model.content + "'");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -39,17 +36,17 @@ namespace DAL
         /// <summary>
         /// 更新一条数据
         /// </summary>
-        public void Update(tb_family model)
+        public void Update(tb_resumeinfo model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("update tb_family set ");
+            strSql.Append("update tb_resumeinfo set ");
             strSql.Append("employeeid='" + model.employeeid + "',");
-            strSql.Append("relation='" + model.relation + "',");
-            strSql.Append("birth='" + model.birth + "',");
+            strSql.Append("attacktime='" + model.attacktime + "',");
+            strSql.Append("quittime='" + model.quittime + "',");
+            strSql.Append("position='" + model.position + "',");
             strSql.Append("unit='" + model.unit + "',");
-            strSql.Append("status='" + model.status + "',");
-            strSql.Append("situation='" + model.situation + "',");
-            strSql.Append("remark='" + model.remark + "'");
+            strSql.Append("reason='" + model.reason + "',");
+            strSql.Append("content='" + model.content + "'");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -60,19 +57,19 @@ namespace DAL
         public void Delete(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete tb_family ");
+            strSql.Append("delete from tb_resumeinfo ");
             strSql.Append(" where id=" + id);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
 
- 
+
         /// <summary>
         /// 获得数据列表
         /// </summary>
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_family ");
+            strSql.Append("select * from tb_resumeinfo ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where employeeid='" + strWhere + "'");
