@@ -1,6 +1,13 @@
 #include("layout/header.vm")
-#include("layout/nav.vm")
+<script>
+  jQuery(function(){
+    jQuery("#nav-wrap").load(util.getUrl()+"?action=tree");
+  })
+</script>
 
+<div id="nav-wrap">
+  
+</div>
 <div id="content">
 	<table class="table table-bordered table-hover">
   		<thead>

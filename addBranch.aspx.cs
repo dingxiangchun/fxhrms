@@ -100,8 +100,7 @@ public partial class addBranch : System.Web.UI.Page
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
 
-            string id = Request["id"].ToString();
-            if (id.Length < 1)
+            if (Request["id"] == null)
             {
 
             }
