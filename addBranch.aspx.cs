@@ -102,11 +102,12 @@ public partial class addBranch : System.Web.UI.Page
 
             if (Request["id"] == null)
             {
-
+                vh.Put("current", null);
             }
             else
             {
-
+                IList<tb_branch> dept = dal.GetListAll(" id="+Request["id"]);
+                vh.Put("current", dept);
             }
            
             IList<tb_branch> list = dal.GetListAll("");
