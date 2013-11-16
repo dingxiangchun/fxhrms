@@ -22,17 +22,16 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_family(");
-            strSql.Append("perID,LeaguerName,Nexus,BirthDate,WorkInc,headship,visage,phone");
+            strSql.Append("employeeid,relation,birth,unit,status,situation,remark");
             strSql.Append(")");
             strSql.Append(" values (");
-            strSql.Append("'" + model.perID + "',");
-            strSql.Append("'" + model.LeaguerName + "',");
-            strSql.Append("'" + model.Nexus + "',");
-            strSql.Append("'" + model.BirthDate + "',");
-            strSql.Append("'" + model.WorkInc + "',");
-            strSql.Append("'" + model.headship + "',");
-            strSql.Append("'" + model.visage + "',");
-            strSql.Append("'" + model.phone + "'");
+            strSql.Append("'" + model.employeeid + "',");
+            strSql.Append("'" + model.relation + "',");
+            strSql.Append("'" + model.birth + "',");
+            strSql.Append("'" + model.unit + "',");
+            strSql.Append("'" + model.status + "',");
+            strSql.Append("'" + model.situation + "',");
+            strSql.Append("'" + model.remark + "'");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -44,14 +43,13 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update tb_family set ");
-            strSql.Append("perID='" + model.perID + "',");
-            strSql.Append("LeaguerName='" + model.LeaguerName + "',");
-            strSql.Append("Nexus='" + model.Nexus + "',");
-            strSql.Append("BirthDate='" + model.BirthDate + "',");
-            strSql.Append("WorkInc='" + model.WorkInc + "',");
-            strSql.Append("headship='" + model.headship + "',");
-            strSql.Append("visage='" + model.visage + "',");
-            strSql.Append("phone='" + model.phone + "'");
+            strSql.Append("employeeid='" + model.employeeid + "',");
+            strSql.Append("relation='" + model.relation + "',");
+            strSql.Append("birth='" + model.birth + "',");
+            strSql.Append("unit='" + model.unit + "',");
+            strSql.Append("status='" + model.status + "',");
+            strSql.Append("situation='" + model.situation + "',");
+            strSql.Append("remark='" + model.remark + "',");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -67,35 +65,7 @@ namespace DAL
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
 
-        /// <summary>
-        /// 得到一个对象实体
-        /// </summary>
-        public tb_family GetModel(int id)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_family ");
-            strSql.Append(" where id=" + id);
-            tb_family model = new tb_family();
-            DataSet ds = DbHelperSQL.Query(strSql.ToString());
-            model.id = id;
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                model.perID = ds.Tables[0].Rows[0]["perID"].ToString();
-                model.LeaguerName = ds.Tables[0].Rows[0]["LeaguerName"].ToString();
-                model.Nexus = ds.Tables[0].Rows[0]["Nexus"].ToString();
-                model.BirthDate = ds.Tables[0].Rows[0]["BirthDate"].ToString();
-                model.WorkInc = ds.Tables[0].Rows[0]["WorkInc"].ToString();
-                model.headship = ds.Tables[0].Rows[0]["headship"].ToString();
-                model.visage = ds.Tables[0].Rows[0]["visage"].ToString();
-                model.phone = ds.Tables[0].Rows[0]["phone"].ToString();
-                return model;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
+ 
         /// <summary>
         /// 获得数据列表
         /// </summary>

@@ -64,6 +64,7 @@
     <Compile Include="addressBook.cs" />
     <Compile Include="blotter.cs" />
     <Compile Include="branch.cs" />
+    <Compile Include="learninfo.cs" />
     <Compile Include="POJO.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="family.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="perInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandP.cs" />
+    <Compile Include="Reserve.cs" />
     <Compile Include="transfer.cs" />
     <Compile Include="users.cs" />
     <Compile Include="workResume.cs" />

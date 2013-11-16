@@ -23,8 +23,7 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select count(1) from tb_Users");
-            //strSql.Append(" where userName=@username and userPwd=@userpwd");//此SQL语句只返回结果0或1
-            strSql.Append(" where userName=@username and userPwd=@userpwd");//此SQL语句只返回结果0或1
+            strSql.Append(" where loginname=@username and userpwd=@userpwd");//此SQL语句只返回结果0或1
             MySqlParameter[] parms ={ new MySqlParameter("@username", MySqlDbType.VarChar, 20), new MySqlParameter("@userpwd", MySqlDbType.VarChar, 20) };
             parms[0].Value = uid;
             parms[1].Value = pwd;
@@ -36,12 +35,15 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_Users(");
-            strSql.Append("userName,userPwd,userGroup");
+            strSql.Append("loginname,userpwd,username,userprower,Unit,remark");
             strSql.Append(")");
             strSql.Append(" values (");
-            strSql.Append("'" + model.userName + "',");
-            strSql.Append("'" + model.userPwd + "',");
-            strSql.Append("" + 0 + "");
+            strSql.Append("'" + model.loginname + "',");
+            strSql.Append("'" + model.userpwd + "',");
+            strSql.Append("'" + model.username + "',");
+            strSql.Append("" + model.userprower + ",");
+            strSql.Append("'" + model.Unit + "',");
+            strSql.Append("'" + model.remark + "',");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -49,9 +51,10 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update tb_Users set ");
-            //strSql.Append("userName='" + model.userName + "',");
-            //strSql.Append("userPwd='" + model.userPwd + "',");
-            strSql.Append("userGroup=" + model.userGroup + "");
+            strSql.Append("username='" + model.username + "'");
+            strSql.Append("userprower=" + model.userprower + "");
+            strSql.Append("Unit='" + model.Unit + "'");
+            strSql.Append("remark='" + model.remark + "'");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -62,24 +65,7 @@ namespace DAL
             strSql.Append(" where id=" + id);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
-        public tb_Users GetModel(int id)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_Users ");
-            strSql.Append(" where id=" + id);
-            tb_Users model = new tb_Users();
-            DataSet ds = DbHelperSQL.Query(strSql.ToString());
-            model.id = id;
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                model.userGroup =int.Parse(ds.Tables[0].Rows[0]["userGroup"].ToString());
-                return model;
-            }
-            else
-            {
-                return null;
-            }
-        }
+ 
         /// <summary>
         /// 获得数据列表
         /// </summary>
