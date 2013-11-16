@@ -36,9 +36,14 @@ public partial class addBranch : System.Web.UI.Page
                 Tree();
             }
         }else{
+            string strwhere = "";
+            if (Request["branchid"] != null)
+            {
+                strwhere = "id=" + Request["branchid"];
+            }
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
-            IList<tb_branch> list = dal.GetListAll("");
+            IList<tb_branch> list = dal.GetListAll(strwhere);
             vh.Put("list", list);
             vh.Display("addBranch.vm");
         }
