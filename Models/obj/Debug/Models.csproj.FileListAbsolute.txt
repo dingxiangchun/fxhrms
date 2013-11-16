@@ -3,3 +3,7 @@ D:\wamp\www\fxhrms\Models\bin\Debug\Models.pdb
 D:\wamp\www\fxhrms\Models\obj\Debug\Models.dll
 D:\wamp\www\fxhrms\Models\obj\Debug\Models.pdb
 D:\wamp\www\fxhrms\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\Project\Hrms\Bin\Models.dll
+D:\Project\Hrms\Bin\Models.pdb
+D:\Project\Hrms\Models\obj\Debug\Models.dll
+D:\Project\Hrms\Models\obj\Debug\Models.pdb

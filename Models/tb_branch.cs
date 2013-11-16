@@ -16,6 +16,7 @@ namespace Models
         private string _branchnum;
         private string _branchname;
         private string _branchinfo;
+        private int _parentid;
         /// <summary>
         /// 
         /// </summary>
@@ -47,6 +48,12 @@ namespace Models
         {
             set { _branchinfo = value; }
             get { return _branchinfo; }
+        }
+
+        public int parentid
+        {
+            set { _parentid = value; }
+            get { return _parentid; }
         }
 
         #endregion Model

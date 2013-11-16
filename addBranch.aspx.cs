@@ -23,6 +23,17 @@ public partial class addBranch : System.Web.UI.Page
             if (Request["action"] == "del") {
                 Del();
             }
+            if (Request["action"] == "add")
+            {
+                Add();
+            }
+            if (Request["action"] == "update")
+            {
+                Update();
+            }
+            if (Request["action"] == "tree")
+            {
+            }
         }else{
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
@@ -51,6 +62,62 @@ public partial class addBranch : System.Web.UI.Page
         {
         } 
     }
+
+    private void Add() {
+        try
+        {
+            model.id = int.Parse(Request["id"].ToString());
+            model.branchName = Request["branchName"];
+            model.branchInfo = Request["branchInfo"];
+            model.branchNum = Request["branchNum"];
+            model.parentid = int.Parse(Request["parentid"].ToString());
+            dal.Add(model);
+            Response.Write("{\"status\":true}");
+            Response.End();
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        } 
+    }
+
+    private void Update()
+    {
+        try
+        {
+            model.id = int.Parse(Request["id"].ToString());
+            model.branchName = Request["branchName"];
+            model.branchInfo = Request["branchInfo"];
+            model.branchNum = Request["branchNum"];
+            model.parentid = int.Parse(Request["parentid"].ToString());
+            dal.Update(model);
+            Response.Write("{\"status\":true}");
+            Response.End();
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        } 
+    }
+
+    private void Tree()
+    {
+        try
+        {
+            //string id = Request["id"].ToString();
+            //if (id.Length < 1)
+            //{
+ 
+            //}
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_branch> list = dal.GetListAll("");
+            vh.Put("list", list);
+            vh.Display("nav.vm");
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        } 
+    }
+
     public void dataBind()
     {
         GridView1.DataSource = dal.GetList("");
