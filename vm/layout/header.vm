@@ -62,10 +62,10 @@
         				<a href="addHeadShip.aspx">工作岗位</a>
         			</li>
         			<li>
-        				<a href="addZhiCheng.aspx">后备人才类型</a>
+        				<a href="reserve.aspx">后备人才类型</a>
         			</li>
         			<li>
-        				<a href="#">员工类型</a>
+        				<a href="pertype.aspx">员工类型</a>
         			</li>
         		</ul>
         	</div>

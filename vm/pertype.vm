@@ -1,0 +1,73 @@
+#include("layout/header.vm")
+
+<div id="content" class="container">
+  #if($msg)
+    <div class="alert alert-success">$msg</div>
+  #end
+
+   <div class="pertype-edit-wrap" style="display: none;">
+    <h3>人员类型修改</h3>
+    <div class="pannel">
+    <form action="pertype.aspx" method="post" role="form" id="pertype-edit-form">
+      <input type="hidden" name="action" value="update">
+      <input type="hidden" name="id" value="">
+      <div class="form-group">
+        <label for="pertype-name-edit">人员类型</label>
+        <input type="text" class="form-control" id="pertype-name-pertype" placeholder="请输入人员类型名称" name="name">
+      </div>
+      <div class="form-group">
+        <label for="pertype-info-edit">说明</label>
+        <input type="text" class="form-control" id="pertype-info-pertype" name="info">
+      </div>
+      <button type="submit" class="btn btn-primary">保存</button>
+      <button class="btn btn-default edit-cancel">取消</button>
+    </form>
+  </div>
+  </div>
+
+  <h3>人员类型列表</h3>
+  <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="warning">
+          <th>名称</th>
+          <th>说明</th>
+          <th width="120"></th>
+        </tr>
+      </thead>
+      <tbody>
+        #foreach( $one in $list )
+        <tr data-id="$one.id">
+          <td><span class="link-data" rel="name">$!{one.name}</span></td>
+          <td><span class="link-data" rel="info">$!{one.info}</span></td>
+          <td>
+            <span class="link-data" rel="id" style="display: none;">$!{one.id}</span>
+            <button href="javascript:void(0);" class="btn btn-primary btn-xs pertype-edit" role="button">修改</button>
+            <button href="javascript:void(0);" class="btn btn-danger btn-xs pertype-del" role="button">删除</button>
+          </td>
+        </tr>
+        #end
+      </tbody>
+  </table>
+  
+
+  <br>
+  <h3>新添人员类型</h3>
+  <div class="pannel">
+    <form action="pertype.aspx" method="post" role="form" id="pertype-form">
+      <input type="hidden" name="action" value="add">
+      <div class="form-group">
+        <label for="pertype-name">人员类型</label>
+        <input type="text" class="form-control" id="pertype-name" placeholder="请输入人员类型" name="name">
+      </div>
+      <div class="form-group">
+        <label for="pertype-info">说明</label>
+        <input type="text" class="form-control" id="pertype-info" name="info">
+      </div>
+      <button type="submit" class="btn btn-primary">新添</button>
+    </form>
+  </div>
+
+</div>
+
+<script src="statics/js/pertype.js"></script>
+#include("layout/footer.vm")
