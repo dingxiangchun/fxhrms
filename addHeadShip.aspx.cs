@@ -2,6 +2,7 @@
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -17,65 +18,83 @@ public partial class addHeadShip : System.Web.UI.Page
     tb_headship model = new tb_headship();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-            lb_url.Text = "职务类别设置";
-            dataBind();
-        }
-        bt_del.Attributes.Add("onclick", "javascript:return window.confirm('您确定删除吗?')");
-    }
-    public void dataBind()
-    {
-        GridView1.DataSource = dal.GetList("");
-        GridView1.DataKeyNames = new string[] { "hid" };
-        GridView1.DataBind();
-    }
-    protected void bt_add_Click(object sender, EventArgs e)
-    {
-        if (tb_headship.Text != "")
-        {
-            model.hName = tb_headship.Text.Trim();
-            dal.Add(model);
-            tb_headship.Text = "";
-            dataBind();
-        }
-    }
-    protected void bt_del_Click(object sender, EventArgs e)
-    {
-        for (int i = 0; i < GridView1.Rows.Count; i++)
-        {
-            CheckBox cb = (CheckBox)GridView1.Rows[i].FindControl("CheckBox1");
-            if (cb.Checked)
-            {
-                int id = int.Parse(GridView1.DataKeys[i].Value.ToString());
-                dal.Delete(id);
-            }
-        }
-        dataBind();
-    }
-    protected void cb_all_CheckedChanged(object sender, EventArgs e)
-    {
 
-        if (cb_all.Checked)
+        if (!string.IsNullOrEmpty(Request["action"]))
         {
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            if (Request["action"] == "del")
             {
-                CheckBox cb = (CheckBox)GridView1.Rows[i].FindControl("CheckBox1");
-                cb.Checked = true;
+                Del();
             }
+            if (Request["action"] == "add")
+            {
+                Add();
+            }
+            if (Request["action"] == "update")
+            {
+                Update();
+            }
+
         }
         else
         {
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-                CheckBox cb = (CheckBox)GridView1.Rows[i].FindControl("CheckBox1");
-                cb.Checked = false;
-            }
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_headship> list = dal.GetListAll("");
+            vh.Put("list", list);
+            vh.Display("reserve.vm");
         }
     }
-    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+
+    //删除
+    private void Del()
     {
-        GridView1.PageIndex = e.NewPageIndex;
-        dataBind();
+        try
+        {
+            int id = int.Parse(Request["id"].ToString());
+            dal.Delete(id);
+            Response.Write("{\"status\":true}");
+            Response.End();
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        }
     }
+    private void Add()
+    {
+        try
+        {
+            model.name = Request["name"];
+            model.info = Request["info"];
+            dal.Add(model);
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_headship> list = dal.GetListAll("");
+            vh.Put("list", list);
+            vh.Put("msg", "添加成功");
+            vh.Display("reserve.vm");
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        }
+    }
+    private void Update()
+    {
+        try
+        {
+            model.id = int.Parse(Request["id"].ToString());
+            model.name = Request["name"];
+            model.info = Request["info"];
+            dal.Update(model);
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_headship> list = dal.GetListAll("");
+            vh.Put("list", list);
+            vh.Put("msg", "修改成功");
+            vh.Display("reserve.vm");
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        }
+    }
+
 }

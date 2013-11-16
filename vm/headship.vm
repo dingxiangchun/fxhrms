@@ -6,14 +6,14 @@
   #end
 
    <div class="ptype-edit-wrap" style="display: none;">
-    <h3>后备人才类型修改</h3>
+    <h3>工作岗位修改</h3>
     <div class="pannel" style="width:400px">
-    <form action="reserve.aspx" method="post" role="form" id="ptype-edit-form">
+    <form action="addHeadShip.aspx" method="post" role="form" id="headship-edit-form">
       <input type="hidden" name="action" value="update">
       <input type="hidden" name="id" value="">
       <div class="form-group">
-        <label for="ReserveType-edit">人才类型</label>
-        <input type="text" class="form-control" id="ReserveType-edit" placeholder="请输入人才类型名称" name="ReserveType">
+        <label for="headship-name-edit">人才类型</label>
+        <input type="text" class="form-control" id="headship-name-headship" placeholder="请输入工作岗位名称" name="name">
       </div>
       <button type="submit" class="btn btn-primary">保存</button>
       <button class="btn btn-default edit-cancel">取消</button>
@@ -21,22 +21,24 @@
   </div>
   </div>
 
-  <h3>后备人才类型列表</h3>
+  <h3>工作岗位列表</h3>
   <table class="table table-bordered table-hover" style="width:400px;">
       <thead>
         <tr class="warning">
-          <th>类型</th>
+          <th>名称</th>
+          <th>说明</th>
           <th width="120"></th>
         </tr>
       </thead>
       <tbody>
         #foreach( $one in $list )
         <tr data-id="$one.id">
-          <td><span class="link-data" rel="ReserveType">$!{one.ReserveType}</span></td>
+          <td><span class="link-data" rel="name">$!{one.name}</span></td>
+          <td><span class="link-data" rel="type">$!{one.type}</span></td>
           <td>
             <span class="link-data" rel="id" style="display: none;">$!{one.id}</span>
-            <button href="javascript:void(0);" class="btn btn-primary btn-xs ptype-edit" role="button">修改</button>
-            <button href="javascript:void(0);" class="btn btn-danger btn-xs ptype-del" role="button">删除</button>
+            <button href="javascript:void(0);" class="btn btn-primary btn-xs headship-edit" role="button">修改</button>
+            <button href="javascript:void(0);" class="btn btn-danger btn-xs headship-del" role="button">删除</button>
           </td>
         </tr>
         #end
@@ -47,11 +49,15 @@
   <br>
   <h3>新添后备人才类型</h3>
   <div class="pannel" style="width:400px">
-    <form action="reserve.aspx" method="post" role="form" id="ptype-form">
+    <form action="addHeadShip.aspx" method="post" role="form" id="headship-form">
       <input type="hidden" name="action" value="add">
       <div class="form-group">
-        <label for="ReserveType">人才类型</label>
-        <input type="text" class="form-control" id="ReserveType" placeholder="请输入人才类型名称" name="ReserveType">
+        <label for="headship-name">名称</label>
+        <input type="text" class="form-control" id="headship-name" placeholder="请输入工作岗位名称" name="name">
+      </div>
+      <div class="form-group">
+        <label for="headship-info">说明</label>
+        <input type="text" class="form-control" id="headship-info" name="info">
       </div>
       <button type="submit" class="btn btn-primary">新添</button>
     </form>

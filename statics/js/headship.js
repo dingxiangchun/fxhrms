@@ -1,7 +1,7 @@
 var pageUrl = util.getUrl();
 
 // 删除
-$(".ptype-del").on("click",function(){
+$(".headship-del").on("click",function(){
 	var $tr = $(this).closest("tr"),
 		pid = util.getData("tr",this,"id"),
 		param,
@@ -27,13 +27,13 @@ $(".ptype-del").on("click",function(){
 
 // 取消修改
 $(".edit-cancel").on("click",function(){
-	$(this).closest(".ptype-edit-wrap").slideUp(500);
+	$(this).closest(".headship-edit-wrap").slideUp(500);
 	return false;
 });
 
 // 修改
-$(".ptype-edit").on("click",function(){
-	var $form = $(".ptype-edit-wrap"),
+$(".headship-edit").on("click",function(){
+	var $form = $(".headship-edit-wrap"),
 		dataObj = $(this).closest("tr").find(".link-data");
 	dataObj.each(function(){
 		var value = $(this).text(),
