@@ -14,8 +14,8 @@ using Models;
 
 public partial class addHeadShip : System.Web.UI.Page
 {
-    headship dal = new headship();
-    tb_headship model = new tb_headship();
+    positioninfoData dal = new positioninfoData();
+    tb_positioninfo model = new tb_positioninfo();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -39,9 +39,9 @@ public partial class addHeadShip : System.Web.UI.Page
         {
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
-            IList<tb_headship> list = dal.GetListAll("");
+            IList<tb_positioninfo> list = dal.GetListAll("");
             vh.Put("list", list);
-            vh.Display("reserve.vm");
+            vh.Display("headship.vm");
         }
     }
 
@@ -68,10 +68,10 @@ public partial class addHeadShip : System.Web.UI.Page
             dal.Add(model);
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
-            IList<tb_headship> list = dal.GetListAll("");
+            IList<tb_positioninfo> list = dal.GetListAll("");
             vh.Put("list", list);
             vh.Put("msg", "添加成功");
-            vh.Display("reserve.vm");
+            vh.Display("headship.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
         {
@@ -87,10 +87,10 @@ public partial class addHeadShip : System.Web.UI.Page
             dal.Update(model);
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
-            IList<tb_headship> list = dal.GetListAll("");
+            IList<tb_positioninfo> list = dal.GetListAll("");
             vh.Put("list", list);
             vh.Put("msg", "修改成功");
-            vh.Display("reserve.vm");
+            vh.Display("headship.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
         {

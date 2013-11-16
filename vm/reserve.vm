@@ -1,13 +1,13 @@
 #include("layout/header.vm")
 
-<div id="content">
+<div id="content" class="container">
   #if($msg)
     <div class="alert alert-success">$msg</div>
   #end
 
    <div class="ptype-edit-wrap" style="display: none;">
     <h3>后备人才类型修改</h3>
-    <div class="pannel" style="width:400px">
+    <div class="pannel">
     <form action="reserve.aspx" method="post" role="form" id="ptype-edit-form">
       <input type="hidden" name="action" value="update">
       <input type="hidden" name="id" value="">
@@ -22,7 +22,7 @@
   </div>
 
   <h3>后备人才类型列表</h3>
-  <table class="table table-bordered table-hover" style="width:400px;">
+  <table class="table table-bordered table-hover">
       <thead>
         <tr class="warning">
           <th>类型</th>
@@ -46,7 +46,7 @@
 
   <br>
   <h3>新添后备人才类型</h3>
-  <div class="pannel" style="width:400px">
+  <div class="pannel">
     <form action="reserve.aspx" method="post" role="form" id="ptype-form">
       <input type="hidden" name="action" value="add">
       <div class="form-group">

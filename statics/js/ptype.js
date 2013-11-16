@@ -15,7 +15,7 @@ $(".ptype-del").on("click",function(){
 	callback = function(res){
 		res = $.parseJSON(res);
 		if( !!res.status ){
-			window.location.reload();
+			window.location.href = window.location.href;
 		}else{
 			util.error( res.errorMsg );
 		}

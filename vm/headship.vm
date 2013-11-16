@@ -1,19 +1,23 @@
 #include("layout/header.vm")
 
-<div id="content">
+<div id="content" class="container">
   #if($msg)
     <div class="alert alert-success">$msg</div>
   #end
 
-   <div class="ptype-edit-wrap" style="display: none;">
+   <div class="headship-edit-wrap" style="display: none;">
     <h3>工作岗位修改</h3>
-    <div class="pannel" style="width:400px">
+    <div class="pannel">
     <form action="addHeadShip.aspx" method="post" role="form" id="headship-edit-form">
       <input type="hidden" name="action" value="update">
       <input type="hidden" name="id" value="">
       <div class="form-group">
         <label for="headship-name-edit">人才类型</label>
         <input type="text" class="form-control" id="headship-name-headship" placeholder="请输入工作岗位名称" name="name">
+      </div>
+      <div class="form-group">
+        <label for="headship-info-edit">说明</label>
+        <input type="text" class="form-control" id="headship-info-headship" name="info">
       </div>
       <button type="submit" class="btn btn-primary">保存</button>
       <button class="btn btn-default edit-cancel">取消</button>
@@ -22,7 +26,7 @@
   </div>
 
   <h3>工作岗位列表</h3>
-  <table class="table table-bordered table-hover" style="width:400px;">
+  <table class="table table-bordered table-hover">
       <thead>
         <tr class="warning">
           <th>名称</th>
@@ -34,7 +38,7 @@
         #foreach( $one in $list )
         <tr data-id="$one.id">
           <td><span class="link-data" rel="name">$!{one.name}</span></td>
-          <td><span class="link-data" rel="type">$!{one.type}</span></td>
+          <td><span class="link-data" rel="info">$!{one.info}</span></td>
           <td>
             <span class="link-data" rel="id" style="display: none;">$!{one.id}</span>
             <button href="javascript:void(0);" class="btn btn-primary btn-xs headship-edit" role="button">修改</button>
@@ -47,8 +51,8 @@
   
 
   <br>
-  <h3>新添后备人才类型</h3>
-  <div class="pannel" style="width:400px">
+  <h3>新添工作岗位</h3>
+  <div class="pannel">
     <form action="addHeadShip.aspx" method="post" role="form" id="headship-form">
       <input type="hidden" name="action" value="add">
       <div class="form-group">
@@ -65,5 +69,5 @@
 
 </div>
 
-<script src="statics/js/ptype.js"></script>
+<script src="statics/js/headship.js"></script>
 #include("layout/footer.vm")

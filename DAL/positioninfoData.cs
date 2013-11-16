@@ -7,7 +7,7 @@ using Models;
 
 namespace DAL
 {
-    class positioninfoData : POJO<tb_positioninfo>
+    public class positioninfoData : POJO<tb_positioninfo>
     {
         public positioninfoData()
         { }
