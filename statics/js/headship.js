@@ -1,24 +1,14 @@
 var pageUrl = util.getUrl();
 
-// branchid
-var branchid = util.getParam("branchid") || 0;
-$("input[name=parentid]").val(branchid);
-$("#branch-form,#branch-edit-form").attr("action",document.location.href);
-
-
-// 刷新nav
-$("nav").load( util.getUrl()+"?action=tree" );
-
-
 // 删除
-$(".branch-del").on("click",function(){
+$(".headship-del").on("click",function(){
 	var $tr = $(this).closest("tr"),
-		bid = util.getData("tr",this,"id"),
+		pid = util.getData("tr",this,"id"),
 		param,
 		callback;
 
 	param = {
-		"id" : bid,
+		"id" : pid,
 		"action" : "del"
 	};
 
@@ -37,13 +27,13 @@ $(".branch-del").on("click",function(){
 
 // 取消修改
 $(".edit-cancel").on("click",function(){
-	$(this).closest(".branch-edit-wrap").slideUp(500);
+	$(this).closest(".headship-edit-wrap").slideUp(500);
 	return false;
 });
 
 // 修改
-$(".branch-edit").on("click",function(){
-	var $form = $(".branch-edit-wrap"),
+$(".headship-edit").on("click",function(){
+	var $form = $(".headship-edit-wrap"),
 		dataObj = $(this).closest("tr").find(".link-data");
 	dataObj.each(function(){
 		var value = $(this).text(),

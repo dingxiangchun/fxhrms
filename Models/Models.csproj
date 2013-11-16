@@ -52,7 +52,6 @@
     <Compile Include="tb_branch.cs" />
     <Compile Include="tb_family.cs" />
     <Compile Include="tb_folk.cs" />
-    <Compile Include="tb_headship.cs" />
     <Compile Include="tb_perInfo.cs" />
     <Compile Include="tb_RandP.cs" />
     <Compile Include="tb_resumeinfo.cs" />

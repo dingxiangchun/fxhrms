@@ -1,15 +1,5 @@
 var pageUrl = util.getUrl();
 
-// branchid
-var branchid = util.getParam("branchid") || 0;
-$("input[name=parentid]").val(branchid);
-$("#branch-form,#branch-edit-form").attr("action",document.location.href);
-
-
-// 刷新nav
-$("nav").load( util.getUrl()+"?action=tree" );
-
-
 // 删除
 $(".ptype-del").on("click",function(){
 	var $tr = $(this).closest("tr"),
@@ -25,7 +15,7 @@ $(".ptype-del").on("click",function(){
 	callback = function(res){
 		res = $.parseJSON(res);
 		if( !!res.status ){
-			window.location.reload();
+			window.location.href = window.location.href;
 		}else{
 			util.error( res.errorMsg );
 		}

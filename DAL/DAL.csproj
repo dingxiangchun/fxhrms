@@ -71,7 +71,6 @@
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="family.cs" />
     <Compile Include="folk.cs" />
-    <Compile Include="headship.cs" />
     <Compile Include="perInfo.cs" />
     <Compile Include="positioninfoData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
