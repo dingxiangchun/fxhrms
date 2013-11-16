@@ -1,22 +1,20 @@
 #include("layout/header.vm")
-<script>
-  jQuery(function(){
-    var id = util.getParam("branchid");
-    jQuery("#nav-wrap").load( util.getUrl()+"?action=tree" );
-  })
-</script>
 
-<div id="nav-wrap">
-  
-</div>
+<nav></nav>
+
 <div id="content">
+  #if($msg)
+    <div class="alert alert-success">$msg</div>
+  #end
+ 
+  <h3>部门列表</h3>
 	<table class="table table-bordered table-hover">
   		<thead>
-  			<tr>
-  				<th>部门</th>
-  				<th>网点号</th> 
+  			<tr class="warning">
+  				<th width="20%">部门</th>
+  				<th width="20%">网点号</th> 
   				<th>信息</th>
-  				<th width="10%"></th>
+  				<th width="120"></th>
   			</tr>
   		</thead>
   		<tbody>
@@ -33,6 +31,30 @@
   			#end
   		</tbody>
 	</table>
+  
+
+  <br>
+  <h3>新填部门</h3>
+  <div class="pannel">
+    <form action="addBranch.aspx" method="post" role="form" id="branch-form">
+      <input type="hidden" name="action" value="add">
+      <input type="hidden" name="parentid" value="0">
+      <div class="form-group">
+        <label for="branchName">部门名称</label>
+        <input type="text" class="form-control" id="branchName" placeholder="请输入部门名称" name="branchName">
+      </div>
+      <div class="form-group">
+        <label for="branchName">网点号</label>
+        <input type="text" class="form-control" id="branchName" placeholder="请输入网点号" name="branchNum">
+      </div>
+      <div class="form-group">
+        <label for="branchName">部门信息</label>
+        <input type="text" class="form-control" id="branchName" name="branchInfo">
+      </div>
+      <button type="submit" class="btn btn-primary">新添</button>
+    </form>
+  </div>
+
 </div>
 <script src="statics/js/branch.js"></script>
 #include("layout/footer.vm")

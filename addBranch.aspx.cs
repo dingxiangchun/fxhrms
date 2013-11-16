@@ -39,7 +39,7 @@ public partial class addBranch : System.Web.UI.Page
             string strwhere = "";
             if (Request["branchid"] != null)
             {
-                strwhere = "id=" + Request["branchid"];
+                strwhere = "parentid=" + Request["branchid"];
             }
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
@@ -66,14 +66,23 @@ public partial class addBranch : System.Web.UI.Page
     private void Add() {
         try
         {
-            model.id = int.Parse(Request["id"].ToString());
+            int parentid = int.Parse(Request["parentid"].ToString());
             model.branchName = Request["branchName"];
             model.branchInfo = Request["branchInfo"];
             model.branchNum = Request["branchNum"];
-            model.parentid = int.Parse(Request["parentid"].ToString());
+            model.parentid = parentid;
             dal.Add(model);
-            Response.Write("{\"status\":true}");
-            Response.End();
+            string strwhere = "";
+            if ( parentid > 0 )
+            {
+                strwhere = "id=" + parentid;
+            }
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_branch> list = dal.GetListAll(strwhere);
+            vh.Put("list", list);
+            vh.Put("msg","添加部门成功");
+            vh.Display("addBranch.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
         {

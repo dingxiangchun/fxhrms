@@ -1,44 +1,43 @@
 <link rel="stylesheet" href="statics/css/zTreeStyle.css">
 <script src="statics/js/jquery.ztree.all-3.5.min.js"></script>
+
+<ul id="branchTree" class="ztree"></ul>
+
 <script>
-jQuery(function(){
-var setting = {
-			data: {
-				key: {
-					name: "branchName"
-				},
-				simpleData: {
-					enable: true,
-					pIdKey: "parentid",
-				}
-			}
+jQuery("nav").height( jQuery(document).height() -  jQuery("header").height() );
+
+function zTreeOnClick(event, treeId, treeNode) {
+	var id  = treeNode.id;
+	document.location.href = util.getUrl()+"?branchid="+id;
 };
 
-// {
-// 	current:{ id:1, parentid:0, branchName:"父节点1 - 展开"}
-// 	nodes:[]
-// }
+var setting = {
+		data: {
+			key: {
+				name: "branchName"
+			},
+			simpleData: {
+				enable: true,
+				pIdKey: "parentid",
+			}
+		},
+		callback: {
+			onClick: zTreeOnClick
+		}
+};
 
-		var zNodes =[
-		#foreach($one in $list)
-			{ id:$one.id, parentid:$one.parentid, branchName:"$one.branchName"},
-		#end
-		];
+var zNodes =[
+	#foreach($one in $list)
+	{ id:$one.id, parentid:$one.parentid, branchName:"$one.branchName",isParent:true },
+	#end
+];
 
 
-	jQuery.fn.zTree.init(jQuery("#branchTree"), setting, zNodes);
+jQuery.fn.zTree.init(jQuery("#branchTree"), setting, zNodes);
 
 
-	var treeObj = jQuery.fn.zTree.getZTreeObj("branchTree");
-	var nodes =  treeObj.getNodeByParam("id", util.getParam("branchid"), null);
-	treeObj.expandNode(nodes, true, true, true);
-
-	
-
-});
+var treeObj = jQuery.fn.zTree.getZTreeObj("branchTree");
+var nodes =  treeObj.getNodeByParam("id", util.getParam("branchid"), null);
+treeObj.expandNode(nodes, true, true, true);
 
 </script>
-
-<nav>
-	<ul id="branchTree" class="ztree"></ul>
-</nav>
