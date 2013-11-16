@@ -56,7 +56,7 @@
         		</button>
         		<ul class="dropdown-menu" role="menu">
         			<li>
-        				<a href="#">部门</a>
+        				<a href="addbranch.aspx">部门</a>
         			</li>
         			<li>
         				<a href="#">工作岗位</a>

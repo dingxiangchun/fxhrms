@@ -131,49 +131,4 @@ public partial class addBranch : System.Web.UI.Page
         } 
     }
 
-    public void dataBind()
-    {
-        GridView1.DataSource = dal.GetList("");
-        GridView1.DataKeyNames = new string[] { "id" };
-        GridView1.DataBind();
-    }
-    protected void bt_add_Click(object sender, EventArgs e)
-    {
-        if (tb_branch.Text != "")
-        {
-            model.branchName = tb_branch.Text.Trim();
-            model.branchNum = tb_branch_num.Text.Trim();
-            model.branchInfo = tb_branch_info.Text.Trim();
-            dal.Add(model);
-            tb_branch.Text = "";
-            tb_branch_info.Text = "";
-            tb_branch_num.Text = "";
-            dataBind();
-        }
-    }
-    protected void cb_all_CheckedChanged(object sender, EventArgs e)
-    {
-
-        if (cb_all.Checked)
-        {
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-                CheckBox cb = (CheckBox)GridView1.Rows[i].FindControl("CheckBox1");
-                cb.Checked = true;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-                CheckBox cb = (CheckBox)GridView1.Rows[i].FindControl("CheckBox1");
-                cb.Checked = false;
-            }
-        }
-    }
-    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-    {
-        GridView1.PageIndex = e.NewPageIndex;
-        dataBind();
-    }
 }
