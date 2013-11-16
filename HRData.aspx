@@ -275,7 +275,7 @@
                                         
                                         <asp:Button ID="bt_add" CssClass="button" runat="server" Text="添加" Width="60px" OnClick="bt_add_Click" />&nbsp;
                                         <asp:Button ID="bt_update" CssClass="button" runat="server" Text="修改" Width="60px" OnClick="bt_update_Click" />&nbsp;
-                                        <asp:Button ID="bt_del" CssClass="button" runat="server" Text="删除" Width="60px" OnClick="bt_del_Click" />&nbsp;
+                                        <asp:Button ID="bt_del" CssClass="button" runat="server" Text="删除" Width="60px"/>&nbsp;
                                         <asp:CheckBox ID="cb_all" runat="server" Text="全选&nbsp;&nbsp;&nbsp;" OnCheckedChanged="cb_all_CheckedChanged" AutoPostBack="True" />
                                             
                                     </TD>
