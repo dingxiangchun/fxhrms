@@ -75,7 +75,7 @@ public partial class addBranch : System.Web.UI.Page
             string strwhere = "";
             if ( parentid > 0 )
             {
-                strwhere = "id=" + parentid;
+                strwhere = "parentid=" + parentid;
             }
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
@@ -102,13 +102,13 @@ public partial class addBranch : System.Web.UI.Page
             string strwhere = "";
             if (parentid > 0)
             {
-                strwhere = "id=" + parentid;
+                strwhere = "parentid=" + parentid;
             }
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_branch> list = dal.GetListAll(strwhere);
             vh.Put("list", list);
-            vh.Put("msg", "添加部门成功");
+            vh.Put("msg", "修改部门成功");
             vh.Display("addBranch.vm");
         }
         catch (System.Threading.ThreadAbortException ex)

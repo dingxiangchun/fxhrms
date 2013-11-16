@@ -39,7 +39,7 @@ namespace DAL
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update tb_branch set ");
             strSql.Append("branchNum='" + model.branchNum + "',");
-            strSql.Append("branchName='" + model.branchName + "'");
+            strSql.Append("branchName='" + model.branchName + "',");
             strSql.Append("branchInfo='" + model.branchInfo + "'");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());

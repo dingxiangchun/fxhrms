@@ -7,12 +7,13 @@
     <div class="alert alert-success">$msg</div>
   #end
  
- <div class="branch-edit-wrap">
+ <div class="branch-edit-wrap" style="display: none;">
     <h3>部门信息修改</h3>
     <div class="pannel">
       <form action="addBranch.aspx" method="post" role="form" id="branch-form">
         <input type="hidden" name="action" value="update">
         <input type="hidden" name="id" value="">
+        <input type="hidden" name="parentid" value="0">
         <div class="form-group">
           <label for="branchName-edit">部门名称</label>
           <input type="text" class="form-control" id="branchName-edit" placeholder="请输入部门名称" name="branchName">
