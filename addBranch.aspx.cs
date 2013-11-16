@@ -93,14 +93,23 @@ public partial class addBranch : System.Web.UI.Page
     {
         try
         {
+            int parentid = int.Parse(Request["parentid"].ToString());
             model.id = int.Parse(Request["id"].ToString());
             model.branchName = Request["branchName"];
             model.branchInfo = Request["branchInfo"];
             model.branchNum = Request["branchNum"];
-            model.parentid = int.Parse(Request["parentid"].ToString());
             dal.Update(model);
-            Response.Write("{\"status\":true}");
-            Response.End();
+            string strwhere = "";
+            if (parentid > 0)
+            {
+                strwhere = "id=" + parentid;
+            }
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_branch> list = dal.GetListAll(strwhere);
+            vh.Put("list", list);
+            vh.Put("msg", "添加部门成功");
+            vh.Display("addBranch.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
         {

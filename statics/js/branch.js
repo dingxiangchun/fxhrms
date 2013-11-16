@@ -3,7 +3,7 @@ var pageUrl = util.getUrl();
 // branchid
 var branchid = util.getParam("branchid") || 0;
 $("input[name=parentid]").val(branchid);
-$("#branch-form").attr("action",document.location.href);
+$("#branch-form,#branch-edit-form").attr("action",document.location.href);
 
 
 // 刷新nav
@@ -33,4 +33,22 @@ $(".branch-del").on("click",function(){
 
 	$.post(pageUrl,param,callback)
 
+});
+
+// 取消修改
+$(".edit-cancel").on("click",function(){
+	$(this).closest(".branch-edit-wrap").slideUp(500);
+	return false;
+});
+
+// 修改
+$(".branch-edit").on("click",function(){
+	var $form = $(".branch-edit-wrap"),
+		dataObj = $(this).closest("tr").find(".link-data");
+	dataObj.each(function(){
+		var value = $(this).text(),
+			key = $(this).attr("rel");
+		$form.find("input[name='"+key+"']").val(value);
+	});
+	$form.slideDown(500);
 });
