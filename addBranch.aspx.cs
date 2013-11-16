@@ -33,6 +33,7 @@ public partial class addBranch : System.Web.UI.Page
             }
             if (Request["action"] == "tree")
             {
+                Tree();
             }
         }else{
             VelocityHelper vh = new VelocityHelper();
@@ -41,12 +42,6 @@ public partial class addBranch : System.Web.UI.Page
             vh.Put("list", list);
             vh.Display("addBranch.vm");
         }
-        //if (!IsPostBack)
-       // {
-        //    lb_url.Text = "部门类别设置";
-        //    dataBind();
-        //}
-        //bt_del.Attributes.Add("onclick", "javascript:return window.confirm('您确定删除吗?')");
     }
     
     //删除
@@ -102,16 +97,23 @@ public partial class addBranch : System.Web.UI.Page
     {
         try
         {
-            //string id = Request["id"].ToString();
-            //if (id.Length < 1)
-            //{
- 
-            //}
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
+
+            string id = Request["id"].ToString();
+            if (id.Length < 1)
+            {
+
+            }
+            else
+            {
+
+            }
+           
             IList<tb_branch> list = dal.GetListAll("");
             vh.Put("list", list);
-            vh.Display("nav.vm");
+            vh.Display("layout/nav.vm");
+            //Response.End();
         }
         catch (System.Threading.ThreadAbortException ex)
         {

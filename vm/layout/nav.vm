@@ -1,0 +1,45 @@
+#include("layout/header.vm")
+<link rel="stylesheet" href="statics/css/zTreeStyle.css">
+<script src="statics/js/jquery.ztree.all-3.5.min.js"></script>
+<script>
+jQuery(function(){
+var setting = {
+			data: {
+				key: {
+					name: "branchName"
+				},
+				simpleData: {
+					enable: true,
+					pIdKey: "parentid",
+				}
+			}
+};
+
+// {
+// 	current:{ id:1, parentid:0, branchName:"父节点1 - 展开"}
+// 	nodes:[]
+// }
+
+		var zNodes =[
+		#foreach($one in $list)
+			{ id:$one.id, parentid:$one.parentid, branchName:"$one.branchName"},
+		#end
+		];
+
+
+	jQuery.fn.zTree.init(jQuery("#branchTree"), setting, zNodes);
+
+	// var treeObj = $.fn.zTree.getZTreeObj("branchTree");
+	// var nodes =  treeObj.getNodeByParam("id", 11221, null);
+	// console.log(nodes)
+		// treeObj.expandNode(nodes, true, true, true);
+
+});
+
+</script>
+
+<nav>
+	<ul id="branchTree" class="ztree"></ul>
+</nav>
+
+#include("layout/footer.vm")
