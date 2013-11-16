@@ -33,7 +33,7 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update tb_Reserve set ");
-            strSql.Append("ReserveType='" + model.ReserveType + "'");
+            strSql.Append("ReserveType='" + model.ReserveType + "',");
             strSql.Append("ReserveInfo=" + model.ReserveInfo + "");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
