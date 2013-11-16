@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tb_holidayrecords.cs" />
     <Compile Include="tb_learninfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tb_positioninfo.cs" />
+    <Compile Include="tb_registerinfo.cs" />
     <Compile Include="tb_Reserve.cs" />
     <Compile Include="tb_addressBook.cs" />
     <Compile Include="tb_blotter.cs" />
@@ -51,6 +54,8 @@
     <Compile Include="tb_headship.cs" />
     <Compile Include="tb_perInfo.cs" />
     <Compile Include="tb_RandP.cs" />
+    <Compile Include="tb_resumeinfo.cs" />
+    <Compile Include="tb_rewardinfo.cs" />
     <Compile Include="tb_transfer.cs" />
     <Compile Include="tb_Users.cs" />
     <Compile Include="tb_workresume.cs" />
