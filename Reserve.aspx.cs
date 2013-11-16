@@ -13,10 +13,11 @@ using DAL;
 using Models;
 public partial class Reserve : System.Web.UI.Page
 {
-    Reserve dal = new Reserve();
+    ReserveData dal = new ReserveData();
     tb_Reserve model = new tb_Reserve();
     protected void Page_Load(object sender, EventArgs e)
     {
+      
        if (!string.IsNullOrEmpty(Request["action"]))
         {
             if (Request["action"] == "del") {

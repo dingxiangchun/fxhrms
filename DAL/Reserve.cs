@@ -7,9 +7,9 @@ using Models;
 
 namespace DAL
 {
-    public class Reserve : POJO<tb_Reserve>
+    public class ReserveData : POJO<tb_Reserve>
     {
-        public Reserve()
+        public ReserveData()
         { }
         #region 成员方法
         /// <summary>
