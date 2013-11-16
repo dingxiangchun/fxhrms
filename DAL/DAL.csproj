@@ -64,7 +64,9 @@
     <Compile Include="addressBook.cs" />
     <Compile Include="blotter.cs" />
     <Compile Include="branch.cs" />
+    <Compile Include="holidayrecordsData.cs" />
     <Compile Include="learninfo.cs" />
+    <Compile Include="pertypeinfoData.cs" />
     <Compile Include="POJO.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="family.cs" />
