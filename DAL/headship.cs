@@ -49,7 +49,7 @@ namespace DAL
         public void Delete(int hid)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete tb_headship ");
+            strSql.Append("delete from tb_headship ");
             strSql.Append(" where hid=" + hid);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }

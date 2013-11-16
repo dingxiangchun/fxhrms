@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="perinfo.aspx.cs" Inherits="perinfo" %>
-
+<%--
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -31,10 +31,6 @@
               </TBODY>
          </TABLE>
          
-         <%--<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
-         <TBODY>
-        <tr>
-        <td>--%>
          <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
             <TBODY>
                 <TR>
@@ -360,3 +356,4 @@
     </form>
 </body>
 </html>
+--%>

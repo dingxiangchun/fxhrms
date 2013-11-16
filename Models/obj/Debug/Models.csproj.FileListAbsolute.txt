@@ -7,3 +7,5 @@ D:\Project\Hrms\Bin\Models.dll
 D:\Project\Hrms\Bin\Models.pdb
 D:\Project\Hrms\Models\obj\Debug\Models.dll
 D:\Project\Hrms\Models\obj\Debug\Models.pdb
+D:\wamp\www\fxhrms\Bin\Models.dll
+D:\wamp\www\fxhrms\Bin\Models.pdb

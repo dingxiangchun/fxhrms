@@ -48,7 +48,7 @@ namespace DAL
         public void Delete(int ZCID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete tb_zhichen ");
+            strSql.Append("delete from tb_zhichen ");
             strSql.Append(" where ZCID=" + ZCID);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }

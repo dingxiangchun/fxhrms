@@ -21,11 +21,11 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_Reserve(");
-            strSql.Append("ReserveType,ReserveInfo");
+            strSql.Append("ReserveType");
             strSql.Append(")");
             strSql.Append(" values (");
-            strSql.Append("'" + model.ReserveType + "',");
-            strSql.Append("'" + model.ReserveInfo + "',");
+            strSql.Append("'" + model.ReserveType + "'");
+            //strSql.Append("'" + model.ReserveInfo + "',");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -33,15 +33,15 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update tb_Reserve set ");
-            strSql.Append("ReserveType='" + model.ReserveType + "',");
-            strSql.Append("ReserveInfo=" + model.ReserveInfo + "");
+            strSql.Append("ReserveType='" + model.ReserveType + "'");
+            //strSql.Append("ReserveInfo=" + model.ReserveInfo + "");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
         public void Delete(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete tb_Reserve ");
+            strSql.Append("delete from tb_Reserve ");
             strSql.Append(" where id=" + id);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
