@@ -13,14 +13,13 @@ namespace Models
         { }
         #region Model
         private int _id;
-        private string _perid;
-        private string _leaguername;
-        private string _nexus;
-        private string _birthdate;
-        private string _workinc;
-        private string _headship;
-        private string _visage;
-        private string _phone;
+        private string _employeeid;
+        private string _relation;
+        private string _birth;
+        private string _unit;
+        private string _status;
+        private string _situation;
+        private string _remark;
         /// <summary>
         /// 
         /// </summary>
@@ -32,66 +31,58 @@ namespace Models
         /// <summary>
         /// 
         /// </summary>
-        public string perID
+        public string employeeid
         {
-            set { _perid = value; }
-            get { return _perid; }
+            set { _employeeid = value; }
+            get { return _employeeid; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string LeaguerName
+        public string relation
         {
-            set { _leaguername = value; }
-            get { return _leaguername; }
+            set { _relation = value; }
+            get { return _relation; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string Nexus
+        public string birth
         {
-            set { _nexus = value; }
-            get { return _nexus; }
+            set { _birth = value; }
+            get { return _birth; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string BirthDate
+        public string unit
         {
-            set { _birthdate = value; }
-            get { return _birthdate; }
+            set { _unit = value; }
+            get { return _unit; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string WorkInc
+        public string status
         {
-            set { _workinc = value; }
-            get { return _workinc; }
+            set { _status = value; }
+            get { return _status; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string headship
+        public string situation
         {
-            set { _headship = value; }
-            get { return _headship; }
+            set { _situation = value; }
+            get { return _situation; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string visage
+        public string remark
         {
-            set { _visage = value; }
-            get { return _visage; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string phone
-        {
-            set { _phone = value; }
-            get { return _phone; }
+            set { _remark = value; }
+            get { return _remark; }
         }
         #endregion Model
     }

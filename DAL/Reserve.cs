@@ -7,55 +7,44 @@ using Models;
 
 namespace DAL
 {
-    /// <summary>
-    /// 部门数据访问类
-    /// </summary>
-    public class branch : POJO<tb_branch>
+    public class Reserve : POJO<tb_Reserve>
     {
-        public branch()
+        public Reserve()
         { }
         #region 成员方法
-        
         /// <summary>
-        /// 增加一条数据
+        /// 
         /// </summary>
-        public void Add(tb_branch model)
+        /// <returns></returns>
+
+        public void Add(tb_Reserve model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into tb_branch(");
-            strSql.Append("branchName,branchInfo,branchNum,parentid");
+            strSql.Append("insert into tb_Reserve(");
+            strSql.Append("ReserveType,ReserveInfo");
             strSql.Append(")");
             strSql.Append(" values (");
-            strSql.Append("'" + model.branchName + "','" + model.branchInfo + "','" + model.branchNum + "'," + model.parentid);
+            strSql.Append("'" + model.ReserveType + "',");
+            strSql.Append("'" + model.ReserveInfo + "',");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
-
-        /// <summary>
-        /// 更新一条数据
-        /// </summary>
-        public void Update(tb_branch model)
+        public void Update(tb_Reserve model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("update tb_branch set ");
-            strSql.Append("branchNum='" + model.branchNum + "',");
-            strSql.Append("branchName='" + model.branchName + "'");
-            strSql.Append("branchInfo='" + model.branchInfo + "'");
+            strSql.Append("update tb_Reserve set ");
+            strSql.Append("ReserveType='" + model.ReserveType + "'");
+            strSql.Append("ReserveInfo=" + model.ReserveInfo + "");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
-
-        /// <summary>
-        /// 删除一条数据
-        /// </summary>
         public void Delete(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete from tb_branch ");
+            strSql.Append("delete tb_Reserve ");
             strSql.Append(" where id=" + id);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
-
 
         /// <summary>
         /// 获得数据列表
@@ -63,15 +52,14 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_branch ");
+            strSql.Append("select * from tb_Reserve ");
             if (strWhere.Trim() != "")
             {
-                strSql.Append(" where " + strWhere);
+                strSql.Append("where " + strWhere);
             }
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
         }
-
         #endregion
     }
 }
