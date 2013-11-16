@@ -28,12 +28,11 @@ var setting = {
 
 	jQuery.fn.zTree.init(jQuery("#branchTree"), setting, zNodes);
 
-	#if($current)
-	var treeObj = $.fn.zTree.getZTreeObj("branchTree");
-	var nodes =  treeObj.getNodeByParam("id", $current.id, null);
-	console.log(nodes)
+
+	var treeObj = jQuery.fn.zTree.getZTreeObj("branchTree");
+	var nodes =  treeObj.getNodeByParam("id", util.getParam("branchid"), null);
 	treeObj.expandNode(nodes, true, true, true);
-	#end
+
 	
 
 });
@@ -43,4 +42,3 @@ var setting = {
 <nav>
 	<ul id="branchTree" class="ztree"></ul>
 </nav>
-$current

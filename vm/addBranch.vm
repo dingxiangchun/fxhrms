@@ -1,8 +1,8 @@
 #include("layout/header.vm")
 <script>
   jQuery(function(){
-    var id = util.getParam("id");
-    jQuery("#nav-wrap").load( util.getUrl()+"?action=tree"+ (id ? "&id="+id : "") );
+    var id = util.getParam("branchid");
+    jQuery("#nav-wrap").load( util.getUrl()+"?action=tree" );
   })
 </script>
 
