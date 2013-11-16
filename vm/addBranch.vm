@@ -1,7 +1,8 @@
 #include("layout/header.vm")
 <script>
   jQuery(function(){
-    jQuery("#nav-wrap").load(util.getUrl()+"?action=tree");
+    var id = util.getParam(name);
+    jQuery("#nav-wrap").load( util.getUrl()+"?action=tree"+ (id ? "id="+id : "") );
   })
 </script>
 

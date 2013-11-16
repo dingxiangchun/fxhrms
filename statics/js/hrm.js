@@ -14,3 +14,10 @@ util.getUrl = function(){
 util.error = function( msg ){
 	alert( msg || "未知错误");
 }
+
+// 获取url参数
+util.getParam = function( name ){
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}

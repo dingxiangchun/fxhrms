@@ -113,7 +113,6 @@ public partial class addBranch : System.Web.UI.Page
             IList<tb_branch> list = dal.GetListAll("");
             vh.Put("list", list);
             vh.Display("layout/nav.vm");
-            //Response.End();
         }
         catch (System.Threading.ThreadAbortException ex)
         {
