@@ -35,28 +35,64 @@ public partial class perinfo : System.Web.UI.Page
     holidayrecordsData dalHoliday = new holidayrecordsData();
     tb_holidayrecords modelHoliday = new tb_holidayrecords();
 
+    branch dalBranch = new branch();
+    tb_branch modelBranch = new tb_branch();
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string strwhere = "id=" + Request["id"];
+        if (!string.IsNullOrEmpty(Request["action"]))
+        {
+            if (Request["action"] == "del")
+            {
+                //Del();
+            }
+            if (Request["action"] == "add")
+            {
+                Add();
+            }
+            if (Request["action"] == "update")
+            {
+                //Update();
+            }
 
-        VelocityHelper vh = new VelocityHelper();
-        vh.Init();
-        IList<tb_perInfo> list = dal.GetListAll(strwhere);
-        IList<tb_learninfo> learn = dalLearn.GetListAll("employee"+strwhere);
-        IList<tb_family> family = dalFamily.GetListAll("employee" + strwhere);
-        IList<tb_registerinfo> register = dalReg.GetListAll("employee" + strwhere);
-        IList<tb_rewardinfo> reward = dalReward.GetListAll("employee" + strwhere);
-        IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
-        IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
-        vh.Put("list", list);
-        vh.Put("learn", learn);
-        vh.Put("family", family);
-        vh.Put("register", register);
-        vh.Put("reward", reward);
-        vh.Put("work", work);
-        vh.Put("holiday", holiday);
-        vh.Display("perinfo.vm");
+        }
+        else
+        {
+            string strwhere = "id=" + Request["id"];
+
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            IList<tb_perInfo> list = dal.GetListAll(strwhere);
+            IList<tb_learninfo> learn = dalLearn.GetListAll("employee" + strwhere);
+            IList<tb_family> family = dalFamily.GetListAll("employee" + strwhere);
+            IList<tb_registerinfo> register = dalReg.GetListAll("employee" + strwhere);
+            IList<tb_rewardinfo> reward = dalReward.GetListAll("employee" + strwhere);
+            IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
+            IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
+            vh.Put("list", list);
+            vh.Put("learn", learn);
+            vh.Put("family", family);
+            vh.Put("register", register);
+            vh.Put("reward", reward);
+            vh.Put("work", work);
+            vh.Put("holiday", holiday);
+            vh.Display("perinfo.vm");
+        }
+        
+    }
+
+    private void Add()
+    {
+        try
+        {
+            VelocityHelper vh = new VelocityHelper();
+            vh.Init();
+            vh.Display("addper.vm");
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        }
     }
    
 }

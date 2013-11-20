@@ -2,6 +2,17 @@
 
 <div id="content">
 
+<div class="quick-link">
+  <button type="button" class="btn btn-default" rel="basic">基本信息</button>
+  <button type="button" class="btn btn-default" rel="study">学习经历</button>
+  <button type="button" class="btn btn-default" rel="family">家庭成员</button>
+  <button type="button" class="btn btn-default" rel="register">证书及奖励</button>
+  <button type="button" class="btn btn-default" rel="reward">奖惩记录</button>
+  <button type="button" class="btn btn-default" rel="work">工作经历</button>
+  <button type="button" class="btn btn-default" rel="holiday">休假记录</button>
+</div>
+
+<div id="info-basic" class="info-block">
   <h3>员工基本信息</h3>
 	<table class="table table-bordered table-hover">
       #foreach( $one in $list )
@@ -71,8 +82,9 @@
         </tr>
       #end
 	</table>
+</div>
 
-  <br>
+<div id="info-study" class="info-block">
   <h3>员工学习经历</h3>
   <table class="table table-bordered table-hover">
     <tr class="warning">
@@ -96,8 +108,10 @@
     #end
     </tr>
   </table>
+</div>
 
-  <br>
+
+<div id="info-family" class="info-block">
   <h3>员工家庭成员</h3>
   <table class="table table-bordered table-hover">
     <tr class="warning">
@@ -119,8 +133,9 @@
     #end
     </tr>
   </table>
+</div>
 
-  <br>
+<div id="info-register" class="info-block">
   <h3>证书及奖励</h3>
   <table class="table table-bordered table-hover">
     <tr class="warning">
@@ -146,8 +161,9 @@
     #end
     </tr>
   </table>
+</div>
 
-  <br>
+<div id="info-reward" class="info-block">
   <h3>奖惩记录</h3>
   <table class="table table-bordered table-hover">
     <tr class="warning">
@@ -175,8 +191,9 @@
     #end
     </tr>
   </table>
+</div>
 
-  <br>
+<div id="info-work" class="info-block">
   <h3>工作经历</h3>
   <table class="table table-bordered table-hover">
     <tr class="warning">
@@ -198,8 +215,9 @@
     #end
     </tr>
   </table>
+</div>
 
-  <br>
+<div id="info-holiday" class="info-block">
   <h3>休假记录</h3>
   <table class="table table-bordered table-hover">
     <tr class="warning">
@@ -225,6 +243,8 @@
     #end
     </tr>
   </table>
+</div>
   
 </div>
+<script src="statics/js/perinfo.js"></script>
 #include("layout/footer.vm")
