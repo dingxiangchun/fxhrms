@@ -105,10 +105,10 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_perInfo ");
+            strSql.Append("select * from tb_perInfo,tb_br ");
             if (strWhere.Trim() != "")
             {
-                strSql.Append("where perNum='"+strWhere+"' ");
+                strSql.Append("where "+strWhere+" ");
             }
             strSql.Append("order by id");
             DataSet ds = new DataSet();
