@@ -78,7 +78,7 @@ namespace DAL
             strSql.Append("select * from tb_rewardinfo ");
             if (strWhere.Trim() != "")
             {
-                strSql.Append(" where employeeid='" + strWhere + "'");
+                strSql.Append(" where " + strWhere + "");
             }
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());

@@ -1,0 +1,57 @@
+#include("layout/header.vm")
+
+<nav></nav>
+
+<div id="content">
+  #if($msg)
+    <div class="alert alert-success">$msg</div>
+  #end
+
+  <div class="pannel">
+    <form action="HRData.aspx" method="get" role="form" id="perlist-form">
+      <div class="form-group">
+        <label for="name">请输入姓名:</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <input type="hidden" name="branchid" value="0">
+      <button type="submit" class="btn btn-primary">查询</button>
+      <a href="" class="btn btn-default addper" role="button" target="_blank">新增</a>
+    </form>
+  </div>
+
+  <h3>员工列表</h3>
+	<table class="table table-bordered table-hover">
+  		<thead>
+  			<tr class="warning">
+  				<th>姓名</th>
+  				<th>员工代号</th> 
+          <td>性别</td>
+          <td>出生年月</td>
+          <td>工作单位</td>
+          <td>工作岗位</td>
+          <td>参加本系统工作时间</td>
+  				<th width="120">维护</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			#foreach( $one in $list )
+  			<tr data-id="$one.id">
+  				<td>$!{one.Name}</td>
+          <td>$!{one.Employeeid}</td>
+  				<td>$!{one.Sex}</td>
+          <td>$!{one.Birth}</td>
+          <td>$!{one.Unit}</td>
+          <td>$!{one.Position}</td>
+          <td>$!{one.Jobtime}</td>
+  				<td>
+            <a href="perinfo.aspx?id=${one.id}" role="button" class="btn btn-default btn-xs" target="_blank">查询</a>
+            <a href="" role="button" class="btn btn-primary btn-xs">维护</a>
+          </td>
+  			</tr>
+  			#end
+  		</tbody>
+	</table>
+  
+</div>
+<script src="statics/js/perlist.js"></script>
+#include("layout/footer.vm")

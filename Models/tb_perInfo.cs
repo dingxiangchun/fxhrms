@@ -60,7 +60,7 @@ namespace Models
         /// <summary>
         /// 职工姓名
         /// </summary>
-        public string name
+        public string Name
         {
             set { _name = value; }
             get { return _name; }

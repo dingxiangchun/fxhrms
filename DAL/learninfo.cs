@@ -7,7 +7,7 @@ using Models;
 
 namespace DAL
 {
-    class learninfo : POJO<tb_learninfo>
+    public class learninfo : POJO<tb_learninfo>
     {
         public learninfo()
         { }

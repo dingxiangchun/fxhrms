@@ -45,8 +45,8 @@
   		<tbody>
   			#foreach( $one in $list )
   			<tr data-id="$one.id">
-  				<td><span class="link-data" rel="branchNum">$!{one.branchNum}</span></td>
   				<td><span class="link-data" rel="branchName">$!{one.branchName}</span></td>
+          <td><span class="link-data" rel="branchNum">$!{one.branchNum}</span></td>
   				<td><span class="link-data" rel="branchInfo">$!{one.branchInfo}</span></td>
   				<td>
             <span class="link-data" rel="id" style="display: none;">$!{one.id}</span>

@@ -1,7 +1,0 @@
-D:\asp.netProject\HRMS\DAL\bin\Debug\DAL.dll
-D:\asp.netProject\HRMS\DAL\bin\Debug\DAL.pdb
-D:\asp.netProject\HRMS\DAL\bin\Debug\Models.dll
-D:\asp.netProject\HRMS\DAL\bin\Debug\Models.pdb
-D:\asp.netProject\HRMS\DAL\obj\Debug\ResolveAssemblyReference.cache
-D:\asp.netProject\HRMS\DAL\obj\Debug\DAL.dll
-D:\asp.netProject\HRMS\DAL\obj\Debug\DAL.pdb
