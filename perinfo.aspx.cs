@@ -64,7 +64,7 @@ public partial class perinfo : System.Web.UI.Page
         {
             if (Request["action"] == "del")
             {
-                //Del();
+                Del();
             }
             if (Request["action"] == "add")
             {
@@ -72,7 +72,7 @@ public partial class perinfo : System.Web.UI.Page
             }
             if (Request["action"] == "update")
             {
-                //Update();
+                Update();
             }
             if (Request["action"] == "save")
             {
@@ -93,6 +93,18 @@ public partial class perinfo : System.Web.UI.Page
             IList<tb_rewardinfo> reward = dalReward.GetListAll("employee" + strwhere);
             IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
             IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
+
+            IList<String> Reservelist=null;
+            if (list.Count > 0)
+            {
+                string[] Rlist = list[0].Reserve.Split(',');
+                for(int i=0;i<Rlist.Length;i++)
+                {
+                    Reservelist.Add(Rlist[i]);
+                }
+            }
+
+            vh.Put("ReserveList", Reservelist);
             vh.Put("list", list);
             vh.Put("learn", learn);
             vh.Put("family", family);
@@ -123,9 +135,93 @@ public partial class perinfo : System.Web.UI.Page
         }
     }
 
+    private void Del()
+    {
+        try
+        {
+            int id = int.Parse(Request["id"].ToString());
+            dal.Delete(id);
+            Response.Write("{\"status\":true}");
+            Response.End();
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        }
+    }
+
+    private void Update()
+    {
+        try
+        {
+            model.id =int.Parse(Request["id"].ToString());
+            model.Name = Request["Name"];
+            model.Employeeid = Request["Employeeid"];
+            model.Sex = Request["Sex"];
+            model.Nation = Request["Nation"];
+            model.Birth = Request["Birth"];
+            model.Idcard = Request["Idcard"];
+            model.UnitID = int.Parse(Request["UnitID"].ToString());
+            model.Unit = Request["Unit"];
+            model.Position = Request["Position"];
+            model.Rank = Request["Rank"];
+            model.Level = int.Parse(Request["Level"].ToString());
+            model.Status = Request["Status"];
+            model.Jobtime = Request["Jobtime"];
+            model.financetime = Request["financetime"];
+            model.fulltime_educ = Request["fulltime_educ"];
+            model.fulltime_sch = Request["fulltime_sch"];
+            model.Major = Request["Major"];
+            model.Married = Request["Married"];
+            model.Town = Request["Town"];
+            model.Tel = Request["Tel"];
+            model.final_edu = Request["final_edu"];
+            model.final_sch = Request["final_sch"];
+            model.Address = Request["Address"];
+            model.Reserve = Request["Reserve"];
+            model.Guard = Request["Guard"];
+            model.Ages = 0;
+            model.Class = Request["Class"];
+            model.photo = Request["photo"];
+            dal.Update(model);
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        }
+    }
+
     private void Save()
     {
+        model.Name = Request["Name"];
+        model.Employeeid = Request["Employeeid"];
+        model.Sex = Request["Sex"];
+        model.Nation = Request["Nation"];
+        model.Birth = Request["Birth"];
+        model.Idcard = Request["Idcard"];
+        model.UnitID = int.Parse(Request["UnitID"].ToString());
+        model.Unit = Request["Unit"];
+        model.Position = Request["Position"];
+        model.Rank = Request["Rank"];
+        model.Level = int.Parse(Request["Level"].ToString());
+        model.Status = Request["Status"];
+        model.Jobtime = Request["Jobtime"];
+        model.financetime = Request["financetime"];
+        model.fulltime_educ = Request["fulltime_educ"];
+        model.fulltime_sch = Request["fulltime_sch"];
+        model.Major = Request["Major"];
+        model.Married = Request["Married"];
+        model.Town = Request["Town"];
+        model.Tel = Request["Tel"];
+        model.final_edu = Request["final_edu"];
+        model.final_sch = Request["final_sch"];
+        model.Address = Request["Address"];
+        model.Reserve = Request["Reserve"];
+        model.Guard = Request["Guard"];
+        model.Ages = 0;
+        model.Class = Request["Class"];
+        model.photo = Request["photo"];
+        dal.Add(model);
 
+        Add();
     }
    
 }
