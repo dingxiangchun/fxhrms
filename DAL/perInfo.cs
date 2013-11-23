@@ -50,7 +50,7 @@ namespace DAL
             strSql.Append("insert into tb_perInfo(Name,Employeeid,Sex,Nation,Birth,Idcard,UnitID,Unit,Position,Rank,Level,Status,");
             strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,Tel,final_sch,");
             strSql.Append("final_edu,Address,Reserve,Guard,Ages,Class,photo) values (");
-            strSql.Append("'"+model.Name+"','"+model.Employeeid+"','"+model.Sex+"','"+model.Nation+"','"+model.Birth+"','"+model.Idcard+"',");
+            strSql.Append("'"+model.name+"','"+model.Employeeid+"','"+model.Sex+"','"+model.Nation+"','"+model.Birth+"','"+model.Idcard+"',");
             strSql.Append("" + model.UnitID + ",'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
             strSql.Append("'"+model.Status+"',"+model.Jobtime+",'"+model.financetime+"','"+model.fulltime_educ+"','"+model.fulltime_sch+"',");
             strSql.Append("'" + model.Major + "','" + model.Married + "','" + model.Town + "','" + model.Tel + "',");
@@ -63,7 +63,7 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update tb_perInfo set ");
-            strSql.Append("Name='" + model.Name + "',");
+            strSql.Append("Name='" + model.name + "',");
             strSql.Append("Employeeid='" + model.Employeeid + "',");
             strSql.Append("Sex='" + model.Sex + "',");
             strSql.Append("Nation='" + model.Nation + "',");
