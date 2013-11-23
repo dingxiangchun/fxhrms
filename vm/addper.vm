@@ -18,7 +18,7 @@
 
 <div id="info-basic" class="info-block">
   <h3>员工基本信息</h3>
-  <form action="" role="form">
+  <form action="perinfo.aspx" role="form" method="post">
   <table class="table table-bordered table-hover">
         <tr class="warning">
           <th>姓名</th>
@@ -154,8 +154,6 @@
   </table>
   <h4>后备人才库</h4>
   <div class="pannel">
-
-
     <div class="row">
       <div class="col-xs-5">
          <select id="reserveCtl" class="form-control form-inline">
@@ -182,6 +180,9 @@
 
   </div>
   <br>
+  <input type="hidden" name="id" value="">
+  <input type="hidden" name="type" value="basic">
+  <input type="hidden" name="action" value="save">
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
