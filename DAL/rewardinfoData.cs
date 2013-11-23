@@ -18,7 +18,7 @@ namespace DAL
         public void Add(tb_rewardinfo model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into tb_registerinfo(");
+            strSql.Append("insert into tb_rewardinfo(");
             strSql.Append("employeeid,type,time,content,department,audit,Class,unit,description,File");
             strSql.Append(")");
             strSql.Append(" values (");
@@ -42,7 +42,7 @@ namespace DAL
         public void Update(tb_rewardinfo model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("update tb_registerinfo set ");
+            strSql.Append("update tb_rewardinfo set ");
             strSql.Append("employeeid='" + model.employeeid + "',");
             strSql.Append("type='" + model.type + "',");
             strSql.Append("time='" + model.time + "',");
@@ -63,7 +63,7 @@ namespace DAL
         public void Delete(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete from tb_registerinfo ");
+            strSql.Append("delete from tb_rewardinfo ");
             strSql.Append(" where id=" + id);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }

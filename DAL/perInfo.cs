@@ -47,15 +47,15 @@ namespace DAL
         public void Add(tb_perInfo model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into tb_perInfo(Name,Employeeid,Sex,Nation,Birth,Idcard,UnitID,Unit,Position,Rank,Level,Status,");
+            strSql.Append("insert into tb_perInfo(Name,Employeeid,Sex,Nation,Birth,Idcard,Unit,Position,Rank,Level,Status,");
             strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,Tel,final_sch,");
             strSql.Append("final_edu,Address,Reserve,Guard,Ages,Class,photo) values (");
             strSql.Append("'"+model.name+"','"+model.Employeeid+"','"+model.Sex+"','"+model.Nation+"','"+model.Birth+"','"+model.Idcard+"',");
-            strSql.Append("" + model.UnitID + ",'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
-            strSql.Append("'"+model.Status+"',"+model.Jobtime+",'"+model.financetime+"','"+model.fulltime_educ+"','"+model.fulltime_sch+"',");
+            strSql.Append("'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
+            strSql.Append("'"+model.Status+"','"+model.Jobtime+"','"+model.financetime+"','"+model.fulltime_educ+"','"+model.fulltime_sch+"',");
             strSql.Append("'" + model.Major + "','" + model.Married + "','" + model.Town + "','" + model.Tel + "',");
             strSql.Append("'"+model.final_sch+"','"+model.final_edu+"','"+model.Address+"','"+model.Reserve+"','"+model.Guard+"',");
-            strSql.Append(model.Ages + ",'" + model.Class + "','"+model.photo+")");
+            strSql.Append(model.Ages + ",'" + model.Class + "','"+model.photo+"')");
             int cmdresult = DbHelperSQL.ExecuteSql(strSql.ToString());
 
         }

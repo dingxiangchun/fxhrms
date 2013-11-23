@@ -152,6 +152,10 @@
           <td><input type="text" value="" name="Guard" class="form-control"></td>
         </tr>
   </table>
+  <h4>员工头像</h4>
+  <div class="pannel">
+    <input type="file" name="photo" value="">
+  </div>
   <h4>后备人才库</h4>
   <div class="pannel">
     <div class="row">
@@ -170,9 +174,9 @@
     <div class="row">
       <div class="col-xs-10 reserveContainer">
         <strong>已添加的后备人才库：</strong>
-<!-- <span type="button" class="btn btn-default btn-xs">
-  <span class="glyphicon glyphicon-trash"></span> Star
-</span> -->
+        <!-- <span type="button" class="btn btn-default btn-xs">
+          <span class="glyphicon glyphicon-trash"></span> Star
+        </span> -->
       </div>
     </div>
    
@@ -189,7 +193,7 @@
   
 <div id="info-study" class="info-block">
   <h3>员工学习经历</h3>
-  <form action="" role="form">
+  <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>等级</th>
@@ -201,7 +205,7 @@
       <td>描述</td>
     </tr>
    <tr>
-      <td><input type="hidden" name="id[]" value=""><input type="text" value="" name="degree[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="degree[]" class="form-control"></td>
       <td><input type="text" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="" name="graduatesch[]" class="form-control"></td>
@@ -210,13 +214,16 @@
       <td><input type="text" value="" name="content[]" class="form-control"></td>
     </tr>
   </table>
-  <a href="javascript:void(0);" role="button" class="btn btn-primary"></a>
+  <input type="hidden" name="id" value="">
+  <input type="hidden" name="type" value="study">
+  <input type="hidden" name="action" value="save">
+  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
 
 <div id="info-family" class="info-block">
-  <form action="" role="form">
+  <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <h3>员工家庭成员</h3>
   <table class="table table-bordered table-hover">
     <tr class="warning">
@@ -228,23 +235,27 @@
       <td>备注</td>
     </tr>
    <tr>
-      <td><input type="text" value="" name="relation" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="relation[]" class="form-control"></td>
       <td>
-        <input type="text" class="form-control date-picker" name="birth" data-date-format="yyyy-mm-dd">
+        <input type="text" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
       </td>
-      <td><input type="text" value="" name="unit" class="form-control"></td>
-      <td><input type="text" value="" name="status" class="form-control"></td>
-      <td><input type="text" value="" name="situation" class="form-control"></td>
-      <td><input type="text" value="" name="remark" class="form-control"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="status[]" class="form-control"></td>
+      <td><input type="text" value="" name="situation[]" class="form-control"></td>
+      <td><input type="text" value="" name="remark[]" class="form-control"></td>
     </tr>
   </table>
+  <input type="hidden" name="id" value="">
+  <input type="hidden" name="type" value="family">
+  <input type="hidden" name="action" value="save">
+  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
 
 <div id="info-register" class="info-block">
   <h3>证书及奖励</h3>
-  <form action="" role="form">
+  <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>证书名称</th>
@@ -257,23 +268,27 @@
       <td>证书描述</td>
     </tr>
    <tr>
-      <td><input type="text" value="" name="cer_name" class="form-control"></td>
-      <td><input type="text" value="" name="type" class="form-control"></td>
-      <td><input type="text" class="form-control date-picker" name="accesstime" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" class="form-control date-picker" name="issuingtime" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="unit" class="form-control"></td>
-      <td><input type="text" value="" name="Class" class="form-control"></td>
-      <td><input type="text" value="" name="photo" class="form-control"></td>
-      <td><input type="text" value="" name="description" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="cer_name[]" class="form-control"></td>
+      <td><input type="text" value="" name="type[]" class="form-control"></td>
+      <td><input type="text" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="Class[]" class="form-control"></td>
+      <td><input type="text" value="" name="photo[]" class="form-control"></td>
+      <td><input type="text" value="" name="description[]" class="form-control"></td>
     </tr>
   </table>
+  <input type="hidden" name="id" value="">
+  <input type="hidden" name="type" value="register">
+  <input type="hidden" name="action" value="save">
+  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
 
 <div id="info-reward" class="info-block">
   <h3>奖惩记录</h3>
-  <form action="" role="form">
+  <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>奖罚种类</th>
@@ -287,24 +302,28 @@
       <td>相关文件</td>
     </tr>
    <tr>
-      <td><input type="text" value="" name="type" class="form-control"></td>
-      <td><input type="text" class="form-control date-picker" name="time" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="content" class="form-control"></td>
-      <td><input type="text" value="" name="department" class="form-control"></td>
-      <td><input type="text" value="" name="audit" class="form-control"></td>
-      <td><input type="text" value="" name="Class" class="form-control"></td>
-      <td><input type="text" value="" name="unit" class="form-control"></td>
-      <td><input type="text" value="" name="description" class="form-control"></td>
-      <td><input type="text" value="" name="File" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="type[]" class="form-control"></td>
+      <td><input type="text" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="content[]" class="form-control"></td>
+      <td><input type="text" value="" name="department[]" class="form-control"></td>
+      <td><input type="text" value="" name="audit[]" class="form-control"></td>
+      <td><input type="text" value="" name="Class[]" class="form-control"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="description[]" class="form-control"></td>
+      <td><input type="text" value="" name="File[]" class="form-control"></td>
     </tr>
   </table>
+  <input type="hidden" name="id" value="">
+  <input type="hidden" name="type" value="reward">
+  <input type="hidden" name="action" value="save">
+  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
 
 <div id="info-work" class="info-block">
   <h3>工作经历</h3>
-  <form action="" role="form">
+  <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>工作开始时间</th>
@@ -315,21 +334,25 @@
       <td>工作内容</td>
     </tr>
    <tr>
-      <td><input type="text" class="form-control date-picker" name="attacktime" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" class="form-control date-picker" name="quittime" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="position" class="form-control"></td>
-      <td><input type="text" value="" name="unit" class="form-control"></td>
-      <td><input type="text" value="" name="reason" class="form-control"></td>
-      <td><input type="text" value="" name="content" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="position[]" class="form-control"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="reason[]" class="form-control"></td>
+      <td><input type="text" value="" name="content[]" class="form-control"></td>
     </tr>
   </table>
+  <input type="hidden" name="id" value="">
+  <input type="hidden" name="type" value="work">
+  <input type="hidden" name="action" value="save">
+  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
 
 <div id="info-holiday" class="info-block">
   <h3>休假记录</h3>
-  <form action="" role="form">
+ <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>休假名称</th>
@@ -342,16 +365,20 @@
       <td>备注</td>
     </tr>
    <tr>
-      <td><input type="text" value="" name="holiday" class="form-control"></td>
-      <td><input type="text" value="" name="days" class="form-control"></td>
-      <td><input type="text" value="" name="reason" class="form-control"></td>
-      <td><input type="text" value="" name="audit" class="form-control"></td>
-      <td><input type="text" class="form-control date-picker" name="begintime" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" class="form-control date-picker" name="Endtime" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="days1" class="form-control"></td>
-      <td><input type="text" value="" name="remark" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="holiday[]" class="form-control"></td>
+      <td><input type="text" value="" name="days[]" class="form-control"></td>
+      <td><input type="text" value="" name="reason[]" class="form-control"></td>
+      <td><input type="text" value="" name="audit[]" class="form-control"></td>
+      <td><input type="text" class="form-control date-picker" name="begintime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" class="form-control date-picker" name="Endtime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="days1[]" class="form-control"></td>
+      <td><input type="text" value="" name="remark[]" class="form-control"></td>
     </tr>
   </table>
+  <input type="hidden" name="id" value="">
+  <input type="hidden" name="type" value="holiday">
+  <input type="hidden" name="action" value="save">
+  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>

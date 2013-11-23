@@ -63,3 +63,10 @@ $("body").on("click",".del-reserve",function(){
 	$(this).remove();
 	$("input[name=Reserve]").val( getReserveString() );
 })
+
+$(".info-form").submit(function(){
+	if( !$("input[name=id]",this).val() ){
+		alert("必须先添加基本信息并保存，才能够继续添加其他信息");
+		return false;
+	}
+})

@@ -27,7 +27,7 @@ namespace DAL
             strSql.Append("'" + model.graduatesch + "',");
             strSql.Append("'" + model.retence + "',");
             strSql.Append("'" + model.profession + "',");
-            strSql.Append("'" + model.content + "',");
+            strSql.Append("'" + model.content + "'");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }

@@ -200,7 +200,6 @@ public partial class perinfo : System.Web.UI.Page
             model.Nation = Request["Nation"];
             model.Birth = Request["Birth"];
             model.Idcard = Request["Idcard"];
-            model.UnitID = int.Parse(Request["UnitID"].ToString());
             model.Unit = Request["Unit"];
             model.Position = Request["Position"];
             model.Rank = Request["Rank"];
@@ -223,13 +222,274 @@ public partial class perinfo : System.Web.UI.Page
             model.Class = Request["Class"];
             model.photo = Request["photo"];
             dal.Add(model);
-
-            Add();
         }
-        if (Request["type"] == "study")
+        else if (Request["type"] == "study")
+        {
+            string[] idlist = Request.Form.GetValues("iid[]");
+            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            string[] degreelist = Request.Form.GetValues("degree[]");
+            string[] starttimelist = Request.Form.GetValues("starttime[]");
+            string[] graduatetimelist = Request.Form.GetValues("graduatetime[]");
+            string[] graduateschlist = Request.Form.GetValues("graduatesch[]");
+            string[] retencelist = Request.Form.GetValues("retence[]");
+            string[] professionlist = Request.Form.GetValues("profession[]");
+            string[] contentlist = Request.Form.GetValues("content[]");
+
+            for (int i = 0; i < idlist.Length; i++)
+            {
+                if (employeeidlist == null)
+                {
+                    modelLearn.employeeid = "";
+                }
+                else
+                {
+                    modelLearn.employeeid = employeeidlist[i];
+                }
+                modelLearn.degree = degreelist[i];
+                modelLearn.starttime = starttimelist[i];
+                modelLearn.graduatetime = graduatetimelist[i];
+                modelLearn.graduatesch = graduateschlist[i];
+                modelLearn.retence = retencelist[i];
+                modelLearn.profession = professionlist[i];
+                modelLearn.content = contentlist[i];
+                if (idlist[i] == "")
+                {
+                    dalLearn.Add(modelLearn);
+                }
+                else
+                {
+                    modelLearn.id = int.Parse(idlist[i]);
+                    dalLearn.Update(modelLearn);
+                }
+            }
+        }
+        else if (Request["type"] == "family")
+        {
+            string[] idlist = Request.Form.GetValues("iid[]");
+            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            string[] relationlist = Request.Form.GetValues("relation[]");
+            string[] birthlist = Request.Form.GetValues("birth[]");
+            string[] unitlist = Request.Form.GetValues("unit[]");
+            string[] statuslist = Request.Form.GetValues("status[]");
+            string[] situationlist = Request.Form.GetValues("situation[]");
+            string[] remarklist = Request.Form.GetValues("remark[]");
+
+            for (int i = 0; i < idlist.Length; i++)
+            {
+                if (employeeidlist == null || employeeidlist[i] == null)
+                {
+                    modelFamily.employeeid = "";
+                }
+                else
+                {
+                    modelFamily.employeeid = employeeidlist[i];
+                }
+                modelFamily.relation = relationlist[i];
+                modelFamily.birth = birthlist[i];
+                modelFamily.unit = unitlist[i];
+                modelFamily.status = statuslist[i];
+                modelFamily.situation = situationlist[i];
+                modelFamily.remark = remarklist[i];
+                if (idlist[i] == "")
+                {
+                    dalFamily.Add(modelFamily);
+                }
+                else
+                {
+                    modelFamily.id = int.Parse(idlist[i]);
+                    dalFamily.Update(modelFamily);
+                }
+            }
+        }
+        else if (Request["type"] == "register")
         {
 
+            string[] idlist = Request.Form.GetValues("iid[]");
+            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            string[] typelist = Request.Form.GetValues("type[]");
+            string[] cer_namelist = Request.Form.GetValues("cer_name[]");
+            string[] accesstimelist = Request.Form.GetValues("accesstime[]");
+            string[] issuingtimelist = Request.Form.GetValues("issuingtime[]");
+            string[] unitlist = Request.Form.GetValues("unit[]");
+            string[] Classlist = Request.Form.GetValues("Class[]");
+            string[] photolist = Request.Form.GetValues("photo[]");
+            string[] descriptionlist = Request.Form.GetValues("description[]");
+
+            for (int i = 0; i < idlist.Length; i++)
+            {
+                if (employeeidlist == null || employeeidlist[i] == null)
+                {
+                    modelReg.employeeid = "";
+                }
+                else
+                {
+                    modelReg.employeeid = employeeidlist[i];
+                }
+                modelReg.type = typelist[i];
+                modelReg.cer_name = cer_namelist[i];
+                modelReg.accesstime = accesstimelist[i];
+                modelReg.issuingtime = issuingtimelist[i];
+                modelReg.unit = unitlist[i];
+                modelReg.Class = Classlist[i];
+                modelReg.photo = photolist[i];
+                modelReg.description = descriptionlist[i];
+                if (idlist[i] == "")
+                {
+                    dalReg.Add(modelReg);
+                }
+                else
+                {
+                    modelReg.id = int.Parse(idlist[i].ToString());
+                    dalReg.Update(modelReg);
+                }
+            }
+
         }
+        else if (Request["type"] == "reward")
+        {
+
+            string[] idlist = Request.Form.GetValues("iid[]");
+            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            string[] typelist = Request.Form.GetValues("type[]");
+            string[] timelist = Request.Form.GetValues("time[]");
+            string[] contentlist = Request.Form.GetValues("content[]");
+            string[] departmentlist = Request.Form.GetValues("department[]");
+            string[] auditlist = Request.Form.GetValues("audit[]");
+            string[] Classlist = Request.Form.GetValues("Class[]");
+            string[] unitlist = Request.Form.GetValues("unit[]");
+            string[] descriptionlist = Request.Form.GetValues("description[]");
+            string[] Filelist = Request.Form.GetValues("File[]");
+            for (int i = 0; i < idlist.Length; i++)
+            {
+                if (employeeidlist == null || employeeidlist[i] == null)
+                {
+                    modelReward.employeeid = "";
+                }
+                else
+                {
+                    modelReward.employeeid = employeeidlist[i];
+                }
+                modelReward.type = typelist[i];
+                modelReward.time = timelist[i];
+                modelReward.content = contentlist[i];
+                modelReward.department = departmentlist[i];
+                modelReward.audit = auditlist[i];
+                modelReward.Class = Classlist[i];
+                modelReward.unit = unitlist[i];
+                modelReward.description = descriptionlist[i];
+                modelReward.File = Filelist[i];
+                if (idlist[i] == "")
+                {
+                    dalReward.Add(modelReward);
+                }
+                else
+                {
+                    modelReward.id = int.Parse(idlist[i].ToString());
+                    dalReward.Update(modelReward);
+                }
+            }
+        }
+        else if (Request["type"] == "work")
+        {
+            string[] idlist = Request.Form.GetValues("iid[]");
+            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            string[] attacktimelist = Request.Form.GetValues("attacktime[]");
+            string[] quittimelist = Request.Form.GetValues("quittime[]");
+            string[] positionlist = Request.Form.GetValues("position[]");
+            string[] unitlist = Request.Form.GetValues("unit[]");
+            string[] reasonlist = Request.Form.GetValues("reason[]");
+            string[] contentlist = Request.Form.GetValues("content[]");
+            for (int i = 0; i < idlist.Length; i++)
+            {
+                if (employeeidlist == null || employeeidlist[i] == null)
+                {
+                    modelReward.employeeid = "";
+                }
+                else
+                {
+                    modelReward.employeeid = employeeidlist[i];
+                }
+
+                modelWork.attacktime = attacktimelist[i];
+                modelWork.quittime = quittimelist[i];
+                modelWork.position = positionlist[i];
+                modelWork.unit = unitlist[i];
+                modelWork.reason = reasonlist[i];
+                modelWork.content = contentlist[i];
+
+                if (idlist[i] == "")
+                {
+                    dalWork.Add(modelWork);
+                }
+                else
+                {
+                    modelWork.id = int.Parse(idlist[i].ToString());
+                    dalWork.Update(modelWork);
+                }
+            }
+        }
+        else if (Request["type"] == "holiday")
+        {
+
+            string[] idlist = Request.Form.GetValues("iid[]");
+            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            string[] holidaylist = Request.Form.GetValues("holiday[]");
+            string[] dayslist = Request.Form.GetValues("days[]");
+            string[] reasonlist = Request.Form.GetValues("reason[]");
+            string[] auditlist = Request.Form.GetValues("audit[]");
+            string[] begintimelist = Request.Form.GetValues("begintime[]");
+            string[] Endtimelist = Request.Form.GetValues("Endtime[]");
+            string[] days1list = Request.Form.GetValues("days1[]");
+            string[] remarklist = Request.Form.GetValues("remark[]");
+
+            for (int i = 0; i < idlist.Length; i++)
+            {
+                if (employeeidlist == null || employeeidlist[i] == null)
+                {
+                    modelHoliday.employeeid = "";
+                }
+                else
+                {
+                    modelHoliday.employeeid = employeeidlist[i];
+                }
+                modelHoliday.holiday = holidaylist[i];
+                if (dayslist[i] == "")
+                {
+                    modelHoliday.days = 0;
+                }
+                else
+                {
+                    modelHoliday.days = int.Parse(dayslist[i]);
+                }
+
+                modelHoliday.reason = reasonlist[i];
+                modelHoliday.audit = auditlist[i];
+                modelHoliday.begintime = begintimelist[i];
+                modelHoliday.Endtime = Endtimelist[i];
+                if (days1list[i] == "")
+                {
+                    modelHoliday.days1 = 0;
+                }
+                else
+                {
+                    modelHoliday.days1 = int.Parse(days1list[i]);
+                }
+
+                modelHoliday.remark = remarklist[i];
+                if (idlist[i] == "")
+                {
+                    dalHoliday.Add(modelHoliday);
+                }
+                else
+                {
+                    modelHoliday.id = int.Parse(idlist[i].ToString());
+                    dalHoliday.Update(modelHoliday);
+                }
+            }
+        }
+
+
+        Add();
     }
    
 }
