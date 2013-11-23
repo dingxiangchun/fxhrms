@@ -21,8 +21,8 @@
   				<th>员工代号</th> 
           <td>性别</td>
           <td>民族</td>
-          <td>出生年月</td>
           <td>身份证号码</td>
+          <td>出生年月</td>
           <td>工作岗位</td>
           <td colspan="2">工作单位</td>
           <td>员工类型</td>
@@ -32,8 +32,8 @@
           <td>$!{one.Employeeid}</td>
           <td>$!{one.Sex}</td>
           <td>$!{one.Nation}</td>
-          <td>$!{one.Birth}</td>
           <td>$!{one.Idcard}</td>
+          <td>$!{one.Birth}</td>
           <td>$!{one.Position}</td>
           <td colspan="2">$!{one.Unit}</td>
           <td>$!{one.Class}</td>

@@ -10,3 +10,56 @@ $(".quick-link button").on("click",function(){
 
 $(".quick-link button[rel="+hash+"]").trigger("click");
 
+$('.date-picker').datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
+
+$('.date-picker-month').datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"month","startView":'year'});
+
+// 身份证
+$("input[name=Idcard]").on("blur",function(){
+	var value = $(this).val(),
+		length = value.length,
+		y = "",
+		m = "",
+		d = "";
+	if( length === 18 ){
+		y = value.slice(6,10);
+		m = value.slice(10,12);
+		d = value.slice(12,14);
+	}else if(length === 15){
+		y = "19" + value.slice(6,8);
+		m = value.slice(8,10);
+		d = value.slice(10,12);
+	}else{
+		return;
+	}
+	$(this).closest("form").find("input[name=Birth]").val(y+"-"+m+"-"+d);
+});
+
+$("#addReserve").click(function(){
+	var $con = $(".reserveContainer"),
+		rel = $("#reserveCtl").val(),
+		text = $("#reserveCtl").find("option").filter(function(){
+			if(this.value === rel) return true;
+		}).text(),
+		value;
+	if(!$con.find("span[rel="+rel+"]").length){
+		$('<span type="button" class="btn btn-default btn-xs del-reserve" rel="'+rel+'"> <span class="glyphicon glyphicon-trash"></span> '+text+'</span>').appendTo($con)
+	}
+	value = getReserveString();
+	$("input[name=Reserve]").val( value );
+	return false;
+});
+
+function getReserveString(){
+	var $span = $(".reserveContainer span[rel]"),
+		res = [];
+	$span.each(function(){
+		res.push($(this).attr("rel"));
+	});
+	return res.join();
+}
+
+$("body").on("click",".del-reserve",function(){
+	$(this).remove();
+	$("input[name=Reserve]").val( getReserveString() );
+})

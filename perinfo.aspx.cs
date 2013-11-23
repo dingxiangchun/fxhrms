@@ -38,6 +38,25 @@ public partial class perinfo : System.Web.UI.Page
     branch dalBranch = new branch();
     tb_branch modelBranch = new tb_branch();
 
+    ReserveData Reserve = new ReserveData();
+    tb_Reserve modelReserve = new tb_Reserve();
+
+    positioninfoData Positon = new positioninfoData();
+    tb_positioninfo modelPosition = new tb_positioninfo();
+
+    pertypeinfoData perTypeinfo = new pertypeinfoData();
+    tb_pertypeinfo modelpertype = new tb_pertypeinfo();
+
+    IList<tb_Reserve> ReserveList;
+    IList<tb_positioninfo> positionList;
+    IList<tb_pertypeinfo> pertypeList;
+    public perinfo()
+    {
+        ReserveList = Reserve.GetListAll("");
+        positionList = Positon.GetListAll("");
+        pertypeList = perTypeinfo.GetListAll("");
+    }
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -54,6 +73,10 @@ public partial class perinfo : System.Web.UI.Page
             if (Request["action"] == "update")
             {
                 //Update();
+            }
+            if (Request["action"] == "save")
+            {
+                Save();
             }
 
         }
@@ -88,11 +111,21 @@ public partial class perinfo : System.Web.UI.Page
         {
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
+            vh.Put("ReserveList", ReserveList);
+            vh.Put("positionList", positionList);
+            vh.Put("pertypeList", pertypeList);
             vh.Display("addper.vm");
+
+
         }
         catch (System.Threading.ThreadAbortException ex)
         {
         }
+    }
+
+    private void Save()
+    {
+
     }
    
 }
