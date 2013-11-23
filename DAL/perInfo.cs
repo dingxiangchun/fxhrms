@@ -105,7 +105,7 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_perInfo,tb_br ");
+            strSql.Append("select * from tb_perInfo ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append("where "+strWhere+" ");

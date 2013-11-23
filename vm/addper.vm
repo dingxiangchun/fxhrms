@@ -89,6 +89,172 @@
   </form>
 </div>
   
+<div id="info-study" class="info-block">
+  <h3>员工学习经历</h3>
+  <form action="" role="form">
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+      <th>等级</th>
+      <th>入学时间</th>
+      <td>毕业时间</td>
+      <td>毕业院校</td>
+      <td>证明人</td>
+      <td>专业</td>
+      <td>描述</td>
+    </tr>
+   <tr>
+      <td><input type="text" value="" name="degree" class="form-control"></td>
+      <td><input type="text" value="" name="starttime" class="form-control"></td>
+      <td><input type="text" value="" name="graduatetime" class="form-control"></td>
+      <td><input type="text" value="" name="graduatesch" class="form-control"></td>
+      <td><input type="text" value="" name="retence" class="form-control"></td>
+      <td><input type="text" value="" name="profession" class="form-control"></td>
+      <td><input type="text" value="" name="content" class="form-control"></td>
+    </tr>
+  </table>
+  <button type="submit" role="button" class="btn btn-warning">保存</button>
+  </form>
+</div>
+
+<div id="info-family" class="info-block">
+  <form action="" role="form">
+  <h3>员工家庭成员</h3>
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+      <th>关系</th>
+      <th>出生年月</th>
+      <td>工作单位</td>
+      <td>政治面貌</td>
+      <td>现在情况</td>
+      <td>备注</td>
+    </tr>
+   <tr>
+      <td><input type="text" value="" name="relation" class="form-control"></td>
+      <td><input type="text" value="" name="birth" class="form-control"></td>
+      <td><input type="text" value="" name="unit" class="form-control"></td>
+      <td><input type="text" value="" name="status" class="form-control"></td>
+      <td><input type="text" value="" name="situation" class="form-control"></td>
+      <td><input type="text" value="" name="remark" class="form-control"></td>
+    </tr>
+  </table>
+  <button type="submit" role="button" class="btn btn-warning">保存</button>
+  </form>
+</div>
+
+<div id="info-register" class="info-block">
+  <h3>证书及奖励</h3>
+  <form action="" role="form">
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+      <th>证书名称</th>
+      <th>证书类型</th>
+      <td>取得时间</td>
+      <td>发证时间</td>
+      <td>颁发单位</td>
+      <td>种类</td>
+      <td>图片</td>
+      <td>证书描述</td>
+    </tr>
+   <tr>
+      <td><input type="text" value="" name="cer_name" class="form-control"></td>
+      <td><input type="text" value="" name="type" class="form-control"></td>
+      <td><input type="text" value="" name="accesstime" class="form-control"></td>
+      <td><input type="text" value="" name="issuingtime" class="form-control"></td>
+      <td><input type="text" value="" name="unit" class="form-control"></td>
+      <td><input type="text" value="" name="Class" class="form-control"></td>
+      <td><input type="text" value="" name="photo" class="form-control"></td>
+      <td><input type="text" value="" name="description" class="form-control"></td>
+    </tr>
+  </table>
+  <button type="submit" role="button" class="btn btn-warning">保存</button>
+  </form>
+</div>
+
+<div id="info-reward" class="info-block">
+  <h3>奖惩记录</h3>
+  <form action="" role="form">
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+      <th>奖罚种类</th>
+      <th>时间</th>
+      <td>内容</td>
+      <td>部门</td>
+      <td>审核人</td>
+      <td>类型</td>
+      <td>奖惩部门</td>
+      <td>描述</td>
+      <td>相关文件</td>
+    </tr>
+   <tr>
+      <td><input type="text" value="" name="type" class="form-control"></td>
+      <td><input type="text" value="" name="time" class="form-control"></td>
+      <td><input type="text" value="" name="content" class="form-control"></td>
+      <td><input type="text" value="" name="department" class="form-control"></td>
+      <td><input type="text" value="" name="audit" class="form-control"></td>
+      <td><input type="text" value="" name="Class" class="form-control"></td>
+      <td><input type="text" value="" name="unit" class="form-control"></td>
+      <td><input type="text" value="" name="description" class="form-control"></td>
+      <td><input type="text" value="" name="File" class="form-control"></td>
+    </tr>
+  </table>
+  <button type="submit" role="button" class="btn btn-warning">保存</button>
+  </form>
+</div>
+
+<div id="info-work" class="info-block">
+  <h3>工作经历</h3>
+  <form action="" role="form">
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+      <th>工作开始时间</th>
+      <th>工作离职时间</th>
+      <td>岗位</td>
+      <td>工作单位</td>
+      <td>离职原因</td>
+      <td>工作内容</td>
+    </tr>
+   <tr>
+      <td><input type="text" value="" name="attacktime" class="form-control"></td>
+      <td><input type="text" value="" name="quittime" class="form-control"></td>
+      <td><input type="text" value="" name="position" class="form-control"></td>
+      <td><input type="text" value="" name="unit" class="form-control"></td>
+      <td><input type="text" value="" name="reason" class="form-control"></td>
+      <td><input type="text" value="" name="content" class="form-control"></td>
+    </tr>
+  </table>
+  <button type="submit" role="button" class="btn btn-warning">保存</button>
+  </form>
+</div>
+
+<div id="info-holiday" class="info-block">
+  <h3>休假记录</h3>
+  <form action="" role="form">
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+      <th>休假名称</th>
+      <th>休假天数</th>
+      <td>休假原因</td>
+      <td>批准人</td>
+      <td>休假开始时间</td>
+      <td>休假结束时间</td>
+      <td>实休天数</td>
+      <td>备注</td>
+    </tr>
+   <tr>
+      <td><input type="text" value="" name="holiday" class="form-control"></td>
+      <td><input type="text" value="" name="days" class="form-control"></td>
+      <td><input type="text" value="" name="reason" class="form-control"></td>
+      <td><input type="text" value="" name="audit" class="form-control"></td>
+      <td><input type="text" value="" name="begintime" class="form-control"></td>
+      <td><input type="text" value="" name="Endtime" class="form-control"></td>
+      <td><input type="text" value="" name="days1" class="form-control"></td>
+      <td><input type="text" value="" name="remark" class="form-control"></td>
+    </tr>
+  </table>
+  <button type="submit" role="button" class="btn btn-warning">保存</button>
+  </form>
+</div>
+
 </div>
 <script src="statics/js/perinfo.js"></script>
 #include("layout/footer.vm")
