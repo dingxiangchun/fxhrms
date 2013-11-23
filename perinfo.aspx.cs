@@ -153,7 +153,47 @@ public partial class perinfo : System.Web.UI.Page
     {
         try
         {
-            model.id =int.Parse(Request["id"].ToString());
+                model.id = int.Parse(Request["id"].ToString());
+                model.name = Request["Name"];
+                model.Employeeid = Request["Employeeid"];
+                model.Sex = Request["Sex"];
+                model.Nation = Request["Nation"];
+                model.Birth = Request["Birth"];
+                model.Idcard = Request["Idcard"];
+                model.UnitID = int.Parse(Request["UnitID"].ToString());
+                model.Unit = Request["Unit"];
+                model.Position = Request["Position"];
+                model.Rank = Request["Rank"];
+                model.Level = int.Parse(Request["Level"].ToString());
+                model.Status = Request["Status"];
+                model.Jobtime = Request["Jobtime"];
+                model.financetime = Request["financetime"];
+                model.fulltime_educ = Request["fulltime_educ"];
+                model.fulltime_sch = Request["fulltime_sch"];
+                model.Major = Request["Major"];
+                model.Married = Request["Married"];
+                model.Town = Request["Town"];
+                model.Tel = Request["Tel"];
+                model.final_edu = Request["final_edu"];
+                model.final_sch = Request["final_sch"];
+                model.Address = Request["Address"];
+                model.Reserve = Request["Reserve"];
+                model.Guard = Request["Guard"];
+                model.Ages = 0;
+                model.Class = Request["Class"];
+                model.photo = Request["photo"];
+                dal.Update(model);
+
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {
+        }
+    }
+
+    private void Save()
+    {
+        if (Request["type"] == "basic")
+        {
             model.name = Request["Name"];
             model.Employeeid = Request["Employeeid"];
             model.Sex = Request["Sex"];
@@ -182,46 +222,14 @@ public partial class perinfo : System.Web.UI.Page
             model.Ages = 0;
             model.Class = Request["Class"];
             model.photo = Request["photo"];
-            dal.Update(model);
+            dal.Add(model);
+
+            Add();
         }
-        catch (System.Threading.ThreadAbortException ex)
+        if (Request["type"] == "study")
         {
+
         }
-    }
-
-    private void Save()
-    {
-        model.name = Request["Name"];
-        model.Employeeid = Request["Employeeid"];
-        model.Sex = Request["Sex"];
-        model.Nation = Request["Nation"];
-        model.Birth = Request["Birth"];
-        model.Idcard = Request["Idcard"];
-        model.UnitID = int.Parse(Request["UnitID"].ToString());
-        model.Unit = Request["Unit"];
-        model.Position = Request["Position"];
-        model.Rank = Request["Rank"];
-        model.Level = int.Parse(Request["Level"].ToString());
-        model.Status = Request["Status"];
-        model.Jobtime = Request["Jobtime"];
-        model.financetime = Request["financetime"];
-        model.fulltime_educ = Request["fulltime_educ"];
-        model.fulltime_sch = Request["fulltime_sch"];
-        model.Major = Request["Major"];
-        model.Married = Request["Married"];
-        model.Town = Request["Town"];
-        model.Tel = Request["Tel"];
-        model.final_edu = Request["final_edu"];
-        model.final_sch = Request["final_sch"];
-        model.Address = Request["Address"];
-        model.Reserve = Request["Reserve"];
-        model.Guard = Request["Guard"];
-        model.Ages = 0;
-        model.Class = Request["Class"];
-        model.photo = Request["photo"];
-        dal.Add(model);
-
-        Add();
     }
    
 }
