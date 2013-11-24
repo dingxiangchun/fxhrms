@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using System.IO;
 using DAL;
 using Models;
 
@@ -272,9 +273,13 @@ public partial class perinfo : System.Web.UI.Page
             model.Guard = Request["Guard"];
             model.Ages = 0;
             model.Class = Request["Class"];
-            model.photo = Request["photo"];
-            dal.Add(model);
+            if (Request["photo"]==null)
+              model.photo = SavePhoto();
 
+            if (Request["id"] == "")
+                dal.Add(model);
+            else
+                dal.Update(model);
             
             string strwhere = "Employeeid='"+Request["Employeeid"]+"'";
             IList<tb_perInfo> list = dal.GetListAll(strwhere);
@@ -544,6 +549,15 @@ public partial class perinfo : System.Web.UI.Page
                 }
             }
         }
+    }
+
+    private string SavePhoto()
+    {
+        DateTime now = DateTime.Now;
+        string strpath = "/Photo/" + now.Year + "-" + now.Month + "-" + now.Month + "-" + now.Day + " " + now.Hour + ":" + now.Minute + ":" + now.Second + ":" + now.Millisecond + ".jpg";
+        HttpFileCollection photodata = Request.Files;
+        photodata["photo"].SaveAs(strpath);
+        return strpath;
     }
    
 }
