@@ -64,22 +64,26 @@
           <td>$!{list.Tel}</td>
         </tr>
         <tr class="warning">
-          <td colspan="2">籍贯</td>
+          <td>籍贯</td>
           <td>最终学历毕业院校</td>
           <td>最终学历专业</td>
           <td colspan="3">家庭住址</td>
-          <td>后备人才库</td>
+          <td colspan="2">后备人才库</td>
           <td>用工类别</td>
           <td>工龄</td>
         </tr>
         <tr>
-          <td colspan="2">$!{list.Town}</td>
+          <td>$!{list.Town}</td>
           <td>$!{list.final_sch}</td>
           <td>$!{list.final_edu}</td>
           <td colspan="3">$!{list.Address}</td>
-          <td>$!{list.Reserve}</td>
+          <td colspan="2">
+            #foreach ($one in $perReserveList)
+              $!{one.ReserveType},
+            #end
+          </td>
           <td>$!{list.Guard}</td>
-          <td>$!{list.Ages}</td>
+          <td class="cal-age" rel="$!{list.Jobtime}"></td>
         </tr>
 	</table>
 </div>
@@ -246,5 +250,6 @@
 </div>
   
 </div>
+<script src="statics/js/datepicker.js"></script>
 <script src="statics/js/perinfo.js"></script>
 #include("layout/footer.vm")

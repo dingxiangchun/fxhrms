@@ -88,3 +88,13 @@ $(".add-new").on("click",function(){
 	$form.find("table").append($target);
 
 });
+
+// 工龄计算
+$(".cal-age").each(function(){
+	var rel = $(this).attr("rel"),
+		year;
+	if(!!rel && rel.indexOf("-") > 0 ){
+		year = rel.split("-")[0];
+		$(this).text( new Date().getFullYear() - year +"年")
+	}
+})
