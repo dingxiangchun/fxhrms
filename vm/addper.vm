@@ -17,6 +17,7 @@
 </div>
 
 <div id="info-basic" class="info-block">
+  <form action="perinfo.aspx" role="form" method="post" enctype="multipart/form-data">
   <h4>员工头像</h4>
   <div class="pannel">
     <img src="$!{list.Photo}">
@@ -24,7 +25,7 @@
   </div>
   <br>
   <h4>员工基本信息</h4>
-  <form action="perinfo.aspx" role="form" method="post">
+  
   <table class="table table-bordered table-hover">
         <tr class="warning">
           <th>姓名</th>
@@ -264,7 +265,7 @@
 
 <div id="info-register" class="info-block">
   <h3>证书及奖励</h3>
-  <form action="perinfo.aspx" role="form" method="post" class="info-form">
+  <form action="perinfo.aspx" role="form" method="post" class="info-form" enctype="multipart/form-data">
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>证书名称</th>
@@ -304,7 +305,7 @@
 
 <div id="info-reward" class="info-block">
   <h3>奖惩记录</h3>
-  <form action="perinfo.aspx" role="form" method="post" class="info-form">
+  <form action="perinfo.aspx" role="form" method="post" class="info-form" enctype="multipart/form-data">
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>奖罚种类</th>
