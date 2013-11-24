@@ -69,4 +69,22 @@ $(".info-form").submit(function(){
 		alert("必须先添加基本信息并保存，才能够继续添加其他信息");
 		return false;
 	}
-})
+});
+
+$("select[data-value]").each(function(){
+	var data = $(this).data("value");
+	$(this).find("option").filter(function(){
+		if(this.value === data) return true;
+	}).prop("selected",true)
+});
+
+// 新增
+$(".add-new").on("click",function(){
+	var $form = $(this).closest("form"),
+		$src = $form.find("tr").last(),
+		$target = $src.clone();
+	$target.find("input").val("");
+	$target.find(".view-file").remove();
+	$form.find("table").append($target);
+
+});

@@ -27,7 +27,7 @@ namespace DAL
             strSql.Append("select count(*) from tb_perInfo where Employeeid='" + pernum + "'");
             object obj = DbHelperSQL.GetSingle(strSql.ToString());
             int cmdresult;
-            if ((object.Equals(obj, null)) || (object.Equals(obj, System.DBNull.Value)))
+            if ((object.Equals(obj, null)) || (object.Equals(obj, System.DBNull.Value))||int.Parse(obj.ToString())==0)
             {
                 cmdresult = 0;
             }

@@ -14,8 +14,9 @@
 
 <div id="info-basic" class="info-block">
   <h3>员工基本信息</h3>
+  <img src="$!{list.Photo}" style="display: block;">
+  <br>
 	<table class="table table-bordered table-hover">
-      #foreach( $one in $list )
   			<tr class="warning">
   				<th>姓名</th>
   				<th>员工代号</th> 
@@ -27,16 +28,16 @@
           <td colspan="2">工作单位</td>
           <td>员工类型</td>
   			</tr>
-  			<tr data-id="$one.id">
-  				<td>$!{one.Name}</td>
-          <td>$!{one.Employeeid}</td>
-          <td>$!{one.Sex}</td>
-          <td>$!{one.Nation}</td>
-          <td>$!{one.Idcard}</td>
-          <td>$!{one.Birth}</td>
-          <td>$!{one.Position}</td>
-          <td colspan="2">$!{one.Unit}</td>
-          <td>$!{one.Class}</td>
+  			<tr>
+  				<td>$!{list.Name}</td>
+          <td>$!{list.Employeeid}</td>
+          <td>$!{list.Sex}</td>
+          <td>$!{list.Nation}</td>
+          <td>$!{list.Idcard}</td>
+          <td>$!{list.Birth}</td>
+          <td>$!{list.Position}</td>
+          <td colspan="2">$!{list.Unit}</td>
+          <td>$!{list.Class}</td>
   			</tr>
         <tr class="warning">
           <td>职级</td>
@@ -50,17 +51,17 @@
           <td>婚姻状况</td>
           <td>联系电话</td> 
         </tr>
-        <tr data-id="$one.id">
-          <td>$!{one.Rank}</td>
-          <td>$!{one.Level}</td>
-          <td>$!{one.Status}</td>
-          <td>$!{one.Jobtime}</td>
-          <td>$!{one.financetime}</td>
-          <td>$!{one.fulltime_educ}</td>
-          <td>$!{one.fulltime_sch}</td>
-          <td>$!{one.Major}</td>
-          <td>$!{one.Married}</td>
-          <td>$!{one.Tel}</td>
+        <tr>
+          <td>$!{list.Rank}</td>
+          <td>$!{list.Level}</td>
+          <td>$!{list.Status}</td>
+          <td>$!{list.Jobtime}</td>
+          <td>$!{list.financetime}</td>
+          <td>$!{list.fulltime_educ}</td>
+          <td>$!{list.fulltime_sch}</td>
+          <td>$!{list.Major}</td>
+          <td>$!{list.Married}</td>
+          <td>$!{list.Tel}</td>
         </tr>
         <tr class="warning">
           <td colspan="2">籍贯</td>
@@ -71,16 +72,15 @@
           <td>用工类别</td>
           <td>工龄</td>
         </tr>
-        <tr data-id="$one.id">
-          <td colspan="2">$!{one.Town}</td>
-          <td>$!{one.final_sch}</td>
-          <td>$!{one.final_edu}</td>
-          <td colspan="3">$!{one.Address}</td>
-          <td>$!{one.Reserve}</td>
-          <td>$!{one.Guard}</td>
-          <td>$!{one.Ages}</td>
+        <tr>
+          <td colspan="2">$!{list.Town}</td>
+          <td>$!{list.final_sch}</td>
+          <td>$!{list.final_edu}</td>
+          <td colspan="3">$!{list.Address}</td>
+          <td>$!{list.Reserve}</td>
+          <td>$!{list.Guard}</td>
+          <td>$!{list.Ages}</td>
         </tr>
-      #end
 	</table>
 </div>
 
@@ -96,8 +96,8 @@
       <td>专业</td>
       <td>描述</td>
     </tr>
-   <tr>
     #foreach( $one in $learn )
+    <tr>
       <td>$!{one.degree}</td>
       <td>$!{one.starttime}</td>
       <td>$!{one.graduatetime}</td>
@@ -105,8 +105,8 @@
       <td>$!{one.retence}</td>
       <td>$!{one.profession}</td>
       <td>$!{one.content}</td>
-    #end
     </tr>
+    #end
   </table>
 </div>
 
@@ -122,16 +122,16 @@
       <td>现在情况</td>
       <td>备注</td>
     </tr>
-   <tr>
     #foreach( $one in $family )
+   <tr>
       <td>$!{one.relation}</td>
       <td>$!{one.birth}</td>
       <td>$!{one.unit}</td>
       <td>$!{one.status}</td>
       <td>$!{one.situation}</td>
       <td>$!{one.remark}</td>
-    #end
     </tr>
+    #end
   </table>
 </div>
 
@@ -148,8 +148,8 @@
       <td>图片</td>
       <td>证书描述</td>
     </tr>
-   <tr>
     #foreach( $one in $register )
+   <tr>
       <td>$!{one.cer_name}</td>
       <td>$!{one.type}</td>
       <td>$!{one.accesstime}</td>
@@ -158,8 +158,8 @@
       <td>$!{one.Class}</td>
       <td><a href="$!{one.photo}" target="_blank">查看</a></td>
       <td>$!{one.description}</td>
-    #end
     </tr>
+    #end
   </table>
 </div>
 
@@ -177,8 +177,8 @@
       <td>描述</td>
       <td>相关文件</td>
     </tr>
-   <tr>
     #foreach( $one in $reward )
+   <tr>
       <td>$!{one.type}</td>
       <td>$!{one.time}</td>
       <td>$!{one.content}</td>
@@ -187,9 +187,9 @@
       <td>$!{one.Class}</td>
       <td>$!{one.unit}</td>
       <td>$!{one.description}</td>
-      <td><a href="$!{one.File}" target="_blank">打开</a></td>
-    #end
+      <td><a href="$!{one.File}" target="_blank">查看</a></td>
     </tr>
+    #end
   </table>
 </div>
 
@@ -204,16 +204,16 @@
       <td>离职原因</td>
       <td>工作内容</td>
     </tr>
-   <tr>
     #foreach( $one in $work )
+   <tr>
       <td>$!{one.attacktime}</td>
       <td>$!{one.quittime}</td>
       <td>$!{one.position}</td>
       <td>$!{one.unit}</td>
       <td>$!{one.reason}</td>
       <td>$!{one.content}</td>
-    #end
     </tr>
+    #end
   </table>
 </div>
 
@@ -230,8 +230,8 @@
       <td>实休天数</td>
       <td>备注</td>
     </tr>
-   <tr>
     #foreach( $one in $holiday )
+   <tr>
       <td>$!{one.holiday}</td>
       <td>$!{one.days}</td>
       <td>$!{one.reason}</td>
@@ -240,8 +240,8 @@
       <td>$!{one.Endtime}</td>
       <td>$!{one.days1}</td>
       <td>$!{one.remark}</td>
-    #end
     </tr>
+    #end
   </table>
 </div>
   

@@ -68,7 +68,8 @@ public partial class perinfo : System.Web.UI.Page
             }
             if (Request["action"] == "add")
             {
-                Add();
+
+                Add(Request["id"]);
             }
             if (Request["action"] == "update")
             {
@@ -94,18 +95,23 @@ public partial class perinfo : System.Web.UI.Page
             IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
             IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
 
-            IList<String> Reservelist=null;
+            IList<tb_Reserve> Reservelist = new List<tb_Reserve>();
             if (list.Count > 0)
             {
                 string[] Rlist = list[0].Reserve.Split(',');
                 for(int i=0;i<Rlist.Length;i++)
                 {
-                    Reservelist.Add(Rlist[i]);
+                    if (Rlist[i] != "" && Rlist[i] != null)
+                    {
+                        IList<tb_Reserve> perReservelisttemp = Reserve.GetListAll("id=" + Rlist[i]);
+                        if (perReservelisttemp.Count > 0)
+                            Reservelist.Add(perReservelisttemp[0]);
+                    }
                 }
             }
 
-            vh.Put("ReserveList", Reservelist);
-            vh.Put("list", list);
+            vh.Put("perReserveList", Reservelist);
+            vh.Put("list", list[0]);
             vh.Put("learn", learn);
             vh.Put("family", family);
             vh.Put("register", register);
@@ -117,18 +123,58 @@ public partial class perinfo : System.Web.UI.Page
         
     }
 
-    private void Add()
+    private void Add(string id)
     {
         try
         {
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
-            vh.Put("ReserveList", ReserveList);
-            vh.Put("positionList", positionList);
-            vh.Put("pertypeList", pertypeList);
-            vh.Display("addper.vm");
+            if (id != "" && id != null)
+            {
+                string strwhere = "id=" + id;
+                IList<tb_perInfo> list = dal.GetListAll(strwhere);
+                IList<tb_learninfo> learn = dalLearn.GetListAll("employee" + strwhere);
+                IList<tb_family> family = dalFamily.GetListAll("employee" + strwhere);
+                IList<tb_registerinfo> register = dalReg.GetListAll("employee" + strwhere);
+                IList<tb_rewardinfo> reward = dalReward.GetListAll("employee" + strwhere);
+                IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
+                IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
 
+                IList<tb_Reserve> perReservelist = new List<tb_Reserve>();
+                if (list.Count > 0)
+                {
+                    string[] Rlist = null;
+                    if ( list[0].Reserve != null )
+                    {
+                        Rlist = list[0].Reserve.Split(',');
+                        for (int i = 0; i < Rlist.Length; i++)
+                        {
+                            if (Rlist[i] != "" && Rlist[i] != null)
+                            {
+                                IList<tb_Reserve> perReservelisttemp = Reserve.GetListAll("id=" + Rlist[i]);
+                                if (perReservelisttemp.Count>0)
+                                   perReservelist.Add(perReservelisttemp[0]);
+                            }
+                            
+                        }
+                    }
+                    
+                   
+                }
 
+                vh.Put("perReserveList", perReservelist);
+                vh.Put("list", list[0]);
+                vh.Put("learn", learn);
+                vh.Put("family", family);
+                vh.Put("register", register);
+                vh.Put("reward", reward);
+                vh.Put("work", work);
+                vh.Put("holiday", holiday);
+            }
+           vh.Put("ReserveList", ReserveList);
+           vh.Put("positionList", positionList);
+           vh.Put("pertypeList", pertypeList);
+           vh.Display("addper.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
         {
@@ -194,6 +240,12 @@ public partial class perinfo : System.Web.UI.Page
     {
         if (Request["type"] == "basic")
         {
+            if (dal.Exists(Request["Employeeid"]))
+            {
+                Response.Write("{\"status\":Employeeid Exist!}");
+                Response.End();
+                return;
+            }
             model.name = Request["Name"];
             model.Employeeid = Request["Employeeid"];
             model.Sex = Request["Sex"];
@@ -222,6 +274,11 @@ public partial class perinfo : System.Web.UI.Page
             model.Class = Request["Class"];
             model.photo = Request["photo"];
             dal.Add(model);
+
+            
+            string strwhere = "Employeeid='"+Request["Employeeid"]+"'";
+            IList<tb_perInfo> list = dal.GetListAll(strwhere);
+            Add(Request["Employeeid"]);
         }
         else if (Request["type"] == "study")
         {
@@ -487,9 +544,6 @@ public partial class perinfo : System.Web.UI.Page
                 }
             }
         }
-
-
-        Add();
     }
    
 }

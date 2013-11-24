@@ -17,7 +17,13 @@
 </div>
 
 <div id="info-basic" class="info-block">
-  <h3>员工基本信息</h3>
+  <h4>员工头像</h4>
+  <div class="pannel">
+    <img src="$!{list.Photo}">
+    <input type="file" name="photo" value="">
+  </div>
+  <br>
+  <h4>员工基本信息</h4>
   <form action="perinfo.aspx" role="form" method="post">
   <table class="table table-bordered table-hover">
         <tr class="warning">
@@ -31,35 +37,35 @@
           <th colspan="2">工作单位</th>
           <th>员工类型</th>
         </tr>
-        <tr data-id="$one.id">
-          <td><input type="text" value="" name="Name" class="form-control"></td>
-          <td><input type="text" value="" name="Employeeid" class="form-control"></td>
+        <tr>
+          <td><input type="text" value="$!{list.name}" name="Name" class="form-control"></td>
+          <td><input type="text" value="$!{list.Employeeid}" name="Employeeid" class="form-control"></td>
           <td>
-            <select name="Sex" class="form-control">
+            <select name="Sex" class="form-control" data-value="$!{list.Sex}">
               <option value="男">男</option>
               <option value="女">女</option>
             </select>
           </td>
           <td>
-            <select name="Nation" class="form-control">
+            <select name="Nation" class="form-control" data-value="$!{list.Nation}">
               <option value="汉族">汉族</option>
               <option value="少数民族">少数民族</option>
             </select>
           </td>
-          <td><input type="text" value="" name="Idcard" class="form-control"></td>
+          <td><input type="text" value="$!{list.Idcard}" name="Idcard" class="form-control"></td>
           <td>
-            <input type="text" class="form-control date-picker" name="Birth" data-date-format="yyyy-mm-dd">
+            <input type="text" class="form-control date-picker" name="Birth" data-date-format="yyyy-mm-dd" value="$!{list.Birth}">
           </td>
           <td>
-            <select name="Position" class="form-control">
+            <select name="Position" class="form-control" data-value="$!{list.Position}">
               #foreach ($one in $positionList)
               <option value="${one.id}">$!{one.name}</option>
               #end
             </select>
           </td>
-          <td colspan="2"><input type="text" value="" name="Unit" class="form-control"></td>
+          <td colspan="2"><input type="text" value="$!{list.Unit}" name="Unit" class="form-control"></td>
           <td>
-            <select name="Class" class="form-control">
+            <select name="Class" class="form-control" data-value="$!{list.Class}">
               #foreach ($one in $pertypeList)
               <option value="${one.id}">$!{one.name}</option>
               #end
@@ -78,16 +84,16 @@
           <th>婚姻状况</th>
           <th>联系电话</th> 
         </tr>
-        <tr data-id="$one.id">
+        <tr>
           <td>
-            <select name="Rank" class="form-control">
+            <select name="Rank" class="form-control" data-value="$!{list.Rank}">
               <option value="普通员工">普通员工</option>
               <option value="中层正职">中层正职</option>
               <option value="中层副职">中层副职</option>
             </select>
           </td>
           <td>
-            <select name="Level" class="form-control">
+            <select name="Level" class="form-control" data-value="$!{list.Level}">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -101,7 +107,7 @@
             </select>
           </td>
           <td>
-            <select name="Status" class="form-control">
+            <select name="Status" class="form-control" data-value="$!{list.Status}">
               <option value="群众">群众</option>
               <option value="共产党员">共产党员</option>
               <option value="团员">团员</option>
@@ -109,13 +115,13 @@
             </select>
           </td>
           <td>
-            <input type="text" class="form-control date-picker" name="Jobtime" data-date-format="yyyy-mm-dd">
+            <input type="text" class="form-control date-picker" name="Jobtime" data-date-format="yyyy-mm-dd" value="$!{list.Jobtime}">
           </td>
           <td>
-            <input type="text" class="form-control date-picker" name="financetime" data-date-format="yyyy-mm-dd">
+            <input type="text" class="form-control date-picker" name="financetime" data-date-format="yyyy-mm-dd" value="$!{list.financetime}">
           </td>
           <td>
-            <select name="fulltime_educ" class="form-control">
+            <select name="fulltime_educ" class="form-control" data-value="$!{list.fulltime_educ}">
               <option value="本科">本科</option>
               <option value="博士">博士</option>
               <option value="硕士">硕士</option>
@@ -124,10 +130,10 @@
               <option value="中专">中专</option>
             </select>
           </td>
-          <td><input type="text" value="" name="fulltime_sch" class="form-control"></td>
-          <td><input type="text" value="" name="Major" class="form-control"></td>
+          <td><input type="text"  value="$!{list.fulltime_sch}" name="fulltime_sch" class="form-control"></td>
+          <td><input type="text"  value="$!{list.Major}" name="Major" class="form-control"></td>
           <td>
-            <select name="Married" class="form-control">
+            <select name="Married" class="form-control" data-value="$!{list.Married}">
               <option value="未婚">未婚</option>
               <option value="已婚">已婚</option>
               <option value="离异">离异</option>
@@ -135,7 +141,7 @@
               <option value="其他">其他</option>
             </select>
           </td>
-          <td><input type="text" value="" name="Tel" class="form-control"></td>
+          <td><input type="text" value="$!{list.Tel}" name="Tel" class="form-control"></td>
         </tr>
         <tr class="warning">
           <th colspan="2">籍贯</th>
@@ -144,18 +150,15 @@
           <th colspan="4">家庭住址</th>
           <th>用工类别</th>
         </tr>
-        <tr data-id="$one.id">
-          <td colspan="2"><input type="text" value="" name="Town" class="form-control"></td>
-          <td colspan="2"><input type="text" value="" name="final_sch" class="form-control"></td>
-          <td><input type="text" value="" name="final_edu" class="form-control"></td>
-          <td colspan="4"><input type="text" value="" name="Address" class="form-control"></td>
-          <td><input type="text" value="" name="Guard" class="form-control"></td>
+        <tr>
+          <td colspan="2"><input type="text" value="$!{list.Town}"  name="Town" class="form-control"></td>
+          <td colspan="2"><input type="text" value="$!{list.final_sch}"  name="final_sch" class="form-control"></td>
+          <td><input type="text" value="$!{list.final_edu}"  name="final_edu" class="form-control"></td>
+          <td colspan="4"><input type="text" value="$!{list.Address}"  name="Address" class="form-control"></td>
+          <td><input type="text" value="$!{list.Guard}"  name="Guard" class="form-control"></td>
         </tr>
   </table>
-  <h4>员工头像</h4>
-  <div class="pannel">
-    <input type="file" name="photo" value="">
-  </div>
+  
   <h4>后备人才库</h4>
   <div class="pannel">
     <div class="row">
@@ -174,17 +177,19 @@
     <div class="row">
       <div class="col-xs-10 reserveContainer">
         <strong>已添加的后备人才库：</strong>
-        <!-- <span type="button" class="btn btn-default btn-xs">
-          <span class="glyphicon glyphicon-trash"></span> Star
-        </span> -->
+        #foreach ($one in $perReserveList)
+        <span type="button" class="btn btn-default btn-xs del-reserve" rel="$!{one.id}">
+          <span class="glyphicon glyphicon-trash"></span> $!{one.ReserveType}
+        </span>
+        #end
       </div>
     </div>
    
-    <input type="hidden" value="" name="Reserve" />
+    <input type="hidden" value="$!{list.Reserve}" name="Reserve" />
 
   </div>
   <br>
-  <input type="hidden" name="id" value="">
+  <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="basic">
   <input type="hidden" name="action" value="save">
   <button type="submit" role="button" class="btn btn-warning">保存</button>
@@ -204,20 +209,22 @@
       <td>专业</td>
       <td>描述</td>
     </tr>
+    #foreach ($one in $learn)
    <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="degree[]" class="form-control"></td>
-      <td><input type="text" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
-      <td><input type="text" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
-      <td><input type="text" value="" name="graduatesch[]" class="form-control"></td>
-      <td><input type="text" value="" name="retence[]" class="form-control"></td>
-      <td><input type="text" value="" name="profession[]" class="form-control"></td>
-      <td><input type="text" value="" name="content[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.degree}" name="degree[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.starttime}" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
+      <td><input type="text" value="$!{one.graduatetime}" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
+      <td><input type="text" value="$!{one.graduatesch}" name="graduatesch[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.retence}" name="retence[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.profession}" name="profession[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
     </tr>
+  #end
   </table>
-  <input type="hidden" name="id" value="">
+  <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="study">
   <input type="hidden" name="action" value="save">
-  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
+  <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
@@ -234,21 +241,23 @@
       <td>现在情况</td>
       <td>备注</td>
     </tr>
+  #foreach ($one in $family)
    <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="relation[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.id}" name="relation[]" class="form-control"></td>
       <td>
-        <input type="text" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
+        <input type="text" value="$!{one.birth}" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
       </td>
-      <td><input type="text" value="" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="" name="status[]" class="form-control"></td>
-      <td><input type="text" value="" name="situation[]" class="form-control"></td>
-      <td><input type="text" value="" name="remark[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.status}" name="status[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.situation}" name="situation[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.remark}" name="remark[]" class="form-control"></td>
     </tr>
+  #end
   </table>
-  <input type="hidden" name="id" value="">
+  <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="family">
   <input type="hidden" name="action" value="save">
-  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
+  <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
@@ -267,21 +276,28 @@
       <td>图片</td>
       <td>证书描述</td>
     </tr>
+    #foreach ($one in $register)
    <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="cer_name[]" class="form-control"></td>
-      <td><input type="text" value="" name="type[]" class="form-control"></td>
-      <td><input type="text" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="" name="Class[]" class="form-control"></td>
-      <td><input type="text" value="" name="photo[]" class="form-control"></td>
-      <td><input type="text" value="" name="description[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.cer_name}" name="cer_name[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.type}" name="type[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.accesstime}" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="$!{one.issuingtime}" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.Class}" name="Class[]" class="form-control"></td>
+      <td>
+        #if($!{one.photo})
+        <a href="$!{one.photo}" target="_blank" class="view-file">查看</a>
+        #end
+        <input type="file" value="" name="photo[]">
+      </td>
+      <td><input type="text" value="$!{one.description}" name="description[]" class="form-control"></td>
     </tr>
+    #end
   </table>
-  <input type="hidden" name="id" value="">
+  <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="register">
   <input type="hidden" name="action" value="save">
-  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
+  <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
@@ -301,22 +317,29 @@
       <td>描述</td>
       <td>相关文件</td>
     </tr>
+    #foreach ($one in $reward)
    <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="type[]" class="form-control"></td>
-      <td><input type="text" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="content[]" class="form-control"></td>
-      <td><input type="text" value="" name="department[]" class="form-control"></td>
-      <td><input type="text" value="" name="audit[]" class="form-control"></td>
-      <td><input type="text" value="" name="Class[]" class="form-control"></td>
-      <td><input type="text" value="" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="" name="description[]" class="form-control"></td>
-      <td><input type="text" value="" name="File[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.type}" name="type[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.time}" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.department}" name="department[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.audit}" name="audit[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.Class}" name="Class[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.description}" name="description[]" class="form-control"></td>
+      <td>
+        #if($!{one.File})
+        <a href="$!{one.File}" target="_blank" class="view-file">查看</a>
+        #end
+        <input type="file" value="" name="File[]">
+      </td>
     </tr>
+    #end
   </table>
-  <input type="hidden" name="id" value="">
+  <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="reward">
   <input type="hidden" name="action" value="save">
-  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
+  <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
@@ -333,19 +356,21 @@
       <td>离职原因</td>
       <td>工作内容</td>
     </tr>
+    #foreach ($one in $work)
    <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="position[]" class="form-control"></td>
-      <td><input type="text" value="" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="" name="reason[]" class="form-control"></td>
-      <td><input type="text" value="" name="content[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.attacktime}" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="$!{one.quittime}" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="$!{one.position}" name="position[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.reason}" name="reason[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
     </tr>
+    #end
   </table>
-  <input type="hidden" name="id" value="">
+  <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="work">
   <input type="hidden" name="action" value="save">
-  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
+  <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
@@ -364,21 +389,23 @@
       <td>实休天数</td>
       <td>备注</td>
     </tr>
+     #foreach ($one in $holiday)
    <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="holiday[]" class="form-control"></td>
-      <td><input type="text" value="" name="days[]" class="form-control"></td>
-      <td><input type="text" value="" name="reason[]" class="form-control"></td>
-      <td><input type="text" value="" name="audit[]" class="form-control"></td>
-      <td><input type="text" class="form-control date-picker" name="begintime[]" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" class="form-control date-picker" name="Endtime[]" data-date-format="yyyy-mm-dd"></td>
-      <td><input type="text" value="" name="days1[]" class="form-control"></td>
-      <td><input type="text" value="" name="remark[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.holiday}" name="holiday[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.days}" name="days[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.reason}" name="reason[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.audit}" name="audit[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.begintime}"class="form-control date-picker" name="begintime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="$!{one.Endtime}"class="form-control date-picker" name="Endtime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="$!{one.days1}" name="days1[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.remark}" name="remark[]" class="form-control"></td>
     </tr>
+    #end
   </table>
-  <input type="hidden" name="id" value="">
+  <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="holiday">
   <input type="hidden" name="action" value="save">
-  <a href="javascript:void(0);" role="button" class="btn btn-primary">新增</a>
+  <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
   <button type="submit" role="button" class="btn btn-warning">保存</button>
   </form>
 </div>
