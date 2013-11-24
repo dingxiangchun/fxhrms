@@ -27,7 +27,7 @@ namespace DAL
             strSql.Append("'" + model.graduatesch + "',");
             strSql.Append("'" + model.retence + "',");
             strSql.Append("'" + model.profession + "',");
-            strSql.Append("'" + model.content + "',");
+            strSql.Append("'" + model.content + "'");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -37,7 +37,7 @@ namespace DAL
             strSql.Append("update tb_learninfo set ");
             strSql.Append("employeeid='" + model.employeeid + "',");
             strSql.Append("degree='" + model.degree + "',");
-            strSql.Append("starttime='" + model.starttime + "'");
+            strSql.Append("starttime='" + model.starttime + ",'");
             strSql.Append("graduatetime='" + model.graduatetime + "',");
             strSql.Append("graduatesch='" + model.graduatesch + "',");
             strSql.Append("retence='" + model.retence + "',");
