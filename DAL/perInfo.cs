@@ -90,7 +90,11 @@ namespace DAL
             strSql.Append("Guard='" + model.Guard + "',");
             strSql.Append("Ages=" + model.Ages + ",");
             strSql.Append("Class='" + model.Class + "'");
-            strSql.Append("photo='" + model.photo + "'");
+            if (model.photo != "")
+            {
+                strSql.Append(",photo='" + model.photo + "'");
+            }
+            
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
 

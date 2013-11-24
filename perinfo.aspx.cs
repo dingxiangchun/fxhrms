@@ -273,7 +273,7 @@ public partial class perinfo : System.Web.UI.Page
             model.Guard = Request["Guard"];
             model.Ages = 0;
             model.Class = Request["Class"];
-            if (Request["photo"]==null)
+         //   if (Request.Files==null)
               model.photo = SavePhoto();
 
             if (Request["id"] == "")
@@ -283,7 +283,7 @@ public partial class perinfo : System.Web.UI.Page
             
             string strwhere = "Employeeid='"+Request["Employeeid"]+"'";
             IList<tb_perInfo> list = dal.GetListAll(strwhere);
-            Add(Request["Employeeid"]);
+            Add(Request["id"]);
         }
         else if (Request["type"] == "study")
         {
@@ -393,7 +393,9 @@ public partial class perinfo : System.Web.UI.Page
                 modelReg.issuingtime = issuingtimelist[i];
                 modelReg.unit = unitlist[i];
                 modelReg.Class = Classlist[i];
-                modelReg.photo = photolist[i];
+                //modelReg.photo = photolist[i];
+                if (Request.Files["photo[]"] == null)
+                    modelReg.photo = SavePhoto();
                 modelReg.description = descriptionlist[i];
                 if (idlist[i] == "")
                 {
