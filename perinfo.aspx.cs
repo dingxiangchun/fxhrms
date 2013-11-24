@@ -273,8 +273,11 @@ public partial class perinfo : System.Web.UI.Page
             model.Guard = Request["Guard"];
             model.Ages = 0;
             model.Class = Request["Class"];
-         //   if (Request.Files==null)
-              model.photo = SavePhoto();
+            if (Request.Files.Count > 0)
+            {
+                HttpFileCollection FileCollection = Request.Files;
+                model.photo = SavePhoto(FileCollection[FileCollection.AllKeys[0]]);
+            }
 
             if (Request["id"] == "")
                 dal.Add(model);
@@ -283,7 +286,14 @@ public partial class perinfo : System.Web.UI.Page
             
             string strwhere = "Employeeid='"+Request["Employeeid"]+"'";
             IList<tb_perInfo> list = dal.GetListAll(strwhere);
-            Add(Request["id"]);
+            if (list.Count > 0)
+            {
+                Add(list[0].id.ToString());
+            }
+            else
+            {
+                Add("");
+            }
         }
         else if (Request["type"] == "study")
         {
@@ -374,8 +384,9 @@ public partial class perinfo : System.Web.UI.Page
             string[] issuingtimelist = Request.Form.GetValues("issuingtime[]");
             string[] unitlist = Request.Form.GetValues("unit[]");
             string[] Classlist = Request.Form.GetValues("Class[]");
-            string[] photolist = Request.Form.GetValues("photo[]");
+            //string[] photolist = Request.Form.GetValues("photo[]");
             string[] descriptionlist = Request.Form.GetValues("description[]");
+            HttpFileCollection FileColl = Request.Files;
 
             for (int i = 0; i < idlist.Length; i++)
             {
@@ -393,9 +404,8 @@ public partial class perinfo : System.Web.UI.Page
                 modelReg.issuingtime = issuingtimelist[i];
                 modelReg.unit = unitlist[i];
                 modelReg.Class = Classlist[i];
-                //modelReg.photo = photolist[i];
-                if (Request.Files["photo[]"] == null)
-                    modelReg.photo = SavePhoto();
+                modelReg.photo = SavePhoto(FileColl[FileColl.AllKeys[i]]);
+
                 modelReg.description = descriptionlist[i];
                 if (idlist[i] == "")
                 {
@@ -422,7 +432,9 @@ public partial class perinfo : System.Web.UI.Page
             string[] Classlist = Request.Form.GetValues("Class[]");
             string[] unitlist = Request.Form.GetValues("unit[]");
             string[] descriptionlist = Request.Form.GetValues("description[]");
-            string[] Filelist = Request.Form.GetValues("File[]");
+            //string[] Filelist = Request.Form.GetValues("File[]");
+            HttpFileCollection FileColl = Request.Files;
+
             for (int i = 0; i < idlist.Length; i++)
             {
                 if (employeeidlist == null || employeeidlist[i] == null)
@@ -441,7 +453,7 @@ public partial class perinfo : System.Web.UI.Page
                 modelReward.Class = Classlist[i];
                 modelReward.unit = unitlist[i];
                 modelReward.description = descriptionlist[i];
-                modelReward.File = Filelist[i];
+                modelReward.File = SavePhoto(FileColl[FileColl.AllKeys[i]]);
                 if (idlist[i] == "")
                 {
                     dalReward.Add(modelReward);
@@ -553,13 +565,29 @@ public partial class perinfo : System.Web.UI.Page
         }
     }
 
-    private string SavePhoto()
+    private string SavePhoto(HttpPostedFile PhotoFile)
     {
-        DateTime now = DateTime.Now;
-        string strpath = "/Photo/" + now.Year + "-" + now.Month + "-" + now.Month + "-" + now.Day + " " + now.Hour + ":" + now.Minute + ":" + now.Second + ":" + now.Millisecond + ".jpg";
-        HttpFileCollection photodata = Request.Files;
-        photodata["photo"].SaveAs(strpath);
-        return strpath;
+        string webUrl = "";
+        try
+        {
+            if (PhotoFile != null)
+            {
+                DateTime now = DateTime.Now;
+                string filename = now.ToFileTimeUtc().ToString()+System.IO.Path.GetExtension(PhotoFile.FileName);
+                string strpath = System.Web.HttpContext.Current.Server.MapPath("./") + "Photo\\" + filename;
+                webUrl = "/Photo/" + filename;
+                PhotoFile.SaveAs(strpath);
+                //HttpFileCollection photodata = Request.Files;
+                //for (int i = 0; i < photodata.Count; i++)
+                //{
+                //    photodata[photodata.AllKeys[i]].SaveAs(strpath);
+                //}
+            }
+        }
+        catch (System.Threading.ThreadAbortException ex)
+        {}
+
+        return webUrl;
     }
    
 }
