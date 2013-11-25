@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50519
 File Encoding         : 65001
 
-Date: 2013-11-17 14:08:59
+Date: 2013-11-25 10:31:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -88,18 +88,22 @@ DROP TABLE IF EXISTS `tb_family`;
 CREATE TABLE `tb_family` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `employeeid` varchar(100) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `relation` varchar(100) DEFAULT NULL,
   `birth` varchar(100) DEFAULT NULL,
+  `tel` varchar(50) DEFAULT NULL,
   `unit` varchar(100) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
   `situation` varchar(200) DEFAULT NULL,
   `remark` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gb2312;
 
 -- ----------------------------
 -- Records of tb_family
 -- ----------------------------
+INSERT INTO `tb_family` VALUES ('1', '2', null, '父亲', '1956-08-16', null, '山东临沂', '群众', '在职', null);
+INSERT INTO `tb_family` VALUES ('2', '2', null, '母亲', '1960-10-16', null, '山东临沂', '群众', '在职', null);
 
 -- ----------------------------
 -- Table structure for tb_folk
@@ -109,7 +113,7 @@ CREATE TABLE `tb_folk` (
   `fid` int(11) NOT NULL AUTO_INCREMENT,
   `folkName` varchar(100) NOT NULL,
   PRIMARY KEY (`fid`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_folk
@@ -170,11 +174,13 @@ CREATE TABLE `tb_learninfo` (
   `profession` varchar(100) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_learninfo
 -- ----------------------------
+INSERT INTO `tb_learninfo` VALUES ('1', '2', '小学', '1995-07-01', '1999-09-01', '临沂二小', '张某某', '班长', null);
+INSERT INTO `tb_learninfo` VALUES ('2', '2', '初中', '1999-07-01', '2002-09-01', '临沂十三中', '刘某某', '学习委员', null);
 
 -- ----------------------------
 -- Table structure for tb_perinfo
@@ -192,7 +198,7 @@ CREATE TABLE `tb_perinfo` (
   `Unit` varchar(200) DEFAULT NULL,
   `Position` varchar(100) DEFAULT NULL,
   `Rank` varchar(20) DEFAULT NULL,
-  `Level` varchar(50) DEFAULT NULL,
+  `Level` int(11) DEFAULT NULL,
   `Status` varchar(20) DEFAULT NULL,
   `Jobtime` varchar(50) DEFAULT NULL,
   `financetime` varchar(50) DEFAULT NULL,
@@ -211,12 +217,12 @@ CREATE TABLE `tb_perinfo` (
   `Class` varchar(50) DEFAULT NULL,
   `photo` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_perinfo
 -- ----------------------------
-INSERT INTO `tb_perinfo` VALUES ('1', '', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `tb_perinfo` VALUES ('2', '丁一', '010', '男', '汉族', '1987-06-20', '371312198706206418', null, '第一支行', '1', '普通员工', '1', '群众', '2010-07-01', '2010-07-01', '本科', '青岛大学', '网络工程', '未婚', '山东临沂', '8829568', '青岛大学', '网络工程', '山东临沂', '1', '', '0', '', '/Hrms/Photo/200961992038.jpg');
 
 -- ----------------------------
 -- Table structure for tb_pertypeinfo
@@ -265,11 +271,12 @@ CREATE TABLE `tb_registerinfo` (
   `photo` varchar(200) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_registerinfo
 -- ----------------------------
+INSERT INTO `tb_registerinfo` VALUES ('1', '2', '毕业证', '高中毕业证', '2006-09-01', '2006-09-01', '临沂十三中', '县级', null, null);
 
 -- ----------------------------
 -- Table structure for tb_reserve
@@ -280,11 +287,12 @@ CREATE TABLE `tb_reserve` (
   `ReserveType` varchar(100) DEFAULT NULL,
   `ReserveInfo` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_reserve
 -- ----------------------------
+INSERT INTO `tb_reserve` VALUES ('1', '管理人才', null);
 
 -- ----------------------------
 -- Table structure for tb_resumeinfo
@@ -300,11 +308,12 @@ CREATE TABLE `tb_resumeinfo` (
   `reason` text,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_resumeinfo
 -- ----------------------------
+INSERT INTO `tb_resumeinfo` VALUES ('1', '2', '2011-10-01', '2012-10-01', '业务员', '第一支行', '调职', null);
 
 -- ----------------------------
 -- Table structure for tb_rewardinfo
@@ -323,11 +332,12 @@ CREATE TABLE `tb_rewardinfo` (
   `description` varchar(200) DEFAULT NULL,
   `File` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_rewardinfo
 -- ----------------------------
+INSERT INTO `tb_rewardinfo` VALUES ('1', '2', '奖', '2010-10-01', '三等奖学金', '青岛大学', '赵某某', null, '丁一', null, null);
 
 -- ----------------------------
 -- Table structure for tb_users
