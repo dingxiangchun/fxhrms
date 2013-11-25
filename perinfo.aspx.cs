@@ -339,8 +339,10 @@ public partial class perinfo : System.Web.UI.Page
         {
             string[] idlist = Request.Form.GetValues("iid[]");
             string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            string[] namelist = Request.Form.GetValues("name[]");
             string[] relationlist = Request.Form.GetValues("relation[]");
             string[] birthlist = Request.Form.GetValues("birth[]");
+            string[] tellist = Request.Form.GetValues("tel[]");
             string[] unitlist = Request.Form.GetValues("unit[]");
             string[] statuslist = Request.Form.GetValues("status[]");
             string[] situationlist = Request.Form.GetValues("situation[]");
@@ -356,8 +358,10 @@ public partial class perinfo : System.Web.UI.Page
                 {
                     modelFamily.employeeid = employeeidlist[i];
                 }
+                modelFamily.name = namelist[i];
                 modelFamily.relation = relationlist[i];
                 modelFamily.birth = birthlist[i];
+                modelFamily.tel = tellist[i];
                 modelFamily.unit = unitlist[i];
                 modelFamily.status = statuslist[i];
                 modelFamily.situation = situationlist[i];

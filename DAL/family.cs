@@ -22,12 +22,14 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_family(");
-            strSql.Append("employeeid,relation,birth,unit,status,situation,remark");
+            strSql.Append("employeeid,name,relation,birth,tel,unit,status,situation,remark");
             strSql.Append(")");
             strSql.Append(" values (");
             strSql.Append("'" + model.employeeid + "',");
+            strSql.Append("'" + model.name + "',");
             strSql.Append("'" + model.relation + "',");
             strSql.Append("'" + model.birth + "',");
+            strSql.Append("'" + model.tel + "',");
             strSql.Append("'" + model.unit + "',");
             strSql.Append("'" + model.status + "',");
             strSql.Append("'" + model.situation + "',");
@@ -44,8 +46,10 @@ namespace DAL
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update tb_family set ");
             strSql.Append("employeeid='" + model.employeeid + "',");
+            strSql.Append("name='" + model.name + "',");
             strSql.Append("relation='" + model.relation + "',");
             strSql.Append("birth='" + model.birth + "',");
+            strSql.Append("tel='" + model.tel + "',");
             strSql.Append("unit='" + model.unit + "',");
             strSql.Append("status='" + model.status + "',");
             strSql.Append("situation='" + model.situation + "',");

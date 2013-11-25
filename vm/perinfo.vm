@@ -120,7 +120,9 @@
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>关系</th>
+	  <th>姓名</th>
       <th>出生年月</th>
+	  <th>电话</th>
       <td>工作单位</td>
       <td>政治面貌</td>
       <td>现在情况</td>
@@ -129,7 +131,9 @@
     #foreach( $one in $family )
    <tr>
       <td>$!{one.relation}</td>
+	  <td>$!{one.name}</td>
       <td>$!{one.birth}</td>
+	  <td>$!{one.tel}</td>
       <td>$!{one.unit}</td>
       <td>$!{one.status}</td>
       <td>$!{one.situation}</td>

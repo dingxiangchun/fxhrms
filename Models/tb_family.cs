@@ -14,8 +14,10 @@ namespace Models
         #region Model
         private int _id;
         private string _employeeid;
+        private string _name;
         private string _relation;
         private string _birth;
+        private string _tel;
         private string _unit;
         private string _status;
         private string _situation;
@@ -36,6 +38,12 @@ namespace Models
             set { _employeeid = value; }
             get { return _employeeid; }
         }
+
+        public string name
+        {
+            set { _name = value; }
+            get { return _name; }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -51,6 +59,12 @@ namespace Models
         {
             set { _birth = value; }
             get { return _birth; }
+        }
+
+        public string tel
+        {
+            set { _tel = value; }
+            get { return _tel; }
         }
         /// <summary>
         /// 
