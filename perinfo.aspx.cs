@@ -427,7 +427,7 @@ public partial class perinfo : System.Web.UI.Page
 
             for (int i = 0; i < idlist.Length; i++)
             {
-                modelReg.employeeid = employeeid;
+                modelReward.employeeid = employeeid;
                 modelReward.type = typelist[i];
                 modelReward.time = timelist[i];
                 modelReward.content = contentlist[i];
@@ -462,7 +462,7 @@ public partial class perinfo : System.Web.UI.Page
             string[] contentlist = Request.Form.GetValues("content[]");
             for (int i = 0; i < idlist.Length; i++)
             {
-                modelReg.employeeid = employeeid;
+                modelWork.employeeid = employeeid;
 
                 modelWork.attacktime = attacktimelist[i];
                 modelWork.quittime = quittimelist[i];
@@ -499,7 +499,7 @@ public partial class perinfo : System.Web.UI.Page
 
             for (int i = 0; i < idlist.Length; i++)
             {
-                modelReg.employeeid = employeeid;
+                modelHoliday.employeeid = employeeid;
                 modelHoliday.holiday = holidaylist[i];
                 if (dayslist[i] == "")
                 {

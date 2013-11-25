@@ -43,13 +43,13 @@ namespace DAL
             strSql.Append("update tb_holidayrecords set ");
             strSql.Append("employeeid='" + model.employeeid + "',");
             strSql.Append("holiday='" + model.holiday + "',");
-            strSql.Append("days=" + model.holiday + ",");
+            strSql.Append("days=" + model.days + ",");
             strSql.Append("reason='" + model.reason + "',");
             strSql.Append("audit='" + model.audit + "',");
             strSql.Append("begintime='" + model.begintime + "',");
             strSql.Append("Endtime='" + model.Endtime + "',");
             strSql.Append("days1=" + model.days1 + ",");
-            strSql.Append("remark='" + model.remark + "',");
+            strSql.Append("remark='" + model.remark + "'");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
