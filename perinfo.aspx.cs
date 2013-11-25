@@ -201,7 +201,7 @@ public partial class perinfo : System.Web.UI.Page
         try
         {
                 model.id = int.Parse(Request["id"].ToString());
-                model.name = Request["Name"];
+                model.Name = Request["Name"];
                 model.Employeeid = Request["Employeeid"];
                 model.Sex = Request["Sex"];
                 model.Nation = Request["Nation"];
@@ -247,7 +247,7 @@ public partial class perinfo : System.Web.UI.Page
                 Response.End();
                 return;
             }
-            model.name = Request["Name"];
+            model.Name = Request["Name"];
             model.Employeeid = Request["Employeeid"];
             model.Sex = Request["Sex"];
             model.Nation = Request["Nation"];

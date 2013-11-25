@@ -13,7 +13,7 @@ namespace Models
         { }
         #region Model
         private int _id;
-        private string _name;
+        private string _Name;
         private string _Employeeid;
         private string _Sex;
         private string _Nation;
@@ -62,8 +62,8 @@ namespace Models
         /// </summary>
         public string Name
         {
-            set { _name = value; }
-            get { return _name; }
+            set { _Name = value; }
+            get { return _Name; }
         }
         /// <summary>
         /// 性别
