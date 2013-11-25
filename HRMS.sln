@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Hrms", ".", "{2FF8F8A2-C78B-4F19-88B3-19EA43E99932}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "fxhrms", "..\fxhrms", "{2FF8F8A2-C78B-4F19-88B3-19EA43E99932}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/HRMS"
@@ -19,6 +19,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Hrms", ".", "{2FF8F8A2-C78B
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "55873"
+		VWDVirtualPath = "/"
 	EndProjectSection
 EndProject
 Global

@@ -7,13 +7,13 @@
 
 
 <div class="quick-link">
-  <button type="button" class="btn btn-default" rel="basic">基本信息</button>
-  <button type="button" class="btn btn-default" rel="study">学习经历</button>
-  <button type="button" class="btn btn-default" rel="family">家庭成员</button>
-  <button type="button" class="btn btn-default" rel="register">证书及奖励</button>
-  <button type="button" class="btn btn-default" rel="reward">奖惩记录</button>
-  <button type="button" class="btn btn-default" rel="work">工作经历</button>
-  <button type="button" class="btn btn-default" rel="holiday">休假记录</button>
+  <a type="button" class="btn btn-default" rel="basic" href="#basic">基本信息</a>
+  <a type="button" class="btn btn-default" rel="study" href="#study">学习经历</a>
+  <a type="button" class="btn btn-default" rel="family" href="#family">家庭成员</a>
+  <a type="button" class="btn btn-default" rel="register" href="#register">证书及奖励</a>
+  <a type="button" class="btn btn-default" rel="reward" href="#reward">奖惩记录</a>
+  <a type="button" class="btn btn-default" rel="work" href="#work">工作经历</a>
+  <a type="button" class="btn btn-default" rel="holiday" href="#holiday">休假记录</a>
 </div>
 
 <div id="info-basic" class="info-block">
@@ -210,6 +210,7 @@
       <td>专业</td>
       <td>描述</td>
     </tr>
+    #if($learn.count > 0)
     #foreach ($one in $learn)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.degree}" name="degree[]" class="form-control"></td>
@@ -220,7 +221,18 @@
       <td><input type="text" value="$!{one.profession}" name="profession[]" class="form-control"></td>
       <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
     </tr>
-  #end
+    #end
+    #else
+    <tr>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="degree[]" class="form-control"></td>
+      <td><input type="text" value="" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
+      <td><input type="text" value="" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
+      <td><input type="text" value="" name="graduatesch[]" class="form-control"></td>
+      <td><input type="text" value="" name="retence[]" class="form-control"></td>
+      <td><input type="text" value="" name="profession[]" class="form-control"></td>
+      <td><input type="text" value="" name="content[]" class="form-control"></td>
+    </tr>
+    #end
   </table>
   <input type="hidden" name="id" value="$!{list.id}">
   <input type="hidden" name="type" value="study">
@@ -244,6 +256,7 @@
       <td>现在情况</td>
       <td>备注</td>
     </tr>
+  #if($family.count > 0)
   #foreach ($one in $family)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.relation}" name="relation[]" class="form-control"></td>
@@ -256,6 +269,20 @@
       <td><input type="text" value="$!{one.status}" name="status[]" class="form-control"></td>
       <td><input type="text" value="$!{one.situation}" name="situation[]" class="form-control"></td>
       <td><input type="text" value="$!{one.remark}" name="remark[]" class="form-control"></td>
+    </tr>
+  #end
+  #else
+  <tr>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="relation[]" class="form-control"></td>
+      <td><input type="text" value="" name="name[]" class="form-control"></td>
+    <td>
+        <input type="text" value="" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
+      </td>
+    <td><input type="text" value="" name="tel[]" class="form-control"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="status[]" class="form-control"></td>
+      <td><input type="text" value="" name="situation[]" class="form-control"></td>
+      <td><input type="text" value="" name="remark[]" class="form-control"></td>
     </tr>
   #end
   </table>
@@ -281,6 +308,7 @@
       <td>图片</td>
       <td>证书描述</td>
     </tr>
+    #if($register.count > 0)
     #foreach ($one in $register)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.cer_name}" name="cer_name[]" class="form-control"></td>
@@ -289,6 +317,23 @@
       <td><input type="text" value="$!{one.issuingtime}" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
       <td><input type="text" value="$!{one.Class}" name="Class[]" class="form-control"></td>
+      <td>
+        #if($!{one.photo})
+        <a href="$!{one.photo}" target="_blank" class="view-file">查看</a>
+        #end
+        <input type="file" value="" name="photo[]">
+      </td>
+      <td><input type="text" value="$!{one.description}" name="description[]" class="form-control"></td>
+    </tr>
+    #end
+    #else
+    <tr>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="cer_name[]" class="form-control"></td>
+      <td><input type="text" value="" name="type[]" class="form-control"></td>
+      <td><input type="text" value="" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="Class[]" class="form-control"></td>
       <td>
         #if($!{one.photo})
         <a href="$!{one.photo}" target="_blank" class="view-file">查看</a>
@@ -322,6 +367,7 @@
       <td>描述</td>
       <td>相关文件</td>
     </tr>
+    #if($reward.count > 0)
     #foreach ($one in $reward)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.type}" name="type[]" class="form-control"></td>
@@ -332,6 +378,24 @@
       <td><input type="text" value="$!{one.Class}" name="Class[]" class="form-control"></td>
       <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
       <td><input type="text" value="$!{one.description}" name="description[]" class="form-control"></td>
+      <td>
+        #if($!{one.File})
+        <a href="$!{one.File}" target="_blank" class="view-file">查看</a>
+        #end
+        <input type="file" value="" name="File[]">
+      </td>
+    </tr>
+    #end
+    #else
+    <tr>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="type[]" class="form-control"></td>
+      <td><input type="text" value="" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="content[]" class="form-control"></td>
+      <td><input type="text" value="" name="department[]" class="form-control"></td>
+      <td><input type="text" value="" name="audit[]" class="form-control"></td>
+      <td><input type="text" value="" name="Class[]" class="form-control"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="description[]" class="form-control"></td>
       <td>
         #if($!{one.File})
         <a href="$!{one.File}" target="_blank" class="view-file">查看</a>
@@ -361,6 +425,7 @@
       <td>离职原因</td>
       <td>工作内容</td>
     </tr>
+    #if($work.count > 0)
     #foreach ($one in $work)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.attacktime}" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
@@ -369,6 +434,16 @@
       <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
       <td><input type="text" value="$!{one.reason}" name="reason[]" class="form-control"></td>
       <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
+    </tr>
+    #end
+    #else
+    <tr>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="position[]" class="form-control"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="reason[]" class="form-control"></td>
+      <td><input type="text" value="" name="content[]" class="form-control"></td>
     </tr>
     #end
   </table>
@@ -394,6 +469,7 @@
       <td>实休天数</td>
       <td>备注</td>
     </tr>
+    #if($holiday.count > 0)
      #foreach ($one in $holiday)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.holiday}" name="holiday[]" class="form-control"></td>
@@ -404,6 +480,18 @@
       <td><input type="text" value="$!{one.Endtime}"class="form-control date-picker" name="Endtime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.days1}" name="days1[]" class="form-control"></td>
       <td><input type="text" value="$!{one.remark}" name="remark[]" class="form-control"></td>
+    </tr>
+    #end
+    #else
+    <tr>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="holiday[]" class="form-control"></td>
+      <td><input type="text" value="" name="days[]" class="form-control"></td>
+      <td><input type="text" value="" name="reason[]" class="form-control"></td>
+      <td><input type="text" value="" name="audit[]" class="form-control"></td>
+      <td><input type="text" value=""class="form-control date-picker" name="begintime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value=""class="form-control date-picker" name="Endtime[]" data-date-format="yyyy-mm-dd"></td>
+      <td><input type="text" value="" name="days1[]" class="form-control"></td>
+      <td><input type="text" value="" name="remark[]" class="form-control"></td>
     </tr>
     #end
   </table>
