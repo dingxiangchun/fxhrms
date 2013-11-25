@@ -246,7 +246,7 @@
     </tr>
   #foreach ($one in $family)
    <tr>
-      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.id}" name="relation[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.relation}" name="relation[]" class="form-control"></td>
       <td><input type="text" value="$!{one.name}" name="name[]" class="form-control"></td>
 	  <td>
         <input type="text" value="$!{one.birth}" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">

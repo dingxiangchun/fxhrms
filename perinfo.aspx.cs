@@ -241,12 +241,6 @@ public partial class perinfo : System.Web.UI.Page
     {
         if (Request["type"] == "basic")
         {
-            if (dal.Exists(Request["Employeeid"]))
-            {
-                Response.Write("{\"status\":Employeeid Exist!}");
-                Response.End();
-                return;
-            }
             model.Name = Request["Name"];
             model.Employeeid = Request["Employeeid"];
             model.Sex = Request["Sex"];
@@ -280,7 +274,15 @@ public partial class perinfo : System.Web.UI.Page
             }
 
             if (Request["id"] == "")
+            {
+                if (dal.Exists(Request["Employeeid"]))
+                {
+                    Response.Write("{\"status\":Employeeid Exist!}");
+                    Response.End();
+                    return;
+                }
                 dal.Add(model);
+            }
             else
                 dal.Update(model);
             
@@ -297,8 +299,9 @@ public partial class perinfo : System.Web.UI.Page
         }
         else if (Request["type"] == "study")
         {
+            string employeeid = Request["id"];
             string[] idlist = Request.Form.GetValues("iid[]");
-            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+           // string[] list = Request.Form.GetValues("employeeid[]");
             string[] degreelist = Request.Form.GetValues("degree[]");
             string[] starttimelist = Request.Form.GetValues("starttime[]");
             string[] graduatetimelist = Request.Form.GetValues("graduatetime[]");
@@ -309,14 +312,8 @@ public partial class perinfo : System.Web.UI.Page
 
             for (int i = 0; i < idlist.Length; i++)
             {
-                if (employeeidlist == null)
-                {
-                    modelLearn.employeeid = "";
-                }
-                else
-                {
-                    modelLearn.employeeid = employeeidlist[i];
-                }
+                modelLearn.employeeid = employeeid;
+
                 modelLearn.degree = degreelist[i];
                 modelLearn.starttime = starttimelist[i];
                 modelLearn.graduatetime = graduatetimelist[i];
@@ -334,11 +331,13 @@ public partial class perinfo : System.Web.UI.Page
                     dalLearn.Update(modelLearn);
                 }
             }
+            Add(employeeid);
         }
         else if (Request["type"] == "family")
         {
+            string employeeid = Request["id"];
             string[] idlist = Request.Form.GetValues("iid[]");
-            string[] employeeidlist = Request.Form.GetValues("employeeid[]");
+            //string[] employeeidlist = Request.Form.GetValues("employeeid[]");
             string[] namelist = Request.Form.GetValues("name[]");
             string[] relationlist = Request.Form.GetValues("relation[]");
             string[] birthlist = Request.Form.GetValues("birth[]");
@@ -350,14 +349,7 @@ public partial class perinfo : System.Web.UI.Page
 
             for (int i = 0; i < idlist.Length; i++)
             {
-                if (employeeidlist == null || employeeidlist[i] == null)
-                {
-                    modelFamily.employeeid = "";
-                }
-                else
-                {
-                    modelFamily.employeeid = employeeidlist[i];
-                }
+                modelFamily.employeeid = employeeid;
                 modelFamily.name = namelist[i];
                 modelFamily.relation = relationlist[i];
                 modelFamily.birth = birthlist[i];
@@ -376,10 +368,11 @@ public partial class perinfo : System.Web.UI.Page
                     dalFamily.Update(modelFamily);
                 }
             }
+            Add(employeeid);
         }
         else if (Request["type"] == "register")
         {
-
+            string employeeid = Request["id"];
             string[] idlist = Request.Form.GetValues("iid[]");
             string[] employeeidlist = Request.Form.GetValues("employeeid[]");
             string[] typelist = Request.Form.GetValues("type[]");
@@ -394,21 +387,14 @@ public partial class perinfo : System.Web.UI.Page
 
             for (int i = 0; i < idlist.Length; i++)
             {
-                if (employeeidlist == null || employeeidlist[i] == null)
-                {
-                    modelReg.employeeid = "";
-                }
-                else
-                {
-                    modelReg.employeeid = employeeidlist[i];
-                }
+                modelReg.employeeid = employeeid;
                 modelReg.type = typelist[i];
                 modelReg.cer_name = cer_namelist[i];
                 modelReg.accesstime = accesstimelist[i];
                 modelReg.issuingtime = issuingtimelist[i];
                 modelReg.unit = unitlist[i];
                 modelReg.Class = Classlist[i];
-                modelReg.photo = SavePhoto(FileColl[FileColl.AllKeys[i]]);
+                modelReg.photo = SavePhoto(FileColl[i]);
 
                 modelReg.description = descriptionlist[i];
                 if (idlist[i] == "")
@@ -421,11 +407,11 @@ public partial class perinfo : System.Web.UI.Page
                     dalReg.Update(modelReg);
                 }
             }
-
+            Add(employeeid);
         }
         else if (Request["type"] == "reward")
         {
-
+            string employeeid = Request["id"];
             string[] idlist = Request.Form.GetValues("iid[]");
             string[] employeeidlist = Request.Form.GetValues("employeeid[]");
             string[] typelist = Request.Form.GetValues("type[]");
@@ -441,14 +427,7 @@ public partial class perinfo : System.Web.UI.Page
 
             for (int i = 0; i < idlist.Length; i++)
             {
-                if (employeeidlist == null || employeeidlist[i] == null)
-                {
-                    modelReward.employeeid = "";
-                }
-                else
-                {
-                    modelReward.employeeid = employeeidlist[i];
-                }
+                modelReg.employeeid = employeeid;
                 modelReward.type = typelist[i];
                 modelReward.time = timelist[i];
                 modelReward.content = contentlist[i];
@@ -457,7 +436,7 @@ public partial class perinfo : System.Web.UI.Page
                 modelReward.Class = Classlist[i];
                 modelReward.unit = unitlist[i];
                 modelReward.description = descriptionlist[i];
-                modelReward.File = SavePhoto(FileColl[FileColl.AllKeys[i]]);
+                modelReward.File = SavePhoto(FileColl[i]);
                 if (idlist[i] == "")
                 {
                     dalReward.Add(modelReward);
@@ -468,9 +447,11 @@ public partial class perinfo : System.Web.UI.Page
                     dalReward.Update(modelReward);
                 }
             }
+            Add(employeeid);
         }
         else if (Request["type"] == "work")
         {
+            string employeeid = Request["id"];
             string[] idlist = Request.Form.GetValues("iid[]");
             string[] employeeidlist = Request.Form.GetValues("employeeid[]");
             string[] attacktimelist = Request.Form.GetValues("attacktime[]");
@@ -481,14 +462,7 @@ public partial class perinfo : System.Web.UI.Page
             string[] contentlist = Request.Form.GetValues("content[]");
             for (int i = 0; i < idlist.Length; i++)
             {
-                if (employeeidlist == null || employeeidlist[i] == null)
-                {
-                    modelReward.employeeid = "";
-                }
-                else
-                {
-                    modelReward.employeeid = employeeidlist[i];
-                }
+                modelReg.employeeid = employeeid;
 
                 modelWork.attacktime = attacktimelist[i];
                 modelWork.quittime = quittimelist[i];
@@ -507,10 +481,11 @@ public partial class perinfo : System.Web.UI.Page
                     dalWork.Update(modelWork);
                 }
             }
+            Add(employeeid);
         }
         else if (Request["type"] == "holiday")
         {
-
+            string employeeid = Request["id"];
             string[] idlist = Request.Form.GetValues("iid[]");
             string[] employeeidlist = Request.Form.GetValues("employeeid[]");
             string[] holidaylist = Request.Form.GetValues("holiday[]");
@@ -524,14 +499,7 @@ public partial class perinfo : System.Web.UI.Page
 
             for (int i = 0; i < idlist.Length; i++)
             {
-                if (employeeidlist == null || employeeidlist[i] == null)
-                {
-                    modelHoliday.employeeid = "";
-                }
-                else
-                {
-                    modelHoliday.employeeid = employeeidlist[i];
-                }
+                modelReg.employeeid = employeeid;
                 modelHoliday.holiday = holidaylist[i];
                 if (dayslist[i] == "")
                 {
@@ -566,6 +534,7 @@ public partial class perinfo : System.Web.UI.Page
                     dalHoliday.Update(modelHoliday);
                 }
             }
+            Add(employeeid);
         }
     }
 
@@ -574,7 +543,7 @@ public partial class perinfo : System.Web.UI.Page
         string webUrl = "";
         try
         {
-            if (PhotoFile != null)
+            if (PhotoFile != null&&PhotoFile.ContentLength>0)
             {
                 DateTime now = DateTime.Now;
                 string filename = now.ToFileTimeUtc().ToString()+System.IO.Path.GetExtension(PhotoFile.FileName);
