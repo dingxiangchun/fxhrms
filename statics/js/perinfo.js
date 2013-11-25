@@ -1,18 +1,22 @@
 var pageUrl = util.getUrl();
 var hash = document.location.hash.replace("#","") || "basic";
 
-$(".quick-link button").on("click",function(){
+$(".quick-link a").on("click",function(){
 	var rel = "#info-" + $(this).attr("rel")
 	$(".info-block").hide();
 	$(rel).show();
 	$(this).addClass("btn-info").removeClass("btn-default").siblings().removeClass("btn-info").addClass("btn-default")
 });
 
-$(".quick-link button[rel="+hash+"]").trigger("click");
+$(".quick-link a[rel="+hash+"]").trigger("click");
 
-$('.date-picker').datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
+function dateInit(that){
+$('.date-picker',that).datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
 
-$('.date-picker-month').datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"month","startView":'year'});
+$('.date-picker-month',that).datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"month","startView":'year'});
+
+}
+dateInit(document);
 
 // 身份证
 $("input[name=Idcard]").on("blur",function(){
@@ -86,7 +90,7 @@ $(".add-new").on("click",function(){
 	$target.find("input").val("");
 	$target.find(".view-file").remove();
 	$form.find("table").append($target);
-
+	dateInit($target);
 });
 
 // 工龄计算
