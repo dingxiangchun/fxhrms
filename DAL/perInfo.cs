@@ -78,7 +78,7 @@ namespace DAL
             strSql.Append("Jobtime='" + model.Jobtime + "',");
             strSql.Append("financetime='" + model.financetime + "',");
             strSql.Append("fulltime_educ='" + model.fulltime_educ + "',");
-            strSql.Append("fulltime_sch=" + model.fulltime_sch + ",");
+            strSql.Append("fulltime_sch='" + model.fulltime_sch + "',");
             strSql.Append("Major='" + model.Major + "',");
             strSql.Append("Married='" + model.Married + "',");
             strSql.Append("Town='" + model.Town + "',");
