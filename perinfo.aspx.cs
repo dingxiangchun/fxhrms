@@ -331,7 +331,8 @@ public partial class perinfo : System.Web.UI.Page
                     dalLearn.Update(modelLearn);
                 }
             }
-            Add(employeeid);
+            Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#study", false);
+           // Add(employeeid);
         }
         else if (Request["type"] == "family")
         {
@@ -368,7 +369,8 @@ public partial class perinfo : System.Web.UI.Page
                     dalFamily.Update(modelFamily);
                 }
             }
-            Add(employeeid);
+            Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#family", false);
+           // Add(employeeid);
         }
         else if (Request["type"] == "register")
         {
@@ -407,7 +409,8 @@ public partial class perinfo : System.Web.UI.Page
                     dalReg.Update(modelReg);
                 }
             }
-            Add(employeeid);
+            Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#register", false);
+           // Add(employeeid);
         }
         else if (Request["type"] == "reward")
         {
@@ -447,7 +450,8 @@ public partial class perinfo : System.Web.UI.Page
                     dalReward.Update(modelReward);
                 }
             }
-            Add(employeeid);
+            Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#reward", false);
+            //Add(employeeid);
         }
         else if (Request["type"] == "work")
         {
@@ -481,7 +485,8 @@ public partial class perinfo : System.Web.UI.Page
                     dalWork.Update(modelWork);
                 }
             }
-            Add(employeeid);
+            Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#work", false);
+            //Add(employeeid);
         }
         else if (Request["type"] == "holiday")
         {
@@ -534,7 +539,8 @@ public partial class perinfo : System.Web.UI.Page
                     dalHoliday.Update(modelHoliday);
                 }
             }
-            Add(employeeid);
+            Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#holiday", false);
+           // Add(employeeid);
         }
     }
 
