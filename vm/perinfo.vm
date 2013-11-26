@@ -3,13 +3,13 @@
 <div id="content">
 
 <div class="quick-link">
-  <button type="button" class="btn btn-default" rel="basic">基本信息</button>
-  <button type="button" class="btn btn-default" rel="study">学习经历</button>
-  <button type="button" class="btn btn-default" rel="family">家庭成员</button>
-  <button type="button" class="btn btn-default" rel="register">证书及奖励</button>
-  <button type="button" class="btn btn-default" rel="reward">奖惩记录</button>
-  <button type="button" class="btn btn-default" rel="work">工作经历</button>
-  <button type="button" class="btn btn-default" rel="holiday">休假记录</button>
+  <a type="button" class="btn btn-default" rel="basic">基本信息</a>
+  <a type="button" class="btn btn-default" rel="study">学习经历</a>
+  <a type="button" class="btn btn-default" rel="family">家庭成员</a>
+  <a type="button" class="btn btn-default" rel="register">证书及奖励</a>
+  <a type="button" class="btn btn-default" rel="reward">奖惩记录</a>
+  <a type="button" class="btn btn-default" rel="work">工作经历</a>
+  <a type="button" class="btn btn-default" rel="holiday">休假记录</a>
 </div>
 
 <div id="info-basic" class="info-block">
@@ -36,7 +36,9 @@
           <td>$!{list.Idcard}</td>
           <td>$!{list.Birth}</td>
           <td>$!{list.Position}</td>
-          <td colspan="2">$!{list.Unit}</td>
+          <td colspan="2">
+            $!{branch.branchName}
+          </td>
           <td>$!{list.Class}</td>
   			</tr>
         <tr class="warning">

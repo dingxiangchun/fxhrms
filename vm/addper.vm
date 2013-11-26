@@ -39,8 +39,8 @@
           <th>员工类型</th>
         </tr>
         <tr>
-          <td><input type="text" value="$!{list.name}" name="Name" class="form-control"></td>
-          <td><input type="text" value="$!{list.Employeeid}" name="Employeeid" class="form-control"></td>
+          <td><input type="text" value="$!{list.name}" name="Name" class="form-control" data-required="true"></td>
+          <td><input type="text" value="$!{list.Employeeid}" name="Employeeid" class="form-control" data-required="true"></td>
           <td>
             <select name="Sex" class="form-control" data-value="$!{list.Sex}">
               <option value="男">男</option>
@@ -64,7 +64,10 @@
               #end
             </select>
           </td>
-          <td colspan="2"><input type="text" value="$!{list.Unit}" name="Unit" class="form-control"></td>
+          <td colspan="2">
+            $!{branch.branchName}
+            <input type="hidden" value="$!{branch.id}" name="UnitID" class="form-control">
+          </td>
           <td>
             <select name="Class" class="form-control" data-value="$!{list.Class}">
               #foreach ($one in $pertypeList)
@@ -199,38 +202,46 @@
   
 <div id="info-study" class="info-block">
   <h3>员工学习经历</h3>
+  <p class="require-tip">*必须填写，否则保存无效</p>
   <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
-      <th>等级</th>
-      <th>入学时间</th>
+      <th>*等级</th>
+      <td>入学时间</td>
       <td>毕业时间</td>
       <td>毕业院校</td>
       <td>证明人</td>
       <td>专业</td>
       <td>描述</td>
+      <td></td>
     </tr>
     #if($learn.count > 0)
     #foreach ($one in $learn)
    <tr>
-      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.degree}" name="degree[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.degree}" name="degree[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="$!{one.starttime}" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="$!{one.graduatetime}" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="$!{one.graduatesch}" name="graduatesch[]" class="form-control"></td>
       <td><input type="text" value="$!{one.retence}" name="retence[]" class="form-control"></td>
       <td><input type="text" value="$!{one.profession}" name="profession[]" class="form-control"></td>
       <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
     #else
     <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="degree[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="degree[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="" name="graduatesch[]" class="form-control"></td>
       <td><input type="text" value="" name="retence[]" class="form-control"></td>
       <td><input type="text" value="" name="profession[]" class="form-control"></td>
       <td><input type="text" value="" name="content[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
   </table>
@@ -245,22 +256,24 @@
 <div id="info-family" class="info-block">
   <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <h3>员工家庭成员</h3>
+  <p class="require-tip">*必须填写，否则保存无效</p>
   <table class="table table-bordered table-hover">
     <tr class="warning">
-      <th>关系</th>
-	  <th>姓名</th>
-      <th>出生年月</th>
-	  <th>电话</th>
+      <td>关系</td>
+	  <th>*姓名</th>
+      <td>出生年月</td>
+	  <td>电话</td>
       <td>工作单位</td>
       <td>政治面貌</td>
       <td>现在情况</td>
       <td>备注</td>
+      <td></td>
     </tr>
   #if($family.count > 0)
   #foreach ($one in $family)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.relation}" name="relation[]" class="form-control"></td>
-      <td><input type="text" value="$!{one.name}" name="name[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.name}" name="name[]" class="form-control" data-required="true"></td>
 	  <td>
         <input type="text" value="$!{one.birth}" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
       </td>
@@ -269,12 +282,15 @@
       <td><input type="text" value="$!{one.status}" name="status[]" class="form-control"></td>
       <td><input type="text" value="$!{one.situation}" name="situation[]" class="form-control"></td>
       <td><input type="text" value="$!{one.remark}" name="remark[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
   #end
   #else
   <tr>
       <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="relation[]" class="form-control"></td>
-      <td><input type="text" value="" name="name[]" class="form-control"></td>
+      <td><input type="text" value="" name="name[]" class="form-control" data-required="true"></td>
     <td>
         <input type="text" value="" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
       </td>
@@ -283,6 +299,9 @@
       <td><input type="text" value="" name="status[]" class="form-control"></td>
       <td><input type="text" value="" name="situation[]" class="form-control"></td>
       <td><input type="text" value="" name="remark[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
   #end
   </table>
@@ -296,22 +315,24 @@
 
 <div id="info-register" class="info-block">
   <h3>证书及奖励</h3>
+  <p class="require-tip">*必须填写，否则保存无效</p>
   <form action="perinfo.aspx" role="form" method="post" class="info-form" enctype="multipart/form-data">
   <table class="table table-bordered table-hover">
     <tr class="warning">
-      <th>证书名称</th>
-      <th>证书类型</th>
+      <th>*证书名称</th>
+      <td>证书类型</td>
       <td>取得时间</td>
       <td>发证时间</td>
       <td>颁发单位</td>
       <td>种类</td>
       <td>图片</td>
       <td>证书描述</td>
+      <td></td>
     </tr>
     #if($register.count > 0)
     #foreach ($one in $register)
    <tr>
-      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.cer_name}" name="cer_name[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.cer_name}" name="cer_name[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="$!{one.type}" name="type[]" class="form-control"></td>
       <td><input type="text" value="$!{one.accesstime}" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.issuingtime}" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
@@ -324,11 +345,14 @@
         <input type="file" value="" name="photo[]">
       </td>
       <td><input type="text" value="$!{one.description}" name="description[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
     #else
     <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="cer_name[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="cer_name[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="" name="type[]" class="form-control"></td>
       <td><input type="text" value="" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
@@ -341,6 +365,9 @@
         <input type="file" value="" name="photo[]">
       </td>
       <td><input type="text" value="$!{one.description}" name="description[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
   </table>
@@ -354,11 +381,12 @@
 
 <div id="info-reward" class="info-block">
   <h3>奖惩记录</h3>
+  <p class="require-tip">*必须填写，否则保存无效</p>
   <form action="perinfo.aspx" role="form" method="post" class="info-form" enctype="multipart/form-data">
   <table class="table table-bordered table-hover">
     <tr class="warning">
-      <th>奖罚种类</th>
-      <th>时间</th>
+      <th>*奖罚种类</th>
+      <td>时间</td>
       <td>内容</td>
       <td>部门</td>
       <td>审核人</td>
@@ -366,11 +394,12 @@
       <td>奖惩部门</td>
       <td>描述</td>
       <td>相关文件</td>
+      <td></td>
     </tr>
     #if($reward.count > 0)
     #foreach ($one in $reward)
    <tr>
-      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.type}" name="type[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.type}" name="type[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="$!{one.time}" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
       <td><input type="text" value="$!{one.department}" name="department[]" class="form-control"></td>
@@ -384,11 +413,14 @@
         #end
         <input type="file" value="" name="File[]">
       </td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
     #else
     <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="type[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="type[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" name="content[]" class="form-control"></td>
       <td><input type="text" value="" name="department[]" class="form-control"></td>
@@ -401,6 +433,9 @@
         <a href="$!{one.File}" target="_blank" class="view-file">查看</a>
         #end
         <input type="file" value="" name="File[]">
+      </td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
       </td>
     </tr>
     #end
@@ -415,15 +450,17 @@
 
 <div id="info-work" class="info-block">
   <h3>工作经历</h3>
+  <p class="require-tip">*必须填写，否则保存无效</p>
   <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
-      <th>工作开始时间</th>
-      <th>工作离职时间</th>
+      <td>工作开始时间</td>
+      <td>工作离职时间</td>
       <td>岗位</td>
-      <td>工作单位</td>
+      <th>*工作单位</th>
       <td>离职原因</td>
       <td>工作内容</td>
+      <td></td>
     </tr>
     #if($work.count > 0)
     #foreach ($one in $work)
@@ -431,9 +468,12 @@
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.attacktime}" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.quittime}" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.position}" name="position[]" class="form-control"></td>
-      <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="$!{one.reason}" name="reason[]" class="form-control"></td>
       <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
     #else
@@ -441,9 +481,12 @@
       <td><input type="hidden" name="iid[]" value=""><input type="text" value="" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" name="position[]" class="form-control"></td>
-      <td><input type="text" value="" name="unit[]" class="form-control"></td>
+      <td><input type="text" value="" name="unit[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="" name="reason[]" class="form-control"></td>
       <td><input type="text" value="" name="content[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
   </table>
@@ -457,41 +500,49 @@
 
 <div id="info-holiday" class="info-block">
   <h3>休假记录</h3>
+  <p class="require-tip">*必须填写，否则保存无效</p>
  <form action="perinfo.aspx" role="form" method="post" class="info-form">
   <table class="table table-bordered table-hover">
     <tr class="warning">
-      <th>休假名称</th>
-      <th>休假天数</th>
+      <td>休假名称</td>
+      <th>*休假天数</th>
       <td>休假原因</td>
       <td>批准人</td>
       <td>休假开始时间</td>
       <td>休假结束时间</td>
       <td>实休天数</td>
       <td>备注</td>
+      <td></td>
     </tr>
     #if($holiday.count > 0)
      #foreach ($one in $holiday)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.holiday}" name="holiday[]" class="form-control"></td>
-      <td><input type="text" value="$!{one.days}" name="days[]" class="form-control"></td>
+      <td><input type="text" value="$!{one.days}" name="days[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="$!{one.reason}" name="reason[]" class="form-control"></td>
       <td><input type="text" value="$!{one.audit}" name="audit[]" class="form-control"></td>
       <td><input type="text" value="$!{one.begintime}"class="form-control date-picker" name="begintime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.Endtime}"class="form-control date-picker" name="Endtime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.days1}" name="days1[]" class="form-control"></td>
       <td><input type="text" value="$!{one.remark}" name="remark[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
     #else
     <tr>
       <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="holiday[]" class="form-control"></td>
-      <td><input type="text" value="" name="days[]" class="form-control"></td>
+      <td><input type="text" value="" name="days[]" class="form-control" data-required="true"></td>
       <td><input type="text" value="" name="reason[]" class="form-control"></td>
       <td><input type="text" value="" name="audit[]" class="form-control"></td>
       <td><input type="text" value=""class="form-control date-picker" name="begintime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value=""class="form-control date-picker" name="Endtime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" name="days1[]" class="form-control"></td>
       <td><input type="text" value="" name="remark[]" class="form-control"></td>
+      <td>
+        <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
+      </td>
     </tr>
     #end
   </table>

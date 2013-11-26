@@ -2,7 +2,7 @@ var pageUrl = util.getUrl();
 var hash = document.location.hash.replace("#","") || "basic";
 
 $(".quick-link a").on("click",function(){
-	var rel = "#info-" + $(this).attr("rel")
+	var rel = "#info-" + $(this).attr("rel");
 	$(".info-block").hide();
 	$(rel).show();
 	$(this).addClass("btn-info").removeClass("btn-default").siblings().removeClass("btn-info").addClass("btn-default")
@@ -101,4 +101,43 @@ $(".cal-age").each(function(){
 		year = rel.split("-")[0];
 		$(this).text( new Date().getFullYear() - year +"年")
 	}
+});
+
+// form
+$("form").submit(function(){
+	var req = $(this).find("[data-required]").filter(function(){
+		if($(this).val() === '') return true;
+	});
+	if(req.length){
+		alert("请填写完整信息再保存。")
+		return false;
+	}
+});
+$("body").on("click",".del-item",function(){
+	var $tr = $(this).closest("tr"),
+		iid = $tr.find("input[name=iid]").val();
+	if(!!iid){
+		var param = {
+			action:"del",
+			type: hash,
+			id:iid
+		}
+		$.post("perinfo",function( res ){
+			res = $.parseJSON(res);
+			if( !!res.status ){
+				if( $tr.closest("table").find("tr").index($tr) > 1 ){
+					$tr.remove();
+				}else{
+					window.location.href = window.location.href;
+				}
+			}else{
+				util.error( res.errorMsg );
+			}
+		});
+	}else{
+		if( $tr.closest("table").find("tr").index($tr) > 1 ){
+			$tr.remove();
+		}
+	}
+	return false;
 })
