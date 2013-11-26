@@ -58,11 +58,11 @@ namespace DAL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public void Delete(int id)
+        public void Delete(string strwhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("delete tb_registerinfo ");
-            strSql.Append(" where id=" + id);
+            strSql.Append(" where " + strwhere);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
 

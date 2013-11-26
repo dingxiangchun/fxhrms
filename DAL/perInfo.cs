@@ -99,9 +99,9 @@ namespace DAL
             DbHelperSQL.ExecuteSql(strSql.ToString());
 
         }
-        public void Delete(int perid)
+        public void Delete(string strwhere)
         {
-            string strSql = "delete from tb_perInfo where id="+perid+"";
+            string strSql = "delete from tb_perInfo where "+strwhere;
             int cmdresult=DbHelperSQL.ExecuteSql(strSql);
         }
 

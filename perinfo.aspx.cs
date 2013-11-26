@@ -196,10 +196,49 @@ public partial class perinfo : System.Web.UI.Page
     {
         try
         {
+            if (Request["id"] == null)
+                return;
+
             int id = int.Parse(Request["id"].ToString());
-            dal.Delete(id);
-            Response.Write("{\"status\":true}");
-            Response.End();
+            if (Request["type"] == null || Request["type"] == "")
+            {
+                dal.Delete("id="+id);
+                dalFamily.Delete("employeeid="+id);
+                dalReg.Delete("employeeid=" + id);
+                dalLearn.Delete("employeeid="+id);
+                dalHoliday.Delete("employeeid="+id);
+                dalReward.Delete("employeeid="+id);
+                dalWork.Delete("employeeid="+id);
+            }
+            else
+            {
+                if (Request["type"] == "study")
+                {
+                    dalLearn.Delete("id=" + id);
+                }
+                else if (Request["type"] == "family")
+                {
+                    dalFamily.Delete("id=" + id);
+                }
+                else if (Request["type"] == "register")
+                {
+                    dalReg.Delete("id=" + id);
+                }
+                else if (Request["type"] == "reward")
+                {
+                    dalReward.Delete("id=" + id);
+                }
+                else if (Request["type"] == "work")
+                {
+                    dalWork.Delete("id=" + id);
+                }
+                else if (Request["type"] == "holiday")
+                {
+                    dalHoliday.Delete("id=" + id);
+                }
+                Response.Redirect("perinfo.aspx?action=add&id=" + id + "#" + Request["type"], false);
+            }
+
         }
         catch (System.Threading.ThreadAbortException ex)
         {

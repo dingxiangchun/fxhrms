@@ -46,11 +46,11 @@ namespace DAL
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
-        public void Delete(int id)
+        public void Delete(string strwhere)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("delete from tb_learninfo ");
-            strSql.Append(" where id=" + id);
+            strSql.Append(" where " + strwhere);
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
  
