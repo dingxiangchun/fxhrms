@@ -85,6 +85,8 @@ public partial class perinfo : System.Web.UI.Page
         else
         {
             string strwhere = "id=" + Request["id"];
+            string branchid = string.IsNullOrEmpty(Request["branchid"]) ? "0" : Request["branchid"];
+            string branchstr = "id=" + branchid;
 
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
@@ -95,6 +97,7 @@ public partial class perinfo : System.Web.UI.Page
             IList<tb_rewardinfo> reward = dalReward.GetListAll("employee" + strwhere);
             IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
             IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
+            IList<tb_branch> branchList = dalBranch.GetListAll( branchstr );
 
             IList<tb_Reserve> Reservelist = new List<tb_Reserve>();
             if (list.Count > 0)
@@ -119,6 +122,7 @@ public partial class perinfo : System.Web.UI.Page
             vh.Put("reward", reward);
             vh.Put("work", work);
             vh.Put("holiday", holiday);
+            vh.Put("branch", branchList[0]);
             vh.Display("perinfo.vm");
         }
         
@@ -130,9 +134,14 @@ public partial class perinfo : System.Web.UI.Page
         {
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
+            string branchid = string.IsNullOrEmpty(Request["branchid"]) ? "0" : Request["branchid"];
+            string branchstr = "id=" + branchid;
+
+            IList<tb_branch> branchList = dalBranch.GetListAll(branchstr);
             if (id != "" && id != null)
             {
                 string strwhere = "id=" + id;
+               
                 IList<tb_perInfo> list = dal.GetListAll(strwhere);
                 IList<tb_learninfo> learn = dalLearn.GetListAll("employee" + strwhere);
                 IList<tb_family> family = dalFamily.GetListAll("employee" + strwhere);
@@ -175,6 +184,7 @@ public partial class perinfo : System.Web.UI.Page
            vh.Put("ReserveList", ReserveList);
            vh.Put("positionList", positionList);
            vh.Put("pertypeList", pertypeList);
+           vh.Put("branch", branchList[0]);
            vh.Display("addper.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
@@ -284,7 +294,10 @@ public partial class perinfo : System.Web.UI.Page
                 dal.Add(model);
             }
             else
+            {
+                model.id = Convert.ToInt32(Request["id"]);
                 dal.Update(model);
+            }
             
             string strwhere = "Employeeid='"+Request["Employeeid"]+"'";
             IList<tb_perInfo> list = dal.GetListAll(strwhere);
