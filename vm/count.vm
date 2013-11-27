@@ -5,7 +5,7 @@
     #foreach ($one in $Position)
     <tr>
       <td>$!{one.CountName}</td>
-      <td>$!{one.Count}</td>
+      <td width="100">$!{one.Count}</td>
     </tr>
     #end
   </table>
@@ -15,7 +15,7 @@
     #foreach ($one in $branch)
     <tr>
       <td>$!{one.CountName}</td>
-      <td>$!{one.Count}</td>
+      <td width="100">$!{one.Count}</td>
     </tr>
     #end
   </table>
@@ -25,7 +25,7 @@
     #foreach ($one in $age)
     <tr>
       <td>$!{one.CountName}</td>
-      <td>$!{one.Count}</td>
+      <td width="100">$!{one.Count}</td>
     </tr>
     #end
   </table>
@@ -35,7 +35,7 @@
     #foreach ($one in $Status)
     <tr>
       <td>$!{one.CountName}</td>
-      <td>$!{one.Count}</td>
+      <td width="100">$!{one.Count}</td>
     </tr>
     #end
   </table>
@@ -45,7 +45,7 @@
     #foreach ($one in $edc)
     <tr>
       <td>$!{one.CountName}</td>
-      <td>$!{one.Count}</td>
+      <td width="100">$!{one.Count}</td>
     </tr>
     #end
   </table>
