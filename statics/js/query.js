@@ -9,4 +9,4 @@ $("nav").load( "addBranch.aspx?action=tree" );
 
 $('.date-picker').datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
 
-$('.date-picker-month').datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"month","startView":'year'});
+$('.date-picker-month').datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"year","startView":'year'});

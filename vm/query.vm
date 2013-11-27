@@ -2,7 +2,7 @@
 <nav></nav>
 <div id="content">
 <h2>人事资料查询</h2>
-<div class="pannel">
+<div class="pannel"> 
   <form action="" method="post" role="form" class="form-inline" id="query-form">
     <input type="hidden" name="UnitID" value="">
     <div class="row">
@@ -15,12 +15,12 @@
         <input type="text" class="form-control" name="Employeeid" />
       </div>
       <div class="form-group col-md-3">
-        <label>出生年月</label>
-        <input type="text" class="form-control date-picker" name="Birth" data-date-format="yyyy-mm-dd" value="">
+        <label>工龄/年</label>
+        <input type="text" class="form-control" name="age" value="">
       </div>
       <div class="form-group col-md-3">
-        <label>参加工作时间</label>
-        <input type="text" class="form-control date-picker" name="Jobtime" data-date-format="yyyy-mm-dd" value="">
+        <label>出生年月</label>
+        <input type="text" class="form-control date-picker" name="Birth" data-date-format="yyyy-mm-dd" value="">
       </div>
     </div>
     <br>
@@ -68,13 +68,6 @@
       </div>
     </div>
     <br>
-    <div class="row">
-       <div class="form-group col-md-3">
-        <label>工龄</label>
-        <input type="text" class="form-control" name="age" value="">
-      </div>
-    </div>
-    <br>
     <button type="submit" role="button" class="btn btn-warning">查询</button>
   </form>
 </div>
@@ -93,6 +86,8 @@
 
   </table>
 </div>
+<br>
+<a type="button" class="btn btn-primary" href="javascript:void(0)">导出Excel</a>
 </div>
 <script src="statics/js/datepicker.js"></script>
 <script src="statics/js/query.js"></script>

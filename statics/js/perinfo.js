@@ -13,7 +13,7 @@ $(".quick-link a[rel="+hash+"]").trigger("click");
 function dateInit(that){
 $('.date-picker',that).datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
 
-$('.date-picker-month',that).datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"month","startView":'year'});
+$('.date-picker-month',that).datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"year","startView":'year'});
 
 }
 dateInit(document);

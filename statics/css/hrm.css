@@ -495,8 +495,8 @@ nav {
 .info-block{display:none;}
 .require-tip{color:red;}
 .long-table{
-  overflow-x:auto;
+  overflow-x:scroll;
 }
-.long-table th,td{
+.long-table th,.long-table td{
   min-width: 100px;
 }
