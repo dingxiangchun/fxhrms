@@ -1,6 +1,6 @@
 #include("layout/header.vm")
 <div id="content">
-  #if($msg)
+  #if($msg && $msg != "")
     <div class="alert alert-success">$msg</div>
   #end
 <h2>账户管理</h2>
