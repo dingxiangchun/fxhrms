@@ -23,7 +23,7 @@ $(".auth-edit").on("click",function(){
 		param,callback;
 	param = {
 		"id": iid,
-		"action" : "upate",
+		"action" : "update",
 		"loginname": name,
 		"userprower": auth
 	};
