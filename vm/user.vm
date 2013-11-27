@@ -1,12 +1,10 @@
 #include("layout/header.vm")
 <div id="content">
-  #if($msg)
+  #if($msg && $msg != "")
     <div class="alert alert-success">$msg</div>
   #end
 <h2>账户管理</h2>
  <form action="" method="post" role="form" id="account-form">
-  <input type="hidden" name="id" value="">
-  <input type="hidden" name="userprower" value="">
   <div class="form-group">
       <label for="loginname">用户名</label>
       <input type="text" class="form-control" id="loginname" name="loginname">
