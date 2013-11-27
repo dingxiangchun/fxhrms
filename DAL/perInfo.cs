@@ -222,7 +222,7 @@ namespace DAL
                     strSql.Append("SELECT tb_perinfo.Status as CountName,COUNT(tb_perinfo.id) as Count from tb_perinfo  GROUP BY tb_perinfo.Status");
                     break;
                 case "age":
-                    strSql.Append("SELECT  COUNT(tb_perinfo.id) as Count,(YEAR(CURDATE())-YEAR(STR_TO_DATE(tb_perinfo.Birth,\"%Y-%m-%d\"))) - (RIGHT(CURDATE(),5)<RIGHT(tb_perinfo.Birth,5)) AS CountName  FROM tb_perinfo GROUP BY CountName");
+                    strSql.Append("SELECT  COUNT(tb_perinfo.id) as Count,concat((YEAR(CURDATE())-YEAR(STR_TO_DATE(tb_perinfo.Birth,\"%Y-%m-%d\"))) - (RIGHT(CURDATE(),5)<RIGHT(tb_perinfo.Birth,5)),'') AS CountName  FROM tb_perinfo GROUP BY CountName");
                     break;
 
             }
