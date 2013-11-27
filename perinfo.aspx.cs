@@ -298,6 +298,10 @@ public partial class perinfo : System.Web.UI.Page
             model.Nation = Request["Nation"];
             model.Birth = Request["Birth"];
             model.Idcard = Request["Idcard"];
+            if (Request["UnitID"] == null || Request["UnitID"] == "")
+                model.UnitID = 0;
+            else
+                model.UnitID = int.Parse(Request["UnitID"]);
             model.Unit = Request["Unit"];
             model.Position = Request["Position"];
             model.Rank = Request["Rank"];
