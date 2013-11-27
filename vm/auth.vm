@@ -1,0 +1,5 @@
+#include("layout/header.vm")
+<div id="content">
+<h2>权限管理</h2>
+</div>
+#include("layout/footer.vm")
