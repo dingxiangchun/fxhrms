@@ -25,12 +25,12 @@ public partial class perInfoCount : System.Web.UI.Page
             IList<tb_Count> edcCountlist = util.GetAll<tb_Count>(dal.GetCountList("edc"));
             IList<tb_Count> StatusCountlist = util.GetAll<tb_Count>(dal.GetCountList("Status"));
             IList<tb_Count> ageCountlist = util.GetAll<tb_Count>(dal.GetCountList("age"));
+            vh.Init();
             vh.Put("Position", PositionCountlist);
             vh.Put("branch", branchCountlist);
             vh.Put("edc", edcCountlist);
             vh.Put("Status", StatusCountlist);
             vh.Put("age", ageCountlist);
-            vh.Init();
             vh.Display("count.vm");
     }
     

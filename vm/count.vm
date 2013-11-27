@@ -2,50 +2,52 @@
 <div id="content">
 <h2>技术职务统计</h2>
   <table class="table table-bordered table-hover">
+    #foreach ($one in $Position)
     <tr>
-      <td>老总</td>
-      <td>123</td>
+      <td>$!{one.CountName}</td>
+      <td>$!{one.Count}</td>
     </tr>
+    #end
+  </table>
+
+  <h2>部门统计</h2>
+  <table class="table table-bordered table-hover">
+    #foreach ($one in $branch)
     <tr>
-      <td>经理</td>
-      <td>22</td>
+      <td>$!{one.CountName}</td>
+      <td>$!{one.Count}</td>
     </tr>
+    #end
   </table>
 
 <h2>工龄</h2>
   <table class="table table-bordered table-hover">
+    #foreach ($one in $age)
     <tr>
-      <td>老总</td>
-      <td>123</td>
+      <td>$!{one.CountName}</td>
+      <td>$!{one.Count}</td>
     </tr>
-    <tr>
-      <td>经理</td>
-      <td>22</td>
-    </tr>
+    #end
   </table>
 
 <h2>政治面貌</h2>
   <table class="table table-bordered table-hover">
+    #foreach ($one in $Status)
     <tr>
-      <td>老总</td>
-      <td>123</td>
+      <td>$!{one.CountName}</td>
+      <td>$!{one.Count}</td>
     </tr>
-    <tr>
-      <td>经理</td>
-      <td>22</td>
-    </tr>
+    #end
   </table>
 
 <h2>文化程度</h2>
   <table class="table table-bordered table-hover">
+    #foreach ($one in $edc)
     <tr>
-      <td>老总</td>
-      <td>123</td>
+      <td>$!{one.CountName}</td>
+      <td>$!{one.Count}</td>
     </tr>
-    <tr>
-      <td>经理</td>
-      <td>22</td>
-    </tr>
+    #end
   </table>
 
 </div>
