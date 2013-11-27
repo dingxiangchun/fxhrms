@@ -14,9 +14,11 @@ public partial class perInfoCount : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             vh.Display("count.vm");
     }
+    
 
 }
