@@ -23,6 +23,7 @@ $(".auth-edit").on("click",function(){
 		param,callback;
 	param = {
 		"id": iid,
+		"action" : "upate",
 		"loginname": name,
 		"userprower": auth
 	};
@@ -42,7 +43,8 @@ $(".auth-del").on("click",function(){
 		iid = $tr.find("input[name=id]").val(),
 		param,callback;
 	param = {
-		"id": iid
+		"id": iid,
+		"action" : "del"
 	};
 	callback = function(res){
 		res = $.parseJSON(res);
