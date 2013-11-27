@@ -11,12 +11,12 @@ using System.Web.UI.HtmlControls;
 using DAL;
 using Models;
 
-public partial class userset : System.Web.UI.Page
+public partial class auth : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         VelocityHelper vh = new VelocityHelper();
         vh.Init();
-        vh.Display("user.vm");
+        vh.Display("auth.vm");
     }
 }
