@@ -25,21 +25,18 @@
   </div>
   <br>
   <h4>员工基本信息</h4>
-  
   <table class="table table-bordered table-hover">
-        <tr class="warning">
-          <th>姓名</th>
-          <th>员工代号</th> 
-          <th>性别</th>
-          <th>民族</th>
-          <th>身份证号码</th>
-          <th>出生年月</th>
-          <th>工作岗位</th>
-          <th colspan="2">工作单位</th>
-          <th>员工类型</th>
-        </tr>
-        <tr>
-          <td><input type="text" value="$!{list.name}" name="Name" class="form-control" data-required="true"></td>
+    <tr class="warning">
+      <th>姓名</th>
+      <th>员工代号</th> 
+      <th>性别</th>
+      <th>民族</th>
+      <th>籍贯</th>
+      <th>身份证号码</th>
+      <th>出生年月</th>
+    </tr>
+    <tr>
+       <td><input type="text" value="$!{list.name}" name="Name" class="form-control" data-required="true"></td>
           <td><input type="text" value="$!{list.Employeeid}" name="Employeeid" class="form-control" data-required="true"></td>
           <td>
             <select name="Sex" class="form-control" data-value="$!{list.Sex}">
@@ -53,10 +50,55 @@
               <option value="少数民族">少数民族</option>
             </select>
           </td>
-          <td><input type="text" value="$!{list.Idcard}" name="Idcard" class="form-control"></td>
+        <td><input type="text" value="$!{list.Town}"  name="Town" class="form-control"></td>
+        <td><input type="text" value="$!{list.Idcard}" name="Idcard" class="form-control"></td>
           <td>
             <input type="text" class="form-control date-picker" name="Birth" data-date-format="yyyy-mm-dd" value="$!{list.Birth}">
           </td>
+    </tr>
+    <tr class="warning">
+      <th>政治面貌</th>
+      <th>婚姻状况</th>
+      <th>联系电话</th> 
+      <th colspan="4">家庭住址</th>
+    </tr>
+    <tr>
+      <td>
+            <select name="Status" class="form-control" data-value="$!{list.Status}">
+              <option value="群众">群众</option>
+              <option value="共产党员">共产党员</option>
+              <option value="团员">团员</option>
+              <option value="其他">其他</option>
+            </select>
+          </td>
+        <td>
+            <select name="Married" class="form-control" data-value="$!{list.Married}">
+              <option value="未婚">未婚</option>
+              <option value="已婚">已婚</option>
+              <option value="离异">离异</option>
+              <option value="再婚">再婚</option>
+              <option value="其他">其他</option>
+            </select>
+          </td>
+          <td><input type="text" value="$!{list.Tel}" name="Tel" class="form-control"></td>
+      <td colspan="4"><input type="text" value="$!{list.Address}"  name="Address" class="form-control"></td>
+    </tr>
+  </table>
+  <br>
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+          <th>工作岗位</th>
+          <th colspan="2">工作单位</th>
+          <th>员工类型</th>
+          <th>职级</th>
+          <th>档次</th>
+           <th>参加工作时间</th>
+          <th>金融从业时间</th>
+          <th colspan="2">后备人才库</th>
+          <th>用工类别</th>
+          <th>工龄</th>
+        </tr>
+        <tr>
           <td>
             <select name="Position" class="form-control" data-value="$!{list.Position}">
               #foreach ($one in $positionList)
@@ -75,20 +117,6 @@
               #end
             </select>
           </td>
-        </tr>
-        <tr class="warning">
-          <th>职级</th>
-          <th>档次</th> 
-          <th>政治面貌</th>
-          <th>参加工作时间</th>
-          <th>金融从业时间</th>
-          <th>全日制学历</th>
-          <th>全日制毕业院校</th>
-          <th>学习专业</th>
-          <th>婚姻状况</th>
-          <th>联系电话</th> 
-        </tr>
-        <tr>
           <td>
             <select name="Rank" class="form-control" data-value="$!{list.Rank}">
               <option value="普通员工">普通员工</option>
@@ -110,20 +138,32 @@
               <option value="10">10</option>
             </select>
           </td>
-          <td>
-            <select name="Status" class="form-control" data-value="$!{list.Status}">
-              <option value="群众">群众</option>
-              <option value="共产党员">共产党员</option>
-              <option value="团员">团员</option>
-              <option value="其他">其他</option>
-            </select>
-          </td>
+          
           <td>
             <input type="text" class="form-control date-picker" name="Jobtime" data-date-format="yyyy-mm-dd" value="$!{list.Jobtime}">
           </td>
           <td>
             <input type="text" class="form-control date-picker" name="financetime" data-date-format="yyyy-mm-dd" value="$!{list.financetime}">
           </td>
+          <td colspan="2">
+            #foreach ($one in $perReserveList)
+              $!{one.ReserveType},
+            #end
+          </td>
+          <td><input type="text" value="$!{list.Guard}"  name="Guard" class="form-control"></td>
+          <td class="cal-age" rel="$!{list.Jobtime}"></td>
+        </tr>
+  </table>
+  <br>
+  <table class="table table-bordered table-hover">
+        <tr class="warning">
+          <th>全日制学历</th>
+          <th>全日制毕业院校</th>
+          <th>学习专业</th>
+          <th>最终学历毕业院校</th>
+          <th>最终学历专业</th>
+        </tr>
+        <tr>
           <td>
             <select name="fulltime_educ" class="form-control" data-value="$!{list.fulltime_educ}">
               <option value="本科">本科</option>
@@ -136,30 +176,8 @@
           </td>
           <td><input type="text"  value="$!{list.fulltime_sch}" name="fulltime_sch" class="form-control"></td>
           <td><input type="text"  value="$!{list.Major}" name="Major" class="form-control"></td>
-          <td>
-            <select name="Married" class="form-control" data-value="$!{list.Married}">
-              <option value="未婚">未婚</option>
-              <option value="已婚">已婚</option>
-              <option value="离异">离异</option>
-              <option value="再婚">再婚</option>
-              <option value="其他">其他</option>
-            </select>
-          </td>
-          <td><input type="text" value="$!{list.Tel}" name="Tel" class="form-control"></td>
-        </tr>
-        <tr class="warning">
-          <th colspan="2">籍贯</th>
-          <th colspan="2">最终学历毕业院校</th>
-          <th>最终学历专业</th>
-          <th colspan="4">家庭住址</th>
-          <th>用工类别</th>
-        </tr>
-        <tr>
-          <td colspan="2"><input type="text" value="$!{list.Town}"  name="Town" class="form-control"></td>
-          <td colspan="2"><input type="text" value="$!{list.final_sch}"  name="final_sch" class="form-control"></td>
+          <td><input type="text" value="$!{list.final_sch}"  name="final_sch" class="form-control"></td>
           <td><input type="text" value="$!{list.final_edu}"  name="final_edu" class="form-control"></td>
-          <td colspan="4"><input type="text" value="$!{list.Address}"  name="Address" class="form-control"></td>
-          <td><input type="text" value="$!{list.Guard}"  name="Guard" class="form-control"></td>
         </tr>
   </table>
   
