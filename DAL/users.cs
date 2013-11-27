@@ -47,16 +47,28 @@ namespace DAL
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
-        public void Update(tb_Users model)
+        public bool Update(tb_Users model)
         {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("update tb_Users set ");
-            strSql.Append("username='" + model.username + "'");
-            strSql.Append("userprower=" + model.userprower + "");
-            strSql.Append("Unit='" + model.Unit + "'");
-            strSql.Append("remark='" + model.remark + "'");
-            strSql.Append(" where id=" + model.id + "");
-            DbHelperSQL.ExecuteSql(strSql.ToString());
+            try
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("update tb_Users set ");
+                strSql.Append("loginname='" + model.loginname + "',");
+                strSql.Append("userpwd='" + model.userpwd + "',");
+                strSql.Append("username='" + model.username + "',");
+                strSql.Append("userprower=" + model.userprower + ",");
+                strSql.Append("Unit='" + model.Unit + "',");
+                strSql.Append("remark='" + model.remark + "'");
+                strSql.Append(" where id=" + model.id + "");
+                if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public void Delete(int id)
         {
