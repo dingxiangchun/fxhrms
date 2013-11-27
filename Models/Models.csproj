@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tb_Count.cs" />
     <Compile Include="tb_holidayrecords.cs" />
     <Compile Include="tb_learninfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

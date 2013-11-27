@@ -47,11 +47,11 @@ namespace DAL
         public void Add(tb_perInfo model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into tb_perInfo(Name,Employeeid,Sex,Nation,Birth,Idcard,Unit,Position,Rank,Level,Status,");
+            strSql.Append("insert into tb_perInfo(Name,Employeeid,Sex,Nation,Birth,Idcard,UnitID,Unit,Position,Rank,Level,Status,");
             strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,Tel,final_sch,");
             strSql.Append("final_edu,Address,Reserve,Guard,Ages,Class,photo) values (");
             strSql.Append("'" + model.Name + "','" + model.Employeeid + "','" + model.Sex + "','" + model.Nation + "','" + model.Birth + "','" + model.Idcard + "',");
-            strSql.Append("'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
+            strSql.Append(""+model.UnitID+",'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
             strSql.Append("'"+model.Status+"','"+model.Jobtime+"','"+model.financetime+"','"+model.fulltime_educ+"','"+model.fulltime_sch+"',");
             strSql.Append("'" + model.Major + "','" + model.Married + "','" + model.Town + "','" + model.Tel + "',");
             strSql.Append("'"+model.final_sch+"','"+model.final_edu+"','"+model.Address+"','"+model.Reserve+"','"+model.Guard+"',");
@@ -199,6 +199,30 @@ namespace DAL
             strSql.Append("select "+item_field+" as '"+item_value+"',count('"+item_field+"') as '人数' from tb_perInfo ");
             
             strSql.Append("group by "+item_field+"");
+            DataSet ds = new DataSet();
+            ds = DbHelperSQL.Query(strSql.ToString());
+            return ds;
+        }
+
+        public DataSet GetCountList(string countname)
+        { 
+            StringBuilder strSql = new StringBuilder();
+            switch(countname)
+            {
+                case "branch":
+                    strSql.Append("SELECT tb_branch.branchName as CountName,COUNT(tb_perinfo.id) as Count from tb_branch,tb_perinfo WHERE tb_branch.id=tb_perinfo.UnitID GROUP BY tb_branch.branchName");
+                    break;
+                case "edc":
+                    strSql.Append("SELECT tb_perinfo.fulltime_educ as CountName,COUNT(tb_perinfo.id) as Count from tb_perinfo  GROUP BY tb_perinfo.fulltime_educ");
+                    break;
+                case "Status":
+                    strSql.Append("SELECT tb_perinfo.Status as CountName,COUNT(tb_perinfo.id) as Count from tb_perinfo  GROUP BY tb_perinfo.Status");
+                    break;
+                case "age":
+                    strSql.Append("SELECT tb_perinfo.`Name`, COUNT(tb_perinfo.id),(YEAR(CURDATE())-YEAR(STR_TO_DATE(tb_perinfo.Birth,\"%Y-%m-%d\"))) - (RIGHT(CURDATE(),5)<RIGHT(tb_perinfo.Birth,5)) AS age  FROM tb_perinfo GROUP BY age");
+                    break;
+
+            }
             DataSet ds = new DataSet();
             ds = DbHelperSQL.Query(strSql.ToString());
             return ds;
