@@ -13,4 +13,44 @@ $("#account-form").submit(function(){
 		return false;
 	}
 	return true;
-})
+});
+
+$(".auth-edit").on("click",function(){
+	var $tr = $(this).closest("tr"),
+		iid = $tr.find("input[name=id]").val(),
+		name = $tr.find("input[name=loginname]").val(),
+		auth = $tr.find("[name=userprower]").val(),
+		param,callback;
+	param = {
+		"id": iid,
+		"loginname": name,
+		"userprower": auth
+	};
+	callback = function(res){
+		res = $.parseJSON(res);
+		if( !!res.status ){
+			alert("权限修改成功")
+		}else{
+			util.error( res.errorMsg );
+		}
+	}
+	$.post(pageUrl,param,callback);
+});
+
+$(".auth-del").on("click",function(){
+	var $tr = $(this).closest("tr"),
+		iid = $tr.find("input[name=id]").val(),
+		param,callback;
+	param = {
+		"id": iid
+	};
+	callback = function(res){
+		res = $.parseJSON(res);
+		if( !!res.status ){
+			$tr.remove();
+		}else{
+			util.error( res.errorMsg );
+		}
+	}
+	$.post(pageUrl,param,callback);
+});

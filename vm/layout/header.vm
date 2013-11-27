@@ -24,7 +24,7 @@
 
     <div class="userbar">
         <div class="logined">
-            <a href="" class="username"><em class="glyphicon glyphicon-user"></em>username</a>
+            <a href="userset.aspx" class="username"><em class="glyphicon glyphicon-user"></em>username</a>
             <span>|</span> <a href="/system/logout" class="logout"><em
                 class="glyphicon glyphicon-off"></em>退出</a>
         </div>
@@ -79,8 +79,11 @@
         		</button>
         		<ul class="dropdown-menu" role="menu">
         			<li>
-        				<a href="userset.aspx">用户管理</a>
+        				<a href="userset.aspx">账户管理</a>
         			</li>
+                                <li>
+                                        <a href="auth.aspx">权限管理</a>
+                                </li>
         		</ul>
         	</div>
         </div>
