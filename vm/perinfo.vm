@@ -16,69 +16,62 @@
   <h3>员工基本信息</h3>
   <img src="$!{list.Photo}" style="display: block;">
   <br>
-	<table class="table table-bordered table-hover">
-  			<tr class="warning">
-  				<th>姓名</th>
-  				<th>员工代号</th> 
-          <td>性别</td>
-          <td>民族</td>
-          <td>身份证号码</td>
-          <td>出生年月</td>
-          <td>工作岗位</td>
-          <td colspan="2">工作单位</td>
-          <td>员工类型</td>
-  			</tr>
-  			<tr>
-  				<td>$!{list.Name}</td>
-          <td>$!{list.Employeeid}</td>
-          <td>$!{list.Sex}</td>
-          <td>$!{list.Nation}</td>
-          <td>$!{list.Idcard}</td>
-          <td>$!{list.Birth}</td>
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+      <th>姓名</th>
+      <th>员工代号</th> 
+      <th>性别</th>
+      <th>民族</th>
+      <th>籍贯</th>
+      <th>身份证号码</th>
+      <th>出生年月</th>
+    </tr>
+    <tr>
+        <td>$!{list.Name}</td>
+        <td>$!{list.Employeeid}</td>
+        <td>$!{list.Sex}</td>
+        <td>$!{list.Nation}</td>
+        <td>$!{list.Town}</td>
+        <td>$!{list.Idcard}</td>
+        <td>$!{list.Birth}</td>
+    </tr>
+    <tr class="warning">
+      <th>政治面貌</th>
+      <th>婚姻状况</th>
+      <th>联系电话</th> 
+      <th colspan="4">家庭住址</th>
+    </tr>
+    <tr>
+      <td>$!{list.Status}</td>
+        <td>$!{list.Married}</td>
+        <td>$!{list.Tel}</td>
+      <td colspan="4">$!{list.Address}</td>
+    </tr>
+  </table>
+  <br>
+  <table class="table table-bordered table-hover">
+    <tr class="warning">
+          <th>工作岗位</th>
+          <th colspan="2">工作单位</th>
+          <th>员工类型</th>
+          <th>职级</th>
+          <th>档次</th>
+           <th>参加工作时间</th>
+          <th>金融从业时间</th>
+          <th colspan="2">后备人才库</th>
+          <th>用工类别</th>
+          <th>工龄</th>
+        </tr>
+        <tr>
           <td>$!{list.Position}</td>
           <td colspan="2">
             $!{branch.branchName}
           </td>
           <td>$!{list.Class}</td>
-  			</tr>
-        <tr class="warning">
-          <td>职级</td>
-          <td>档次</td> 
-          <td>政治面貌</td>
-          <td>参加工作时间</td>
-          <td>金融从业时间</td>
-          <td>全日制学历</td>
-          <td>全日制毕业院校</td>
-          <td>学习专业</td>
-          <td>婚姻状况</td>
-          <td>联系电话</td> 
-        </tr>
-        <tr>
           <td>$!{list.Rank}</td>
           <td>$!{list.Level}</td>
-          <td>$!{list.Status}</td>
           <td>$!{list.Jobtime}</td>
           <td>$!{list.financetime}</td>
-          <td>$!{list.fulltime_educ}</td>
-          <td>$!{list.fulltime_sch}</td>
-          <td>$!{list.Major}</td>
-          <td>$!{list.Married}</td>
-          <td>$!{list.Tel}</td>
-        </tr>
-        <tr class="warning">
-          <td>籍贯</td>
-          <td>最终学历毕业院校</td>
-          <td>最终学历专业</td>
-          <td colspan="3">家庭住址</td>
-          <td colspan="2">后备人才库</td>
-          <td>用工类别</td>
-          <td>工龄</td>
-        </tr>
-        <tr>
-          <td>$!{list.Town}</td>
-          <td>$!{list.final_sch}</td>
-          <td>$!{list.final_edu}</td>
-          <td colspan="3">$!{list.Address}</td>
           <td colspan="2">
             #foreach ($one in $perReserveList)
               $!{one.ReserveType},
@@ -86,6 +79,23 @@
           </td>
           <td>$!{list.Guard}</td>
           <td class="cal-age" rel="$!{list.Jobtime}"></td>
+        </tr>
+  </table>
+  <br>
+	<table class="table table-bordered table-hover">
+        <tr class="warning">
+          <th>全日制学历</th>
+          <th>全日制毕业院校</th>
+          <th>学习专业</th>
+          <th>最终学历毕业院校</th>
+          <th>最终学历专业</th>
+        </tr>
+        <tr>
+          <td>$!{list.fulltime_educ}</td>
+          <td>$!{list.fulltime_sch}</td>
+          <td>$!{list.Major}</td>
+          <td>$!{list.final_sch}</td>
+          <td>$!{list.final_edu}</td>
         </tr>
 	</table>
 </div>
