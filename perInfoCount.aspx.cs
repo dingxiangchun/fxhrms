@@ -20,10 +20,12 @@ public partial class perInfoCount : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
             VelocityHelper vh = new VelocityHelper();
+            IList<tb_Count> PositionCountlist = util.GetAll<tb_Count>(dal.GetCountList("Position"));
             IList<tb_Count> branchCountlist = util.GetAll<tb_Count>(dal.GetCountList("branch"));
             IList<tb_Count> edcCountlist = util.GetAll<tb_Count>(dal.GetCountList("edc"));
             IList<tb_Count> StatusCountlist = util.GetAll<tb_Count>(dal.GetCountList("Status"));
             IList<tb_Count> ageCountlist = util.GetAll<tb_Count>(dal.GetCountList("age"));
+            vh.Put("Position", PositionCountlist);
             vh.Put("branch", branchCountlist);
             vh.Put("edc", edcCountlist);
             vh.Put("Status", StatusCountlist);

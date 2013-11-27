@@ -209,6 +209,9 @@ namespace DAL
             StringBuilder strSql = new StringBuilder();
             switch(countname)
             {
+                case "Position":
+                    strSql.Append("SELECT tb_positioninfo.`name` as CountName,COUNT(tb_perinfo.id) as Count from tb_positioninfo,tb_perinfo WHERE tb_positioninfo.id=tb_perinfo.Position GROUP BY tb_positioninfo.`name`");
+                    break;
                 case "branch":
                     strSql.Append("SELECT tb_branch.branchName as CountName,COUNT(tb_perinfo.id) as Count from tb_branch,tb_perinfo WHERE tb_branch.id=tb_perinfo.UnitID GROUP BY tb_branch.branchName");
                     break;
@@ -219,7 +222,7 @@ namespace DAL
                     strSql.Append("SELECT tb_perinfo.Status as CountName,COUNT(tb_perinfo.id) as Count from tb_perinfo  GROUP BY tb_perinfo.Status");
                     break;
                 case "age":
-                    strSql.Append("SELECT tb_perinfo.`Name`, COUNT(tb_perinfo.id),(YEAR(CURDATE())-YEAR(STR_TO_DATE(tb_perinfo.Birth,\"%Y-%m-%d\"))) - (RIGHT(CURDATE(),5)<RIGHT(tb_perinfo.Birth,5)) AS age  FROM tb_perinfo GROUP BY age");
+                    strSql.Append("SELECT  COUNT(tb_perinfo.id) as Count,(YEAR(CURDATE())-YEAR(STR_TO_DATE(tb_perinfo.Birth,\"%Y-%m-%d\"))) - (RIGHT(CURDATE(),5)<RIGHT(tb_perinfo.Birth,5)) AS CountName  FROM tb_perinfo GROUP BY CountName");
                     break;
 
             }
