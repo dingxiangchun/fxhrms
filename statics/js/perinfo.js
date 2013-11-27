@@ -115,20 +115,20 @@ $("form").submit(function(){
 });
 $("body").on("click",".del-item",function(){
 	var $tr = $(this).closest("tr"),
-		iid = $tr.find("input[name=iid]").val();
+		iid = $tr.find("input[name='iid[]']").val();
 	if(!!iid){
 		var param = {
 			action:"del",
 			type: hash,
 			id:iid
 		}
-		$.post("perinfo",function( res ){
+		$.post("perInfo.aspx",param,function( res ){
 			res = $.parseJSON(res);
 			if( !!res.status ){
 				if( $tr.closest("table").find("tr").index($tr) > 1 ){
 					$tr.remove();
 				}else{
-					window.location.href = window.location.href;
+					window.location.reload();
 				}
 			}else{
 				util.error( res.errorMsg );

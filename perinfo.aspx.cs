@@ -236,7 +236,8 @@ public partial class perinfo : System.Web.UI.Page
                 {
                     dalHoliday.Delete("id=" + id);
                 }
-                Response.Redirect("perinfo.aspx?action=add&id=" + id + "#" + Request["type"], false);
+                Response.Write("{\"status\":true}");
+                Response.End();
             }
 
         }
@@ -326,7 +327,7 @@ public partial class perinfo : System.Web.UI.Page
             {
                 if (dal.Exists(Request["Employeeid"]))
                 {
-                    Response.Write("{\"status\":Employeeid Exist!}");
+                    Response.Write("{\"status\":false,\"errorMsg\":\"Employeeid Exist!\"}");
                     Response.End();
                     return;
                 }
