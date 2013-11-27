@@ -119,7 +119,7 @@ $("body").on("click",".del-item",function(){
 	if(!!iid){
 		var param = {
 			action:"del",
-			type: hash,
+			type: document.location.hash.replace("#",""),
 			id:iid
 		}
 		$.post("perInfo.aspx",param,function( res ){
