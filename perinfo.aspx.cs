@@ -200,6 +200,7 @@ public partial class perinfo : System.Web.UI.Page
                 return;
 
             int id = int.Parse(Request["id"].ToString());
+            string type = Request["type"];
             if (Request["type"] == null || Request["type"] == "")
             {
                 dal.Delete("id="+id);
