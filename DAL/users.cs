@@ -31,21 +31,31 @@ namespace DAL
             return pass;
         }
 
-        public void Add(tb_Users model)
+        public bool Add(tb_Users model)
         {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into tb_Users(");
-            strSql.Append("loginname,userpwd,username,userprower,Unit,remark");
-            strSql.Append(")");
-            strSql.Append(" values (");
-            strSql.Append("'" + model.loginname + "',");
-            strSql.Append("'" + model.userpwd + "',");
-            strSql.Append("'" + model.username + "',");
-            strSql.Append("" + model.userprower + ",");
-            strSql.Append("'" + model.Unit + "',");
-            strSql.Append("'" + model.remark + "',");
-            strSql.Append(")");
-            DbHelperSQL.ExecuteSql(strSql.ToString());
+            try
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("insert into tb_Users(");
+                strSql.Append("loginname,userpwd,username,userprower,Unit,remark");
+                strSql.Append(")");
+                strSql.Append(" values (");
+                strSql.Append("'" + model.loginname + "',");
+                strSql.Append("'" + model.userpwd + "',");
+                strSql.Append("'" + model.username + "',");
+                strSql.Append("" + model.userprower + ",");
+                strSql.Append("'" + model.Unit + "',");
+                strSql.Append("'" + model.remark + "',");
+                strSql.Append(")");
+                if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool Update(tb_Users model)
         {
@@ -70,12 +80,22 @@ namespace DAL
                 return false;
             }
         }
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete from tb_Users ");
-            strSql.Append(" where id=" + id);
-            DbHelperSQL.ExecuteSql(strSql.ToString());
+            try
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("delete from tb_Users ");
+                strSql.Append(" where id=" + id);
+                if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
  
         /// <summary>
