@@ -204,6 +204,30 @@ namespace DAL
             return ds;
         }
 
+        public DataSet GetCountList(string countname)
+        { 
+            StringBuilder strSql = new StringBuilder();
+            switch(countname)
+            {
+                case "branch":
+                    strSql.Append("SELECT tb_branch.branchName as CountName,COUNT(tb_perinfo.id) as Count from tb_branch,tb_perinfo WHERE tb_branch.id=tb_perinfo.UnitID GROUP BY tb_branch.branchName");
+                    break;
+                case "edc":
+                    strSql.Append("SELECT tb_perinfo.fulltime_educ as CountName,COUNT(tb_perinfo.id) as Count from tb_perinfo  GROUP BY tb_perinfo.fulltime_educ");
+                    break;
+                case "Status":
+                    strSql.Append("SELECT tb_perinfo.Status as CountName,COUNT(tb_perinfo.id) as Count from tb_perinfo  GROUP BY tb_perinfo.Status");
+                    break;
+                case "age":
+                    strSql.Append("SELECT tb_perinfo.`Name`, COUNT(tb_perinfo.id),(YEAR(CURDATE())-YEAR(STR_TO_DATE(tb_perinfo.Birth,\"%Y-%m-%d\"))) - (RIGHT(CURDATE(),5)<RIGHT(tb_perinfo.Birth,5)) AS age  FROM tb_perinfo GROUP BY age");
+                    break;
+
+            }
+            DataSet ds = new DataSet();
+            ds = DbHelperSQL.Query(strSql.ToString());
+            return ds;
+        }
+
         #endregion
     }
 }

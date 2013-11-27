@@ -15,11 +15,19 @@ using Models;
 
 public partial class perInfoCount : System.Web.UI.Page
 {
-    tb_Count DalCount = new tb_Count();
-
+    tb_Count model = new tb_Count();
+    perInfo dal = new perInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
             VelocityHelper vh = new VelocityHelper();
+            IList<tb_Count> branchCountlist = util.GetAll<tb_Count>(dal.GetCountList("branch"));
+            IList<tb_Count> edcCountlist = util.GetAll<tb_Count>(dal.GetCountList("edc"));
+            IList<tb_Count> StatusCountlist = util.GetAll<tb_Count>(dal.GetCountList("Status"));
+            IList<tb_Count> ageCountlist = util.GetAll<tb_Count>(dal.GetCountList("age"));
+            vh.Put("branch", branchCountlist);
+            vh.Put("edc", edcCountlist);
+            vh.Put("Status", StatusCountlist);
+            vh.Put("age", ageCountlist);
             vh.Init();
             vh.Display("count.vm");
     }
