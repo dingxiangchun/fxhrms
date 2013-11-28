@@ -22,6 +22,14 @@
           <label for="branchNum-edit">网点号</label>
           <input type="text" class="form-control" id="branchNum-edit" placeholder="请输入网点号" name="branchNum">
         </div>
+		<div class="form-group">
+          <label for="branchNum-edit">单位电话</label>
+          <input type="text" class="form-control" id="tel-edit" name="tel">
+        </div>
+		<div class="form-group">
+          <label for="branchNum-edit">单位负责人</label>
+          <input type="text" class="form-control" id="person-edit" name="person">
+        </div>
         <div class="form-group">
           <label for="branchInfo-edit">部门信息</label>
           <input type="text" class="form-control" id="branchInfo-edit" name="branchInfo">
@@ -36,8 +44,10 @@
 	<table class="table table-bordered table-hover">
   		<thead>
   			<tr class="warning">
-  				<th width="20%">部门</th>
-  				<th width="20%">网点号</th> 
+  				<th width="15%">部门</th>
+  				<th width="15%">网点号</th> 
+				<th width="15%">单位电话</th> 
+				<th width="15%">单位负责人</th> 
   				<th>信息</th>
   				<th width="120"></th>
   			</tr>
@@ -46,7 +56,9 @@
   			#foreach( $one in $list )
   			<tr data-id="$one.id">
   				<td><span class="link-data" rel="branchName">$!{one.branchName}</span></td>
-          <td><span class="link-data" rel="branchNum">$!{one.branchNum}</span></td>
+                <td><span class="link-data" rel="branchNum">$!{one.branchNum}</span></td>
+				<td><span class="link-data" rel="tel">$!{one.tel}</span></td>
+				<td><span class="link-data" rel="person">$!{one.person}</span></td>
   				<td><span class="link-data" rel="branchInfo">$!{one.branchInfo}</span></td>
   				<td>
             <span class="link-data" rel="id" style="display: none;">$!{one.id}</span>
@@ -72,6 +84,14 @@
       <div class="form-group">
         <label for="branchNum">网点号</label>
         <input type="text" class="form-control" id="branchNum" placeholder="请输入网点号" name="branchNum">
+      </div>
+	   <div class="form-group">
+        <label for="branchNum">单位电话</label>
+        <input type="text" class="form-control" id="tel"  name="tel">
+      </div>
+	  <div class="form-group">
+        <label for="branchNum">单位负责人</label>
+        <input type="text" class="form-control" id="person" name="person">
       </div>
       <div class="form-group">
         <label for="branchInfo">部门信息</label>

@@ -19,7 +19,7 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_resumeinfo(");
-            strSql.Append("employeeid,attacktime,quittime,position,unit,reason,content");
+            strSql.Append("employeeid,attacktime,quittime,position,unit,mark,reason,content");
             strSql.Append(")");
             strSql.Append(" values (");
             strSql.Append("'" + model.employeeid + "',");
@@ -27,6 +27,7 @@ namespace DAL
             strSql.Append("'" + model.quittime + "',");
             strSql.Append("'" + model.position + "',");
             strSql.Append("'" + model.unit + "',");
+            strSql.Append("" + model.mark + ",");
             strSql.Append("'" + model.reason + "',");
             strSql.Append("'" + model.content + "'");
             strSql.Append(")");
@@ -45,6 +46,7 @@ namespace DAL
             strSql.Append("quittime='" + model.quittime + "',");
             strSql.Append("position='" + model.position + "',");
             strSql.Append("unit='" + model.unit + "',");
+            strSql.Append("mark=" + model.mark + ",");
             strSql.Append("reason='" + model.reason + "',");
             strSql.Append("content='" + model.content + "'");
             strSql.Append(" where id=" + model.id + "");

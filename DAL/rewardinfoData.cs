@@ -19,7 +19,7 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_rewardinfo(");
-            strSql.Append("employeeid,type,time,content,department,audit,Class,unit,description,File");
+            strSql.Append("employeeid,type,time,content,department,audit,Class,level,unit,description,mark,File");
             strSql.Append(")");
             strSql.Append(" values (");
             strSql.Append("'" + model.employeeid + "',");
@@ -29,8 +29,10 @@ namespace DAL
             strSql.Append("'" + model.department + "',");
             strSql.Append("'" + model.audit + "',");
             strSql.Append("'" + model.Class + "',");
+            strSql.Append("'" + model.level + "',");
             strSql.Append("'" + model.unit + "',");
             strSql.Append("'" + model.description + "',");
+            strSql.Append("" + model.mark + ",");
             strSql.Append("'" + model.File + "'");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
@@ -50,8 +52,10 @@ namespace DAL
             strSql.Append("department='" + model.department + "',");
             strSql.Append("audit='" + model.audit + "',");
             strSql.Append("Class='" + model.Class + "',");
+            strSql.Append("level='" + model.level + "',");
             strSql.Append("unit='" + model.unit + "',");
             strSql.Append("description='" + model.description + "',");
+            strSql.Append("mark=" + model.mark + ",");
             strSql.Append("File='" + model.File + "'");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());

@@ -17,8 +17,10 @@ namespace Models
         private string _department;
         private string _audit;
         private string _Class;
+        private string _level;
         private string _unit;
         private string _description;
+        private int _mark;
         private string _File;
         /// <summary>
         /// 
@@ -77,6 +79,12 @@ namespace Models
             get { return _Class; }
         }
 
+        public string level
+        {
+            set { _level = value; }
+            get { return _level; }
+        }
+
         public string unit
         {
             set { _unit = value; }
@@ -87,6 +95,12 @@ namespace Models
         {
             set { _description = value; }
             get { return _description; }
+        }
+
+        public int mark
+        {
+            set { _mark = value; }
+            get { return _mark; }
         }
 
         public string File

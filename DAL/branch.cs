@@ -23,10 +23,10 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_branch(");
-            strSql.Append("branchName,branchInfo,branchNum,parentid");
+            strSql.Append("branchName,branchInfo,tel,person,branchNum,parentid");
             strSql.Append(")");
             strSql.Append(" values (");
-            strSql.Append("'" + model.branchName + "','" + model.branchInfo + "','" + model.branchNum + "'," + model.parentid);
+            strSql.Append("'" + model.branchName + "','" + model.branchInfo + "','"+model.tel+"','"+model.person+"','" + model.branchNum + "'," + model.parentid);
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -40,6 +40,8 @@ namespace DAL
             strSql.Append("update tb_branch set ");
             strSql.Append("branchNum='" + model.branchNum + "',");
             strSql.Append("branchName='" + model.branchName + "',");
+            strSql.Append("tel='" + model.tel + "',");
+            strSql.Append("person='" + model.person + "',");
             strSql.Append("branchInfo='" + model.branchInfo + "'");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());

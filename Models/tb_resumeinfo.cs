@@ -17,6 +17,7 @@ namespace Models
         private string _unit;
         private string _reason;
         private string _content;
+        private int _mark;
         /// <summary>
         /// 
         /// </summary>
@@ -74,6 +75,11 @@ namespace Models
             get { return _content; }
         }
 
+        public int mark
+        {
+            set { _mark = value; }
+            get { return _mark; }
+        }
         #endregion Model
     }
 }
