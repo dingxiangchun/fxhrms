@@ -14,6 +14,7 @@ namespace Models
         #region Model
         private int _id;
         private string _Name;
+        private string _Beforename;
         private string _Employeeid;
         private string _Sex;
         private string _Nation;
@@ -25,6 +26,7 @@ namespace Models
         private string _Rank;
         private int _Level;
         private string _Status;
+        private string _Statustime;
         private string _Jobtime;
         private string _financetime;
         private string _fulltime_educ;
@@ -35,12 +37,18 @@ namespace Models
         private string _Tel;
         private string _final_sch;
         private string _final_edu;
+        private string _final_emajior;
         private string _Address;
         private string _Reserve;
         private string _Guard;
         private int _Ages;
-        private string _Class;
+        private string _state;
+        private string _employclass;
         private string _photo;
+        private string _Attrion;
+        private string _BankcardID;
+        private string _remarks1;
+        private string _remarks2;
         /// <summary>
         /// 
         /// </summary>
@@ -65,6 +73,13 @@ namespace Models
             set { _Name = value; }
             get { return _Name; }
         }
+
+        public string Beforename
+        {
+            set { _Beforename = value; }
+            get { return _Beforename; } 
+        }
+
         /// <summary>
         /// 性别
         /// </summary>
@@ -147,6 +162,12 @@ namespace Models
             set { _Status = value; }
             get { return _Status; }
         }
+
+        public string Statustime
+        {
+            set { _Statustime = value; }
+            get { return _Statustime; }
+        }
         /// <summary>
         /// 参加工作时间
         /// </summary>
@@ -227,6 +248,12 @@ namespace Models
             set { _final_edu = value; }
             get { return _final_edu; }
         }
+
+        public string final_emajior
+        {
+            set { _final_emajior = value; }
+            get { return _final_emajior; }
+        }
         /// <summary>
         /// 家庭住址
         /// </summary>
@@ -262,10 +289,16 @@ namespace Models
         /// <summary>
         /// 员工类型
         /// </summary>
-        public string Class
+        public string state
         {
-            set { _Class = value; }
-            get { return _Class; }
+            set { _state = value; }
+            get { return _state; }
+        }
+
+        public string employclass
+        {
+            set { _employclass = value; }
+            get { return _employclass; }
         }
         /// <summary>
         /// 照片
@@ -274,6 +307,30 @@ namespace Models
         {
             set { _photo = value; }
             get { return _photo; }
+        }
+
+        public string Attrion
+        {
+            set { _Attrion = value; }
+            get { return _Attrion; }
+        }
+
+        public string BankcardID
+        {
+            set { _BankcardID = value; }
+            get { return _BankcardID; }
+        }
+
+        public string remarks1
+        {
+            set { _remarks1 = value; }
+            get { return _remarks1; }
+        }
+
+        public string remarks2
+        {
+            set { _remarks2 = value; }
+            get { return _remarks2; }
         }
         #endregion Model
     }

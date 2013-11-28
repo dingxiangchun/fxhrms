@@ -278,7 +278,7 @@ public partial class perinfo : System.Web.UI.Page
                 model.Reserve = Request["Reserve"];
                 model.Guard = Request["Guard"];
                 model.Ages = 0;
-                model.Class = Request["Class"];
+                model.state = Request["state"];
                 model.photo = Request["photo"];
                 dal.Update(model);
 
@@ -293,6 +293,7 @@ public partial class perinfo : System.Web.UI.Page
         if (Request["type"] == "basic")
         {
             model.Name = Request["Name"];
+            model.Beforename = Request["Beforename"];
             model.Employeeid = Request["Employeeid"];
             model.Sex = Request["Sex"];
             model.Nation = Request["Nation"];
@@ -307,6 +308,7 @@ public partial class perinfo : System.Web.UI.Page
             model.Rank = Request["Rank"];
             model.Level = int.Parse(Request["Level"].ToString());
             model.Status = Request["Status"];
+            model.Statustime = Request["Statustime"];
             model.Jobtime = Request["Jobtime"];
             model.financetime = Request["financetime"];
             model.fulltime_educ = Request["fulltime_educ"];
@@ -317,11 +319,17 @@ public partial class perinfo : System.Web.UI.Page
             model.Tel = Request["Tel"];
             model.final_edu = Request["final_edu"];
             model.final_sch = Request["final_sch"];
+            model.final_emajior = Request["final_emajior"];
             model.Address = Request["Address"];
             model.Reserve = Request["Reserve"];
             model.Guard = Request["Guard"];
             model.Ages = 0;
-            model.Class = Request["Class"];
+            model.state = Request["state"];
+            model.employclass = Request["employclass"];
+            model.Attrion = Request["Attrion"];
+            model.BankcardID = Request["BankcardID"];
+            model.remarks1 = Request["remarks1"];
+            model.remarks2 = Request["remarks2"];
             if (Request.Files.Count > 0)
             {
                 HttpFileCollection FileCollection = Request.Files;
