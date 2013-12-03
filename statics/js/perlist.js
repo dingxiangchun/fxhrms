@@ -6,7 +6,14 @@ $("input[name=branchid]").val(branchid);
 // 刷新nav
 $("nav").load( util.getUrl()+"?action=tree" );
 
-$(".addper").attr("href","perinfo.aspx?action=add&branchid="+branchid )
+$(".addper").attr("href","perinfo.aspx?action=add&branchid="+branchid );
+
+$("#perlist-form").submit(function(){
+	if( !$("#name").val() ){
+		$("#name").focus();
+		return false;
+	}
+})
 
 
 

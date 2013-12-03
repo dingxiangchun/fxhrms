@@ -61,7 +61,7 @@
   <table class="table table-bordered table-hover ">
 
     <tr>
-      <th><input type="checkbox" class="form-control check-all"></th>
+      <th style="text-align:center;vertical-align:middle;"><input type="checkbox" class="check-all"></th>
       <th>序号</th>
       <th>姓名</th>
       <th>身份证号</th>
@@ -86,7 +86,7 @@
     </tr>
     #foreach ($one in $list)
     <tr>
-      <th><input type="checkbox" class="form-control check-one" value="$!{one.id}"></th>
+      <th style="text-align:center;vertical-align:middle;"><input type="checkbox" class="check-one" value="$!{one.id}"></th>
       <td>$!{one.Employeeid}</td>
       <td>$!{one.Name}</td>
       <td>$!{one.Name}</td>
