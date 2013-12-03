@@ -46,29 +46,35 @@ public partial class perInfoQuery : System.Web.UI.Page
         Excel.Workbook workbook1 = excel.Workbooks.Add(Type.Missing);
         excel.Visible = false;
         Excel.Worksheet worksheet1 = (Excel.Worksheet)workbook1.Worksheets["sheet1"];
-        worksheet1.Cells[1, 1] = "序号";
-        worksheet1.Cells[1, 2] = "姓名";
-        worksheet1.Cells[1, 3] = "身份证号码";
-        worksheet1.Cells[1, 4] = "性别";
-        worksheet1.Cells[1, 5] = "政治面貌";
-        worksheet1.Cells[1, 6] = "加入党团时间";
-        worksheet1.Cells[1, 7] = "出生日期";
-        worksheet1.Cells[1, 8] = "参加工作时间";
-        worksheet1.Cells[1, 9] = "金融工作时间";
-        worksheet1.Cells[1, 10] = "全日制学历毕业院校";
-        worksheet1.Cells[1, 11] = "全日制历所学专业";
-        worksheet1.Cells[1, 12] = "最终学历院校";
-        worksheet1.Cells[1, 13] = "最终学历专业";
-        worksheet1.Cells[1, 14] = "全日制学历";
-        worksheet1.Cells[1, 15] = "全日制学位";
-        worksheet1.Cells[1, 16] = "在职教育学历";
-        worksheet1.Cells[1, 17] = "在职教育学位";
-        worksheet1.Cells[1, 18] = "专业技术资格";
-        worksheet1.Cells[1, 19] = "工作单位";
-        worksheet1.Cells[1, 20] = "工作岗位";
-        worksheet1.Cells[1, 21] = "用工类别";
-        worksheet1.Cells[1, 22] = "后备人才库类别";
+        
+        Excel.Range rangeTitle = worksheet1.get_Range(worksheet1.Cells[1, 1], worksheet1.Cells[1, 22]) as Excel.Range;//合并一行两列
+        rangeTitle.Merge(true);
+        rangeTitle.Columns.ColumnWidth = 20;
+        rangeTitle.HorizontalAlignment = 3;    //居中
+        rangeTitle.Value2 = "花名册";
 
+        worksheet1.Cells[2, 1] = "序号";
+        worksheet1.Cells[2, 2] = "姓名";
+        worksheet1.Cells[2, 3] = "身份证号码";
+        worksheet1.Cells[2, 4] = "性别";
+        worksheet1.Cells[2, 5] = "政治面貌";
+        worksheet1.Cells[2, 6] = "加入党团时间";
+        worksheet1.Cells[2, 7] = "出生日期";
+        worksheet1.Cells[2, 8] = "参加工作时间";
+        worksheet1.Cells[2, 9] = "金融工作时间";
+        worksheet1.Cells[2, 10] = "全日制学历毕业院校";
+        worksheet1.Cells[2, 11] = "全日制历所学专业";
+        worksheet1.Cells[2, 12] = "最终学历院校";
+        worksheet1.Cells[2, 13] = "最终学历专业";
+        worksheet1.Cells[2, 14] = "全日制学历";
+        worksheet1.Cells[2, 15] = "全日制学位";
+        worksheet1.Cells[2, 16] = "在职教育学历";
+        worksheet1.Cells[2, 17] = "在职教育学位";
+        worksheet1.Cells[2, 18] = "专业技术资格";
+        worksheet1.Cells[2, 19] = "工作单位";
+        worksheet1.Cells[2, 20] = "工作岗位";
+        worksheet1.Cells[2, 21] = "用工类别";
+        worksheet1.Cells[2, 22] = "后备人才库类别";
         string fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
         string filePath = Server.MapPath("~/" + fileName);
         workbook1.SaveAs(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
@@ -89,28 +95,8 @@ public partial class perInfoQuery : System.Web.UI.Page
         HttpContext.Current.Response.ContentType = "application/ms-excel";
         HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
         HttpContext.Current.Response.AddHeader("Content-Length", Length.ToString());
-        Response.TransmitFile(filePath);
-        //byte[] Buffer = new Byte[10000];    //存放欲发送数据的缓冲区    
-        //int ByteToRead;                     //每次实际读取的字节数    
-        //while (Length > 0)
-        //{
-        //    //剩余字节数不为零，继续传送    
-        //    if (Response.IsClientConnected)
-        //    {
-        //        //客户端浏览器还打开着，继续传送    
-        //        ByteToRead = Reader.Read(Buffer, 0, 10000); //往缓冲区读入数据    
-        //        HttpContext.Current.Response.OutputStream.Write(Buffer, 0, ByteToRead); //把缓冲区的数据写入客户端浏览器    
-        //        HttpContext.Current.Response.Flush();   //立即写入客户端    
-        //        Length -= ByteToRead;   //剩余字节数减少    
-        //    }
-        //    else
-        //    {
-        //        //客户端浏览器已经断开，阻止继续循环    
-        //        Length = -1;
-        //    }
-        //}
-        //关闭该文件    
-       // Reader.Close();
+        Response.TransmitFile(filePath); 
+        Reader.Close();
         if (System.IO.File.Exists(filePath))
             System.IO.File.Delete(filePath); 
         return true;
