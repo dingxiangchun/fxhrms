@@ -1,7 +1,7 @@
 <option value="无">无</option>
-                <option value="系统内调出">系统内调出</option>
-                <option value="退休">退休</option>
-				<option value="辞职">辞职</option>
-				<option value="解除劳动合同">解除劳动合同</option>
-				<option value="死亡">死亡</option>
-				<option value="其他">其他</option>
+<option value="系统内调出">系统内调出</option>
+<option value="退休">退休</option>
+<option value="辞职">辞职</option>
+<option value="解除劳动合同">解除劳动合同</option>
+<option value="死亡">死亡</option>
+<option value="其他">其他</option>
