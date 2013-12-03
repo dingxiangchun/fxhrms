@@ -116,6 +116,10 @@
 <br>
 <a type="button" class="btn btn-primary" href="javascript:void(0)" id="exportCheck">已选导出Excel</a>
 <a type="button" class="btn btn-primary" href="javascript:void(0)" id="exportAll">全部导出Excel</a>
+<form action="perInfoQuery.aspx" id="downloadExcel" target="_blank" style="display:none;">
+  <input type="hidden" name="action" value="excel">
+  <input type="ids" name="ids" value="">
+</form>
 </div>
 <script src="statics/js/datepicker.js"></script>
 <script src="statics/js/query.js"></script>

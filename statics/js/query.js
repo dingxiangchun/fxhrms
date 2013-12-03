@@ -26,20 +26,19 @@ $("select[data-value]").each(function(){
 
 // export
 $("#exportCheck").on("click",function(){
-	var param = {};
-	param.action = "excel";
-	param.ids = [];
+	var ids = [];
 	$(".check-one:checked").map(function(){
-		param.ids.push(this.value);
+		ids.push(this.value);
 	});
-	if(!param.ids.length){
+	if(!ids.length){
 		return false;
 	}
-	param.ids = param.ids.join();
-	$.post(pageUrl,param);
+	$("#downloadExcel").find("input[name=ids]").val(ids.join());
+	$("#downloadExcel").submit();
 });
 
 $("#exportAll").on("click",function(){
-	var param = $("#query-form").serialize();
-	$.post(pageUrl+"?"+param+"&action=excelAll")
+	var $action = $("<input type='hidden' name='action' value='excelAll'/>")
+		$form = $("#query-form").clone();
+	$form.attr({"method":"post","target":"_blank"}).submit();
 });
