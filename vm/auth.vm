@@ -45,6 +45,7 @@
       		<option value="1">Admin</option>
   	</select>
   </div>
+  <input type="hidden" name="action" value="add">
   <button type="submit" role="button" class="btn btn-warning">保存</button>
 </div>
 </form>
