@@ -5,3 +5,5 @@
               <option value="大专">大专</option>
               <option value="高中">高中</option>
               <option value="中专">中专</option>
+              <option value="初中">初中</option>
+              <option value="其他">其他</option>

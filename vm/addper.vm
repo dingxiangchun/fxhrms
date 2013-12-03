@@ -228,7 +228,7 @@
     <form action="perinfo.aspx" role="form" method="post" class="info-form">
       <table class="table table-bordered table-hover">
         <tr class="warning">
-          <th>*等级</th>
+          <th width="120">*等级</th>
           <td>入学时间</td>
           <td>毕业时间</td>
           <td>毕业院校</td>
@@ -303,13 +303,13 @@
       <p class="require-tip">*必须填写，否则保存无效</p>
       <table class="table table-bordered table-hover">
         <tr class="warning">
-          <td>关系</td>
+          <td width="120">关系</td>
           <th>*姓名</th>
           <td>出生年月</td>
           <td>电话</td>
           <td>工作单位</td>
-          <td>政治面貌</td>
-          <td>现在情况</td>
+          <td width="120">政治面貌</td>
+          <td width="120">现在情况</td>
           <td>备注</td>
           <td></td>
         </tr>
@@ -388,13 +388,13 @@
       <table class="table table-bordered table-hover">
         <tr class="warning">
           <th>*证书名称</th>
-          <td>证书类型</td>
+          <td width="190">证书类型</td>
           <td>取得时间</td>
           <td>发证时间</td>
           <td>颁发单位</td>
-          <td>级别</td>
+          <td width="120">级别</td>
           <td>图片</td>
-          <td>证书描述</td>
+          <td width="80">证书描述</td>
           <td></td>
         </tr>
         #if($register.count > 0)
