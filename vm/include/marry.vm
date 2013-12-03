@@ -1,0 +1,6 @@
+
+              <option value="未婚">未婚</option>
+              <option value="已婚">已婚</option>
+              <option value="离异">离异</option>
+              <option value="再婚">再婚</option>
+              <option value="其他">其他</option>

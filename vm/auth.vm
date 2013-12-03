@@ -17,8 +17,8 @@
       	<input type="hidden" name="id" value="">
       </td>
       <td>
-      	<select name="userprower" class="form-control">
-      		<option value="1">Admin</option>
+      	<select name="userprower" class="form-control" value="2">
+           #include("include/role.vm")
       	</select>
       </td>
       <td>
@@ -42,7 +42,7 @@
    <div class="form-group">
       <label for="userprower">权限</label>
       <select name="userprower" id="userprower" class="form-control">
-      		<option value="1">Admin</option>
+        #include("include/role.vm")
   	</select>
   </div>
   <input type="hidden" name="action" value="add">

@@ -166,12 +166,12 @@ public partial class perinfo : System.Web.UI.Page
                             
                         }
                     }
-                    
+
+                    vh.Put("list", list[0]);
                    
                 }
 
                 vh.Put("perReserveList", perReservelist);
-                vh.Put("list", list[0]);
                 vh.Put("learn", learn);
                 vh.Put("family", family);
                 vh.Put("register", register);

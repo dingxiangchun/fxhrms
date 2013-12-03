@@ -1,0 +1,4 @@
+<option value="编制内">编制内</option>
+                <option value="编制外">编制外</option>
+                <option value="未备案编制外">未备案编制外</option>
+				<option value="其他">其他</option>

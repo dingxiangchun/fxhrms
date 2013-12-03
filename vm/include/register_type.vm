@@ -1,0 +1,8 @@
+
+              <option value="毕业证">毕业证</option>
+              <option value="学位证">学位证</option>
+              <option value="职称证">职称证</option>
+			  <option value="荣誉证">荣誉证</option>
+              <option value="会计证书">会计证书</option>
+              <option value="银行从业资格证书">银行从业资格证书</option>
+			  <option value="其他资格证书">其他资格证书</option>

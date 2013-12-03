@@ -1,0 +1,5 @@
+<option value="招聘学生">招聘学生</option>
+                <option value="接受退伍军人">接受退伍军人</option>
+                <option value="系统内调入">系统内调入</option>
+				<option value="置换">置换</option>
+				<option value="其他">其他</option>

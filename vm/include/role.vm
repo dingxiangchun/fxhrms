@@ -1,0 +1,4 @@
+<option value="1">查询员</option>
+<option value="2">审核员</option>
+<option value="3">信息录入员</option>
+<option value="0">管理员</option>

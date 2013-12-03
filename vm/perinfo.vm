@@ -1,301 +1,301 @@
 #include("layout/header.vm")
-
 <div id="content">
 
-<div class="quick-link">
-  <a type="button" class="btn btn-default" rel="basic">基本信息</a>
-  <a type="button" class="btn btn-default" rel="study">学习经历</a>
-  <a type="button" class="btn btn-default" rel="family">家庭成员</a>
-  <a type="button" class="btn btn-default" rel="register">证书及奖励</a>
-  <a type="button" class="btn btn-default" rel="reward">奖惩记录</a>
-  <a type="button" class="btn btn-default" rel="work">工作经历</a>
-  <a type="button" class="btn btn-default" rel="holiday">休假记录</a>
-</div>
+  <div class="quick-link">
+    <a type="button" class="btn btn-default" rel="basic">基本信息</a>
+    <a type="button" class="btn btn-default" rel="study">学习经历</a>
+    <a type="button" class="btn btn-default" rel="family">家庭成员</a>
+    <a type="button" class="btn btn-default" rel="register">证书及奖励</a>
+    <a type="button" class="btn btn-default" rel="reward">奖惩记录</a>
+    <a type="button" class="btn btn-default" rel="work">工作经历</a>
+    <a type="button" class="btn btn-default" rel="holiday">休假记录</a>
+  </div>
 
-<div id="info-basic" class="info-block">
-  <h3>员工基本信息</h3>
-  <img src="$!{list.Photo}" style="display: block;">
-  <br>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-      <th>姓名</th>
-	  <th>曾用名</th>
-      <th>员工代号</th> 
-      <th>性别</th>
-      <th>民族</th>
-      <th>身份证号码</th>
-      <th>出生年月</th>
-	  <th>婚姻状况</th>
-    </tr>
-    <tr>
+  <div id="info-basic" class="info-block">
+    <h3>员工基本信息</h3>
+    <img src="$!{list.Photo}" style="display: block;">
+    <br>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>姓名</th>
+        <th>曾用名</th>
+        <th>员工代号</th>
+        <th>性别</th>
+        <th>民族</th>
+        <th>身份证号码</th>
+        <th>出生年月</th>
+        <th>婚姻状况</th>
+      </tr>
+      <tr>
         <td>$!{list.Name}</td>
-		<td>$!{list.Beforename}</td>
+        <td>$!{list.Beforename}</td>
         <td>$!{list.Employeeid}</td>
         <td>$!{list.Sex}</td>
         <td>$!{list.Nation}</td>
         <td>$!{list.Idcard}</td>
         <td>$!{list.Birth}</td>
-		<td>$!{list.Married}</td>
-    </tr>
-    <tr class="warning">
-      <th>政治面貌</th>
-	  <th>加入时间</th>   
-      <th>联系电话</th> 
-	  <th colspan="2">银行卡号</th>
-	  <th colspan="3">籍贯</th>
-    </tr>
-    <tr>
-      <td>$!{list.Status}</td>
-	  <td>$!{list.Statustime}</td>      
-      <td>$!{list.Tel}</td>
-      <td colspan="2">$!{list.BankcardID}</td>
-	  <td colspan="3">$!{list.Town}</td>
-    </tr>
-	<tr class="warning">   
-      <th colspan="4">家庭住址</th>
-	  <th colspan="2">备注1</th>
-	  <th colspan="2">备注2</th>
-    </tr>
-    <tr>
-        
+        <td>$!{list.Married}</td>
+      </tr>
+      <tr class="warning">
+        <th>政治面貌</th>
+        <th>加入时间</th>
+        <th>联系电话</th>
+        <th colspan="2">银行卡号</th>
+        <th colspan="3">籍贯</th>
+      </tr>
+      <tr>
+        <td>$!{list.Status}</td>
+        <td>$!{list.Statustime}</td>
+        <td>$!{list.Tel}</td>
+        <td colspan="2">$!{list.BankcardID}</td>
+        <td colspan="3">$!{list.Town}</td>
+      </tr>
+      <tr class="warning">
+        <th colspan="4">家庭住址</th>
+        <th colspan="2">备注1</th>
+        <th colspan="2">备注2</th>
+      </tr>
+      <tr>
+
         <td colspan="4">$!{list.Address}</td>
-		<td colspan="2">$!{list.remarks1}</td>
-		<td colspan="2">$!{list.remarks2}</td>
-    </tr>
-  </table>
-  <br>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-          <th colspan="3">工作岗位</th>
-          <th colspan="6">工作单位</th>
-          <th>员工状态</th>
-          <th>职级</th>
-          <th>档次</th>
-        </tr>
-        <tr>
-          <td colspan="3">$!{list.Position}</td>
-          <td colspan="6">
-            $!{branch.branchName}
-          </td>
-          <td>$!{list.state}</td>
-          <td>$!{list.Rank}</td>
-          <td>$!{list.Level}</td>
-        </tr>
-        
-		 <tr class="warning">
-		 <th colspan="3">后备人才库</th>
-         <th colspan="4">聘入类别</th>
-		  
-		  <th>减员</th>
-          <th>用工种类</th>
-		  <th>参加工作时间</th>
-          <th>金融从业时间</th>
-          <th>工龄</th>
-        </tr>
-	    <tr>
-		  <td colspan="3">
-            #foreach ($one in $perReserveList)
+        <td colspan="2">$!{list.remarks1}</td>
+        <td colspan="2">$!{list.remarks2}</td>
+      </tr>
+    </table>
+    <br>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th colspan="3">工作岗位</th>
+        <th colspan="6">工作单位</th>
+        <th>员工状态</th>
+        <th>职级</th>
+        <th>档次</th>
+      </tr>
+      <tr>
+        <td colspan="3">$!{list.Position}</td>
+        <td colspan="6">$!{branch.branchName}</td>
+        <td>$!{list.state}</td>
+        <td>$!{list.Rank}</td>
+        <td>$!{list.Level}</td>
+      </tr>
+
+      <tr class="warning">
+        <th colspan="3">后备人才库</th>
+        <th colspan="4">聘入类别</th>
+
+        <th>减员</th>
+        <th>用工种类</th>
+        <th>参加工作时间</th>
+        <th>金融从业时间</th>
+        <th>工龄</th>
+      </tr>
+      <tr>
+        <td colspan="3">
+          #foreach ($one in $perReserveList)
               $!{one.ReserveType},
             #end
-          </td>
-          <td colspan="4">$!{list.employclass}</td>
-		  <td>$!{list.Attrion}</td>
-		  <td>$!{list.Guard}</td>
-		   <td>$!{list.Jobtime}</td>
-          <td>$!{list.financetime}</td>
-          <td class="cal-age" rel="$!{list.Jobtime}"></td>
-        </tr>
-  </table>
-  <br>
-	<table class="table table-bordered table-hover">
-        <tr class="warning">
-          <th>全日制学历</th>
-          <th colspan="3">全日制毕业院校</th>
-          <th>全日制学习专业</th>
-        </tr>
-        <tr>
-          <td>$!{list.fulltime_educ}</td>
-          <td colspan="3">$!{list.fulltime_sch}</td>
-          <td>$!{list.Major}</td>
-        </tr>
-		  <tr class="warning">
-		  <th>最终学历</th>
-          <th colspan="3">最终学历毕业院校</th>        
-		  <th>最终学历专业</th>
-        </tr>
-        <tr>
-		  <td>$!{list.final_edu}</td>
-          <td colspan="3">$!{list.final_sch}</td>
-          <td>$!{list.final_emajior}</td>
-        </tr>
-	</table>
-</div>
+        </td>
+        <td colspan="4">$!{list.employclass}</td>
+        <td>$!{list.Attrion}</td>
+        <td>$!{list.Guard}</td>
+        <td>$!{list.Jobtime}</td>
+        <td>$!{list.financetime}</td>
+        <td class="cal-age" rel="$!{list.Jobtime}"></td>
+      </tr>
+    </table>
+    <br>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>全日制学历</th>
+        <th colspan="3">全日制毕业院校</th>
+        <th>全日制学习专业</th>
+      </tr>
+      <tr>
+        <td>$!{list.fulltime_educ}</td>
+        <td colspan="3">$!{list.fulltime_sch}</td>
+        <td>$!{list.Major}</td>
+      </tr>
+      <tr class="warning">
+        <th>最终学历</th>
+        <th colspan="3">最终学历毕业院校</th>
+        <th>最终学历专业</th>
+      </tr>
+      <tr>
+        <td>$!{list.final_edu}</td>
+        <td colspan="3">$!{list.final_sch}</td>
+        <td>$!{list.final_emajior}</td>
+      </tr>
+    </table>
+  </div>
 
-<div id="info-study" class="info-block">
-  <h3>员工学习经历</h3>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-      <th>等级</th>
-      <th>入学时间</th>
-      <td>毕业时间</td>
-      <td>毕业院校</td>
-      <td>证明人</td>
-      <td>专业</td>
-      <td>描述</td>
-    </tr>
-    #foreach( $one in $learn )
-    <tr>
-      <td>$!{one.degree}</td>
-      <td>$!{one.starttime}</td>
-      <td>$!{one.graduatetime}</td>
-      <td>$!{one.graduatesch}</td>
-      <td>$!{one.retence}</td>
-      <td>$!{one.profession}</td>
-      <td>$!{one.content}</td>
-    </tr>
-    #end
-  </table>
-</div>
+  <div id="info-study" class="info-block">
+    <h3>员工学习经历</h3>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>等级</th>
+        <th>入学时间</th>
+        <td>毕业时间</td>
+        <td>毕业院校</td>
+        <td>证明人</td>
+        <td>专业</td>
+        <td>描述</td>
+      </tr>
+      #foreach( $one in $learn )
+      <tr>
+        <td>$!{one.degree}</td>
+        <td>$!{one.starttime}</td>
+        <td>$!{one.graduatetime}</td>
+        <td>$!{one.graduatesch}</td>
+        <td>$!{one.retence}</td>
+        <td>$!{one.profession}</td>
+        <td>$!{one.content}</td>
+      </tr>
+      #end
+    </table>
+  </div>
 
+  <div id="info-family" class="info-block">
+    <h3>员工家庭成员</h3>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>关系</th>
+        <th>姓名</th>
+        <th>出生年月</th>
+        <th>电话</th>
+        <td>工作单位</td>
+        <td>政治面貌</td>
+        <td>现在情况</td>
+        <td>备注</td>
+      </tr>
+      #foreach( $one in $family )
+      <tr>
+        <td>$!{one.relation}</td>
+        <td>$!{one.name}</td>
+        <td>$!{one.birth}</td>
+        <td>$!{one.tel}</td>
+        <td>$!{one.unit}</td>
+        <td>$!{one.status}</td>
+        <td>$!{one.situation}</td>
+        <td>$!{one.remark}</td>
+      </tr>
+      #end
+    </table>
+  </div>
 
-<div id="info-family" class="info-block">
-  <h3>员工家庭成员</h3>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-      <th>关系</th>
-	  <th>姓名</th>
-      <th>出生年月</th>
-	  <th>电话</th>
-      <td>工作单位</td>
-      <td>政治面貌</td>
-      <td>现在情况</td>
-      <td>备注</td>
-    </tr>
-    #foreach( $one in $family )
-   <tr>
-      <td>$!{one.relation}</td>
-	  <td>$!{one.name}</td>
-      <td>$!{one.birth}</td>
-	  <td>$!{one.tel}</td>
-      <td>$!{one.unit}</td>
-      <td>$!{one.status}</td>
-      <td>$!{one.situation}</td>
-      <td>$!{one.remark}</td>
-    </tr>
-    #end
-  </table>
-</div>
+  <div id="info-register" class="info-block">
+    <h3>证书及奖励</h3>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>证书名称</th>
+        <th>证书类型</th>
+        <td>取得时间</td>
+        <td>发证时间</td>
+        <td>颁发单位</td>
+        <td>种类</td>
+        <td>图片</td>
+        <td>证书描述</td>
+      </tr>
+      #foreach( $one in $register )
+      <tr>
+        <td>$!{one.cer_name}</td>
+        <td>$!{one.type}</td>
+        <td>$!{one.accesstime}</td>
+        <td>$!{one.issuingtime}</td>
+        <td>$!{one.unit}</td>
+        <td>$!{one.Class}</td>
+        <td>
+          <a href="$!{one.photo}" target="_blank">查看</a>
+        </td>
+        <td>$!{one.description}</td>
+      </tr>
+      #end
+    </table>
+  </div>
 
-<div id="info-register" class="info-block">
-  <h3>证书及奖励</h3>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-      <th>证书名称</th>
-      <th>证书类型</th>
-      <td>取得时间</td>
-      <td>发证时间</td>
-      <td>颁发单位</td>
-      <td>种类</td>
-      <td>图片</td>
-      <td>证书描述</td>
-    </tr>
-    #foreach( $one in $register )
-   <tr>
-      <td>$!{one.cer_name}</td>
-      <td>$!{one.type}</td>
-      <td>$!{one.accesstime}</td>
-      <td>$!{one.issuingtime}</td>
-      <td>$!{one.unit}</td>
-      <td>$!{one.Class}</td>
-      <td><a href="$!{one.photo}" target="_blank">查看</a></td>
-      <td>$!{one.description}</td>
-    </tr>
-    #end
-  </table>
-</div>
+  <div id="info-reward" class="info-block">
+    <h3>奖惩记录</h3>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>奖罚种类</th>
+        <th>时间</th>
+        <td>内容</td>
+        <td>部门</td>
+        <td>审核人</td>
+        <td>类型</td>
+        <td>奖惩部门</td>
+        <td>描述</td>
+        <td>相关文件</td>
+      </tr>
+      #foreach( $one in $reward )
+      <tr>
+        <td>$!{one.type}</td>
+        <td>$!{one.time}</td>
+        <td>$!{one.content}</td>
+        <td>$!{one.department}</td>
+        <td>$!{one.audit}</td>
+        <td>$!{one.Class}</td>
+        <td>$!{one.unit}</td>
+        <td>$!{one.description}</td>
+        <td>
+          <a href="$!{one.File}" target="_blank">查看</a>
+        </td>
+      </tr>
+      #end
+    </table>
+  </div>
 
-<div id="info-reward" class="info-block">
-  <h3>奖惩记录</h3>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-      <th>奖罚种类</th>
-      <th>时间</th>
-      <td>内容</td>
-      <td>部门</td>
-      <td>审核人</td>
-      <td>类型</td>
-      <td>奖惩部门</td>
-      <td>描述</td>
-      <td>相关文件</td>
-    </tr>
-    #foreach( $one in $reward )
-   <tr>
-      <td>$!{one.type}</td>
-      <td>$!{one.time}</td>
-      <td>$!{one.content}</td>
-      <td>$!{one.department}</td>
-      <td>$!{one.audit}</td>
-      <td>$!{one.Class}</td>
-      <td>$!{one.unit}</td>
-      <td>$!{one.description}</td>
-      <td><a href="$!{one.File}" target="_blank">查看</a></td>
-    </tr>
-    #end
-  </table>
-</div>
+  <div id="info-work" class="info-block">
+    <h3>工作经历</h3>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>工作开始时间</th>
+        <th>工作离职时间</th>
+        <td>岗位</td>
+        <td>工作单位</td>
+        <td>离职原因</td>
+        <td>工作内容</td>
+      </tr>
+      #foreach( $one in $work )
+      <tr>
+        <td>$!{one.attacktime}</td>
+        <td>$!{one.quittime}</td>
+        <td>$!{one.position}</td>
+        <td>$!{one.unit}</td>
+        <td>$!{one.reason}</td>
+        <td>$!{one.content}</td>
+      </tr>
+      #end
+    </table>
+  </div>
 
-<div id="info-work" class="info-block">
-  <h3>工作经历</h3>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-      <th>工作开始时间</th>
-      <th>工作离职时间</th>
-      <td>岗位</td>
-      <td>工作单位</td>
-      <td>离职原因</td>
-      <td>工作内容</td>
-    </tr>
-    #foreach( $one in $work )
-   <tr>
-      <td>$!{one.attacktime}</td>
-      <td>$!{one.quittime}</td>
-      <td>$!{one.position}</td>
-      <td>$!{one.unit}</td>
-      <td>$!{one.reason}</td>
-      <td>$!{one.content}</td>
-    </tr>
-    #end
-  </table>
-</div>
+  <div id="info-holiday" class="info-block">
+    <h3>休假记录</h3>
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>休假名称</th>
+        <th>休假天数</th>
+        <td>休假原因</td>
+        <td>批准人</td>
+        <td>休假开始时间</td>
+        <td>休假结束时间</td>
+        <td>实休天数</td>
+        <td>备注</td>
+      </tr>
+      #foreach( $one in $holiday )
+      <tr>
+        <td>$!{one.holiday}</td>
+        <td>$!{one.days}</td>
+        <td>$!{one.reason}</td>
+        <td>$!{one.audit}</td>
+        <td>$!{one.begintime}</td>
+        <td>$!{one.Endtime}</td>
+        <td>$!{one.days1}</td>
+        <td>$!{one.remark}</td>
+      </tr>
+      #end
+    </table>
+  </div>
 
-<div id="info-holiday" class="info-block">
-  <h3>休假记录</h3>
-  <table class="table table-bordered table-hover">
-    <tr class="warning">
-      <th>休假名称</th>
-      <th>休假天数</th>
-      <td>休假原因</td>
-      <td>批准人</td>
-      <td>休假开始时间</td>
-      <td>休假结束时间</td>
-      <td>实休天数</td>
-      <td>备注</td>
-    </tr>
-    #foreach( $one in $holiday )
-   <tr>
-      <td>$!{one.holiday}</td>
-      <td>$!{one.days}</td>
-      <td>$!{one.reason}</td>
-      <td>$!{one.audit}</td>
-      <td>$!{one.begintime}</td>
-      <td>$!{one.Endtime}</td>
-      <td>$!{one.days1}</td>
-      <td>$!{one.remark}</td>
-    </tr>
-    #end
-  </table>
-</div>
-  
 </div>
 <script src="statics/js/datepicker.js"></script>
 <script src="statics/js/perinfo.js"></script>

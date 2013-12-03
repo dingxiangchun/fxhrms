@@ -1,0 +1,9 @@
+
+              <option value="行政警告">行政警告</option>
+              <option value="行政记过">行政记过</option>
+			  <option value="行政记大过">行政记大过</option>
+			  <option value="降级">降级</option>
+			  <option value="撤职">撤职</option>
+			  <option value="留用查看">留用查看</option>
+			  <option value="开除">开除</option>
+			  <option value="其他">其他</option>

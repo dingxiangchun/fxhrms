@@ -1,0 +1,9 @@
+
+              <option value="系统内省级">系统内省级</option>
+              <option value="系统内市级">系统内市级</option>
+			  <option value="系统内县级">系统内县级</option>
+			  <option value="系统外国家级">系统外国家级</option>
+			  <option value="系统外省级">系统外省级</option>
+			  <option value="系统外市级">系统外市级</option>
+			  <option value="系统外县级">系统外县级</option>
+			  <option value="系统外网点级">系统外网点级</option>

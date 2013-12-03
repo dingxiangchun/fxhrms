@@ -8,11 +8,11 @@
     <div class="row">
       <div class="form-group col-md-3">
         <label>姓名</label>
-        <input type="text" class="form-control" name="Name" />
+        <input type="text" class="form-control" name="Name" value=""/>
       </div>
       <div class="form-group col-md-3">
         <label>员工代号</label>
-        <input type="text" class="form-control" name="Employeeid" />
+        <input type="text" class="form-control" name="Employeeid" value=""/>
       </div>
       <div class="form-group col-md-3">
         <label>工龄/年</label>
@@ -29,37 +29,21 @@
         <label>职级</label>
         <select name="Rank" class="form-control">
             <option value="">不限</option>
-            <option value="普通员工">普通员工</option>
-            <option value="中层正职">中层正职</option>
-            <option value="中层副职">中层副职</option>
+            #include("include/rank.vm")
         </select>
       </div>
       <div class="form-group col-md-3">
         <label>档次</label>
         <select name="Level" class="form-control">
                <option value="">不限</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+               #include("include/level.vm")
         </select>
       </div>
       <div class="form-group col-md-3">
         <label>全日制学历</label>
         <select name="fulltime_educ" class="form-control">
                 <option value="">不限</option>
-                <option value="本科">本科</option>
-                <option value="博士">博士</option>
-                <option value="硕士">硕士</option>
-                <option value="大专">大专</option>
-                <option value="高中">高中</option>
-                <option value="中专">中专</option>
+                #include("include/educ.vm")
         </select>
       </div>
        <div class="form-group col-md-3">
@@ -77,6 +61,7 @@
   <table class="table table-bordered table-hover ">
 
     <tr>
+      <th><input type="checkbox" class="form-control check-all"></th>
       <th>序号</th>
       <th>姓名</th>
       <th>身份证号</th>
@@ -101,6 +86,7 @@
     </tr>
     #foreach ($one in $list)
     <tr>
+      <th><input type="checkbox" class="form-control check-one" value="$!{one.id}"></th>
       <td>$!{one.Employeeid}</td>
       <td>$!{one.Name}</td>
       <td>$!{one.Name}</td>
@@ -128,7 +114,8 @@
   </table>
 </div>
 <br>
-<a type="button" class="btn btn-primary" href="javascript:void(0)">导出Excel</a>
+<a type="button" class="btn btn-primary" href="javascript:void(0)" id="exportCheck">已选导出Excel</a>
+<a type="button" class="btn btn-primary" href="javascript:void(0)" id="exportAll">全部导出Excel</a>
 </div>
 <script src="statics/js/datepicker.js"></script>
 <script src="statics/js/query.js"></script>
