@@ -106,7 +106,7 @@
       <td>$!{one.Name}</td>
       <td>$!{one.Sex}</td>
       <td>$!{one.Status}</td>
-      <td>加入党员时间</td>
+      <td>$!{one.Jobtime}</td>
       <td>$!{one.Birth}</td>
       <td>$!{one.Jobtime}</td>
       <td>$!{one.financetime}</td>
@@ -115,12 +115,12 @@
       <td>$!{one.final_sch}</td>
       <td>$!{one.final_edu}</td>
       <td>专业技术资格</td>
-      <td>工作单位</td>
+      <td>$!{one.Unit}</td>
       <td>$!{one.Position}</td>
       <td>$!{one.Guard}</td>
       <td>后备人才库</td>
       <td>$!{one.IDcard}</td>
-      <td>人员状态</td>
+      <td>$!{one.statename}</td>
       <td>$!{one.Tel}</td>
     </tr>
     #end

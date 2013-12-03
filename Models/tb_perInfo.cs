@@ -43,6 +43,7 @@ namespace Models
         private string _Guard;
         private int _Ages;
         private string _state;
+        private string _statename;
         private string _employclass;
         private string _photo;
         private string _Attrion;
@@ -295,6 +296,12 @@ namespace Models
             get { return _state; }
         }
 
+        public string statename
+        {
+            set { _statename = value; }
+            get { return _statename; }
+        }
+        
         public string employclass
         {
             set { _employclass = value; }

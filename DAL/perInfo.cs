@@ -137,12 +137,15 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_perInfo ");
+            strSql.Append("select tb_perInfo.id,tb_perInfo.Name,Beforename,Employeeid,Sex,Nation,Birth,Idcard,UnitID,tb_branch.branchName as Unit,Position,Rank,Level,Status,Statustime,");
+            strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,tb_perInfo.Tel,final_sch,");
+            strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,tb_pertypeinfo.name as statename,employclass,photo,Attrion,BankcardID,remarks1,remarks2");
+            strSql.Append(" from tb_perInfo,tb_branch,tb_pertypeinfo where tb_perInfo.UnitID = tb_branch.id and tb_perInfo.state = tb_pertypeinfo.id");
             if (strWhere.Trim() != "")
             {
-                strSql.Append("where "+strWhere+" ");
+                strSql.Append(" and "+strWhere+" ");
             }
-            strSql.Append("order by id");
+            strSql.Append("order by tb_perInfo.id");
             DataSet ds = new DataSet();
             ds = DbHelperSQL.Query(strSql.ToString());
             return ds;
