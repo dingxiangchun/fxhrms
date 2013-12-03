@@ -17,6 +17,6 @@ D:\wamp\www\fxhrms\Bin\DAL.dll
 D:\wamp\www\fxhrms\Bin\DAL.pdb
 D:\Project\Hrms\Bin\DAL.dll
 D:\Project\Hrms\Bin\DAL.pdb
-D:\Project\Hrms\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\Project\Hrms\DAL\obj\Debug\DAL.dll
 D:\Project\Hrms\DAL\obj\Debug\DAL.pdb
+D:\Project\Hrms\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

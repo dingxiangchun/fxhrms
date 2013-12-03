@@ -15,6 +15,8 @@ namespace Models
         private int _id;
         private string _branchnum;
         private string _branchname;
+        private string _tel;
+        private string _person;
         private string _branchinfo;
         private int _parentid;
         /// <summary>
@@ -40,6 +42,18 @@ namespace Models
         {
             set { _branchname = value; }
             get { return _branchname; }
+        }
+
+        public string tel
+        {
+            set { _tel = value; }
+            get { return _tel; }
+        }
+
+        public string person
+        {
+            set { _person = value; }
+            get { return _person; }
         }
         /// <summary>
         /// 

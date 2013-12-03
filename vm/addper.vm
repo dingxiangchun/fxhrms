@@ -28,15 +28,17 @@
   <table class="table table-bordered table-hover">
     <tr class="warning">
       <th>姓名</th>
+	  <th>曾用名</th>
       <th>员工代号</th> 
       <th>性别</th>
       <th>民族</th>
-      <th>籍贯</th>
       <th>身份证号码</th>
       <th>出生年月</th>
+	  <th>婚姻状况</th>
     </tr>
     <tr>
        <td><input type="text" value="$!{list.name}" name="Name" class="form-control" data-required="true"></td>
+	   <td><input type="text" value="$!{list.Beforename}" name="Beforename" class="form-control" data-required="true"></td>
           <td><input type="text" value="$!{list.Employeeid}" name="Employeeid" class="form-control" data-required="true"></td>
           <td>
             <select name="Sex" class="form-control" data-value="$!{list.Sex}">
@@ -50,17 +52,26 @@
               <option value="少数民族">少数民族</option>
             </select>
           </td>
-        <td><input type="text" value="$!{list.Town}"  name="Town" class="form-control"></td>
         <td><input type="text" value="$!{list.Idcard}" name="Idcard" class="form-control"></td>
           <td>
             <input type="text" class="form-control date-picker" name="Birth" data-date-format="yyyy-mm-dd" value="$!{list.Birth}">
           </td>
+		  <td>
+            <select name="Married" class="form-control" data-value="$!{list.Married}">
+              <option value="未婚">未婚</option>
+              <option value="已婚">已婚</option>
+              <option value="离异">离异</option>
+              <option value="再婚">再婚</option>
+              <option value="其他">其他</option>
+            </select>
+          </td>
     </tr>
     <tr class="warning">
       <th>政治面貌</th>
-      <th>婚姻状况</th>
+	  <th>加入时间</th>
       <th>联系电话</th> 
-      <th colspan="4">家庭住址</th>
+	  <th>银行卡号</th>
+	  <th colspan="4">籍贯</th>
     </tr>
     <tr>
       <td>
@@ -71,17 +82,22 @@
               <option value="其他">其他</option>
             </select>
           </td>
-        <td>
-            <select name="Married" class="form-control" data-value="$!{list.Married}">
-              <option value="未婚">未婚</option>
-              <option value="已婚">已婚</option>
-              <option value="离异">离异</option>
-              <option value="再婚">再婚</option>
-              <option value="其他">其他</option>
-            </select>
-          </td>
-          <td><input type="text" value="$!{list.Tel}" name="Tel" class="form-control"></td>
-      <td colspan="4"><input type="text" value="$!{list.Address}"  name="Address" class="form-control"></td>
+	  <td>
+           <input type="text" class="form-control date-picker" name="Statustime" data-date-format="yyyy-mm-dd" value="$!{list.Statustime}">
+      </td>
+      <td><input type="text" value="$!{list.Tel}" name="Tel" class="form-control"></td>
+	  <td><input type="text" value="$!{list.BankcardID}" name="BankcardID" class="form-control"></td>
+	  <td colspan="4"><input type="text" value="$!{list.Town}"  name="Town" class="form-control"></td>
+    </tr>
+	 <tr class="warning">
+      <th colspan="4">家庭住址</th>
+	  <th colspan="2">备注1</th>
+      <th colspan="2">备注2</th> 
+    </tr>
+	 <tr>
+	 <td colspan="4"><input type="text" value="$!{list.Address}"  name="Address" class="form-control"></td>
+      <td colspan="2"><input type="text" value="$!{list.remarks1}" name="remarks1" class="form-control"></td>
+	  <td colspan="2"><input type="text" value="$!{list.remarks2}"  name="remarks2" class="form-control"></td>
     </tr>
   </table>
   <br>
@@ -89,14 +105,9 @@
     <tr class="warning">
           <th>工作岗位</th>
           <th colspan="2">工作单位</th>
-          <th>员工类型</th>
+          <th>员工状态</th>
           <th>职级</th>
-          <th>档次</th>
-           <th>参加工作时间</th>
-          <th>金融从业时间</th>
-          <th colspan="2">后备人才库</th>
-          <th>用工类别</th>
-          <th>工龄</th>
+          <th colspan="3">档次</th>
         </tr>
         <tr>
           <td>
@@ -111,7 +122,7 @@
             <input type="hidden" value="$!{branch.id}" name="UnitID" class="form-control">
           </td>
           <td>
-            <select name="Class" class="form-control" data-value="$!{list.Class}">
+            <select name="state" class="form-control" data-value="$!{list.state}">
               #foreach ($one in $pertypeList)
               <option value="${one.id}">$!{one.name}</option>
               #end
@@ -124,7 +135,7 @@
               <option value="中层副职">中层副职</option>
             </select>
           </td>
-          <td>
+          <td colspan="3">
             <select name="Level" class="form-control" data-value="$!{list.Level}">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -139,7 +150,46 @@
             </select>
           </td>
           
-          <td>
+        </tr>
+	     <tr class="warning">
+          <th>聘入类别</th>
+          <th>减员</th>
+          <th>用工种类</th>
+           <th>参加工作时间</th>
+          <th>金融从业时间</th>
+          <th colspan="2">后备人才库</th>
+          <th>工龄</th>
+        </tr>
+		<tr>         
+		   <td>
+              <select name="employclass" class="form-control" data-value="$!{list.employclass}">
+                <option value="招聘学生">招聘学生</option>
+                <option value="接受退伍军人">接受退伍军人</option>
+                <option value="系统内调入">系统内调入</option>
+				<option value="置换">置换</option>
+				<option value="其他">其他</option>
+              </select>
+           </td>
+		   <td>
+              <select name="Attrion" class="form-control" data-value="$!{list.Attrion}">
+                <option value="无">无</option>
+                <option value="系统内调出">系统内调出</option>
+                <option value="退休">退休</option>
+				<option value="辞职">辞职</option>
+				<option value="解除劳动合同">解除劳动合同</option>
+				<option value="死亡">死亡</option>
+				<option value="其他">其他</option>
+              </select>
+           </td>
+		     <td>
+              <select name="Guard" class="form-control" data-value="$!{list.Guard}">
+                <option value="编制内">编制内</option>
+                <option value="编制外">编制外</option>
+                <option value="未备案编制外">未备案编制外</option>
+				<option value="其他">其他</option>
+              </select>
+           </td>
+		   <td>
             <input type="text" class="form-control date-picker" name="Jobtime" data-date-format="yyyy-mm-dd" value="$!{list.Jobtime}">
           </td>
           <td>
@@ -150,18 +200,15 @@
               $!{one.ReserveType},
             #end
           </td>
-          <td><input type="text" value="$!{list.Guard}"  name="Guard" class="form-control"></td>
           <td class="cal-age" rel="$!{list.Jobtime}"></td>
-        </tr>
+		</tr>
   </table>
   <br>
   <table class="table table-bordered table-hover">
         <tr class="warning">
           <th>全日制学历</th>
-          <th>全日制毕业院校</th>
-          <th>学习专业</th>
-          <th>最终学历毕业院校</th>
-          <th>最终学历专业</th>
+          <th colspan="3">全日制毕业院校</th>
+          <th>全日制学习专业</th>
         </tr>
         <tr>
           <td>
@@ -174,11 +221,28 @@
               <option value="中专">中专</option>
             </select>
           </td>
-          <td><input type="text"  value="$!{list.fulltime_sch}" name="fulltime_sch" class="form-control"></td>
+          <td colspan="3"><input type="text"  value="$!{list.fulltime_sch}" name="fulltime_sch" class="form-control"></td>
           <td><input type="text"  value="$!{list.Major}" name="Major" class="form-control"></td>
-          <td><input type="text" value="$!{list.final_sch}"  name="final_sch" class="form-control"></td>
-          <td><input type="text" value="$!{list.final_edu}"  name="final_edu" class="form-control"></td>
         </tr>
+	   <tr class="warning">
+          <th>最终学历</th>
+          <th colspan="3">最终学历毕业院校</th>
+          <th>最终学历专业</th>
+        </tr>
+		<tr>
+		   <td>
+            <select name="final_edu" class="form-control" data-value="$!{list.final_edu}">
+              <option value="本科">本科</option>
+              <option value="博士">博士</option>
+              <option value="硕士">硕士</option>
+              <option value="大专">大专</option>
+              <option value="高中">高中</option>
+              <option value="中专">中专</option>
+            </select>
+          </td>
+		  <td colspan="3"><input type="text" value="$!{list.final_sch}"  name="final_sch" class="form-control"></td>
+          <td><input type="text" value="$!{list.final_emajior}"  name="final_emajior" class="form-control"></td>
+		</tr>
   </table>
   
   <h4>后备人才库</h4>
@@ -236,7 +300,16 @@
     #if($learn.count > 0)
     #foreach ($one in $learn)
    <tr>
-      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.degree}" name="degree[]" class="form-control" data-required="true"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}">
+            <select name="degree[]" class="form-control" data-value="$!{one.degree}">
+              <option value="本科">本科</option>
+              <option value="博士">博士</option>
+              <option value="硕士">硕士</option>
+              <option value="大专">大专</option>
+              <option value="高中">高中</option>
+              <option value="中专">中专</option>
+            </select>
+	  </td>
       <td><input type="text" value="$!{one.starttime}" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="$!{one.graduatetime}" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="$!{one.graduatesch}" name="graduatesch[]" class="form-control"></td>
@@ -250,7 +323,16 @@
     #end
     #else
     <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="degree[]" class="form-control" data-required="true"></td>
+      <td><input type="hidden" name="iid[]" value="">
+	          <select name="degree[]" class="form-control">
+              <option value="本科">本科</option>
+              <option value="博士">博士</option>
+              <option value="硕士">硕士</option>
+              <option value="大专">大专</option>
+              <option value="高中">高中</option>
+              <option value="中专">中专</option>
+            </select>
+	  </td>
       <td><input type="text" value="" class="form-control date-picker-month" name="starttime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="" class="form-control date-picker-month" name="graduatetime[]" data-date-format="yyyy-mm"></td>
       <td><input type="text" value="" name="graduatesch[]" class="form-control"></td>
@@ -290,15 +372,37 @@
   #if($family.count > 0)
   #foreach ($one in $family)
    <tr>
-      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.relation}" name="relation[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}">
+		     <select name="relation[]" class="form-control" data-value="$!{one.relation}">
+              <option value="父亲">父亲</option>
+              <option value="母亲">母亲</option>
+              <option value="配偶">配偶</option>
+              <option value="兄弟姐妹">兄弟姐妹</option>
+              <option value="子女">子女</option>
+              <option value="其他">其他</option>
+            </select>     
+	  </td>
       <td><input type="text" value="$!{one.name}" name="name[]" class="form-control" data-required="true"></td>
 	  <td>
         <input type="text" value="$!{one.birth}" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
       </td>
 	  <td><input type="text" value="$!{one.tel}" name="tel[]" class="form-control"></td>
       <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="$!{one.status}" name="status[]" class="form-control"></td>
-      <td><input type="text" value="$!{one.situation}" name="situation[]" class="form-control"></td>
+      <td>
+	         <select name="status[]" class="form-control" data-value="$!{one.status}">
+              <option value="群众">群众</option>
+              <option value="共产党员">共产党员</option>
+              <option value="团员">团员</option>
+              <option value="其他">其他</option>
+            </select>
+	  </td>
+      <td>
+	  	  	 <select name="situation[]" class="form-control" data-value="$!{one.situation}">
+              <option value="在岗">在岗</option>
+              <option value="退休">退休</option>
+              <option value="其他">其他</option>
+            </select>  
+	  </td>
       <td><input type="text" value="$!{one.remark}" name="remark[]" class="form-control"></td>
       <td>
         <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
@@ -307,15 +411,37 @@
   #end
   #else
   <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="relation[]" class="form-control"></td>
+      <td><input type="hidden" name="iid[]" value="">
+	  		  <select name="relation[]" class="form-control" data-value="">
+              <option value="父亲">父亲</option>
+              <option value="母亲">母亲</option>
+              <option value="配偶">配偶</option>
+              <option value="兄弟姐妹">兄弟姐妹</option>
+              <option value="子女">子女</option>
+              <option value="其他">其他</option>
+            </select>  
+	  </td>
       <td><input type="text" value="" name="name[]" class="form-control" data-required="true"></td>
     <td>
         <input type="text" value="" class="form-control date-picker" name="birth[]" data-date-format="yyyy-mm-dd">
       </td>
     <td><input type="text" value="" name="tel[]" class="form-control"></td>
       <td><input type="text" value="" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="" name="status[]" class="form-control"></td>
-      <td><input type="text" value="" name="situation[]" class="form-control"></td>
+      <td>
+	  	     <select name="status[]" class="form-control" data-value="">
+              <option value="群众">群众</option>
+              <option value="共产党员">共产党员</option>
+              <option value="团员">团员</option>
+              <option value="其他">其他</option>
+            </select>
+	  </td>
+      <td>
+	  	  	<select name="situation[]" class="form-control" data-value="">
+              <option value="在岗">在岗</option>
+              <option value="退休">退休</option>
+              <option value="其他">其他</option>
+            </select>  
+	  </td>
       <td><input type="text" value="" name="remark[]" class="form-control"></td>
       <td>
         <span class="btn btn-default btn-sm del-item" type="button"><span class="glyphicon glyphicon-trash"></span></span>
@@ -342,7 +468,7 @@
       <td>取得时间</td>
       <td>发证时间</td>
       <td>颁发单位</td>
-      <td>种类</td>
+      <td>级别</td>
       <td>图片</td>
       <td>证书描述</td>
       <td></td>
@@ -351,11 +477,30 @@
     #foreach ($one in $register)
    <tr>
       <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.cer_name}" name="cer_name[]" class="form-control" data-required="true"></td>
-      <td><input type="text" value="$!{one.type}" name="type[]" class="form-control"></td>
+      <td>
+	  	  	<select name="type[]" class="form-control" data-value="$!{one.type}">
+              <option value="毕业证">毕业证</option>
+              <option value="学位证">学位证</option>
+              <option value="职称证">职称证</option>
+			  <option value="荣誉证">荣誉证</option>
+              <option value="会计证书">会计证书</option>
+              <option value="银行从业资格证书">银行从业资格证书</option>
+			  <option value="其他资格证书">其他资格证书</option>
+            </select> 
+	  </td>
       <td><input type="text" value="$!{one.accesstime}" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.issuingtime}" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="$!{one.Class}" name="Class[]" class="form-control"></td>
+      <td>
+	      	<select name="Class[]" class="form-control" data-value="$!{one.Class}">
+              <option value="国家级">国家级</option>
+              <option value="省级">省级</option>
+              <option value="市级">市级</option>
+			  <option value="县级">县级</option>
+              <option value="单位内部">单位内部</option>
+              <option value="其他">其他</option>
+            </select> 
+	  </td>
       <td>
         #if($!{one.photo})
         <a href="$!{one.photo}" target="_blank" class="view-file">查看</a>
@@ -371,11 +516,30 @@
     #else
     <tr>
       <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="cer_name[]" class="form-control" data-required="true"></td>
-      <td><input type="text" value="" name="type[]" class="form-control"></td>
+      <td>
+	  	  	 <select name="type[]" class="form-control" data-value="">
+              <option value="毕业证">毕业证</option>
+              <option value="学位证">学位证</option>
+              <option value="职称证">职称证</option>
+			  <option value="荣誉证">荣誉证</option>
+              <option value="会计证书">会计证书</option>
+              <option value="银行从业资格证书">银行从业资格证书</option>
+			  <option value="其他资格证书">其他资格证书</option>
+            </select> 
+	  </td>
       <td><input type="text" value="" class="form-control date-picker" name="accesstime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" class="form-control date-picker" name="issuingtime[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" name="unit[]" class="form-control"></td>
-      <td><input type="text" value="" name="Class[]" class="form-control"></td>
+      <td>
+	  	  	<select name="Class[]" class="form-control" data-value="">
+              <option value="国家级">国家级</option>
+              <option value="省级">省级</option>
+              <option value="市级">市级</option>
+			  <option value="县级">县级</option>
+              <option value="单位内部">单位内部</option>
+              <option value="其他">其他</option>
+            </select> 
+	  </td>
       <td>
         #if($!{one.photo})
         <a href="$!{one.photo}" target="_blank" class="view-file">查看</a>
@@ -409,6 +573,7 @@
       <td>部门</td>
       <td>审核人</td>
       <td>类型</td>
+	  <td>奖惩等级</td>
       <td>奖惩部门</td>
       <td>描述</td>
       <td>相关文件</td>
@@ -417,12 +582,40 @@
     #if($reward.count > 0)
     #foreach ($one in $reward)
    <tr>
-      <td><input type="hidden" name="iid[]" value="$!{one.id}"><input type="text" value="$!{one.type}" name="type[]" class="form-control" data-required="true"></td>
+      <td><input type="hidden" name="iid[]" value="$!{one.id}">
+	  	  	 <select name="type[]" class="form-control" data-value="$!{one.type}">
+              <option value="奖励">奖励</option>
+              <option value="惩罚">惩罚</option>
+            </select> 
+	  </td>
       <td><input type="text" value="$!{one.time}" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
       <td><input type="text" value="$!{one.department}" name="department[]" class="form-control"></td>
       <td><input type="text" value="$!{one.audit}" name="audit[]" class="form-control"></td>
-      <td><input type="text" value="$!{one.Class}" name="Class[]" class="form-control"></td>
+      <td>
+	  	  	<select name="Class[]" class="form-control" data-value="$!{one.Class}">
+              <option value="系统内省级">系统内省级</option>
+              <option value="系统内市级">系统内市级</option>
+			  <option value="系统内县级">系统内县级</option>
+			  <option value="系统外国家级">系统外国家级</option>
+			  <option value="系统外省级">系统外省级</option>
+			  <option value="系统外市级">系统外市级</option>
+			  <option value="系统外县级">系统外县级</option>
+			  <option value="系统外网点级">系统外网点级</option>
+            </select>
+	  </td>
+	   <td>
+	  	  	<select name="level[]" class="form-control" data-value="$!{one.level}">
+              <option value="行政警告">行政警告</option>
+              <option value="行政记过">行政记过</option>
+			  <option value="行政记大过">行政记大过</option>
+			  <option value="降级">降级</option>
+			  <option value="撤职">撤职</option>
+			  <option value="留用查看">留用查看</option>
+			  <option value="开除">开除</option>
+			  <option value="其他">其他</option>
+            </select>
+	  </td>
       <td><input type="text" value="$!{one.unit}" name="unit[]" class="form-control"></td>
       <td><input type="text" value="$!{one.description}" name="description[]" class="form-control"></td>
       <td>
@@ -438,12 +631,40 @@
     #end
     #else
     <tr>
-      <td><input type="hidden" name="iid[]" value=""><input type="text" value="" name="type[]" class="form-control" data-required="true"></td>
+      <td><input type="hidden" name="iid[]" value="">
+	  	  	<select name="type[]" class="form-control" data-value="">
+              <option value="奖励">奖励</option>
+              <option value="惩罚">惩罚</option>
+            </select> 
+	  </td>
       <td><input type="text" value="" class="form-control date-picker" name="time[]" data-date-format="yyyy-mm-dd"></td>
       <td><input type="text" value="" name="content[]" class="form-control"></td>
       <td><input type="text" value="" name="department[]" class="form-control"></td>
       <td><input type="text" value="" name="audit[]" class="form-control"></td>
-      <td><input type="text" value="" name="Class[]" class="form-control"></td>
+      <td>
+	  	  	<select name="Class[]" class="form-control" data-value="">
+              <option value="系统内省级">系统内省级</option>
+              <option value="系统内市级">系统内市级</option>
+			  <option value="系统内县级">系统内县级</option>
+			  <option value="系统外国家级">系统外国家级</option>
+			  <option value="系统外省级">系统外省级</option>
+			  <option value="系统外市级">系统外市级</option>
+			  <option value="系统外县级">系统外县级</option>
+			  <option value="系统外网点级">系统外网点级</option>
+            </select>
+	  </td>
+	  <td>
+	  	  	<select name="level[]" class="form-control" data-value="">
+              <option value="行政警告">行政警告</option>
+              <option value="行政记过">行政记过</option>
+			  <option value="行政记大过">行政记大过</option>
+			  <option value="降级">降级</option>
+			  <option value="撤职">撤职</option>
+			  <option value="留用查看">留用查看</option>
+			  <option value="开除">开除</option>
+			  <option value="其他">其他</option>
+            </select>
+	  </td>
       <td><input type="text" value="" name="unit[]" class="form-control"></td>
       <td><input type="text" value="" name="description[]" class="form-control"></td>
       <td>

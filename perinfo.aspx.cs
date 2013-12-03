@@ -84,19 +84,18 @@ public partial class perinfo : System.Web.UI.Page
         }
         else
         {
-            string strwhere = "id=" + Request["id"];
             string branchid = string.IsNullOrEmpty(Request["branchid"]) ? "0" : Request["branchid"];
             string branchstr = "id=" + branchid;
 
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
-            IList<tb_perInfo> list = dal.GetListAll(strwhere);
-            IList<tb_learninfo> learn = dalLearn.GetListAll("employee" + strwhere);
-            IList<tb_family> family = dalFamily.GetListAll("employee" + strwhere);
-            IList<tb_registerinfo> register = dalReg.GetListAll("employee" + strwhere);
-            IList<tb_rewardinfo> reward = dalReward.GetListAll("employee" + strwhere);
-            IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
-            IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
+            IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.id = " + Request["id"]);
+            IList<tb_learninfo> learn = dalLearn.GetListAll("employeeid =" + Request["id"]);
+            IList<tb_family> family = dalFamily.GetListAll("employeeid =" + Request["id"]);
+            IList<tb_registerinfo> register = dalReg.GetListAll("employeeid =" + Request["id"]);
+            IList<tb_rewardinfo> reward = dalReward.GetListAll("employeeid =" + Request["id"]);
+            IList<tb_resumeinfo> work = dalWork.GetListAll("employeeid =" + Request["id"]);
+            IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employeeid =" + Request["id"]);
             IList<tb_branch> branchList = dalBranch.GetListAll( branchstr );
 
             IList<tb_Reserve> Reservelist = new List<tb_Reserve>();
@@ -140,15 +139,14 @@ public partial class perinfo : System.Web.UI.Page
             IList<tb_branch> branchList = dalBranch.GetListAll(branchstr);
             if (id != "" && id != null)
             {
-                string strwhere = "id=" + id;
                
-                IList<tb_perInfo> list = dal.GetListAll(strwhere);
-                IList<tb_learninfo> learn = dalLearn.GetListAll("employee" + strwhere);
-                IList<tb_family> family = dalFamily.GetListAll("employee" + strwhere);
-                IList<tb_registerinfo> register = dalReg.GetListAll("employee" + strwhere);
-                IList<tb_rewardinfo> reward = dalReward.GetListAll("employee" + strwhere);
-                IList<tb_resumeinfo> work = dalWork.GetListAll("employee" + strwhere);
-                IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employee" + strwhere);
+                IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.id ="+id );
+                IList<tb_learninfo> learn = dalLearn.GetListAll("employeeid =" + id);
+                IList<tb_family> family = dalFamily.GetListAll("employeeid =" + id);
+                IList<tb_registerinfo> register = dalReg.GetListAll("employeeid =" + id);
+                IList<tb_rewardinfo> reward = dalReward.GetListAll("employeeid =" + id);
+                IList<tb_resumeinfo> work = dalWork.GetListAll("employeeid =" + id);
+                IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employeeid =" + id);
 
                 IList<tb_Reserve> perReservelist = new List<tb_Reserve>();
                 if (list.Count > 0)
@@ -203,7 +201,7 @@ public partial class perinfo : System.Web.UI.Page
             string type = Request["type"];
             if (Request["type"] == null || Request["type"] == "")
             {
-                dal.Delete("id="+id);
+                dal.Delete("tb_perinfo.id=" + id);
                 dalFamily.Delete("employeeid="+id);
                 dalReg.Delete("employeeid=" + id);
                 dalLearn.Delete("employeeid="+id);
@@ -278,7 +276,7 @@ public partial class perinfo : System.Web.UI.Page
                 model.Reserve = Request["Reserve"];
                 model.Guard = Request["Guard"];
                 model.Ages = 0;
-                model.Class = Request["Class"];
+                model.state = Request["state"];
                 model.photo = Request["photo"];
                 dal.Update(model);
 
@@ -293,6 +291,7 @@ public partial class perinfo : System.Web.UI.Page
         if (Request["type"] == "basic")
         {
             model.Name = Request["Name"];
+            model.Beforename = Request["Beforename"];
             model.Employeeid = Request["Employeeid"];
             model.Sex = Request["Sex"];
             model.Nation = Request["Nation"];
@@ -307,6 +306,7 @@ public partial class perinfo : System.Web.UI.Page
             model.Rank = Request["Rank"];
             model.Level = int.Parse(Request["Level"].ToString());
             model.Status = Request["Status"];
+            model.Statustime = Request["Statustime"];
             model.Jobtime = Request["Jobtime"];
             model.financetime = Request["financetime"];
             model.fulltime_educ = Request["fulltime_educ"];
@@ -317,11 +317,17 @@ public partial class perinfo : System.Web.UI.Page
             model.Tel = Request["Tel"];
             model.final_edu = Request["final_edu"];
             model.final_sch = Request["final_sch"];
+            model.final_emajior = Request["final_emajior"];
             model.Address = Request["Address"];
             model.Reserve = Request["Reserve"];
             model.Guard = Request["Guard"];
             model.Ages = 0;
-            model.Class = Request["Class"];
+            model.state = Request["state"];
+            model.employclass = Request["employclass"];
+            model.Attrion = Request["Attrion"];
+            model.BankcardID = Request["BankcardID"];
+            model.remarks1 = Request["remarks1"];
+            model.remarks2 = Request["remarks2"];
             if (Request.Files.Count > 0)
             {
                 HttpFileCollection FileCollection = Request.Files;

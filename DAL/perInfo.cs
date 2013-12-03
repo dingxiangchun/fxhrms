@@ -44,59 +44,87 @@ namespace DAL
                 return true;
             }
         }
-        public void Add(tb_perInfo model)
+        public bool Add(tb_perInfo model)
         {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into tb_perInfo(Name,Employeeid,Sex,Nation,Birth,Idcard,UnitID,Unit,Position,Rank,Level,Status,");
-            strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,Tel,final_sch,");
-            strSql.Append("final_edu,Address,Reserve,Guard,Ages,Class,photo) values (");
-            strSql.Append("'" + model.Name + "','" + model.Employeeid + "','" + model.Sex + "','" + model.Nation + "','" + model.Birth + "','" + model.Idcard + "',");
-            strSql.Append(""+model.UnitID+",'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
-            strSql.Append("'"+model.Status+"','"+model.Jobtime+"','"+model.financetime+"','"+model.fulltime_educ+"','"+model.fulltime_sch+"',");
-            strSql.Append("'" + model.Major + "','" + model.Married + "','" + model.Town + "','" + model.Tel + "',");
-            strSql.Append("'"+model.final_sch+"','"+model.final_edu+"','"+model.Address+"','"+model.Reserve+"','"+model.Guard+"',");
-            strSql.Append(model.Ages + ",'" + model.Class + "','"+model.photo+"')");
-            int cmdresult = DbHelperSQL.ExecuteSql(strSql.ToString());
+            try
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("insert into tb_perInfo(Name,Beforename,Employeeid,Sex,Nation,Birth,Idcard,UnitID,Unit,Position,Rank,Level,Status,Statustime,");
+                strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,Tel,final_sch,");
+                strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,employclass,photo,Attrion,BankcardID,remarks1,remarks2) values (");
+                strSql.Append("'" + model.Name + "','" + model.Beforename + "','" + model.Employeeid + "','" + model.Sex + "','" + model.Nation + "','" + model.Birth + "','" + model.Idcard + "',");
+                strSql.Append("" + model.UnitID + ",'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
+                strSql.Append("'" + model.Status + "','" + model.Statustime + "','" + model.Jobtime + "','" + model.financetime + "','" + model.fulltime_educ + "','" + model.fulltime_sch + "',");
+                strSql.Append("'" + model.Major + "','" + model.Married + "','" + model.Town + "','" + model.Tel + "',");
+                strSql.Append("'" + model.final_sch + "','" + model.final_edu + "','" + model.final_emajior + "','" + model.Address + "','" + model.Reserve + "','" + model.Guard + "',");
+                strSql.Append(model.Ages + ",'" + model.state + "','" + model.employclass + "','" + model.photo + "','" + model.Attrion + "','" + model.BankcardID + "','" + model.remarks1 + "','" + model.remarks2 + "')");
+                if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
 
         }
-        public void Update(tb_perInfo model)
+        public bool Update(tb_perInfo model)
         {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("update tb_perInfo set ");
-            strSql.Append("Name='" + model.Name + "',");
-            strSql.Append("Employeeid='" + model.Employeeid + "',");
-            strSql.Append("Sex='" + model.Sex + "',");
-            strSql.Append("Nation='" + model.Nation + "',");
-            strSql.Append("Birth='" + model.Birth + "',");
-            strSql.Append("Idcard='" + model.Idcard + "',");
-            strSql.Append("UnitID=" + model.UnitID + ",");
-            strSql.Append("Unit='" + model.Unit + "',");
-            strSql.Append("Position='" + model.Position + "',");
-            strSql.Append("Rank='" + model.Rank + "',");
-            strSql.Append("Level=" + model.Level + ",");
-            strSql.Append("Status='" + model.Status + "',");
-            strSql.Append("Jobtime='" + model.Jobtime + "',");
-            strSql.Append("financetime='" + model.financetime + "',");
-            strSql.Append("fulltime_educ='" + model.fulltime_educ + "',");
-            strSql.Append("fulltime_sch='" + model.fulltime_sch + "',");
-            strSql.Append("Major='" + model.Major + "',");
-            strSql.Append("Married='" + model.Married + "',");
-            strSql.Append("Town='" + model.Town + "',");
-            strSql.Append("Tel='" + model.Tel + "',");
-            strSql.Append("final_sch='" + model.final_sch + "',");
-            strSql.Append("final_edu='" + model.final_edu + "',");
-            strSql.Append("Address='" + model.Address + "',");
-            strSql.Append("Reserve='" + model.Reserve + "',");
-            strSql.Append("Guard='" + model.Guard + "',");
-            strSql.Append("Ages=" + model.Ages + ",");
-            strSql.Append("Class='" + model.Class + "'");
-            if (model.photo != "")
+            try
             {
-                strSql.Append(",photo='" + model.photo + "'");
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("update tb_perInfo set ");
+                strSql.Append("Name='" + model.Name + "',");
+                strSql.Append("Beforename='" + model.Beforename + "',");
+                strSql.Append("Employeeid='" + model.Employeeid + "',");
+                strSql.Append("Sex='" + model.Sex + "',");
+                strSql.Append("Nation='" + model.Nation + "',");
+                strSql.Append("Birth='" + model.Birth + "',");
+                strSql.Append("Idcard='" + model.Idcard + "',");
+                strSql.Append("UnitID=" + model.UnitID + ",");
+                strSql.Append("Unit='" + model.Unit + "',");
+                strSql.Append("Position='" + model.Position + "',");
+                strSql.Append("Rank='" + model.Rank + "',");
+                strSql.Append("Level=" + model.Level + ",");
+                strSql.Append("Status='" + model.Status + "',");
+                strSql.Append("Statustime='" + model.Statustime + "',");
+                strSql.Append("Jobtime='" + model.Jobtime + "',");
+                strSql.Append("financetime='" + model.financetime + "',");
+                strSql.Append("fulltime_educ='" + model.fulltime_educ + "',");
+                strSql.Append("fulltime_sch='" + model.fulltime_sch + "',");
+                strSql.Append("Major='" + model.Major + "',");
+                strSql.Append("Married='" + model.Married + "',");
+                strSql.Append("Town='" + model.Town + "',");
+                strSql.Append("Tel='" + model.Tel + "',");
+                strSql.Append("final_sch='" + model.final_sch + "',");
+                strSql.Append("final_edu='" + model.final_edu + "',");
+                strSql.Append("final_emajior='" + model.final_emajior + "',");
+                strSql.Append("Address='" + model.Address + "',");
+                strSql.Append("Reserve='" + model.Reserve + "',");
+                strSql.Append("Guard='" + model.Guard + "',");
+                strSql.Append("Ages=" + model.Ages + ",");
+                strSql.Append("state='" + model.state + "',");
+                strSql.Append("employclass='" + model.employclass + "',");
+                strSql.Append("Attrion='" + model.Attrion + "',");
+                strSql.Append("BankcardID='" + model.BankcardID + "',");
+                strSql.Append("remarks1='" + model.remarks1 + "',");
+                strSql.Append("remarks2='" + model.remarks2 + "'");
+                if (model.photo != "")
+                {
+                    strSql.Append(",photo='" + model.photo + "'");
+                }
+
+                strSql.Append(" where id=" + model.id + "");
+                if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
+                    return true;
+                else
+                    return false;
             }
-            
-            strSql.Append(" where id=" + model.id + "");
-            DbHelperSQL.ExecuteSql(strSql.ToString());
+            catch
+            {
+                return false;
+            }
 
         }
         public void Delete(string strwhere)
@@ -109,12 +137,15 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_perInfo ");
+            strSql.Append("select tb_perInfo.id,tb_perInfo.Name,Beforename,Employeeid,Sex,Nation,Birth,Idcard,UnitID,tb_branch.branchName as Unit,Position,Rank,Level,Status,Statustime,");
+            strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,tb_perInfo.Tel,final_sch,");
+            strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,tb_pertypeinfo.name as statename,employclass,photo,Attrion,BankcardID,remarks1,remarks2");
+            strSql.Append(" from tb_perInfo,tb_branch,tb_pertypeinfo where tb_perInfo.UnitID = tb_branch.id and tb_perInfo.state = tb_pertypeinfo.id");
             if (strWhere.Trim() != "")
             {
-                strSql.Append("where "+strWhere+" ");
+                strSql.Append(" and "+strWhere+" ");
             }
-            strSql.Append("order by id");
+            strSql.Append("order by tb_perInfo.id");
             DataSet ds = new DataSet();
             ds = DbHelperSQL.Query(strSql.ToString());
             return ds;

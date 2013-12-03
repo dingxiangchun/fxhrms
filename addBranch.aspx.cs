@@ -68,6 +68,8 @@ public partial class addBranch : System.Web.UI.Page
         {
             int parentid = int.Parse(Request["parentid"].ToString());
             model.branchName = Request["branchName"];
+            model.tel = Request["tel"];
+            model.person = Request["person"];
             model.branchInfo = Request["branchInfo"];
             model.branchNum = Request["branchNum"];
             model.parentid = parentid;
@@ -98,6 +100,8 @@ public partial class addBranch : System.Web.UI.Page
             model.branchName = Request["branchName"];
             model.branchInfo = Request["branchInfo"];
             model.branchNum = Request["branchNum"];
+            model.tel = Request["tel"];
+            model.person = Request["person"];
             dal.Update(model);
             string strwhere = "";
             if (parentid > 0)
