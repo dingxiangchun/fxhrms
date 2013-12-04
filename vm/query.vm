@@ -102,9 +102,9 @@
       <td>$!{one.final_edu}</td>
       <td>专业技术资格</td>
       <td>$!{one.Unit}</td>
-      <td>$!{one.Position}</td>
+      <td>$!{one.PositionName}</td>
       <td>$!{one.Guard}</td>
-      <td>后备人才库</td>
+      <td>$!{one.Reserve}</td>
       <td>$!{one.IDcard}</td>
       <td>$!{one.statename}</td>
       <td>$!{one.Tel}</td>

@@ -137,10 +137,10 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select tb_perInfo.id,tb_perInfo.Name,Beforename,Employeeid,Sex,Nation,Birth,Idcard,UnitID,tb_branch.branchName as Unit,Position,Rank,Level,Status,Statustime,");
+            strSql.Append("select tb_perInfo.id,tb_perInfo.Name,Beforename,Employeeid,Sex,Nation,Birth,Idcard,UnitID,tb_branch.branchName as Unit,Position,tb_positioninfo.name as PositionName,Rank,Level,Status,Statustime,");
             strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,tb_perInfo.Tel,final_sch,");
             strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,tb_pertypeinfo.name as statename,employclass,photo,Attrion,BankcardID,remarks1,remarks2");
-            strSql.Append(" from tb_perInfo,tb_branch,tb_pertypeinfo where tb_perInfo.UnitID = tb_branch.id and tb_perInfo.state = tb_pertypeinfo.id");
+            strSql.Append(" from tb_perInfo,tb_branch,tb_pertypeinfo,tb_positioninfo where tb_perInfo.UnitID = tb_branch.id and tb_perInfo.state = tb_pertypeinfo.id and tb_perInfo.Position = tb_positioninfo.id");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" and "+strWhere+" ");

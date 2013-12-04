@@ -72,7 +72,7 @@
         <th>档次</th>
       </tr>
       <tr>
-        <td colspan="3">$!{list.Position}</td>
+        <td colspan="3">$!{list.PositionName}</td>
         <td colspan="6">$!{branch.branchName}</td>
         <td>$!{list.state}</td>
         <td>$!{list.Rank}</td>

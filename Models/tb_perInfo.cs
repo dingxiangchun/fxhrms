@@ -23,6 +23,7 @@ namespace Models
         private int _UnitID;
         private string _Unit;
         private string _Position;
+        private string _PositionName;
         private string _Rank;
         private int _Level;
         private string _Status;
@@ -138,6 +139,12 @@ namespace Models
         {
             set { _Position = value; }
             get { return _Position; }
+        }
+
+        public string PositionName
+        {
+            set { _PositionName = value; }
+            get { return _PositionName; }
         }
         /// <summary>
         /// 职级
