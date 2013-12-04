@@ -89,7 +89,7 @@ public partial class perinfo : System.Web.UI.Page
 
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
-            IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.id = " + Request["id"]);
+            IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.employeeid = " + Request["id"]);
             IList<tb_learninfo> learn = dalLearn.GetListAll("employeeid =" + Request["id"]);
             IList<tb_family> family = dalFamily.GetListAll("employeeid =" + Request["id"]);
             IList<tb_registerinfo> register = dalReg.GetListAll("employeeid =" + Request["id"]);
@@ -139,8 +139,8 @@ public partial class perinfo : System.Web.UI.Page
             IList<tb_branch> branchList = dalBranch.GetListAll(branchstr);
             if (id != "" && id != null)
             {
-               
-                IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.id ="+id );
+
+                IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.employeeid =" + id);
                 IList<tb_learninfo> learn = dalLearn.GetListAll("employeeid =" + id);
                 IList<tb_family> family = dalFamily.GetListAll("employeeid =" + id);
                 IList<tb_registerinfo> register = dalReg.GetListAll("employeeid =" + id);

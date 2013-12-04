@@ -44,8 +44,8 @@
           <td>$!{one.Position}</td>
           <td>$!{one.Jobtime}</td>
   				<td>
-            <a href="perinfo.aspx?id=${one.id}" role="button" class="btn btn-default btn-xs" target="_blank">查询</a>
-            <a href="perinfo.aspx?action=add&id=${one.id}" role="button" class="btn btn-primary btn-xs" target="_blank">维护</a>
+            <a href="perinfo.aspx?id=${one.Employeeid}" role="button" class="btn btn-default btn-xs" target="_blank">查询</a>
+            <a href="perinfo.aspx?action=add&id=${one.Employeeid}" role="button" class="btn btn-primary btn-xs" target="_blank">维护</a>
           </td>
   			</tr>
   			#end

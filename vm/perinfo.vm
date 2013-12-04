@@ -74,7 +74,7 @@
       <tr>
         <td colspan="3">$!{list.PositionName}</td>
         <td colspan="6">$!{branch.branchName}</td>
-        <td>$!{list.state}</td>
+        <td>$!{list.statename}</td>
         <td>$!{list.Rank}</td>
         <td>$!{list.Level}</td>
       </tr>

@@ -289,7 +289,7 @@
         </tr>
         #end
       </table>
-      <input type="hidden" name="id" value="$!{list.id}">
+      <input type="hidden" name="id" value="$!{list.Employeeid}">
       <input type="hidden" name="type" value="study">
       <input type="hidden" name="action" value="save">
       <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
@@ -373,7 +373,7 @@
         </tr>
         #end
       </table>
-      <input type="hidden" name="id" value="$!{list.id}">
+      <input type="hidden" name="id" value="$!{list.Employeeid}">
       <input type="hidden" name="type" value="family">
       <input type="hidden" name="action" value="save">
       <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
@@ -461,7 +461,7 @@
         </tr>
         #end
       </table>
-      <input type="hidden" name="id" value="$!{list.id}">
+      <input type="hidden" name="id" value="$!{list.Employeeid}">
       <input type="hidden" name="type" value="register">
       <input type="hidden" name="action" value="save">
       <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
@@ -561,7 +561,7 @@
         </tr>
         #end
       </table>
-      <input type="hidden" name="id" value="$!{list.id}">
+      <input type="hidden" name="id" value="$!{list.Employeeid}">
       <input type="hidden" name="type" value="reward">
       <input type="hidden" name="action" value="save">
       <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
@@ -629,7 +629,7 @@
         </tr>
         #end
       </table>
-      <input type="hidden" name="id" value="$!{list.id}">
+      <input type="hidden" name="id" value="$!{list.Employeeid}">
       <input type="hidden" name="type" value="work">
       <input type="hidden" name="action" value="save">
       <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
@@ -707,7 +707,7 @@
         </tr>
         #end
       </table>
-      <input type="hidden" name="id" value="$!{list.id}">
+      <input type="hidden" name="id" value="$!{list.Employeeid}">
       <input type="hidden" name="type" value="holiday">
       <input type="hidden" name="action" value="save">
       <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
