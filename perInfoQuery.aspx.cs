@@ -10,6 +10,8 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Text.RegularExpressions;
+using Word = Microsoft.Office.Interop.Word;
 using DAL;
 using Models;
 
@@ -33,16 +35,17 @@ public partial class perInfoQuery : System.Web.UI.Page
             {
                 if (!string.IsNullOrEmpty(Request["ids"]))
                 {
-                    string strwhere = "(1=0";
-                    string[] idlist = Request["ids"].Split(',');
-                    for (int i = 0; i < idlist.Length; i++)
-                    {
-                        strwhere += " or tb_perInfo.id=" + idlist[i];
-                    }
-                    strwhere += ")";
-                    IList<tb_perInfo> list = dal.GetListAll(strwhere);
-                    ChangeReserve(ref list);
-                    ExportExcel(list);
+                    //string strwhere = "(1=0";
+                    //string[] idlist = Request["ids"].Split(',');
+                    //for (int i = 0; i < idlist.Length; i++)
+                    //{
+                    //    strwhere += " or tb_perInfo.id=" + idlist[i];
+                    //}
+                    //strwhere += ")";
+                    //IList<tb_perInfo> list = dal.GetListAll(strwhere);
+                    //ChangeReserve(ref list);
+                    //ExportExcel(list);
+                    ExportWord();
                 }
 
             }
@@ -186,6 +189,46 @@ public partial class perInfoQuery : System.Web.UI.Page
         Reader.Close();
         if (System.IO.File.Exists(filePath))
             System.IO.File.Delete(filePath); 
+        return true;
+    }
+
+    public bool ExportWord()
+    {
+        Object Nothing = System.Reflection.Missing.Value;
+        string fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".doc";
+        Object filePath = Server.MapPath("~/" + fileName);
+
+        Word.Application WordApp = new Word.ApplicationClass();
+        Word.Document WordDoc = WordApp.Documents.Add(ref Nothing, ref Nothing, ref Nothing, ref Nothing);
+        WordApp.Selection.Font.Size = 15;
+        WordApp.Selection.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter; // 居中
+        WordApp.Selection.Font.Bold = 1;    // 黑体
+        WordApp.Selection.TypeText("标题");
+        WordDoc.SaveAs(ref filePath, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing, ref Nothing);
+        //关闭WordDoc文档对象
+        WordDoc.Close(ref Nothing, ref Nothing, ref Nothing);
+        //关闭WordApp组件对象
+        WordApp.Quit(ref Nothing, ref Nothing, ref Nothing);
+
+        int generation = GC.GetGeneration(WordApp);
+        System.Runtime.InteropServices.Marshal.ReleaseComObject(WordApp);
+        WordApp = null;
+        GC.Collect(generation);
+        //打开要下载的文件，并把该文件存放在FileStream中    
+        System.IO.FileStream Reader = System.IO.File.OpenRead(filePath.ToString());
+        //文件传送的剩余字节数：初始值为文件的总大小    
+        long Length = Reader.Length;
+        HttpContext.Current.Response.Buffer = false;
+        HttpContext.Current.Response.Charset = "GB2312";
+        HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+        HttpContext.Current.Response.AddHeader("Connection", "Keep-Alive");
+        HttpContext.Current.Response.ContentType = "application/ms-excel";
+        HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+        HttpContext.Current.Response.AddHeader("Content-Length", Length.ToString());
+        Response.TransmitFile(filePath.ToString());
+        Reader.Close();
+        if (System.IO.File.Exists(filePath.ToString()))
+            System.IO.File.Delete(filePath.ToString()); 
         return true;
     }
 
