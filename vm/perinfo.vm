@@ -250,10 +250,11 @@
       <tr class="warning">
         <th>工作开始时间</th>
         <th>工作离职时间</th>
-        <td>岗位</td>
+        <td>工作岗位</td>
         <td>工作单位</td>
         <td>离职原因</td>
         <td>工作内容</td>
+        <td>审批状态</td>
       </tr>
       #foreach( $one in $work )
       <tr>
@@ -263,6 +264,15 @@
         <td>$!{one.unit}</td>
         <td>$!{one.reason}</td>
         <td>$!{one.content}</td>
+         <td>
+            #if( $one.mark == 1 )
+            <span style="color:red;">已提报</span>
+            #elseif( $one.mark == 2)
+            <span style="color:green;">审核未通过</span>
+            #else
+            <span style="color:green;">未提报</span>
+            #end
+          </td>
       </tr>
       #end
     </table>

@@ -571,17 +571,18 @@
 
   <div id="info-work" class="info-block">
     <h3>工作经历</h3>
-    <p class="require-tip">*必须填写，否则保存无效</p>
+    <p class="require-tip">*必须填写，否则保存无效,时间留空为至今</p>
     <form action="perinfo.aspx" role="form" method="post" class="info-form">
       <table class="table table-bordered table-hover">
         <tr class="warning">
           <td>工作开始时间</td>
           <td>工作离职时间</td>
-          <td>岗位</td>
+          <td>工作岗位</td>
           <th>*工作单位</th>
           <td>离职原因</td>
           <td>工作内容</td>
-          <td></td>
+          <td width="100">审批状态</td>
+          <td width="225"></td>
         </tr>
         #if($work.count > 0)
     #foreach ($one in $work)
@@ -592,14 +593,37 @@
           <td>
             <input type="text" value="$!{one.quittime}" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
           <td>
-            <input type="text" value="$!{one.position}" name="position[]" class="form-control"></td>
+            <select name="position[]" class="form-control" data-value="$!{one.position}">
+              #foreach ($one in $positionList)
+              <option value="${one.id}">$!{one.name}</option>
+              #end
+            </select>
           <td>
-            <input type="text" value="$!{one.unit}" name="unit[]" class="form-control" data-required="true"></td>
+            <select name="unit[]" class="form-control" data-required="true" data-value="$!{one.unit}">
+              <option value="1">test</option>
+            </select>
+          </td>
           <td>
             <input type="text" value="$!{one.reason}" name="reason[]" class="form-control"></td>
           <td>
             <input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
           <td>
+            #if( $one.mark == 1 )
+            <span style="color:red;">已提报</span>
+            #elseif( $one.mark == 2)
+            <span style="color:green;">审核未通过</span>
+            #else
+            <span style="color:green;">未提报</span>
+            #end
+            <input type="hidden" value="$!{one.mark}" name="mark[]" />
+          </td>
+          <td>
+             <span class="btn btn-default btn-sm vali-pass" type="button">
+              审核通过
+            </span>
+            <span class="btn btn-default btn-sm vali-no-pass" type="button">
+              审核不通过
+            </span>
             <span class="btn btn-default btn-sm del-item" type="button">
               <span class="glyphicon glyphicon-trash"></span>
             </span>
@@ -614,13 +638,24 @@
           <td>
             <input type="text" value="" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
           <td>
-            <input type="text" value="" name="position[]" class="form-control"></td>
+            <select name="position[]" class="form-control">
+              #foreach ($one in $positionList)
+              <option value="${one.id}">$!{one.name}</option>
+              #end
+            </select>
+          </td>
           <td>
-            <input type="text" value="" name="unit[]" class="form-control" data-required="true"></td>
+            <select name="unit[]" class="form-control" data-required="true">
+              <option value="1">test</option>
+            </select>
+          </td>
           <td>
             <input type="text" value="" name="reason[]" class="form-control"></td>
           <td>
             <input type="text" value="" name="content[]" class="form-control"></td>
+          <td>
+            <input type="hidden" value="0" name="mark[]" />
+          </td>
           <td>
             <span class="btn btn-default btn-sm del-item" type="button">
               <span class="glyphicon glyphicon-trash"></span>
@@ -633,6 +668,7 @@
       <input type="hidden" name="type" value="work">
       <input type="hidden" name="action" value="save">
       <a href="javascript:void(0);" role="button" class="btn btn-primary add-new">新增</a>
+      <a href="javascript:void(0);" role="button" class="btn btn-default add-change">工作调动</a>
       <button type="submit" role="button" class="btn btn-warning">保存</button>
     </form>
   </div>

@@ -88,9 +88,41 @@ $(".add-new").on("click",function(){
 		$src = $form.find("tr").last(),
 		$target = $src.clone();
 	$target.find("input").val("");
+	$target.find("[name='mark[]']").siblings().remove();
+	$target.find(".vali-pass,.vali-no-pass").remove();
 	$target.find(".view-file").remove();
 	$form.find("table").append($target);
 	dateInit($target);
+});
+
+// 工作调动
+$(".add-change").on("click",function(){
+	var $form = $(this).closest("form"),
+		$src = $form.find("tr").last(),
+		$target = $src.clone(),
+		date = new Date();
+	date = date.getFullYear()+"-"+(date.getDate()+1)+"-"+date.getDay();
+	$target.find("input").val("");
+	$target.find("[name='mark[]']").siblings().remove();
+	$target.find(".vali-pass,.vali-no-pass").remove();
+	$target.find(".view-file").remove();
+	$form.find("table").append($target);
+	dateInit($target);
+	if( !$src.find(".date-picker").last().val() )
+		$src.find(".date-picker").last().val(date);
+	$target.find(".date-picker").eq(0).val(date);
+});
+
+// 审核
+$(".vali-pass,.vali-no-pass").on("click",function(){
+	var val = $(this).hasClass("vali-no-pass") ? "2" :"1",
+		param = {},
+		html = val === '1' ? '<span style="color:red;">已提报</span>' : '<span style="color:green;">审核未通过</span>';
+	param.mark = val;
+	param.id = $(this).closest("tr").find("[name='iid[]']").val();
+	param.action = "check";
+	$.post("perinfo.aspx",param);
+	$(this).closest("tr").find("[name='mark[]']").siblings("span").replaceWith(html);
 });
 
 // 工龄计算
