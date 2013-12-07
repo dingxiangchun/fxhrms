@@ -79,6 +79,10 @@ public partial class auth : System.Web.UI.Page
         {
             model.loginname = Request["loginname"];
         }
+        if (Request["userpwd"] != null && Request["userpwd"] != "")
+        {
+            model.userpwd = Request["userpwd"];
+        }
         if (Request["userprower"] != null && Request["userprower"] != "")
         {
             model.userprower = int.Parse(Request["userprower"]);

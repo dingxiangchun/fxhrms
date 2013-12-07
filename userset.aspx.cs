@@ -20,9 +20,10 @@ public partial class userset : System.Web.UI.Page
         if (!Check())
             return;
         string msg = ""; model.id = 1;
-        if (Request["id"] != null && Request["id"] != "")
+        if (Request.Cookies["HRId"] != null)
         {
-            model.id = int.Parse(Request["id"]);
+            string hrid = Request.Cookies["HRId"].Value;
+            model.id = int.Parse(hrid);
         }
         if (Request["loginname"] != null && Request["loginname"] != "")
         {
