@@ -1,4 +1,4 @@
-#include("layout/header.vm")
+#parse("layout/header.vm")
 
 <div id="content" class="container">
   #if($msg)

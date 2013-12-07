@@ -1,4 +1,4 @@
-#include("layout/header.vm")
+#parse("layout/header.vm")
 <div id="content">
 <div class="quick-link">
     <a type="button" class="btn btn-default" rel="workcheck" href="#workcheck">工作调动审核</a>

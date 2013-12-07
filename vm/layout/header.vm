@@ -82,9 +82,11 @@
         			<li>
         				<a href="userset.aspx">账户管理</a>
         			</li>
+                                #if($role != '0')
                                 <li>
                                         <a href="auth.aspx">权限管理</a>
                                 </li>
+                                #end
         		</ul>
         	</div>
         </div>

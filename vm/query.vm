@@ -1,4 +1,4 @@
-#include("layout/header.vm")
+#parse("layout/header.vm")
 <nav></nav>
 <div id="content">
 <h2>人事资料查询</h2>
