@@ -21,3 +21,20 @@ util.getParam = function( name ){
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
 }
+
+// 获取cookie
+util.getCookie = function( key ){
+	var arrStr = document.cookie.split("; ");
+ 	for(var i = 0;i < arrStr.length;i ++){
+ 		var temp = arrStr[i].split("=");
+ 		if(temp[0] == key) return unescape(temp[1]);
+	}
+}
+
+// 删除cookie
+util.delCookie = function( key ){
+	document.cookie = key+"=;expires="+(new Date(0)).toGMTString();
+}
+
+
+
