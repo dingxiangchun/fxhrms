@@ -17,6 +17,7 @@ public partial class perInfoCount : System.Web.UI.Page
 {
     tb_Count model = new tb_Count();
     perInfo dal = new perInfo();
+    int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
             if (!Check())
@@ -35,6 +36,7 @@ public partial class perInfoCount : System.Web.UI.Page
             vh.Put("edc", edcCountlist);
             vh.Put("Status", StatusCountlist);
             vh.Put("age", ageCountlist);
+            vh.Put("role", m_power);
             vh.Display("count.vm");
     }
 
@@ -50,7 +52,7 @@ public partial class perInfoCount : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid,ref m_power))
             {
                 Response.Redirect("login.aspx");
                 return false;

@@ -21,6 +21,7 @@ public partial class HRData : System.Web.UI.Page
     tb_branch modelBranch = new tb_branch();
 
     HRHelper hrhelper = new HRHelper();
+    int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Request.Cookies["HRLoginName"] == null || Request.Cookies["HRId"] == null)
@@ -32,7 +33,7 @@ public partial class HRData : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid,ref m_power))
             {
                 Response.Redirect("login.aspx");
                 return;
@@ -75,6 +76,7 @@ public partial class HRData : System.Web.UI.Page
             vh.Init();
             IList<tb_perInfo> list = dal.GetListAll(strwhere);
             vh.Put("list", list);
+            vh.Put("role", m_power);
             vh.Display("perlist.vm");
         }
     }
@@ -87,6 +89,7 @@ public partial class HRData : System.Web.UI.Page
             vh.Init();
             IList<tb_branch> list = dalBranch.GetListAll("");
             vh.Put("list", list);
+            vh.Put("role", m_power);
             vh.Display("layout/nav.vm");
         }
         catch (System.Threading.ThreadAbortException ex)

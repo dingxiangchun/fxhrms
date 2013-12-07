@@ -15,6 +15,7 @@ public partial class Reserve : System.Web.UI.Page
 {
     ReserveData dal = new ReserveData();
     tb_Reserve model = new tb_Reserve();
+    int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Check())
@@ -38,6 +39,7 @@ public partial class Reserve : System.Web.UI.Page
             vh.Init();
             IList<tb_Reserve> list = dal.GetListAll("");
             vh.Put("list", list);
+            vh.Put("role", m_power);
             vh.Display("reserve.vm");
         }
     }
@@ -67,6 +69,7 @@ public partial class Reserve : System.Web.UI.Page
             IList<tb_Reserve> list = dal.GetListAll("");
             vh.Put("list", list);
             vh.Put("msg", "添加成功");
+            vh.Put("role", m_power);
             vh.Display("reserve.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
@@ -85,6 +88,7 @@ public partial class Reserve : System.Web.UI.Page
             IList<tb_Reserve> list = dal.GetListAll("");
             vh.Put("list", list);
             vh.Put("msg", "修改成功");
+            vh.Put("role", m_power);
             vh.Display("reserve.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
@@ -104,9 +108,18 @@ public partial class Reserve : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid,ref m_power))
             {
                 Response.Redirect("login.aspx");
+                return false;
+            }
+
+
+            if (m_power != 0)
+            {
+                VelocityHelper vh1 = new VelocityHelper();
+                vh1.Init();
+                vh1.Display("nopower.vm");
                 return false;
             }
         }

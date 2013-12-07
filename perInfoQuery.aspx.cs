@@ -23,6 +23,7 @@ public partial class perInfoQuery : System.Web.UI.Page
     ReserveData Resdal = new ReserveData();
     IList<tb_Reserve> ReserveList;
 
+    int m_power = -1;
     public perInfoQuery()
     {
         ReserveList = Resdal.GetListAll("");
@@ -385,6 +386,7 @@ public partial class perInfoQuery : System.Web.UI.Page
         VelocityHelper vh = new VelocityHelper();
         vh.Init();
         vh.Put("list", list);
+        vh.Put("role", m_power);
         vh.Display("query.vm");
         return true;
     }
@@ -424,7 +426,7 @@ public partial class perInfoQuery : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid,ref m_power))
             {
                 Response.Redirect("login.aspx");
                 return false;

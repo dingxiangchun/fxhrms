@@ -16,6 +16,7 @@ public partial class addBranch : System.Web.UI.Page
 {
     branch dal = new branch();
     tb_branch model = new tb_branch();
+    int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Check())
@@ -47,6 +48,7 @@ public partial class addBranch : System.Web.UI.Page
             vh.Init();
             IList<tb_branch> list = dal.GetListAll(strwhere);
             vh.Put("list", list);
+            vh.Put("role", m_power);
             vh.Display("addBranch.vm");
         }
     }
@@ -86,6 +88,7 @@ public partial class addBranch : System.Web.UI.Page
             IList<tb_branch> list = dal.GetListAll(strwhere);
             vh.Put("list", list);
             vh.Put("msg","添加部门成功");
+            vh.Put("role", m_power);
             vh.Display("addBranch.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
@@ -115,6 +118,7 @@ public partial class addBranch : System.Web.UI.Page
             IList<tb_branch> list = dal.GetListAll(strwhere);
             vh.Put("list", list);
             vh.Put("msg", "修改部门成功");
+            vh.Put("role", m_power);
             vh.Display("addBranch.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
@@ -149,9 +153,17 @@ public partial class addBranch : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid, ref m_power))
             {
                 Response.Redirect("login.aspx");
+                return false;
+            }
+
+            if (m_power != 0)
+            {
+                VelocityHelper vh = new VelocityHelper();
+                vh.Init();
+                vh.Display("nopower.vm");
                 return false;
             }
         }

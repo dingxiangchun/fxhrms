@@ -51,6 +51,8 @@ public partial class perinfo : System.Web.UI.Page
     IList<tb_Reserve> ReserveList;
     IList<tb_positioninfo> positionList;
     IList<tb_pertypeinfo> pertypeList;
+
+    int m_power = -1;
     public perinfo()
     {
         ReserveList = Reserve.GetListAll("");
@@ -126,6 +128,7 @@ public partial class perinfo : System.Web.UI.Page
             vh.Put("work", work);
             vh.Put("holiday", holiday);
             vh.Put("branch", branchList[0]);
+            vh.Put("role",m_power);
             vh.Display("perinfo.vm");
         }
         
@@ -187,6 +190,7 @@ public partial class perinfo : System.Web.UI.Page
            vh.Put("positionList", positionList);
            vh.Put("pertypeList", pertypeList);
            vh.Put("branch", branchList[0]);
+           vh.Put("role", m_power);
            vh.Display("addper.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
@@ -649,7 +653,7 @@ public partial class perinfo : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid, ref m_power))
             {
                 Response.Redirect("login.aspx");
                 return false;
