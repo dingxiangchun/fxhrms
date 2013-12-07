@@ -61,6 +61,10 @@ public partial class perinfo : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        if (!Check())
+            return;
+
         if (!string.IsNullOrEmpty(Request["action"]))
         {
             if (Request["action"] == "del")
@@ -631,6 +635,26 @@ public partial class perinfo : System.Web.UI.Page
         {}
 
         return webUrl;
+    }
+
+    public bool Check()
+    {
+        HRHelper hrhelper = new HRHelper();
+        if (Response.Cookies["HRLoginName"] == null || Response.Cookies["HRId"] == null)
+        {
+            Response.Write("请重新登录！");
+            return false;
+        }
+        else
+        {
+            if (!hrhelper.IsUserExist(Request.Cookies["HRLoginName"].Value, Request.Cookies["HRId"].Value))
+            {
+                Response.Write("请重新登录！");
+                return false;
+            }
+        }
+
+        return true;
     }
    
 }

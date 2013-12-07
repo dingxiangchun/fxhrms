@@ -28,11 +28,21 @@ public partial class Login : System.Web.UI.Page
         bool pass = dal.Exists(uid, pwd);
             if (pass)
             {
-                Session["uid"] = tb_txtName.Text;
-                IList<tb_Users> ds = dal.GetListAll(uid);
+                string strWhere = "loginname = '" + uid + "'";
+                IList<tb_Users> ds = dal.GetListAll(strWhere);
                 if (ds.Count > 0)
                 {
+                    HttpCookie LoginName = new HttpCookie("HRLoginName");
+                    HttpCookie UserId = new HttpCookie("HRId");
+                    HttpCookie UserName = new HttpCookie("HRUserName");
+                    //设置Cookie
+                    LoginName.Value = ds[0].loginname;
+                    UserId.Value = ds[0].id.ToString();
+                    UserName.Value = ds[0].username;
 
+                    Response.AppendCookie(LoginName);
+                    Response.AppendCookie(UserId);
+                    Response.AppendCookie(UserName);
                     if (ds[0].userprower == 0)
                     {
                         Response.Redirect("HRData.aspx");//用户类型为0时则代表的是管理员登录
@@ -46,6 +56,7 @@ public partial class Login : System.Web.UI.Page
                     {
                        Response.Redirect("perInfoQuery.aspx");
                     }
+
                 }
                 else
                 {
@@ -58,4 +69,5 @@ public partial class Login : System.Web.UI.Page
                 Response.Write("<script language='javascript'>alert('用户名或密码错误!');</script>");//5^1^a~s_p~x
             }
     }
+
 }

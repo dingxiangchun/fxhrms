@@ -16,8 +16,23 @@ public partial class auth : System.Web.UI.Page
 {
     tb_Users model = new tb_Users();
     users  dal= new users();
+    HRHelper hrhelper = new HRHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Response.Cookies["HRLoginName"] == null || Response.Cookies["HRId"]==null)
+        {
+            Response.Write("请重新登录！");
+            return;
+        }
+        else
+        {
+            if (!hrhelper.IsUserExist(Request.Cookies["HRLoginName"].Value, Request.Cookies["HRId"].Value))
+            {
+                Response.Write("请重新登录！");
+                return;
+            }
+        }
+
         string msg="";
         if (!string.IsNullOrEmpty(Request["action"]))
         {

@@ -17,6 +17,8 @@ public partial class userset : System.Web.UI.Page
     users dal = new users();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Check())
+            return;
         string msg = ""; model.id = 1;
         if (Request["id"] != null && Request["id"] != "")
         {
@@ -39,5 +41,25 @@ public partial class userset : System.Web.UI.Page
         vh.Init();
         vh.Put("msg",msg);
         vh.Display("user.vm");
+    }
+
+        public bool  Check()
+    {
+        HRHelper hrhelper = new HRHelper();
+        if (Response.Cookies["HRLoginName"] == null || Response.Cookies["HRId"] == null)
+        {
+            Response.Write("请重新登录！");
+            return false;
+        }
+        else
+        {
+            if (!hrhelper.IsUserExist(Request.Cookies["HRLoginName"].Value, Request.Cookies["HRId"].Value))
+            {
+                Response.Write("请重新登录！");
+                return false;
+            }
+        }
+
+        return true;
     }
 }
