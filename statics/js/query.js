@@ -40,5 +40,6 @@ $("#exportCheck").on("click",function(){
 $("#exportAll").on("click",function(){
 	var $action = $("<input type='hidden' name='action' value='excelAll'/>")
 		$form = $("#query-form").clone();
+	$form.append($action);
 	$form.attr({"method":"post","target":"_blank"}).submit();
 });
