@@ -1,4 +1,12 @@
-
+<script>
+	$("header .username span").text( util.getCookie("HRUserName") || 'guest' );
+	$(".logout").click(function(){
+		util.delCookie("HRLoginName");
+		util.delCookie("HRId");
+		util.delCookie("HRUserName");
+		document.location.href="/login.aspx";
+	});
+</script>
 
 </div>
 </body>

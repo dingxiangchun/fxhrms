@@ -24,8 +24,8 @@
 
     <div class="userbar">
         <div class="logined">
-            <a href="userset.aspx" class="username"><em class="glyphicon glyphicon-user"></em>username</a>
-            <span>|</span> <a href="/system/logout" class="logout"><em
+            <a href="userset.aspx" class="username"><em class="glyphicon glyphicon-user"></em><span>guest</span></a>
+            <span>|</span> <a href="javascript:void(0)" class="logout"><em
                 class="glyphicon glyphicon-off"></em>退出</a>
         </div>
         <!-- menu -->
