@@ -186,6 +186,8 @@
     <h3>证书及奖励</h3>
     <table class="table table-bordered table-hover">
       <tr class="warning">
+        <th>员工编号</th>
+        <th>员工姓名</th>
         <th>证书名称</th>
         <th>证书类型</th>
         <td>取得时间</td>
@@ -197,6 +199,8 @@
       </tr>
       #foreach( $one in $register )
       <tr>
+        <td>$!{one.employeeid}</td>
+        <td>$!{one.username}</td>
         <td>$!{one.cer_name}</td>
         <td>$!{one.type}</td>
         <td>$!{one.accesstime}</td>
@@ -220,11 +224,11 @@
         <th>时间</th>
         <td>内容</td>
         <td>部门</td>
-        <td>审核人</td>
         <td>类型</td>
         <td>奖惩部门</td>
         <td>描述</td>
         <td>相关文件</td>
+        <td>审核人</td>
       </tr>
       #foreach( $one in $reward )
       <tr>
@@ -232,13 +236,13 @@
         <td>$!{one.time}</td>
         <td>$!{one.content}</td>
         <td>$!{one.department}</td>
-        <td>$!{one.audit}</td>
         <td>$!{one.Class}</td>
         <td>$!{one.unit}</td>
         <td>$!{one.description}</td>
         <td>
           <a href="$!{one.File}" target="_blank">查看</a>
         </td>
+        <td>$!{one.audit}</td>
       </tr>
       #end
     </table>
@@ -255,6 +259,7 @@
         <td>离职原因</td>
         <td>工作内容</td>
         <td>审批状态</td>
+        <td>审核人</td>
       </tr>
       #foreach( $one in $work )
       <tr>
@@ -273,6 +278,7 @@
             <span style="color:green;">未提报</span>
             #end
           </td>
+          <td>$!{one.audit}</td>
       </tr>
       #end
     </table>
