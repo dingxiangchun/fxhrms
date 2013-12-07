@@ -19,19 +19,24 @@ public partial class addBranch : System.Web.UI.Page
     int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Check())
-            return;
+        
         if (!string.IsNullOrEmpty(Request["action"]))
         {
             if (Request["action"] == "del") {
+                if (!Check())
+                    return;
                 Del();
             }
             if (Request["action"] == "add")
             {
+                if (!Check())
+                    return;
                 Add();
             }
             if (Request["action"] == "update")
             {
+                if (!Check())
+                    return;
                 Update();
             }
             if (Request["action"] == "tree")
@@ -39,6 +44,8 @@ public partial class addBranch : System.Web.UI.Page
                 Tree();
             }
         }else{
+            if (!Check())
+                return;
             string strwhere = "";
             if (Request["branchid"] != null)
             {
