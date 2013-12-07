@@ -18,11 +18,11 @@ public class HRHelper
 		//
 	}
 
-    public bool IsUserExist(string UserId, string LoginName)
+    public bool IsUserExist(string LoginName, string UserId)
     {
         if (string.IsNullOrEmpty(UserId))
             UserId = "-1";
-        string strwhere = "loginname='" + UserId + "' and id=" + LoginName;
+        string strwhere = "loginname='" + LoginName + "' and id=" + UserId;
         IList<tb_Users> Userlist = dal.GetListAll(strwhere);
         if (Userlist.Count > 0)
             return true;

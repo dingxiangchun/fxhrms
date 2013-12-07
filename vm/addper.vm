@@ -479,7 +479,6 @@
           <td width="130">时间</td>
           <td>内容</td>
           <td>部门</td>
-          <td>审核人</td>
           <td width="155">类型</td>
           <td width="140">奖惩等级</td>
           <td>奖惩部门</td>
@@ -499,9 +498,9 @@
           <td>
             <input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
           <td>
-            <input type="text" value="$!{one.department}" name="department[]" class="form-control"></td>
-          <td>
-            <input type="text" value="$!{one.audit}" name="audit[]" class="form-control"></td>
+            <input type="text" value="$!{one.audit}" name="audit[]" class="form-control" style="display: none;">
+            <input type="text" value="$!{one.department}" name="department[]" class="form-control">
+          </td>
           <td>
             <select name="Class[]" class="form-control" data-value="$!{one.Class}">#include("include/reward_class.vm")</select>
           </td>
@@ -535,9 +534,8 @@
           <td>
             <input type="text" value="" name="content[]" class="form-control"></td>
           <td>
+            <input type="text" value="$!{one.audit}" name="audit[]" class="form-control" style="display: none;">
             <input type="text" value="" name="department[]" class="form-control"></td>
-          <td>
-            <input type="text" value="" name="audit[]" class="form-control"></td>
           <td>
             <select name="Class[]" class="form-control" data-value="">#include("include/reward_class.vm")</select>
           </td>
@@ -618,12 +616,6 @@
             <input type="hidden" value="$!{one.mark}" name="mark[]" />
           </td>
           <td>
-             <span class="btn btn-default btn-sm vali-pass" type="button">
-              审核通过
-            </span>
-            <span class="btn btn-default btn-sm vali-no-pass" type="button">
-              审核不通过
-            </span>
             <span class="btn btn-default btn-sm del-item" type="button">
               <span class="glyphicon glyphicon-trash"></span>
             </span>

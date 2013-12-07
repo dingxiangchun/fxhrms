@@ -114,16 +114,16 @@ $(".add-change").on("click",function(){
 });
 
 // 审核
-$(".vali-pass,.vali-no-pass").on("click",function(){
-	var val = $(this).hasClass("vali-no-pass") ? "2" :"1",
-		param = {},
-		html = val === '1' ? '<span style="color:red;">已提报</span>' : '<span style="color:green;">审核未通过</span>';
-	param.mark = val;
-	param.id = $(this).closest("tr").find("[name='iid[]']").val();
-	param.action = "check";
-	$.post("perinfo.aspx",param);
-	$(this).closest("tr").find("[name='mark[]']").siblings("span").replaceWith(html);
-});
+// $(".vali-pass,.vali-no-pass").on("click",function(){
+// 	var val = $(this).hasClass("vali-no-pass") ? "2" :"1",
+// 		param = {},
+// 		html = val === '1' ? '<span style="color:red;">已提报</span>' : '<span style="color:green;">审核未通过</span>';
+// 	param.mark = val;
+// 	param.id = $(this).closest("tr").find("[name='iid[]']").val();
+// 	param.action = "check";
+// 	$.post("perinfo.aspx",param);
+// 	$(this).closest("tr").find("[name='mark[]']").siblings("span").replaceWith(html);
+// });
 
 // 工龄计算
 $(".cal-age").each(function(){

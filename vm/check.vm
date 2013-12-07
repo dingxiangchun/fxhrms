@@ -1,0 +1,90 @@
+#include("layout/header.vm")
+<div id="content">
+<div class="quick-link">
+    <a type="button" class="btn btn-default" rel="workcheck" href="#workcheck">工作调动审核</a>
+    <a type="button" class="btn btn-default" rel="rewardcheck" href="#rewardcheck">奖惩记录审核</a>
+</div>
+<br>
+<div id="info-workcheck" class="info-block">
+  <h4>待审核工作调动</h4>
+  <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>员工编号</th>
+        <th>员工姓名</th>
+        <td>工作开始时间</td>
+        <td>工作离职时间</td>
+        <td>工作岗位</td>
+        <td>工作单位</td>
+        <td>离职原因</td>
+        <td>工作内容</td>
+        <td></td>
+      </tr>
+      #foreach( $one in $work )
+      <tr>
+        <td>$!{one.employeeid}</td>
+        <td>$!{one.username}</td>
+        <td>$!{one.attacktime}</td>
+        <td>$!{one.quittime}</td>
+        <td>$!{one.position}</td>
+        <td>$!{one.unit}</td>
+        <td>$!{one.reason}</td>
+        <td>$!{one.content}</td>
+          <td>
+            <span class="btn btn-default btn-sm vali-pass" type="button" rel="work" data-id="$one.id">
+              审核通过
+            </span>
+            <span class="btn btn-default btn-sm vali-no-pass" type="button" rel="work" data-id="$one.id">
+              审核不通过
+            </span>
+          </td>
+      </tr>
+      #end
+    </table>
+</div>
+
+<div id="info-rewardcheck" class="info-block">
+  <h4>待审核奖惩记录</h4>
+  <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>员工编号</th>
+        <th>员工姓名</th>
+        <th>奖罚种类</th>
+        <th>时间</th>
+        <td>内容</td>
+        <td>部门</td>
+        <td>类型</td>
+        <td>奖惩部门</td>
+        <td>描述</td>
+        <td>相关文件</td>
+        <td></td>
+      </tr>
+      #foreach( $one in $reward )
+      <tr>
+        <td>$!{one.employeeid}</td>
+        <td>$!{one.username}</td>
+        <td>$!{one.type}</td>
+        <td>$!{one.time}</td>
+        <td>$!{one.content}</td>
+        <td>$!{one.department}</td>
+        <td>$!{one.Class}</td>
+        <td>$!{one.unit}</td>
+        <td>$!{one.description}</td>
+        <td>
+          <a href="$!{one.File}" target="_blank">查看</a>
+        </td>
+        <td>
+          <span class="btn btn-default btn-sm vali-pass" type="button" rel="reward" data-id="$one.id">
+              审核通过
+            </span>
+            <span class="btn btn-default btn-sm vali-no-pass" type="button" rel="reward" data-id="$one.id">
+              审核不通过
+            </span>
+        </td>
+      </tr>
+      #end
+    </table>
+</div>
+</div>
+
+<script src="statics/js/check.js"></script>
+#include("layout/footer.vm")
