@@ -56,3 +56,10 @@ $(".auth-del").on("click",function(){
 	}
 	$.post(pageUrl,param,callback);
 });
+
+$("select[data-value]").each(function(){
+	var data = $(this).data("value");
+	$(this).find("option").filter(function(){
+		if(this.value === data) return true;
+	}).prop("selected",true)
+});
