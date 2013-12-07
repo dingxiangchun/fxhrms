@@ -30,7 +30,7 @@
         </div>
         <!-- menu -->
         <div class="menu">
-                <a type="button" class="btn btn-sm btn-default" href="Login.aspx">首页</a>
+                <a type="button" class="btn btn-sm btn-default" href="/">首页</a>
         	<!-- 人事管理 -->        
         	<div class="btn-group">
         		<button type="button" class="btn btn-sm btn-default">人事管理</button>
@@ -50,6 +50,7 @@
         		</ul>
         	</div>
 
+                #if($role == 0)
         	<!-- 基础信息管理 -->        
         	<div class="btn-group">
         		<button type="button" class="btn btn-sm btn-default">基础信息管理</button>
@@ -71,6 +72,7 @@
         			</li>
         		</ul>
         	</div>
+                #end
 
         	<!-- 系统管理 -->        
         	<div class="btn-group">
@@ -82,7 +84,7 @@
         			<li>
         				<a href="userset.aspx">账户管理</a>
         			</li>
-                                #if($role != '0')
+                                #if($role == 0)
                                 <li>
                                         <a href="auth.aspx">权限管理</a>
                                 </li>

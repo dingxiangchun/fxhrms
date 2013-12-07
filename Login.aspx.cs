@@ -86,7 +86,7 @@ public partial class Login : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            int power;
+            int power = -1;
             if (!hrhelper.IsUserExist(loginname, hrid,ref power))
             {
                 Response.Redirect("login.aspx");
