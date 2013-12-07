@@ -43,19 +43,21 @@ public partial class userset : System.Web.UI.Page
         vh.Display("user.vm");
     }
 
-        public bool  Check()
+     public bool  Check()
     {
         HRHelper hrhelper = new HRHelper();
-        if (Response.Cookies["HRLoginName"] == null || Response.Cookies["HRId"] == null)
+        if (Request.Cookies["HRLoginName"] == null || Request.Cookies["HRId"] == null)
         {
-            Response.Write("请重新登录！");
+            Response.Redirect("login.aspx");
             return false;
         }
         else
         {
-            if (!hrhelper.IsUserExist(Request.Cookies["HRLoginName"].Value, Request.Cookies["HRId"].Value))
+            string loginname = Request.Cookies["HRLoginName"].Value;
+            string hrid = Request.Cookies["HRId"].Value;
+            if (!hrhelper.IsUserExist(loginname, hrid))
             {
-                Response.Write("请重新登录！");
+                Response.Redirect("login.aspx");
                 return false;
             }
         }
