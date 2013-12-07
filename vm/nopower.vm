@@ -1,0 +1,7 @@
+#include("layout/header.vm")
+<div id="content">
+     <div class="alert alert-warning">
+      尊敬的用户，您没有权限访问该页面，请联系管理员。重新<a href="/">登录</a>或者<a href="javascript:history.go(-1)">回到上一页</a>。
+    </div>
+</div>
+#include("layout/footer.vm")
