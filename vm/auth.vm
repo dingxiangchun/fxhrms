@@ -25,7 +25,7 @@
       	<input type="hidden" name="username" value="$!{one.username}">
       </td>
       <td>
-      	<select name="userprower" class="form-control" value="2" data-val="$!{one.userprower}">
+      	<select name="userprower" class="form-control" value="2" data-value="$!{one.userprower}">
            #include("include/role.vm")
       	</select>
       </td>
