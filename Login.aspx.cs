@@ -54,7 +54,7 @@ public partial class Login : System.Web.UI.Page
                     }
                     else if (ds[0].userprower == 2)//用户类型为2时则代表的是审核员登录
                     {
-                       Response.Redirect("perInfoQuery.aspx");
+                       Response.Redirect("check.aspx");
                     }
                     else if (ds[0].userprower == 3)//用户类型为0时则代表的是普通登录
                     {
