@@ -6,44 +6,73 @@
 #end
 	<table class="table table-bordered table-hover">
 	<tr>
-		<th>用户</th>
+		<th>登录名</th>
+		<th>用户名</th>
 		<th>权限组</th>
+		<th>单位</th>
+		<th>备注</th>
 		<th width="100"></th>
 	</tr>
+	#foreach($one in $list)
     <tr>
       <td>
-      	name
-      	<input type="hidden" name="loginname" value="name">
-      	<input type="hidden" name="id" value="">
+		$!{one.loginname}
+      	<input type="hidden" name="loginname" value="$!{one.loginname}">
+      	<input type="hidden" name="id" value="$!{one.id}">
+      </td>
+	  <td>
+		$!{one.username}
+      	<input type="hidden" name="username" value="$!{one.username}">
       </td>
       <td>
-      	<select name="userprower" class="form-control" value="2">
+      	<select name="userprower" class="form-control" value="2" data-val="$!{one.userprower}">
            #include("include/role.vm")
       	</select>
+      </td>
+	  <td>
+		$!{one.Unit}
+      	<input type="hidden" name="Unit" value="$!{one.Unit}">
+      </td>
+	  <td>
+		$!{one.remark}
+      	<input type="hidden" name="remark" value="$!{one.remark}">
       </td>
       <td>
       	<button role="button" class="btn btn-primary btn-xs auth-edit" href="javascript:void(0);">更新</button>
       	<button role="button" class="btn btn-danger btn-xs auth-del" href="javascript:void(0);">删除</button>
       </td>
     </tr>
+	#end
   </table>
   <br>
 <form action="" method="post" role="form" id="auth-form" style="width:400px;">
 <h3>新增</h3>
 <div class="pannel">
   <div class="form-group">
-      <label for="loginname">用户名</label>
+      <label for="loginname">登录名</label>
       <input type="text" class="form-control" id="loginname" name="loginname">
   </div>
-  <div class="form-group">
+   <div class="form-group">
       <label for="userpwd">密码</label>
       <input type="password" class="form-control" id="userpwd" name="userpwd">
   </div>
-   <div class="form-group">
+     <div class="form-group">
       <label for="userprower">权限</label>
       <select name="userprower" id="userprower" class="form-control">
         #include("include/role.vm")
   	</select>
+  </div>
+   <div class="form-group">
+      <label for="username">用户名</label>
+      <input type="text" class="form-control" id="username" name="username">
+  </div>
+   <div class="form-group">
+      <label for="Unit">单位</label>
+      <input type="text" class="form-control" id="Unit" name="Unit">
+  </div>
+    <div class="form-group">
+      <label for="remark">备注</label>
+      <input type="text" class="form-control" id="remark" name="remark">
   </div>
   <input type="hidden" name="action" value="add">
   <button type="submit" role="button" class="btn btn-warning">保存</button>

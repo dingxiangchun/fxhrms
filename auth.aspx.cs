@@ -87,6 +87,18 @@ public partial class auth : System.Web.UI.Page
         {
             model.userprower = int.Parse(Request["userprower"]);
         }
+        if (Request["username"] != null && Request["username"] != "")
+        {
+            model.username = Request["username"];
+        }
+        if (Request["Unit"] != null && Request["Unit"] != "")
+        {
+            model.Unit = Request["Unit"];
+        }
+        if (Request["remark"] != null && Request["remark"] != "")
+        {
+            model.remark = Request["remark"];
+        }
         if (dal.Add(model))
             return true;
         else
