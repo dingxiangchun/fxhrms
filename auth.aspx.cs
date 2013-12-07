@@ -17,6 +17,7 @@ public partial class auth : System.Web.UI.Page
     tb_Users model = new tb_Users();
     users  dal= new users();
     HRHelper hrhelper = new HRHelper();
+    int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Request.Cookies["HRLoginName"] == null || Request.Cookies["HRId"] == null)
@@ -28,10 +29,18 @@ public partial class auth : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid,ref m_power))
             {
                 Response.Redirect("login.aspx");
                 return;
+            }
+
+            if (m_power != 0)
+            {
+                VelocityHelper vh1 = new VelocityHelper();
+                vh1.Init();
+                vh1.Display("nopower.vm");
+                return ;
             }
         }
 
@@ -41,16 +50,28 @@ public partial class auth : System.Web.UI.Page
             if (Request["action"] == "update")
             {
                 if (Update())
-                    msg = "用户信息更新成功！";
+                {
+                    Response.Write("{\"status\":true}");
+                }
                 else
-                    msg = "用户信息更新失败！";
+                {
+                    Response.Write("{\"status\":false,\"errorMsg\":\"更新失败！!\"}");
+                }
+                Response.End();
+                return;
             }
             if (Request["action"] == "del")
             {
                 if (Del())
-                    msg = "用户删除成功！";
+                {
+                    Response.Write("{\"status\":true}");
+                }
                 else
-                    msg = "用户删除失败！";
+                {
+                    Response.Write("{\"status\":false,\"errorMsg\":\"删除失败！!\"}");
+                }
+                Response.End();
+                return;
             }
             if (Request["action"] == "add")
             {
@@ -65,6 +86,7 @@ public partial class auth : System.Web.UI.Page
         vh.Init();
         vh.Put("list", list);
         vh.Put("msg", msg);
+        vh.Put("role", m_power);
         vh.Display("auth.vm");
 
     }

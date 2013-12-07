@@ -15,6 +15,7 @@ public partial class userset : System.Web.UI.Page
 {
     tb_Users model = new tb_Users();
     users dal = new users();
+    int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Check())
@@ -41,6 +42,7 @@ public partial class userset : System.Web.UI.Page
         VelocityHelper vh = new VelocityHelper();
         vh.Init();
         vh.Put("msg",msg);
+        vh.Put("role", m_power);
         vh.Display("user.vm");
     }
 
@@ -56,7 +58,7 @@ public partial class userset : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid,ref m_power))
             {
                 Response.Redirect("login.aspx");
                 return false;

@@ -16,12 +16,14 @@ using System.ComponentModel;
 
 public partial class check : System.Web.UI.Page
 {
+    int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Check())
             return;
         VelocityHelper vh = new VelocityHelper();
         vh.Init();
+        vh.Put("role", m_power);
         vh.Display("check.vm");
     }
 
@@ -37,9 +39,17 @@ public partial class check : System.Web.UI.Page
         {
             string loginname = Request.Cookies["HRLoginName"].Value;
             string hrid = Request.Cookies["HRId"].Value;
-            if (!hrhelper.IsUserExist(loginname, hrid))
+            if (!hrhelper.IsUserExist(loginname, hrid,ref m_power))
             {
                 Response.Redirect("login.aspx");
+                return false;
+            }
+
+            if (m_power != 0 || m_power != 2)
+            {
+                VelocityHelper vh1 = new VelocityHelper();
+                vh1.Init();
+                vh1.Display("nopower.vm");
                 return false;
             }
         }

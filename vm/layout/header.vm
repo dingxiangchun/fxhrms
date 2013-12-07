@@ -30,7 +30,7 @@
         </div>
         <!-- menu -->
         <div class="menu">
-                <a type="button" class="btn btn-sm btn-default" href="/">首页</a>
+                <a type="button" class="btn btn-sm btn-default" href="Login.aspx">首页</a>
         	<!-- 人事管理 -->        
         	<div class="btn-group">
         		<button type="button" class="btn btn-sm btn-default">人事管理</button>
