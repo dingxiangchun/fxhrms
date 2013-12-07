@@ -19,6 +19,8 @@ public partial class perInfoCount : System.Web.UI.Page
     perInfo dal = new perInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
+            if (!Check())
+            return;
             VelocityHelper vh = new VelocityHelper();
             IList<tb_Count> PositionCountlist = util.GetAll<tb_Count>(dal.GetCountList("Position"));
             IList<tb_Count> branchCountlist = util.GetAll<tb_Count>(dal.GetCountList("branch"));
@@ -35,6 +37,24 @@ public partial class perInfoCount : System.Web.UI.Page
             vh.Put("age", ageCountlist);
             vh.Display("count.vm");
     }
-    
 
+    public bool Check()
+    {
+        HRHelper hrhelper = new HRHelper();
+        if (Response.Cookies["HRLoginName"] == null || Response.Cookies["HRId"] == null)
+        {
+            Response.Write("请重新登录！");
+            return false;
+        }
+        else
+        {
+            if (!hrhelper.IsUserExist(Request.Cookies["HRLoginName"].Value, Request.Cookies["HRId"].Value))
+            {
+                Response.Write("请重新登录！");
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

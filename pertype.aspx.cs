@@ -18,6 +18,8 @@ public partial class pertype : System.Web.UI.Page
     tb_pertypeinfo model = new tb_pertypeinfo();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Check())
+            return;
 
         if (!string.IsNullOrEmpty(Request["action"]))
         {
@@ -95,6 +97,26 @@ public partial class pertype : System.Web.UI.Page
         catch (System.Threading.ThreadAbortException ex)
         {
         }
+    }
+
+    public bool  Check()
+    {
+        HRHelper hrhelper = new HRHelper();
+        if (Response.Cookies["HRLoginName"] == null || Response.Cookies["HRId"] == null)
+        {
+            Response.Write("请重新登录！");
+            return false;
+        }
+        else
+        {
+            if (!hrhelper.IsUserExist(Request.Cookies["HRLoginName"].Value, Request.Cookies["HRId"].Value))
+            {
+                Response.Write("请重新登录！");
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

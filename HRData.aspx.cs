@@ -19,9 +19,24 @@ public partial class HRData : System.Web.UI.Page
 
     branch dalBranch = new branch();
     tb_branch modelBranch = new tb_branch();
-    
+
+    HRHelper hrhelper = new HRHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Response.Cookies["HRLoginName"] == null || Response.Cookies["HRId"] == null)
+        {
+            Response.Write("请重新登录！");
+            return;
+        }
+        else
+        {
+            if (!hrhelper.IsUserExist(Request.Cookies["HRLoginName"].Value, Request.Cookies["HRId"].Value))
+            {
+                Response.Write("请重新登录！");
+                return;
+            }
+        }
+
         if (!string.IsNullOrEmpty(Request["action"]))
         {
             if (Request["action"] == "del")

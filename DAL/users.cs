@@ -107,7 +107,7 @@ namespace DAL
             strSql.Append("select * from tb_Users ");
             if (strWhere.Trim() != "")
             {
-                strSql.Append("where loginname='" + strWhere + "'");
+                strSql.Append("where " + strWhere);
             }
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
