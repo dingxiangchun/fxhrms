@@ -58,8 +58,8 @@ $(".auth-del").on("click",function(){
 });
 
 $("select[data-value]").each(function(){
-	var data = $(this).data("value");
+	var data = $(this).data("value") + "";
 	$(this).find("option").filter(function(){
-		if(this.value === data) return true;
+		if(this.value + "" === data) return true;
 	}).prop("selected",true)
 });
