@@ -45,7 +45,7 @@ namespace DAL
                 strSql.Append("'" + model.username + "',");
                 strSql.Append("" + model.userprower + ",");
                 strSql.Append("'" + model.Unit + "',");
-                strSql.Append("'" + model.remark + "',");
+                strSql.Append("'" + model.remark + "'");
                 strSql.Append(")");
                 if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
                     return true;

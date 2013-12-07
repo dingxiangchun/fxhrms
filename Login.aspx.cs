@@ -49,12 +49,16 @@ public partial class Login : System.Web.UI.Page
                     }
                     else if (ds[0].userprower == 1)
                     {
-                        Response.Redirect("HRData.aspx");//用户类型为0时则代表的是录入员登录
+                        Response.Redirect("HRData.aspx");//用户类型为1时则代表的是录入员登录
                         //Response.Write("<script>alert('你只是普通用户,只能对数据进行浏览.');window.open('HRData.aspx','_self')</script>");
                     }
-                    else if (ds[0].userprower == 2)//用户类型为0时则代表的是普通登录
+                    else if (ds[0].userprower == 2)//用户类型为2时则代表的是审核员登录
                     {
                        Response.Redirect("perInfoQuery.aspx");
+                    }
+                    else if (ds[0].userprower == 3)//用户类型为0时则代表的是普通登录
+                    {
+                        Response.Redirect("perInfoQuery.aspx");
                     }
 
                 }
