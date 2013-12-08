@@ -20,6 +20,6 @@ $(".vali-pass,.vali-no-pass").on("click",function(){
 	param.id = $(this).data("id");
 	param.action = "check";
 	param.type = type;
-	$.post("perinfo.aspx",param);
+	$.post("check.aspx",param);
 	$(this).closest("tr").remove();
 });

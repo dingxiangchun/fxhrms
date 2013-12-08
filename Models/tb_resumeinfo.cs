@@ -10,6 +10,7 @@ namespace Models
         { }
         #region Model
         private int _id;
+        private string _employeename;
         private string _employeeid;
         private string _attacktime;
         private string _quittime;
@@ -18,6 +19,7 @@ namespace Models
         private string _reason;
         private string _content;
         private int _mark;
+        private string _audit;
         /// <summary>
         /// 
         /// </summary>
@@ -25,6 +27,12 @@ namespace Models
         {
             set { _id = value; }
             get { return _id; }
+        }
+
+        public string employeename
+        {
+            set { _employeename = value; }
+            get { return _employeename; }
         }
         /// <summary>
         /// 
@@ -79,6 +87,12 @@ namespace Models
         {
             set { _mark = value; }
             get { return _mark; }
+        }
+
+        public string audit
+        {
+            set { _audit = value; }
+            get { return _audit; }
         }
         #endregion Model
     }

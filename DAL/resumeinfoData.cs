@@ -19,7 +19,7 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_resumeinfo(");
-            strSql.Append("employeeid,attacktime,quittime,position,unit,mark,reason,content");
+            strSql.Append("employeeid,attacktime,quittime,position,unit,mark,reason,content,audit");
             strSql.Append(")");
             strSql.Append(" values (");
             strSql.Append("'" + model.employeeid + "',");
@@ -29,7 +29,8 @@ namespace DAL
             strSql.Append("'" + model.unit + "',");
             strSql.Append("" + model.mark + ",");
             strSql.Append("'" + model.reason + "',");
-            strSql.Append("'" + model.content + "'");
+            strSql.Append("'" + model.content + "',");
+            strSql.Append("'" + model.audit + "'");
             strSql.Append(")");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -48,7 +49,8 @@ namespace DAL
             strSql.Append("unit='" + model.unit + "',");
             strSql.Append("mark=" + model.mark + ",");
             strSql.Append("reason='" + model.reason + "',");
-            strSql.Append("content='" + model.content + "'");
+            strSql.Append("content='" + model.content + "',");
+            strSql.Append("audit='" + model.audit + "'");
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
@@ -78,6 +80,28 @@ namespace DAL
             }
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
+        }
+
+        public DataSet GetListWithName(string strwhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select tb_resumeinfo.*,tb_perinfo.Name As employeename from tb_resumeinfo,tb_perinfo where tb_resumeinfo.employeeid=tb_perinfo.Employeeid ");
+            if (strwhere.Trim() != "")
+            {
+                strSql.Append(strwhere);
+            }
+            strSql.Append(" order by id ");
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
+        public void UpdateMark(int mark,string audit, int id)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update tb_resumeinfo set ");
+            strSql.Append("audit='" + audit + "',");
+            strSql.Append("mark=" + mark + "");
+            strSql.Append(" where id=" + id + "");
+            DbHelperSQL.ExecuteSql(strSql.ToString());
         }
         #endregion
     }

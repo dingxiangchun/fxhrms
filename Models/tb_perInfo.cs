@@ -51,6 +51,7 @@ namespace Models
         private string _BankcardID;
         private string _remarks1;
         private string _remarks2;
+        private string _Titles;
         /// <summary>
         /// 
         /// </summary>
@@ -345,6 +346,12 @@ namespace Models
         {
             set { _remarks2 = value; }
             get { return _remarks2; }
+        }
+
+        public string Titles
+        {
+            set { _Titles = value; }
+            get { return _Titles; }
         }
         #endregion Model
     }

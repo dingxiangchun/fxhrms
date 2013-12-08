@@ -101,7 +101,7 @@
       <td>$!{one.Major}</td>
       <td>$!{one.final_sch}</td>
       <td>$!{one.final_edu}</td>
-      <td>专业技术资格</td>
+      <td>$!{one.Titles}</td>
       <td>$!{one.Unit}</td>
       <td>$!{one.PositionName}</td>
       <td>$!{one.Guard}</td>

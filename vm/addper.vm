@@ -92,9 +92,10 @@
         <tr class="warning">
           <th>工作岗位</th>
           <th colspan="2">工作单位</th>
+		  <th>技术职称</th>
           <th>员工状态</th>
-          <th>职级</th>
-          <th colspan="3">档次</th>
+          <th colspan="2">职级</th>
+          <th>档次</th>
         </tr>
         <tr>
           <td>
@@ -108,16 +109,18 @@
             $!{branch.branchName}
             <input type="hidden" value="$!{branch.id}" name="UnitID" class="form-control"></td>
           <td>
+            <input type="text" value="$!{list.Titles}"  name="Titles" class="form-control"></td>
+          <td>
             <select name="state" class="form-control" data-value="$!{list.state}">
               #foreach ($one in $pertypeList)
               <option value="${one.id}">$!{one.name}</option>
               #end
             </select>
           </td>
-          <td>
+          <td colspan="2">
             <select name="Rank" class="form-control" data-value="$!{list.Rank}">#include("include/rank.vm")</select>
           </td>
-          <td colspan="3">
+          <td>
             <select name="Level" class="form-control" data-value="$!{list.Level}">#include("include/level.vm")</select>
           </td>
 

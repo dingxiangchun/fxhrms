@@ -66,14 +66,16 @@
     <table class="table table-bordered table-hover">
       <tr class="warning">
         <th colspan="3">工作岗位</th>
-        <th colspan="6">工作单位</th>
+        <th colspan="5">工作单位</th>
+		<th>技术职称</th>
         <th>员工状态</th>
         <th>职级</th>
         <th>档次</th>
       </tr>
       <tr>
         <td colspan="3">$!{list.PositionName}</td>
-        <td colspan="6">$!{branch.branchName}</td>
+        <td colspan="5">$!{branch.branchName}</td>
+		<td>$!{list.Titles}</td>
         <td>$!{list.statename}</td>
         <td>$!{list.Rank}</td>
         <td>$!{list.Level}</td>
@@ -186,8 +188,6 @@
     <h3>证书及奖励</h3>
     <table class="table table-bordered table-hover">
       <tr class="warning">
-        <th>员工编号</th>
-        <th>员工姓名</th>
         <th>证书名称</th>
         <th>证书类型</th>
         <td>取得时间</td>
@@ -199,8 +199,6 @@
       </tr>
       #foreach( $one in $register )
       <tr>
-        <td>$!{one.employeeid}</td>
-        <td>$!{one.username}</td>
         <td>$!{one.cer_name}</td>
         <td>$!{one.type}</td>
         <td>$!{one.accesstime}</td>

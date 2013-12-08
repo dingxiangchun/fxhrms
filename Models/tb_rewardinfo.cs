@@ -10,6 +10,7 @@ namespace Models
         { }
         #region Model
         private int _id;
+        private string _employeename;
         private string _employeeid;
         private string _type;
         private string _time;
@@ -33,6 +34,13 @@ namespace Models
         /// <summary>
         /// 
         /// </summary>
+        ///
+        public string employeename
+        {
+            set { _employeename = value; }
+            get { return _employeename; }
+        }
+
         public string employeeid
         {
             set { _employeeid = value; }

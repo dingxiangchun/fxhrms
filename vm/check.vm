@@ -22,7 +22,7 @@
       #foreach( $one in $work )
       <tr>
         <td>$!{one.employeeid}</td>
-        <td>$!{one.username}</td>
+        <td>$!{one.employeename}</td>
         <td>$!{one.attacktime}</td>
         <td>$!{one.quittime}</td>
         <td>$!{one.position}</td>
@@ -61,7 +61,7 @@
       #foreach( $one in $reward )
       <tr>
         <td>$!{one.employeeid}</td>
-        <td>$!{one.username}</td>
+        <td>$!{one.employeename}</td>
         <td>$!{one.type}</td>
         <td>$!{one.time}</td>
         <td>$!{one.content}</td>

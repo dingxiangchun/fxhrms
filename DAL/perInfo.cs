@@ -51,13 +51,13 @@ namespace DAL
                 StringBuilder strSql = new StringBuilder();
                 strSql.Append("insert into tb_perInfo(Name,Beforename,Employeeid,Sex,Nation,Birth,Idcard,UnitID,Unit,Position,Rank,Level,Status,Statustime,");
                 strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,Tel,final_sch,");
-                strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,employclass,photo,Attrion,BankcardID,remarks1,remarks2) values (");
+                strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,employclass,photo,Attrion,BankcardID,remarks1,remarks2,Titles) values (");
                 strSql.Append("'" + model.Name + "','" + model.Beforename + "','" + model.Employeeid + "','" + model.Sex + "','" + model.Nation + "','" + model.Birth + "','" + model.Idcard + "',");
                 strSql.Append("" + model.UnitID + ",'" + model.Unit + "','" + model.Position + "','" + model.Rank + "'," + model.Level + ",");
                 strSql.Append("'" + model.Status + "','" + model.Statustime + "','" + model.Jobtime + "','" + model.financetime + "','" + model.fulltime_educ + "','" + model.fulltime_sch + "',");
                 strSql.Append("'" + model.Major + "','" + model.Married + "','" + model.Town + "','" + model.Tel + "',");
                 strSql.Append("'" + model.final_sch + "','" + model.final_edu + "','" + model.final_emajior + "','" + model.Address + "','" + model.Reserve + "','" + model.Guard + "',");
-                strSql.Append(model.Ages + ",'" + model.state + "','" + model.employclass + "','" + model.photo + "','" + model.Attrion + "','" + model.BankcardID + "','" + model.remarks1 + "','" + model.remarks2 + "')");
+                strSql.Append(model.Ages + ",'" + model.state + "','" + model.employclass + "','" + model.photo + "','" + model.Attrion + "','" + model.BankcardID + "','" + model.remarks1 + "','" + model.remarks2 + "','"+model.Titles+"')");
                 if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
                     return true;
                 else
@@ -109,7 +109,8 @@ namespace DAL
                 strSql.Append("Attrion='" + model.Attrion + "',");
                 strSql.Append("BankcardID='" + model.BankcardID + "',");
                 strSql.Append("remarks1='" + model.remarks1 + "',");
-                strSql.Append("remarks2='" + model.remarks2 + "'");
+                strSql.Append("remarks2='" + model.remarks2 + "',");
+                strSql.Append("Titles='" + model.Titles + "'");
                 if (model.photo != "")
                 {
                     strSql.Append(",photo='" + model.photo + "'");
@@ -139,7 +140,7 @@ namespace DAL
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select tb_perInfo.id,tb_perInfo.Name,Beforename,Employeeid,Sex,Nation,Birth,Idcard,UnitID,tb_branch.branchName as Unit,Position,tb_positioninfo.name as PositionName,Rank,Level,Status,Statustime,");
             strSql.Append("Jobtime,financetime,fulltime_educ,fulltime_sch,Major,Married,Town,tb_perInfo.Tel,final_sch,");
-            strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,tb_pertypeinfo.name as statename,employclass,photo,Attrion,BankcardID,remarks1,remarks2");
+            strSql.Append("final_edu,final_emajior,Address,Reserve,Guard,Ages,state,tb_pertypeinfo.name as statename,employclass,photo,Attrion,BankcardID,remarks1,remarks2,Titles");
             strSql.Append(" from tb_perInfo,tb_branch,tb_pertypeinfo,tb_positioninfo where tb_perInfo.UnitID = tb_branch.id and tb_perInfo.state = tb_pertypeinfo.id and tb_perInfo.Position = tb_positioninfo.id");
             if (strWhere.Trim() != "")
             {

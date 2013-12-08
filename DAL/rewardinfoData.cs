@@ -87,6 +87,28 @@ namespace DAL
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
         }
+
+        public DataSet GetListWithName(string strwhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select tb_rewardinfo.*,tb_perinfo.Name As employeename from tb_rewardinfo,tb_perinfo where tb_rewardinfo.employeeid=tb_perinfo.Employeeid ");
+            if (strwhere.Trim() != "")
+            {
+                strSql.Append(strwhere);
+            }
+            strSql.Append(" order by id ");
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
+        public void UpdateMark(int mark, string audit, int id)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update tb_rewardinfo set ");
+            strSql.Append("audit='" + audit + "',");
+            strSql.Append("mark=" + mark + "");
+            strSql.Append(" where id=" + id + "");
+            DbHelperSQL.ExecuteSql(strSql.ToString());
+        }
         #endregion
     }
 }

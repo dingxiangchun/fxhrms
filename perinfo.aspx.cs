@@ -336,6 +336,7 @@ public partial class perinfo : System.Web.UI.Page
             model.BankcardID = Request["BankcardID"];
             model.remarks1 = Request["remarks1"];
             model.remarks2 = Request["remarks2"];
+            model.Titles = Request["Titles"];
             if (Request.Files.Count > 0)
             {
                 HttpFileCollection FileCollection = Request.Files;
