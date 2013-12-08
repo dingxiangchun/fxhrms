@@ -10,8 +10,11 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.IO;
+using System.Text.RegularExpressions;
+using Word = Microsoft.Office.Interop.Word;
 using DAL;
 using Models;
+using OfficeControl;
 
 public partial class perinfo : System.Web.UI.Page
 {
@@ -75,7 +78,6 @@ public partial class perinfo : System.Web.UI.Page
             }
             if (Request["action"] == "add")
             {
-
                 Add(Request["id"]);
             }
             if (Request["action"] == "update")
@@ -85,6 +87,10 @@ public partial class perinfo : System.Web.UI.Page
             if (Request["action"] == "save")
             {
                 Save();
+            }
+            if (Request["action"] == "wordexport")
+            {
+               Export();
             }
 
         }
@@ -147,7 +153,7 @@ public partial class perinfo : System.Web.UI.Page
             if (id != "" && id != null)
             {
 
-                IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.employeeid =" + id);
+                IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.id =" + id);
                 IList<tb_learninfo> learn = dalLearn.GetListAll("employeeid =" + id);
                 IList<tb_family> family = dalFamily.GetListAll("employeeid =" + id);
                 IList<tb_registerinfo> register = dalReg.GetListAll("employeeid =" + id);
@@ -641,6 +647,142 @@ public partial class perinfo : System.Web.UI.Page
 
         return webUrl;
     }
+
+    public bool Export()
+    {
+        if (string.IsNullOrEmpty(Request["id"]))
+        {
+            return false;
+        }
+        string strwhere = "tb_perInfo.id =" + Request["id"];
+
+        IList<tb_perInfo> list = dal.GetListAll(strwhere);
+        rewardinfoData rewarddal = new rewardinfoData();
+        learninfo dalLearn = new learninfo();
+        resumeinfoData dalWork = new resumeinfoData();
+        family dalFamily = new family();
+        IList<tb_rewardinfo> rewardlist = rewarddal.GetListAll("employeeid =" + list[0].Employeeid);
+        IList<tb_learninfo> learn = dalLearn.GetListAll("employeeid =" + list[0].Employeeid);
+        IList<tb_resumeinfo> work = dalWork.GetListAll("employeeid =" + list[0].Employeeid);
+        IList<tb_family> family = dalFamily.GetListAll("employeeid =" + list[0].Employeeid);
+        ExportWord(list[0], learn, family, work, rewardlist);
+        return true;
+    }
+
+    public bool ExportWord(tb_perInfo perinfo, IList<tb_learninfo> learnlist, IList<tb_family> familylist, IList<tb_resumeinfo> resumeinfolist, IList<tb_rewardinfo> rewardlist)
+    {
+        Object Nothing = System.Reflection.Missing.Value;
+        string fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".doc";
+        Object filePath = Server.MapPath("~/File/" + fileName);
+        string templatepath = Server.MapPath("~/dot/perinfotemplate.dot");
+        CreateWordByTemplate word_class = new CreateWordByTemplate();
+
+        word_class.CreateNewWordDocument(templatepath);
+        if (perinfo != null)
+        {
+            word_class.Replace("Unit", " " + perinfo.Unit);
+            word_class.Replace("PositionName", " " + perinfo.PositionName);
+            word_class.Replace("NameTitle", " " + perinfo.Name);
+            word_class.Replace("Name", perinfo.Name);
+            word_class.Replace("Sex", perinfo.Sex);
+            word_class.Replace("Nation", perinfo.Nation);
+            word_class.Replace("Beforename", perinfo.Beforename);
+            word_class.Replace("Birth", perinfo.Birth);
+            word_class.Replace("Jobtime", perinfo.Jobtime);
+            word_class.Replace("financetime", perinfo.financetime);
+            word_class.Replace("Idcard", perinfo.Idcard);
+            word_class.Replace("Town", perinfo.Town);
+            word_class.Replace("Address", perinfo.Address);
+            word_class.Replace("fulltime_educ", perinfo.fulltime_educ);
+            word_class.Replace("fulltime_sch", perinfo.fulltime_sch + ";" + perinfo.Major);
+            word_class.Replace("final_edu", perinfo.final_edu);
+            word_class.Replace("final_sch", perinfo.final_sch + ";" + perinfo.final_emajior);
+            word_class.Replace("Statustime", perinfo.Statustime);
+            if(!string.IsNullOrEmpty(perinfo.photo))
+               word_class.SetImage(Server.MapPath("~" + perinfo.photo), "Pic");
+        }
+        if (rewardlist != null)
+        {
+            string strgood = "";
+            string strbad = "";
+            for (int i = 0; i < rewardlist.Count; i++)
+            {
+                if (rewardlist[i].type == "奖励")
+                {
+                    strgood += rewardlist[i].time + "," + rewardlist[i].Class + "," + rewardlist[i].content + "\r\n";
+                }
+                else
+                {
+                    strbad += rewardlist[i].time + "," + rewardlist[i].Class + "," + rewardlist[i].content + "\r\n";
+                }
+            }
+            word_class.Replace("rewardinfo_good", strgood);
+            word_class.Replace("rewardinfo_bad", strbad);
+        }
+        if (learnlist != null)
+        {
+            for (int i = 1; i <= learnlist.Count; i++)
+            {
+                word_class.Replace("learntime" + i, learnlist[i - 1].starttime + "~" + learnlist[i - 1].graduatetime);
+                word_class.Replace("sch" + i, learnlist[i - 1].graduatesch);
+                word_class.Replace("lz" + i, learnlist[i - 1].retence);
+            }
+        }
+
+        if (resumeinfolist != null)
+        {
+            for (int i = 1; i <= resumeinfolist.Count; i++)
+            {
+                word_class.Replace("wt" + i, resumeinfolist[i - 1].attacktime + "~" + resumeinfolist[i - 1].quittime);
+                word_class.Replace("wu" + i, resumeinfolist[i - 1].unit + ";" + resumeinfolist[i - 1].position);
+            }
+        }
+
+        if (familylist != null)
+        {
+            int j = 0;
+            for (int i = 1; i <= familylist.Count; i++)
+            {
+                if (familylist[i - 1].relation == "配偶")
+                {
+                    word_class.Replace("pname", familylist[i - 1].name);
+                    word_class.Replace("pbrith", familylist[i - 1].birth);
+                    word_class.Replace("pstatus", familylist[i - 1].status);
+                    word_class.Replace("punit", familylist[i - 1].unit);
+                }
+                else
+                {
+                    j++;
+                    word_class.Replace("fa" + j, familylist[i - 1].relation);
+                    word_class.Replace("fan" + j, familylist[i - 1].name);
+                    word_class.Replace("fab" + j, familylist[i - 1].birth);
+                    word_class.Replace("fau" + j, familylist[i - 1].unit);
+                    word_class.Replace("fas" + j, familylist[i - 1].status);
+                }
+            }
+        }
+
+        word_class.SaveAs(filePath.ToString());
+        word_class.Close();
+
+        //打开要下载的文件，并把该文件存放在FileStream中    
+        System.IO.FileStream Reader = System.IO.File.OpenRead(filePath.ToString());
+        //文件传送的剩余字节数：初始值为文件的总大小    
+        long Length = Reader.Length;
+        HttpContext.Current.Response.Buffer = false;
+        HttpContext.Current.Response.Charset = "GB2312";
+        HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+        HttpContext.Current.Response.AddHeader("Connection", "Keep-Alive");
+        HttpContext.Current.Response.ContentType = "application/ms-excel";
+        HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+        HttpContext.Current.Response.AddHeader("Content-Length", Length.ToString());
+        Response.TransmitFile(filePath.ToString());
+        Reader.Close();
+        if (System.IO.File.Exists(filePath.ToString()))
+            System.IO.File.Delete(filePath.ToString());
+        return true;
+    }
+
 
     public bool Check()
     {

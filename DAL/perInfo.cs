@@ -128,10 +128,21 @@ namespace DAL
             }
 
         }
-        public void Delete(string strwhere)
+        public bool Delete(string strwhere)
         {
-            string strSql = "delete from tb_perInfo where "+strwhere;
-            int cmdresult=DbHelperSQL.ExecuteSql(strSql);
+            try
+            {
+                string strSql = "delete from tb_perInfo where " + strwhere;
+                int cmdresult = DbHelperSQL.ExecuteSql(strSql);
+                if (cmdresult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 

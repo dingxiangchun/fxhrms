@@ -1,7 +1,9 @@
 #parse("layout/header.vm")
 <div id="content">
 
-  <div class="quick-link">
+
+
+  <div class="quick-link" style="float:left">
     <a type="button" class="btn btn-default" rel="basic">基本信息</a>
     <a type="button" class="btn btn-default" rel="study">学习经历</a>
     <a type="button" class="btn btn-default" rel="family">家庭成员</a>
@@ -9,7 +11,11 @@
     <a type="button" class="btn btn-default" rel="reward">奖惩记录</a>
     <a type="button" class="btn btn-default" rel="work">工作经历</a>
     <a type="button" class="btn btn-default" rel="holiday">休假记录</a>
+	
+	
   </div>
+  <a type="button" class="btn btn-warning" href="perinfo.aspx?action=wordexport&id=$!{list.id}" style="float:right;">导出个人简历</a>
+  <div style="clear:both"></div>
 
   <div id="info-basic" class="info-block">
     <h3>员工基本信息</h3>

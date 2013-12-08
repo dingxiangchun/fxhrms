@@ -66,14 +66,23 @@ public partial class addHeadShip : System.Web.UI.Page
     {
         try
         {
-            model.name = Request["name"];
-            model.info = Request["info"];
-            dal.Add(model);
+            string msg="添加成功";
+            do {
+                if (string.IsNullOrEmpty(Request["name"]))
+                {
+                    msg = "岗位名称不能为空！";
+                    break;
+                }
+                model.name = Request["name"];
+                model.info = Request["info"];
+                dal.Add(model);
+            } while (false);
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_positioninfo> list = dal.GetListAll("");
             vh.Put("list", list);
-            vh.Put("msg", "添加成功");
+            vh.Put("msg", msg);
             vh.Put("role", m_power);
             vh.Display("headship.vm");
         }
@@ -85,15 +94,24 @@ public partial class addHeadShip : System.Web.UI.Page
     {
         try
         {
-            model.id = int.Parse(Request["id"].ToString());
-            model.name = Request["name"];
-            model.info = Request["info"];
-            dal.Update(model);
+            string msg="修改成功";
+            do { 
+               if (string.IsNullOrEmpty(Request["name"]))
+                {
+                    msg = "岗位名称不能为空！";
+                    break;
+                }
+                model.id = int.Parse(Request["id"].ToString());
+                model.name = Request["name"];
+                model.info = Request["info"];
+                dal.Update(model);
+            } while (false);
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_positioninfo> list = dal.GetListAll("");
             vh.Put("list", list);
-            vh.Put("msg", "修改成功");
+            vh.Put("msg", msg);
             vh.Put("role", m_power);
             vh.Display("headship.vm");
         }

@@ -75,10 +75,8 @@ public partial class auth : System.Web.UI.Page
             }
             if (Request["action"] == "add")
             {
-                if (Add())
+                if (Add(ref msg))
                     msg = "用户添加成功！";
-                else
-                    msg = "用户添加失败！";
             }
         }
         IList<tb_Users> list = dal.GetListAll("");
@@ -91,28 +89,54 @@ public partial class auth : System.Web.UI.Page
 
     }
 
-    public bool Add()
+    public bool Add(ref string msg)
     {
         if (Request["id"] != null && Request["id"] != "")
         {
             model.id = int.Parse(Request["id"]);
         }
-        if (Request["loginname"] != null && Request["loginname"] != "")
+        if (!string.IsNullOrEmpty(Request["loginname"]))
         {
             model.loginname = Request["loginname"];
+            if (dal.GetListAll("loginname='" + model.loginname + "'").Count > 0)
+            {
+                msg = "该登录名已存在";
+                return false;
+            }
         }
-        if (Request["userpwd"] != null && Request["userpwd"] != "")
+        else
+        {
+            msg = "登录名不能为空！";
+            return false;
+        }
+        if (!string.IsNullOrEmpty(Request["userpwd"]))
         {
             model.userpwd = Request["userpwd"];
         }
-        if (Request["userprower"] != null && Request["userprower"] != "")
+        else
+        {
+            msg = "密码不能为空！";
+            return false;
+        }
+        if (!string.IsNullOrEmpty(Request["userprower"]))
         {
             model.userprower = int.Parse(Request["userprower"]);
         }
-        if (Request["username"] != null && Request["username"] != "")
+        else
+        {
+            msg = "权限不能为空！";
+            return false;
+        }
+        if (!string.IsNullOrEmpty(Request["username"]))
         {
             model.username = Request["username"];
         }
+        else
+        {
+            msg = "用户名不能为空！";
+            return false;
+        }
+
         if (Request["Unit"] != null && Request["Unit"] != "")
         {
             model.Unit = Request["Unit"];
@@ -121,6 +145,7 @@ public partial class auth : System.Web.UI.Page
         {
             model.remark = Request["remark"];
         }
+
         if (dal.Add(model))
             return true;
         else
@@ -141,7 +166,7 @@ public partial class auth : System.Web.UI.Page
         {
             model.userprower = int.Parse(Request["userprower"]);
         }
-        if (dal.Update(model))
+        if (dal.ChangeUserPower(model))
             return true;
         else
             return false;

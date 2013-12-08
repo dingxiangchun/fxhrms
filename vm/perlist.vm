@@ -30,7 +30,7 @@
           <td>工作单位</td>
           <td>工作岗位</td>
           <td>参加本系统工作时间</td>
-  				<th width="120">维护</th>
+  				<th width="150">维护</th>
   			</tr>
   		</thead>
   		<tbody>
@@ -47,6 +47,7 @@
             <a href="perinfo.aspx?id=${one.Employeeid}" role="button" class="btn btn-default btn-xs" target="_blank">查询</a>
             #if($role == 0 || $role == 3)
             <a href="perinfo.aspx?action=add&id=${one.Employeeid}" role="button" class="btn btn-primary btn-xs" target="_blank">维护</a>
+			<a href="javascript:void(0)" role="button" class="btn btn-danger btn-xs del-per">删除</a>
             #end
           </td>
   			</tr>

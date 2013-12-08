@@ -77,24 +77,35 @@ public partial class addBranch : System.Web.UI.Page
     private void Add() {
         try
         {
-            int parentid = int.Parse(Request["parentid"].ToString());
-            model.branchName = Request["branchName"];
-            model.tel = Request["tel"];
-            model.person = Request["person"];
-            model.branchInfo = Request["branchInfo"];
-            model.branchNum = Request["branchNum"];
-            model.parentid = parentid;
-            dal.Add(model);
             string strwhere = "";
-            if ( parentid > 0 )
+            string msg="添加部门成功";
+            int parentid = int.Parse(Request["parentid"].ToString());
+            do
+            {
+                if (string.IsNullOrEmpty(Request["branchName"]))
+                {
+                    msg = "部门名称不能为空";
+                    break;
+                }
+                model.branchName = Request["branchName"];
+                model.tel = Request["tel"];
+                model.person = Request["person"];
+                model.branchInfo = Request["branchInfo"];
+                model.branchNum = Request["branchNum"];
+                model.parentid = parentid;
+                dal.Add(model);
+            } while (false);
+
+            if (parentid > 0)
             {
                 strwhere = "parentid=" + parentid;
             }
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_branch> list = dal.GetListAll(strwhere);
             vh.Put("list", list);
-            vh.Put("msg","添加部门成功");
+            vh.Put("msg",msg);
             vh.Put("role", m_power);
             vh.Display("addBranch.vm");
         }

@@ -67,15 +67,25 @@ public partial class pertype : System.Web.UI.Page
     {
         try
         {
-            model.name = Request["name"];
-            model.info = Request["info"];
-            dal.Add(model);
+            string msg ="添加成功";
+            do
+            {
+                if (string.IsNullOrEmpty(Request["name"]))
+                {
+                    msg = "人员状态名称不能为空！";
+                    break;
+                }
+                model.name = Request["name"];
+                model.info = Request["info"];
+                dal.Add(model);
+            } while (false);
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_pertypeinfo> list = dal.GetListAll("");
             vh.Put("list", list);
             vh.Put("role", m_power);
-            vh.Put("msg", "添加成功");
+            vh.Put("msg", msg);
             vh.Display("pertype.vm");
         }
         catch (System.Threading.ThreadAbortException ex)
@@ -86,16 +96,25 @@ public partial class pertype : System.Web.UI.Page
     {
         try
         {
-            model.id = int.Parse(Request["id"].ToString());
-            model.name = Request["name"];
-            model.info = Request["info"];
-            dal.Update(model);
+            string msg="修改成功";
+            do {
+                if (string.IsNullOrEmpty(Request["name"]))
+                {
+                    msg = "人员状态名称不能为空！";
+                    break;
+                }
+                model.id = int.Parse(Request["id"].ToString());
+                model.name = Request["name"];
+                model.info = Request["info"];
+                dal.Update(model);
+            } while (false);
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_pertypeinfo> list = dal.GetListAll("");
             vh.Put("list", list);
             vh.Put("role", m_power);
-            vh.Put("msg", "修改成功");
+            vh.Put("msg", msg);
             vh.Display("pertype.vm");
         }
         catch (System.Threading.ThreadAbortException ex)

@@ -80,6 +80,25 @@ namespace DAL
                 return false;
             }
         }
+
+        public bool ChangeUserPower(tb_Users model)
+        {
+            try
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("update tb_Users set ");
+                strSql.Append("userprower=" + model.userprower);
+                strSql.Append(" where id=" + model.id + "");
+                if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public bool Delete(int id)
         {
             try

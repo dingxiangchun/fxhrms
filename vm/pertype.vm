@@ -6,14 +6,14 @@
   #end
 
    <div class="pertype-edit-wrap" style="display: none;">
-    <h3>人员类型修改</h3>
+    <h3>人员状态修改</h3>
     <div class="pannel">
     <form action="pertype.aspx" method="post" role="form" id="pertype-edit-form">
       <input type="hidden" name="action" value="update">
       <input type="hidden" name="id" value="">
       <div class="form-group">
-        <label for="pertype-name-edit">人员类型</label>
-        <input type="text" class="form-control" id="pertype-name-pertype" placeholder="请输入人员类型名称" name="name">
+        <label for="pertype-name-edit">人员状态</label>
+        <input type="text" class="form-control" id="pertype-name-pertype" placeholder="请输入人员状态名称" name="name">
       </div>
       <div class="form-group">
         <label for="pertype-info-edit">说明</label>
@@ -25,7 +25,7 @@
   </div>
   </div>
 
-  <h3>人员类型列表</h3>
+  <h3>人员状态列表</h3>
   <table class="table table-bordered table-hover">
       <thead>
         <tr class="warning">
@@ -51,13 +51,13 @@
   
 
   <br>
-  <h3>新添人员类型</h3>
+  <h3>新添人员状态</h3>
   <div class="pannel">
     <form action="pertype.aspx" method="post" role="form" id="pertype-form">
       <input type="hidden" name="action" value="add">
       <div class="form-group">
-        <label for="pertype-name">人员类型</label>
-        <input type="text" class="form-control" id="pertype-name" placeholder="请输入人员类型" name="name">
+        <label for="pertype-name">人员状态</label>
+        <input type="text" class="form-control" id="pertype-name" placeholder="请输入人员状态" name="name">
       </div>
       <div class="form-group">
         <label for="pertype-info">说明</label>

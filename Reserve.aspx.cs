@@ -62,13 +62,22 @@ public partial class Reserve : System.Web.UI.Page
     {
         try
         {
-            model.ReserveType = Request["ReserveType"];
-            dal.Add(model);
+            string msg="添加成功";
+            do{
+                if (string.IsNullOrEmpty(Request["ReserveType"]))
+                {
+                    msg = "后备人才类型不能为空！";
+                    break;
+                }
+                model.ReserveType = Request["ReserveType"];
+                dal.Add(model);
+            }while(false);
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_Reserve> list = dal.GetListAll("");
             vh.Put("list", list);
-            vh.Put("msg", "添加成功");
+            vh.Put("msg", msg);
             vh.Put("role", m_power);
             vh.Display("reserve.vm");
         }
@@ -80,14 +89,23 @@ public partial class Reserve : System.Web.UI.Page
     {
         try
         {
-            model.id = int.Parse(Request["id"].ToString());
-            model.ReserveType = Request["ReserveType"];
-            dal.Update(model);
+            string msg="修改成功";
+            do {
+                if (string.IsNullOrEmpty(Request["ReserveType"]))
+                {
+                    msg = "后备人才类型不能为空！";
+                    break;
+                }
+                model.id = int.Parse(Request["id"].ToString());
+                model.ReserveType = Request["ReserveType"];
+                dal.Update(model);
+            } while (false);
+
             VelocityHelper vh = new VelocityHelper();
             vh.Init();
             IList<tb_Reserve> list = dal.GetListAll("");
             vh.Put("list", list);
-            vh.Put("msg", "修改成功");
+            vh.Put("msg", msg);
             vh.Put("role", m_power);
             vh.Display("reserve.vm");
         }

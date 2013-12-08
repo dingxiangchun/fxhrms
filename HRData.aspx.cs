@@ -44,7 +44,7 @@ public partial class HRData : System.Web.UI.Page
         {
             if (Request["action"] == "del")
             {
-                //Del();
+                Del();
             }
             if (Request["action"] == "add")
             {
@@ -78,6 +78,25 @@ public partial class HRData : System.Web.UI.Page
             vh.Put("list", list);
             vh.Put("role", m_power);
             vh.Display("perlist.vm");
+        }
+    }
+
+    public bool Del()
+    {
+        if (string.IsNullOrEmpty(Request["id"]))
+        {
+            Response.Write("{\"status\":false,\"errorMsg\":\"员工编号为空!\"}");
+            Response.End();
+            return false;
+        }
+        else
+        {
+            if(dal.Delete("id =" + Request["id"]))
+                Response.Write("{\"status\":true}");
+            else
+                Response.Write("{\"status\":false,\"errorMsg\":\"员工编号为空!\"}");
+            Response.End();
+            return false;
         }
     }
 
