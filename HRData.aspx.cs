@@ -70,7 +70,7 @@ public partial class HRData : System.Web.UI.Page
 
             if (Request["name"] != null)
             {
-                strwhere += " and Name='" + Request["name"] + "'";
+                strwhere += " and tb_perInfo.Name='" + Request["name"] + "'";
             }
             VelocityHelper vh = new VelocityHelper();
             vh.Init();

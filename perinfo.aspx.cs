@@ -153,7 +153,7 @@ public partial class perinfo : System.Web.UI.Page
             if (id != "" && id != null)
             {
 
-                IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.id =" + id);
+                IList<tb_perInfo> list = dal.GetListAll("tb_perinfo.employeeid =" + id);
                 IList<tb_learninfo> learn = dalLearn.GetListAll("employeeid =" + id);
                 IList<tb_family> family = dalFamily.GetListAll("employeeid =" + id);
                 IList<tb_registerinfo> register = dalReg.GetListAll("employeeid =" + id);
@@ -369,7 +369,7 @@ public partial class perinfo : System.Web.UI.Page
             IList<tb_perInfo> list = dal.GetListAll(strwhere);
             if (list.Count > 0)
             {
-                Add(list[0].id.ToString());
+                Add(list[0].Employeeid.ToString());
             }
             else
             {
