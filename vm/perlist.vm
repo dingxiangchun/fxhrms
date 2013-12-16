@@ -41,7 +41,7 @@
   				<td>$!{one.Sex}</td>
           <td>$!{one.Birth}</td>
           <td>$!{one.Unit}</td>
-          <td>$!{one.Position}</td>
+          <td>$!{one.PositionName}</td>
           <td>$!{one.Jobtime}</td>
   				<td>
             <a href="perinfo.aspx?id=${one.Employeeid}" role="button" class="btn btn-default btn-xs" target="_blank">查询</a>
