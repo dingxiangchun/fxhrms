@@ -24,7 +24,7 @@ util.getParam = function( name ){
 
 // 获取cookie
 util.getCookie = function( key ){
-	var arrStr = document.cookie.split("; ");
+	var arrStr = decodeURI(document.cookie).split("; ");
  	for(var i = 0;i < arrStr.length;i ++){
  		var temp = arrStr[i].split("=");
  		if(temp[0] == key) return unescape(temp[1]);

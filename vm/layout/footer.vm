@@ -1,5 +1,5 @@
 <script>
-	$("header .username span").text( util.getCookie("HRUserName") || 'guest' );
+	$("header .username span").text( decodeURI( util.getCookie("HRUserName") )|| 'guest' );
 	$(".logout").click(function(){
 		util.delCookie("HRLoginName");
 		util.delCookie("HRId");
