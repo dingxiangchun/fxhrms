@@ -500,3 +500,6 @@ nav {
 .long-table th,.long-table td{
   min-width: 100px;
 }
+table{
+  font-size:12px;
+}
