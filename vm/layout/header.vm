@@ -68,7 +68,7 @@
         				<a href="reserve.aspx">后备人才类型</a>
         			</li>
         			<li>
-        				<a href="pertype.aspx">员工类型</a>
+        				<a href="pertype.aspx">员工状态</a>
         			</li>
         		</ul>
         	</div>
