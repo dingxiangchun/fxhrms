@@ -1,3 +1,5 @@
 <option value="普通员工">普通员工</option>
 <option value="中层正职">中层正职</option>
 <option value="中层副职">中层副职</option>
+<option value="高层领导">高层领导</option>
+<option value="其他">其他</option>
