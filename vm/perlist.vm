@@ -15,7 +15,9 @@
       </div>
       <input type="hidden" name="branchid" value="0">
       <button type="submit" class="btn btn-primary">查询</button>
+	  #if($role == 0 || $role == 3)
       <a href="" class="btn btn-default addper" role="button" target="_blank">新增</a>
+	  #end
     </form>
   </div>
 
