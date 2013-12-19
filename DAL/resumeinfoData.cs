@@ -47,7 +47,6 @@ namespace DAL
             strSql.Append("quittime='" + model.quittime + "',");
             strSql.Append("position='" + model.position + "',");
             strSql.Append("unit='" + model.unit + "',");
-            strSql.Append("mark=" + model.mark + ",");
             strSql.Append("reason='" + model.reason + "',");
             strSql.Append("content='" + model.content + "',");
             strSql.Append("audit='" + model.audit + "'");

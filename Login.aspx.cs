@@ -40,7 +40,7 @@ public partial class Login : System.Web.UI.Page
                     //设置Cookie
                     LoginName.Value = ds[0].loginname;
                     UserId.Value = ds[0].id.ToString();
-                    UserName.Value = HttpUtility.UrlEncode(ds[0].username);
+                    UserName.Value = ds[0].username;
 
                     Response.AppendCookie(LoginName);
                     Response.AppendCookie(UserId);
