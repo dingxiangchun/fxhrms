@@ -19,7 +19,10 @@ $('.date-picker',that).datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"m
 $('.date-picker-month',that).datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"year","startView":'year'});
 
 }
-dateInit(document);
+$(function(){
+	dateInit(document);
+})
+
 
 // 身份证
 $("input[name=Idcard]").on("blur",function(){

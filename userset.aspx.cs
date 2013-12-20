@@ -2,6 +2,7 @@
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -26,9 +27,21 @@ public partial class userset : System.Web.UI.Page
             string hrid = Request.Cookies["HRId"].Value;
             model.id = int.Parse(hrid);
         }
+        if (Request["username"] != null && Request["username"] != "")
+        {
+            model.username = Request["username"];
+        }
+        if (Request["Unit"] != null && Request["Unit"] != "")
+        {
+            model.Unit = Request["Unit"];
+        }
         if (Request["loginname"] != null && Request["loginname"] != "")
         {
             model.loginname = Request["loginname"];
+        }
+        if (Request["userprower"] != null && Request["userprower"] != "")
+        {
+            model.userprower = int.Parse(Request["userprower"]);
         }
         if (Request["userpwd"] != null && Request["userpwd"] != "")
         {
@@ -39,10 +52,14 @@ public partial class userset : System.Web.UI.Page
                 msg = "用户信息修改失败！";
         }
 
+
+        IList<tb_Users> list = dal.GetListAll("id=" + Request.Cookies["HRId"].Value);
+
+
         VelocityHelper vh = new VelocityHelper();
         vh.Init();
         vh.Put("msg",msg);
-        vh.Put("role", m_power);
+        vh.Put("user", list[0]);
         vh.Display("user.vm");
     }
 

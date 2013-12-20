@@ -17,7 +17,7 @@
     <form action="perinfo.aspx" role="form" method="post" enctype="multipart/form-data">
       <h4>员工头像</h4>
       <div class="pannel">
-        <img src="$!{list.Photo}">
+        <img src="$!{list.Photo}" class="pimg">
         <input type="file" name="photo" value=""></div>
       <br>
       <h4>员工基本信息</h4>

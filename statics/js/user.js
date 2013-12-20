@@ -1,7 +1,7 @@
 var pageUrl = util.getUrl();
 
 $("#account-form").submit(function(){
-	var name = $("#loginname").val(),
+	var name = $("#username").val(),
 		pass = $("#userpwd").val(),
 		pass2 = $("#userpwd-confirm").val();
 	if( !name || !pass ){

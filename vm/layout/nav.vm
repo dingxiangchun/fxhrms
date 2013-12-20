@@ -39,5 +39,11 @@ jQuery.fn.zTree.init(jQuery("#branchTree"), setting, zNodes);
 var treeObj = jQuery.fn.zTree.getZTreeObj("branchTree");
 var nodes =  treeObj.getNodeByParam("id", util.getParam("branchid"), null);
 treeObj.expandNode(nodes, true, true, true);
+if(!!nodes && nodes.tId){
+	$("#"+nodes.tId+"_a").addClass("curSelectedNode");
+}else{
+	$("#branchTree_1_a").addClass("curSelectedNode");
+}
+
 
 </script>

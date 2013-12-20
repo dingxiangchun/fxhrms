@@ -7,9 +7,12 @@ $("input[name=UnitID]").val(branchid);
 // 刷新nav
 $("nav").load( "addBranch.aspx?action=tree" );
 
+$(function(){
 $('.date-picker').datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
 
 $('.date-picker-month').datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"year","startView":'year'});
+	
+})
 
 // check
 $(".check-all").on("change",function(){
@@ -31,6 +34,7 @@ $("#exportCheck").on("click",function(){
 		ids.push(this.value);
 	});
 	if(!ids.length){
+		alert("请选择需要导出的信息");
 		return false;
 	}
 	$("#downloadExcel").find("input[name=ids]").val(ids.join());
@@ -41,5 +45,5 @@ $("#exportAll").on("click",function(){
 	var $action = $("<input type='hidden' name='action' value='excelAll'/>")
 		$form = $("#query-form").clone();
 	$form.append($action);
-	$form.attr({"method":"post","target":"_blank"}).submit();
+	$form.attr({"method":"get","target":"_blank"}).submit();
 });
