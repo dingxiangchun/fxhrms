@@ -599,9 +599,12 @@
               <option value="${one.id}">$!{one.name}</option>
               #end
             </select>
+		   </td>
           <td>
-            <select name="unit[]" class="form-control" data-required="true" data-value="$!{one.unit}">
-              <option value="1">test</option>
+		     <select name="unitid[]" class="form-control" data-required="true" data-value="$!{one.unitid}">
+              #foreach ($one in $branchlist)
+              <option value="${one.id}">$!{one.branchname}</option>
+              #end
             </select>
           </td>
           <td>
@@ -640,8 +643,10 @@
             </select>
           </td>
           <td>
-            <select name="unit[]" class="form-control" data-required="true">
-              <option value="1">test</option>
+		     <select name="unitid[]" class="form-control">
+              #foreach ($one in $branchlist)
+              <option value="${one.id}">$!{one.branchname}</option>
+              #end
             </select>
           </td>
           <td>

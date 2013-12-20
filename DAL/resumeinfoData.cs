@@ -19,13 +19,14 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into tb_resumeinfo(");
-            strSql.Append("employeeid,attacktime,quittime,position,unit,mark,reason,content,audit");
+            strSql.Append("employeeid,attacktime,quittime,position,unitid,unit,mark,reason,content,audit");
             strSql.Append(")");
             strSql.Append(" values (");
             strSql.Append("'" + model.employeeid + "',");
             strSql.Append("'" + model.attacktime + "',");
             strSql.Append("'" + model.quittime + "',");
             strSql.Append("'" + model.position + "',");
+            strSql.Append("" + model.unitid + ",");
             strSql.Append("'" + model.unit + "',");
             strSql.Append("" + model.mark + ",");
             strSql.Append("'" + model.reason + "',");
@@ -46,7 +47,11 @@ namespace DAL
             strSql.Append("attacktime='" + model.attacktime + "',");
             strSql.Append("quittime='" + model.quittime + "',");
             strSql.Append("position='" + model.position + "',");
-            strSql.Append("unit='" + model.unit + "',");
+            if(string.IsNullOrEmpty(model.unit))
+            {
+                strSql.Append("unitid=" + model.unitid + ",");
+                strSql.Append("unit='" + model.unit + "',");
+            }
             strSql.Append("reason='" + model.reason + "',");
             strSql.Append("content='" + model.content + "',");
             strSql.Append("audit='" + model.audit + "'");
@@ -101,6 +106,24 @@ namespace DAL
             strSql.Append("mark=" + mark + "");
             strSql.Append(" where id=" + id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
+        }
+
+        public bool ChangePerInfoUnit(int id)
+        {
+            try
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("update tb_perinfo  tp SET tp.UnitID=(select tr.unitid from tb_resumeinfo tr where tr.id ="+id+")");
+                strSql.Append("where exists (select 1 from tb_resumeinfo tr where tp.Employeeid=  tr.employeeid and tr.id =" + id + ")");
+                if (DbHelperSQL.ExecuteSql(strSql.ToString()) > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
     }

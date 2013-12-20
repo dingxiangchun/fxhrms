@@ -79,6 +79,10 @@ public partial class check : System.Web.UI.Page
             if (Request["type"] == "work")
             {
                 resumedal.UpdateMark(int.Parse(Request["mark"]),HRUserName, int.Parse(Request["id"]));
+                if (int.Parse(Request["mark"]) == 1)
+                {
+                    resumedal.ChangePerInfoUnit(int.Parse(Request["id"]));
+                }
             }
             else if (Request["type"] == "reward")
             {

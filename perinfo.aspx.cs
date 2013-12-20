@@ -108,7 +108,8 @@ public partial class perinfo : System.Web.UI.Page
             IList<tb_rewardinfo> reward = dalReward.GetListAll("employeeid =" + Request["id"]);
             IList<tb_resumeinfo> work = dalWork.GetListAll("employeeid =" + Request["id"]);
             IList<tb_holidayrecords> holiday = dalHoliday.GetListAll("employeeid =" + Request["id"]);
-            IList<tb_branch> branchList = dalBranch.GetListAll( branchstr );
+            IList<tb_branch> branchInfo = dalBranch.GetListAll( branchstr );
+            IList<tb_branch> branchList = dalBranch.GetListAll("");
 
             IList<tb_Reserve> Reservelist = new List<tb_Reserve>();
             if (list.Count > 0)
@@ -133,7 +134,8 @@ public partial class perinfo : System.Web.UI.Page
             vh.Put("reward", reward);
             vh.Put("work", work);
             vh.Put("holiday", holiday);
-            vh.Put("branch", branchList[0]);
+            vh.Put("branch", branchInfo[0]);
+            vh.Put("branchlist", branchList);
             vh.Put("role",m_power);
             vh.Display("perinfo.vm");
         }
@@ -149,7 +151,8 @@ public partial class perinfo : System.Web.UI.Page
             string branchid = string.IsNullOrEmpty(Request["branchid"]) ? "0" : Request["branchid"];
             string branchstr = "id=" + branchid;
 
-            IList<tb_branch> branchList = dalBranch.GetListAll(branchstr);
+            IList<tb_branch> branchInfo = dalBranch.GetListAll(branchstr);
+            IList<tb_branch> branchList = dalBranch.GetListAll("");
             if (id != "" && id != null)
             {
 
@@ -195,7 +198,8 @@ public partial class perinfo : System.Web.UI.Page
            vh.Put("ReserveList", ReserveList);
            vh.Put("positionList", positionList);
            vh.Put("pertypeList", pertypeList);
-           vh.Put("branch", branchList[0]);
+           vh.Put("branch", branchInfo[0]);
+           vh.Put("branchlist", branchList);
            vh.Put("role", m_power);
            vh.Display("addper.vm");
         }
@@ -540,6 +544,7 @@ public partial class perinfo : System.Web.UI.Page
             string[] attacktimelist = Request.Form.GetValues("attacktime[]");
             string[] quittimelist = Request.Form.GetValues("quittime[]");
             string[] positionlist = Request.Form.GetValues("position[]");
+            string[] unitidlist = Request.Form.GetValues("unitid[]");
             string[] unitlist = Request.Form.GetValues("unit[]");
             string[] reasonlist = Request.Form.GetValues("reason[]");
             string[] contentlist = Request.Form.GetValues("content[]");
@@ -550,7 +555,15 @@ public partial class perinfo : System.Web.UI.Page
                 modelWork.attacktime = attacktimelist[i];
                 modelWork.quittime = quittimelist[i];
                 modelWork.position = positionlist[i];
-                modelWork.unit = unitlist[i];
+                if (!string.IsNullOrEmpty(unitidlist[i]))
+                {
+                    modelWork.unitid = int.Parse(unitidlist[i]);
+                    IList<tb_branch> branchinfotemp = dalBranch.GetListAll("id=" + unitidlist[i]);
+                    if (branchinfotemp.Count > 0)
+                        modelWork.unit = branchinfotemp[0].branchName;
+                }
+                //if (!string.IsNullOrEmpty(unitlist[i]))
+                //    modelWork.unit = unitlist[i];
                 modelWork.reason = reasonlist[i];
                 modelWork.content = contentlist[i];
 
