@@ -1,10 +1,11 @@
 <script>
 	$("header .username span").text( decodeURI( util.getCookie("HRUserName") )|| 'guest' );
-	$(".logout").click(function(){
+	$(".logout").on("click",function(){
 		util.delCookie("HRLoginName");
 		util.delCookie("HRId");
 		util.delCookie("HRUserName");
 		document.location.href="/login.aspx";
+		return false;
 	});
 </script>
 

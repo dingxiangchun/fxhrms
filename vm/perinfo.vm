@@ -19,7 +19,12 @@
 
   <div id="info-basic" class="info-block">
     <h3>员工基本信息</h3>
-    <img src="$!{list.Photo}" style="display: block;">
+    #if($list.Photo != "")
+    <img src="$!{list.Photo}" class="pimg">
+    #else
+    <p>员工未上传头像</p>
+    #end
+    
     <br>
     <table class="table table-bordered table-hover">
       <tr class="warning">
@@ -159,6 +164,11 @@
         <td>$!{one.content}</td>
       </tr>
       #end
+      #if(!$learn.size())
+      <tr>
+        <td colspan="7" style="text-align:center;">没有该员工相关信息</td>
+      </tr>
+      #end
     </table>
   </div>
 
@@ -185,6 +195,11 @@
         <td>$!{one.status}</td>
         <td>$!{one.situation}</td>
         <td>$!{one.remark}</td>
+      </tr>
+      #end
+      #if(!$family.size())
+      <tr>
+        <td colspan="8" style="text-align:center;">没有该员工相关信息</td>
       </tr>
       #end
     </table>
@@ -217,6 +232,11 @@
         <td>$!{one.description}</td>
       </tr>
       #end
+      #if(!$register.size())
+      <tr>
+        <td colspan="8" style="text-align:center;">没有该员工相关信息</td>
+      </tr>
+      #end
     </table>
   </div>
 
@@ -247,6 +267,11 @@
           <a href="$!{one.File}" target="_blank">查看</a>
         </td>
         <td>$!{one.audit}</td>
+      </tr>
+      #end
+      #if(!$reward.size())
+      <tr>
+        <td colspan="9" style="text-align:center;">没有该员工相关信息</td>
       </tr>
       #end
     </table>
@@ -285,6 +310,11 @@
           <td>$!{one.audit}</td>
       </tr>
       #end
+      #if(!$work.size())
+      <tr>
+        <td colspan="8" style="text-align:center;">没有该员工相关信息</td>
+      </tr>
+      #end
     </table>
   </div>
 
@@ -311,6 +341,11 @@
         <td>$!{one.Endtime}</td>
         <td>$!{one.days1}</td>
         <td>$!{one.remark}</td>
+      </tr>
+      #end
+      #if(!$holiday.size())
+      <tr>
+        <td colspan="8" style="text-align:center;">没有该员工相关信息</td>
       </tr>
       #end
     </table>

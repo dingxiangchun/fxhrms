@@ -6,17 +6,20 @@
 <h2>账户管理</h2>
  <form action="" method="post" role="form" id="account-form">
   <div class="form-group">
-      <label for="loginname">用户名</label>
-      <input type="text" class="form-control" id="loginname" name="loginname">
+      <label for="username">用户名(昵称)</label>
+      <input type="text" class="form-control" id="username" name="username" value="$!{user.username}">
   </div>
   <div class="form-group">
       <label for="userpwd">密码</label>
-      <input type="password" class="form-control" id="userpwd" name="userpwd">
+      <input type="password" class="form-control" id="userpwd" name="userpwd" value="">
   </div>
   <div class="form-group">
       <label for="userpwd-confirm">再次确认密码</label>
-      <input type="password" class="form-control" id="userpwd-confirm">
+      <input type="password" class="form-control" id="userpwd-confirm" value="">
   </div>
+  <input type="hidden" name="Unit" value="$!{user.Unit}">
+  <input type="hidden" name="loginname" value="$!{user.loginname}">
+  <input type="hidden" name="userprower" value="$!{user.userprower}">
   <button type="submit" class="btn btn-primary">保存</button>
 </form>
 </div>

@@ -8,16 +8,18 @@
   #end
 
   <div class="pannel">
-    <form action="HRData.aspx" method="get" role="form" id="perlist-form">
+    <form action="HRData.aspx" method="get" role="form" id="perlist-form" class=" form-inline">
+      <label for="name">请输入姓名:&nbsp;</label>
       <div class="form-group">
-        <label for="name">请输入姓名:</label>
         <input type="text" class="form-control" id="name" name="name">
       </div>
+      <div class="form-group">
       <input type="hidden" name="branchid" value="0">
       <button type="submit" class="btn btn-primary">查询</button>
 	  #if($role == 0 || $role == 3)
       <a href="" class="btn btn-default addper" role="button" target="_blank">新增</a>
 	  #end
+     </div>
     </form>
   </div>
 

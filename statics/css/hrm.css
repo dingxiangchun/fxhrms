@@ -506,3 +506,8 @@ table{
 body{
   font-size:12px;
 }
+.pimg{
+  width: 150px;
+  height: 200px;
+  display: block;
+}
