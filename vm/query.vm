@@ -46,6 +46,15 @@
                 #include("include/educ.vm")
         </select>
       </div>
+	        <div class="form-group col-md-2">
+        <label>员工状态</label>
+         <select name="perStatus" class="form-control input-sm">
+		      <option value="">不限</option>
+            #foreach ($one in $perStatusList)
+              <option value="${one.id}">$!{one.name}</option>
+             #end
+         </select>
+      </div>
        <div class="form-group col-md-2">
         <label>用工类别</label>
         <input type="text" value=""  name="Guard" class="form-control input-sm">

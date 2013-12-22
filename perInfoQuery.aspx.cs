@@ -18,8 +18,10 @@ using OfficeControl;
 
 public partial class perInfoQuery : System.Web.UI.Page
 {
+    pertypeinfoData dalpertype = new pertypeinfoData();
     perInfo dal = new perInfo();
     tb_perInfo model = new tb_perInfo();
+    tb_pertypeinfo modelpertype = new tb_pertypeinfo();
     ReserveData Resdal = new ReserveData();
     IList<tb_Reserve> ReserveList;
 
@@ -244,6 +246,10 @@ public partial class perInfoQuery : System.Web.UI.Page
             strwhere += " and tb_perInfo.Guard='" + Request["Guard"] + "'";
         }
 
+        if (Request["perStatus"] != null && Request["perStatus"] != "")
+        {
+            strwhere += " and tb_perInfo.state='" + Request["perStatus"] + "'";
+        }
         list = dal.GetListAll(strwhere);
         return true;
     }
@@ -253,9 +259,11 @@ public partial class perInfoQuery : System.Web.UI.Page
         IList<tb_perInfo> list;
         GetSearchData(out list);
         ChangeReserve(ref list);
+        IList<tb_pertypeinfo> pertTypeList = dalpertype.GetListAll("");
         VelocityHelper vh = new VelocityHelper();
         vh.Init();
         vh.Put("list", list);
+        vh.Put("perStatusList", pertTypeList);
         vh.Put("role", m_power);
         vh.Display("query.vm");
         return true;
