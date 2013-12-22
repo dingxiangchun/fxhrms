@@ -36,7 +36,7 @@
           <td>
             <input type="text" value="$!{list.name}" name="Name" class="form-control" data-required="true"></td>
           <td>
-            <input type="text" value="$!{list.Beforename}" name="Beforename" class="form-control" data-required="true"></td>
+            <input type="text" value="$!{list.Beforename}" name="Beforename" class="form-control"></td>
           <td>
             <input type="text" value="$!{list.Employeeid}" name="Employeeid" class="form-control" data-required="true"></td>
           <td>

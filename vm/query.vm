@@ -59,7 +59,7 @@
         <label>用工类别</label>
         <input type="text" value=""  name="Guard" class="form-control input-sm">
       </div>
-      <div class="form-group col-md-8" style="text-align:right;">
+      <div class="form-group col-md-6" style="text-align:right;">
         <button type="submit" role="button" class="btn btn-warning" style="margin-top:15px;">查询</button>
        </div>
     </div>
