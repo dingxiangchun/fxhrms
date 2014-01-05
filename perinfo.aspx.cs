@@ -350,7 +350,7 @@ public partial class perinfo : System.Web.UI.Page
             if (Request.Files.Count > 0)
             {
                 HttpFileCollection FileCollection = Request.Files;
-                model.photo = SavePhoto(FileCollection[FileCollection.AllKeys[0]]);
+                model.photo = SavePhoto(FileCollection[FileCollection.AllKeys[0]],Request["Employeeid"]);
             }
 
             if (Request["id"] == "")
@@ -479,7 +479,7 @@ public partial class perinfo : System.Web.UI.Page
                 modelReg.issuingtime = issuingtimelist[i];
                 modelReg.unit = unitlist[i];
                 modelReg.Class = Classlist[i];
-                modelReg.photo = SavePhoto(FileColl[i]);
+                modelReg.photo = SavePhoto(FileColl[i], employeeid);
 
                 modelReg.description = descriptionlist[i];
                 if (idlist[i] == "")
@@ -522,7 +522,7 @@ public partial class perinfo : System.Web.UI.Page
                 modelReward.Class = Classlist[i];
                 modelReward.unit = unitlist[i];
                 modelReward.description = descriptionlist[i];
-                modelReward.File = SavePhoto(FileColl[i]);
+                modelReward.File = SavePhoto(FileColl[i], employeeid);
                 if (idlist[i] == "")
                 {
                     dalReward.Add(modelReward);
@@ -636,7 +636,7 @@ public partial class perinfo : System.Web.UI.Page
         }
     }
 
-    private string SavePhoto(HttpPostedFile PhotoFile)
+    private string SavePhoto(HttpPostedFile PhotoFile, string employeeid)
     {
         string webUrl = "";
         try
@@ -645,14 +645,15 @@ public partial class perinfo : System.Web.UI.Page
             {
                 DateTime now = DateTime.Now;
                 string filename = now.ToFileTimeUtc().ToString()+System.IO.Path.GetExtension(PhotoFile.FileName);
-                string strpath = System.Web.HttpContext.Current.Server.MapPath("./") + "Photo\\" + filename;
-                webUrl = "/Photo/" + filename;
+                string strpath = System.Web.HttpContext.Current.Server.MapPath("./") + "Photo\\" + employeeid+"\\";// +filename;
+
+                if (!Directory.Exists(strpath))//若文件夹不存在则新建文件夹  
+                {
+                    Directory.CreateDirectory(strpath); //新建文件夹  
+                }
+                webUrl = "/Photo/" + employeeid+"/" + filename;
+                strpath += filename;
                 PhotoFile.SaveAs(strpath);
-                //HttpFileCollection photodata = Request.Files;
-                //for (int i = 0; i < photodata.Count; i++)
-                //{
-                //    photodata[photodata.AllKeys[i]].SaveAs(strpath);
-                //}
             }
         }
         catch (System.Threading.ThreadAbortException ex)

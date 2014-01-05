@@ -15,6 +15,7 @@ namespace Models
         private string _attacktime;
         private string _quittime;
         private string _position;
+        private string _positionname;
         private int _unitid;
         private string _unit;
         private string _reason;
@@ -64,6 +65,12 @@ namespace Models
         {
             set { _position = value; }
             get { return _position; }
+        }
+
+        public string positionname
+        {
+            set { _positionname = value; }
+            get { return _positionname; }
         }
 
         public int unitid

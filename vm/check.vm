@@ -25,7 +25,7 @@
         <td>$!{one.employeename}</td>
         <td>$!{one.attacktime}</td>
         <td>$!{one.quittime}</td>
-        <td>$!{one.position}</td>
+        <td>$!{one.positionname}</td>
         <td>$!{one.unit}</td>
         <td>$!{one.reason}</td>
         <td>$!{one.content}</td>

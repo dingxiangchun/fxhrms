@@ -77,10 +77,10 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * from tb_resumeinfo ");
+            strSql.Append("select tb_resumeinfo.*,tb_positioninfo.name As positionname from tb_resumeinfo,tb_positioninfo where tb_positioninfo.id=tb_resumeinfo.position");
             if (strWhere.Trim() != "")
             {
-                strSql.Append(" where " + strWhere + "");
+                strSql.Append(" and " + strWhere + "");
             }
             strSql.Append(" order by id ");
             return DbHelperSQL.Query(strSql.ToString());
@@ -89,7 +89,7 @@ namespace DAL
         public DataSet GetListWithName(string strwhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select tb_resumeinfo.*,tb_perinfo.Name As employeename from tb_resumeinfo,tb_perinfo where tb_resumeinfo.employeeid=tb_perinfo.Employeeid ");
+            strSql.Append("select tb_resumeinfo.*,tb_perinfo.Name As employeename,tb_positioninfo.name As positionname from tb_resumeinfo,tb_perinfo,tb_positioninfo where tb_resumeinfo.employeeid=tb_perinfo.Employeeid and  tb_positioninfo.id=tb_resumeinfo.position ");
             if (strwhere.Trim() != "")
             {
                 strSql.Append(strwhere);
