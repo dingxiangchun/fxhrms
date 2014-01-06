@@ -590,27 +590,27 @@
         <tr>
           <td>
             <input type="hidden" name="iid[]" value="$!{one.id}">
-            <input type="text" value="$!{one.attacktime}" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd"></td>
+            <input type="text" value="$!{one.attacktime}" class="form-control date-picker" name="attacktime[]" data-date-format="yyyy-mm-dd" #if($one.mark != 1) readonly #end></td>
           <td>
-            <input type="text" value="$!{one.quittime}" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd"></td>
+            <input type="text" value="$!{one.quittime}" class="form-control date-picker" name="quittime[]" data-date-format="yyyy-mm-dd" #if($one.mark != 1) readonly #end></td>
           <td>
-            <select name="position[]" class="form-control" data-value="$!{one.position}">
+            <select name="position[]" class="form-control" data-value="$!{one.position}" #if($one.mark != 1)onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;" readonly#end>
               #foreach ($one in $positionList)
               <option value="${one.id}">$!{one.name}</option>
               #end
             </select>
 		   </td>
           <td>
-		     <select name="unitid[]" class="form-control" data-required="true" data-value="$!{one.unitid}">
+		     <select name="unitid[]" class="form-control" data-required="true" data-value="$!{one.unitid}" #if($one.mark != 1)onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;" readonly#end>
               #foreach ($one in $branchlist)
               <option value="${one.id}">$!{one.branchname}</option>
               #end
             </select>
           </td>
           <td>
-            <input type="text" value="$!{one.reason}" name="reason[]" class="form-control"></td>
+            <input type="text" value="$!{one.reason}" name="reason[]" class="form-control" #if($one.mark != 1) readonly #end></td>
           <td>
-            <input type="text" value="$!{one.content}" name="content[]" class="form-control"></td>
+            <input type="text" value="$!{one.content}" name="content[]" class="form-control" #if($one.mark != 1) readonly #end></td>
           <td>
             #if( $one.mark == 1 )
             <span style="color:red;">已提报</span>

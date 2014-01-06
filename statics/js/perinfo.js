@@ -14,9 +14,9 @@ $(".quick-link a").on("click", function () {
 $(".quick-link a[rel="+hash+"]").trigger("click");
 
 function dateInit(that){
-$('.date-picker',that).datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
+$('.date-picker',that).not("[readonly]").datetimepicker({"format":'yyyy-mm-dd',"autoclose":true,"minView":"month"});
 
-$('.date-picker-month',that).datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"year","startView":'year'});
+$('.date-picker-month',that).not("[readonly]").datetimepicker({"format":'yyyy-mm',"autoclose":true,"minView":"year","startView":'year'});
 
 }
 $(function(){
@@ -94,6 +94,10 @@ $(".add-new").on("click",function(){
 		$src = $form.find("tr").last(),
 		$target = $src.clone();
 	$target.find("input").val("");
+	$target.find("[readonly]").removeAttr("readonly").each(function(){
+		this.onfocus = "";
+		this.onchange = "";
+	});
 	$target.find("[name='mark[]']").siblings().remove();
 	$target.find(".vali-pass,.vali-no-pass").remove();
 	$target.find(".view-file").remove();

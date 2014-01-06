@@ -295,7 +295,12 @@
         <td>$!{one.attacktime}</td>
         <td>$!{one.quittime}</td>
         <td>$!{one.position}</td>
-        <td>$!{one.unit}</td>
+        <td>
+          #if($one.unitid < 0)
+          #else
+          $!{one.unit}
+          #end
+        </td>
         <td>$!{one.reason}</td>
         <td>$!{one.content}</td>
          <td>
