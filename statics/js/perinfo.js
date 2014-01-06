@@ -102,22 +102,22 @@ $(".add-new").on("click",function(){
 });
 
 // 工作调动
-$(".add-change").on("click",function(){
-	var $form = $(this).closest("form"),
-		$src = $form.find("tr").last(),
-		$target = $src.clone(),
-		date = new Date();
-	date = date.getFullYear()+"-"+(date.getDate()+1)+"-"+date.getDay();
-	$target.find("input").val("");
-	$target.find("[name='mark[]']").siblings().remove();
-	$target.find(".vali-pass,.vali-no-pass").remove();
-	$target.find(".view-file").remove();
-	$form.find("table").append($target);
-	dateInit($target);
-	if( !$src.find(".date-picker").last().val() )
-		$src.find(".date-picker").last().val(date);
-	$target.find(".date-picker").eq(0).val(date);
-});
+// $(".add-change").on("click",function(){
+// 	var $form = $(this).closest("form"),
+// 		$src = $form.find("tr").last(),
+// 		$target = $src.clone(),
+// 		date = new Date();
+// 	date = date.getFullYear()+"-"+(date.getDate()+1)+"-"+date.getDay();
+// 	$target.find("input").val("");
+// 	$target.find("[name='mark[]']").siblings().remove();
+// 	$target.find(".vali-pass,.vali-no-pass").remove();
+// 	$target.find(".view-file").remove();
+// 	$form.find("table").append($target);
+// 	dateInit($target);
+// 	if( !$src.find(".date-picker").last().val() )
+// 		$src.find(".date-picker").last().val(date);
+// 	$target.find(".date-picker").eq(0).val(date);
+// });
 
 // 审核
 // $(".vali-pass,.vali-no-pass").on("click",function(){
