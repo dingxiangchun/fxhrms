@@ -18,6 +18,7 @@ public partial class check : System.Web.UI.Page
 {
     resumeinfoData resumedal = new resumeinfoData();
     rewardinfoData rewarddal = new rewardinfoData();
+    workchange changedal = new workchange();
     int m_power = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -33,8 +34,9 @@ public partial class check : System.Web.UI.Page
             VelocityHelper vh = new VelocityHelper();
             IList<tb_resumeinfo> resumelist = util.GetAll<tb_resumeinfo>(resumedal.GetListWithName("and mark=0"));
             IList<tb_rewardinfo> rewardlist = util.GetAll<tb_rewardinfo>(rewarddal.GetListWithName("and mark=0"));
+            IList<tb_workchange> changelist = changedal.GetListAll("");
             vh.Init();
-            vh.Put("work", resumelist);
+            vh.Put("work", changelist);
             vh.Put("reward", rewardlist);
             vh.Put("role", m_power);
             vh.Display("check.vm");
@@ -81,8 +83,9 @@ public partial class check : System.Web.UI.Page
                 resumedal.UpdateMark(int.Parse(Request["mark"]),HRUserName, int.Parse(Request["id"]));
                 if (int.Parse(Request["mark"]) == 1)
                 {
-                    resumedal.ChangePerInfoUnit(int.Parse(Request["id"]));
+                    changedal.ChangePerInfoUnit(int.Parse(Request["id"]));
                 }
+                changedal.Delete("resumeid=" + Request["id"]);
             }
             else if (Request["type"] == "reward")
             {

@@ -59,6 +59,7 @@
     <Compile Include="tb_rewardinfo.cs" />
     <Compile Include="tb_transfer.cs" />
     <Compile Include="tb_Users.cs" />
+    <Compile Include="tb_workchange.cs" />
     <Compile Include="tb_workresume.cs" />
     <Compile Include="tb_zhichen.cs" />
     <Compile Include="Util.cs" />

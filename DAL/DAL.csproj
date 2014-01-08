@@ -81,6 +81,7 @@
     <Compile Include="rewardinfoData.cs" />
     <Compile Include="transfer.cs" />
     <Compile Include="users.cs" />
+    <Compile Include="workchange.cs" />
     <Compile Include="workResume.cs" />
     <Compile Include="zhichen.cs" />
   </ItemGroup>

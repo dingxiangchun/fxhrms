@@ -11,29 +11,31 @@
       <tr class="warning">
         <th>员工编号</th>
         <th>员工姓名</th>
-        <td>工作开始时间</td>
-        <td>工作离职时间</td>
-        <td>工作岗位</td>
-        <td>工作单位</td>
-        <td>离职原因</td>
-        <td>工作内容</td>
+		<th>调动时间</th>
+        <th>原单位</th>
+        <th>原岗位</th>
+        <th>新单位</th>
+        <th>新岗位</th>
+        <th>离职原因</th>
+        <th>工作内容</th>
         <td></td>
       </tr>
       #foreach( $one in $work )
       <tr>
-        <td>$!{one.employeeid}</td>
+        <td>$!{one.Employeeid}</td>
         <td>$!{one.employeename}</td>
-        <td>$!{one.attacktime}</td>
-        <td>$!{one.quittime}</td>
-        <td>$!{one.positionname}</td>
-        <td>$!{one.unit}</td>
-        <td>$!{one.reason}</td>
+		<td>$!{one.attacktime}</td>
+        <td>$!{one.OldUnitName}</td>
+        <td>$!{one.OldPositionName}</td>
+        <td>$!{one.NewUnitName}</td>
+        <td>$!{one.NewPositionName}</td>
+		<td>$!{one.reason}</td>
         <td>$!{one.content}</td>
           <td>
-            <span class="btn btn-default btn-sm vali-pass" type="button" rel="work" data-id="$one.id">
+            <span class="btn btn-default btn-sm vali-pass" type="button" rel="work" data-id="$one.resumeid">
               审核通过
             </span>
-            <span class="btn btn-default btn-sm vali-no-pass" type="button" rel="work" data-id="$one.id">
+            <span class="btn btn-default btn-sm vali-no-pass" type="button" rel="work" data-id="$one.resumeid">
               审核不通过
             </span>
           </td>

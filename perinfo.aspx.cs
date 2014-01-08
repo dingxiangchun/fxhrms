@@ -566,9 +566,9 @@ public partial class perinfo : System.Web.UI.Page
                 //    modelWork.unit = unitlist[i];
                 modelWork.reason = reasonlist[i];
                 modelWork.content = contentlist[i];
-
                 if (idlist[i] == "")
                 {
+                    modelWork.mark=1;
                     dalWork.Add(modelWork);
                 }
                 else
@@ -579,6 +579,37 @@ public partial class perinfo : System.Web.UI.Page
             }
             Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#work", false);
             //Add(employeeid);
+        }
+        else if (Request["type"] == "workchange")
+        {
+            string strwhere = "Employeeid='" + Request["id"] + "'";
+            IList<tb_perInfo> list = dal.GetListAll(strwhere);
+
+            modelWork.employeeid = list[0].Employeeid;
+          //  modelWork.attacktime = attacktimelist[i];
+            modelWork.quittime = Request["attacktime"];
+            modelWork.position =list[0].Position;
+
+             modelWork.unitid = list[0].UnitID;
+             IList<tb_branch> branchinfotemp = dalBranch.GetListAll("id=" + list[0].UnitID);
+             if (branchinfotemp.Count > 0)
+                 modelWork.unit = branchinfotemp[0].branchName;
+
+             modelWork.mark = 0;
+             dalWork.Add(modelWork);
+
+            IList<tb_resumeinfo> worklist = dalWork.GetListAll("employeeid='" + Request["id"] + "'");
+
+            tb_workchange modelchange = new tb_workchange();
+            modelchange.attacktime = Request["attacktime"];
+            modelchange.positionid = int.Parse(Request["position"]);
+            modelchange.unitid = int.Parse(Request["unitid"]);
+            modelchange.resumeid = worklist[worklist.Count - 1].id;
+
+            workchange dalchange = new workchange();
+            dalchange.Add(modelchange);
+
+            Response.Redirect("perinfo.aspx?action=add&id=" + Request["id"] + "#work", false);
         }
         else if (Request["type"] == "holiday")
         {
@@ -632,7 +663,7 @@ public partial class perinfo : System.Web.UI.Page
                 }
             }
             Response.Redirect("perinfo.aspx?action=add&id=" + employeeid + "#holiday", false);
-           // Add(employeeid);
+            // Add(employeeid);
         }
     }
 
