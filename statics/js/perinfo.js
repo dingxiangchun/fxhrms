@@ -182,4 +182,12 @@ $("body").on("click",".del-item",function(){
 		}
 	}
 	return false;
+});
+
+// 工作调动
+$("#js-change-work").click(function(){
+	if(!$(".work-list").length){
+		alert("请先添加一条带有当前工作起始时间的工作经历")
+		return false;
+	}
 })
