@@ -58,7 +58,17 @@ namespace DAL
             strSql.Append(" where id=" + model.id + "");
             DbHelperSQL.ExecuteSql(strSql.ToString());
         }
-
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public void Updatequittime(string time,string id)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update tb_resumeinfo set ");
+            strSql.Append("quittime='" + time + "'");
+            strSql.Append(" where id=" + id + "");
+            DbHelperSQL.ExecuteSql(strSql.ToString());
+        }
         /// <summary>
         /// 删除一条数据
         /// </summary>
@@ -82,7 +92,7 @@ namespace DAL
             {
                 strSql.Append(" and " + strWhere + "");
             }
-            strSql.Append(" order by id ");
+            strSql.Append(" order by tb_resumeinfo.id ");
             return DbHelperSQL.Query(strSql.ToString());
         }
 

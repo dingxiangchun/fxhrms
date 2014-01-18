@@ -294,7 +294,7 @@
       <tr>
         <td>$!{one.attacktime}</td>
         <td>$!{one.quittime}</td>
-        <td>$!{one.position}</td>
+        <td>$!{one.positionname}</td>
         <td>
           #if($one.unitid < 0)
           #else

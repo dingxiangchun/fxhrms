@@ -80,10 +80,26 @@ public partial class check : System.Web.UI.Page
             string HRUserName = Request.Cookies["HRUserName"].Value;
             if (Request["type"] == "work")
             {
+                string time = "";
+                string employeeid="";
+                IList<tb_workchange> changeList = changedal.GetListAll("t5.resumeid=" + Request["id"]);
+                if (changeList.Count > 0)
+                {
+                    time = changeList[0].attacktime;
+                    employeeid = changeList[0].Employeeid;
+                }
+
                 resumedal.UpdateMark(int.Parse(Request["mark"]),HRUserName, int.Parse(Request["id"]));
                 if (int.Parse(Request["mark"]) == 1)
                 {
+
                     changedal.ChangePerInfoUnit(int.Parse(Request["id"]));
+                }
+
+                IList<tb_resumeinfo> resulist = resumedal.GetListAll("tb_resumeinfo.employeeid='" + employeeid + "'");
+                if (resulist.Count > 0)
+                {
+                    resumedal.Updatequittime(time, resulist[resulist.Count-2].id.ToString());
                 }
                 changedal.Delete("resumeid=" + Request["id"]);
             }
