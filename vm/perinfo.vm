@@ -297,8 +297,9 @@
         <td>$!{one.positionname}</td>
         <td>
           #if($one.unitid < 0)
+		  $!{one.unit}
           #else
-          $!{one.unit}
+          $!{one.unitname}
           #end
         </td>
         <td>$!{one.reason}</td>

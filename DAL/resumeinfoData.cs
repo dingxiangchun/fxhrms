@@ -87,12 +87,12 @@ namespace DAL
         override public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select tb_resumeinfo.*,tb_positioninfo.name As positionname from tb_resumeinfo,tb_positioninfo where tb_positioninfo.id=tb_resumeinfo.position");
+            strSql.Append("select tb_resumeinfo.*,tb_positioninfo.name As positionname,tb_branch.branchName as unitname from tb_resumeinfo,tb_positioninfo,tb_branch where tb_positioninfo.id=tb_resumeinfo.position and (tb_resumeinfo.unitid=tb_branch.id or tb_resumeinfo.unitid<0)");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" and " + strWhere + "");
             }
-            strSql.Append(" order by tb_resumeinfo.id ");
+            strSql.Append(" group by tb_resumeinfo.id");
             return DbHelperSQL.Query(strSql.ToString());
         }
 

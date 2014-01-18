@@ -582,16 +582,16 @@ public partial class perinfo : System.Web.UI.Page
         }
         else if (Request["type"] == "workchange")
         {
-            string strwhere = "Employeeid='" + Request["id"] + "'";
-            IList<tb_perInfo> list = dal.GetListAll(strwhere);
+          //  string strwhere = "Employeeid='" + Request["id"] + "'";
+          //  IList<tb_perInfo> list = dal.GetListAll(strwhere);
 
-            modelWork.employeeid = list[0].Employeeid;
+            modelWork.employeeid = Request["id"];
           //  modelWork.attacktime = attacktimelist[i];
-            modelWork.quittime = Request["attacktime"];
-            modelWork.position =list[0].Position;
+            modelWork.attacktime = Request["attacktime"];
+            modelWork.position = Request["position"];
 
-             modelWork.unitid = list[0].UnitID;
-             IList<tb_branch> branchinfotemp = dalBranch.GetListAll("id=" + list[0].UnitID);
+            modelWork.unitid = int.Parse(Request["unitid"]);
+            IList<tb_branch> branchinfotemp = dalBranch.GetListAll("id=" + Request["unitid"]);
              if (branchinfotemp.Count > 0)
                  modelWork.unit = branchinfotemp[0].branchName;
 

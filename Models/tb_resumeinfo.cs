@@ -18,6 +18,7 @@ namespace Models
         private string _positionname;
         private int _unitid;
         private string _unit;
+        private string _unitname;
         private string _reason;
         private string _content;
         private int _mark;
@@ -83,6 +84,12 @@ namespace Models
         {
             set { _unit = value; }
             get { return _unit; }
+        }
+
+        public string unitname
+        {
+            set { _unitname = value; }
+            get { return _unitname; }
         }
 
         public string reason

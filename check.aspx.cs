@@ -77,7 +77,8 @@ public partial class check : System.Web.UI.Page
     {
         if (!string.IsNullOrEmpty(Request["type"]))
         {
-            string HRUserName = Request.Cookies["HRUserName"].Value;
+            string HRUserName = HttpUtility.UrlDecode(Request.Cookies["HRUserName"].Value);
+            
             if (Request["type"] == "work")
             {
                 string time = "";
